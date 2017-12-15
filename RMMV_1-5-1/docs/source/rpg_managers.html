@@ -1205,76 +1205,216 @@ StorageManager.webStorageKey = function(savefileId) {
 //
 // The static class that loads images, creates bitmap objects and retains them.
 
+<span id='ImageManager-method-constructor'><span id='ImageManager'>/**
+</span></span> * The static class that loads images, creates bitmap objects and retains them.
+ * @class ImageManager
+ * @singleton
+ * @constructor should never be used
+ *
+ * @uses Bitmap
+ * @uses CacheMap
+ * @uses ImageCache
+ * @uses RequestQueue
+ */
 function ImageManager() {
     throw new Error('This is a static class');
 }
 
+<span id='ImageManager-property-cache'>/**
+</span> * @property cache
+ * @type {CacheMap}
+ */
 ImageManager.cache = new CacheMap(ImageManager);
-
+<span id='ImageManager-property-_imageCache'>/**
+</span> * @property _imageCache
+ * @type {ImageCache}
+ */
 ImageManager._imageCache = new ImageCache();
+<span id='ImageManager-property-_requestQueue'>/**
+</span> * @property _requestQueue
+ * @type {RequestQueue}
+ */
 ImageManager._requestQueue = new RequestQueue();
+<span id='ImageManager-property-_systemReservationId'>/**
+</span> * @property _systemReservationId
+ * @type {Number}
+ */
 ImageManager._systemReservationId = Utils.generateRuntimeId();
 
+<span id='ImageManager-method-_generateCacheKey'>/**
+</span> * @method _generateCacheKey
+ * Generates the cache key for an image at a specific hue.
+ * @param {String} path the image path
+ * @param {Number} hue the desired hue
+ * @return {String}
+ */
 ImageManager._generateCacheKey = function(path, hue){
     return  path + ':' + hue;
 };
 
+<span id='ImageManager-method-loadAnimation'>/**
+</span> * @method loadAnimation
+ * Loads an animation at a specified hue.
+ * @param {String} filename the image file
+ * @param {Number} hue the desired hue
+ * @return {Bitmap}
+ */
 ImageManager.loadAnimation = function(filename, hue) {
     return this.loadBitmap('img/animations/', filename, hue, true);
 };
 
+<span id='ImageManager-method-loadBattleback1'>/**
+</span> * @method loadBattleback1
+ * Loads a battleback at a specified hue.
+ * @param {String} filename the image file
+ * @param {Number} hue the desired hue
+ * @return {Bitmap}
+ */
 ImageManager.loadBattleback1 = function(filename, hue) {
     return this.loadBitmap('img/battlebacks1/', filename, hue, true);
 };
 
+<span id='ImageManager-method-loadBattleback2'>/**
+</span> * @method loadBattleback2
+ * Loads a battleback at a specified hue.
+ * @param {String} filename the image file
+ * @param {Number} hue the desired hue
+ * @return {Bitmap}
+ */
 ImageManager.loadBattleback2 = function(filename, hue) {
     return this.loadBitmap('img/battlebacks2/', filename, hue, true);
 };
 
+<span id='ImageManager-method-loadEnemy'>/**
+</span> * @method loadEnemy
+ * Loads an enemy graphic at a specified hue.
+ * @param {String} filename the image file
+ * @param {Number} hue the desired hue
+ * @return {Bitmap}
+ */
 ImageManager.loadEnemy = function(filename, hue) {
     return this.loadBitmap('img/enemies/', filename, hue, true);
 };
 
+<span id='ImageManager-method-loadCharacter'>/**
+</span> * @method loadCharacter
+ * Loads a character graphic at a specified hue.
+ * @param {String} filename the image file
+ * @param {Number} hue the desired hue
+ * @return {Bitmap}
+ */
 ImageManager.loadCharacter = function(filename, hue) {
     return this.loadBitmap('img/characters/', filename, hue, false);
 };
 
+<span id='ImageManager-method-loadFace'>/**
+</span> * @method loadFace
+ * Loads a face at a specified hue.
+ * @param {String} filename the image file
+ * @param {Number} hue the desired hue
+ * @return {Bitmap}
+ */
 ImageManager.loadFace = function(filename, hue) {
     return this.loadBitmap('img/faces/', filename, hue, true);
 };
 
+<span id='ImageManager-method-loadParallax'>/**
+</span> * @method loadParallax
+ * Loads a parallax at a specified hue.
+ * @param {String} filename the image file
+ * @param {Number} hue the desired hue
+ * @return {Bitmap}
+ */
 ImageManager.loadParallax = function(filename, hue) {
     return this.loadBitmap('img/parallaxes/', filename, hue, true);
 };
 
+<span id='ImageManager-method-loadPicture'>/**
+</span> * @method loadPicture
+ * Loads a picture at a specified hue.
+ * @param {String} filename the image file
+ * @param {Number} hue the desired hue
+ * @return {Bitmap}
+ */
 ImageManager.loadPicture = function(filename, hue) {
     return this.loadBitmap('img/pictures/', filename, hue, true);
 };
 
+<span id='ImageManager-method-loadSvActor1'>/**
+</span> * @method loadSvActor1
+ * Loads an sv actor at a specified hue.
+ * @param {String} filename the image file
+ * @param {Number} hue the desired hue
+ * @return {Bitmap}
+ */
 ImageManager.loadSvActor = function(filename, hue) {
     return this.loadBitmap('img/sv_actors/', filename, hue, false);
 };
 
+<span id='ImageManager-method-loadSvEnemy'>/**
+</span> * @method loadSvEnemy
+ * Loads an sv enemy at a specified hue.
+ * @param {String} filename the image file
+ * @param {Number} hue the desired hue
+ * @return {Bitmap}
+ */
 ImageManager.loadSvEnemy = function(filename, hue) {
     return this.loadBitmap('img/sv_enemies/', filename, hue, true);
 };
 
+<span id='ImageManager-method-loadSystem'>/**
+</span> * @method loadSystem
+ * Loads a system image at a specified hue.
+ * @param {String} filename the image file
+ * @param {Number} hue the desired hue
+ * @return {Bitmap}
+ */
 ImageManager.loadSystem = function(filename, hue) {
     return this.loadBitmap('img/system/', filename, hue, false);
 };
 
+<span id='ImageManager-method-loadTileset'>/**
+</span> * @method loadTileset
+ * Loads a tileset image at a specified hue.
+ * @param {String} filename the image file
+ * @param {Number} hue the desired hue
+ * @return {Bitmap}
+ */
 ImageManager.loadTileset = function(filename, hue) {
     return this.loadBitmap('img/tilesets/', filename, hue, false);
 };
 
+<span id='ImageManager-method-loadTitle1'>/**
+</span> * @method loadTitle1
+ * Loads a title image at a specified hue.
+ * @param {String} filename the image file
+ * @param {Number} hue the desired hue
+ * @return {Bitmap}
+ */
 ImageManager.loadTitle1 = function(filename, hue) {
     return this.loadBitmap('img/titles1/', filename, hue, true);
 };
 
+<span id='ImageManager-method-loadTitle1'>/**
+</span> * @method loadTitle1
+ * Loads a title image at a specified hue.
+ * @param {String} filename the image file
+ * @param {Number} hue the desired hue
+ * @return {Bitmap}
+ */
 ImageManager.loadTitle2 = function(filename, hue) {
     return this.loadBitmap('img/titles2/', filename, hue, true);
 };
 
+<span id='ImageManager-method-loadBitmap'>/**
+</span> * @method loadBitmap
+ * Loads a Bitmap at a specified hue.
+ * @param {String} folder the directory of images, ie 'img/titles1/'
+ * @param {String} filename the image file
+ * @param {Number} hue the desired hue
+ * @param {Boolean} smooth whether the image should be filtered
+ * @return {Bitmap}
+ */
 ImageManager.loadBitmap = function(folder, filename, hue, smooth) {
     if (filename) {
         var path = folder + encodeURIComponent(filename) + '.png';
@@ -1286,6 +1426,11 @@ ImageManager.loadBitmap = function(folder, filename, hue, smooth) {
     }
 };
 
+<span id='ImageManager-method-loadEmptyBitmap'>/**
+</span> * @method loadEmptyBitmap
+ * Loads an empty Bitmap as a placeholder.
+ * @return {Bitmap}
+ */
 ImageManager.loadEmptyBitmap = function() {
     var empty = this._imageCache.get('empty');
     if(!empty){
@@ -1297,6 +1442,14 @@ ImageManager.loadEmptyBitmap = function() {
     return empty;
 };
 
+<span id='ImageManager-method-loadNormalBitmap'>/**
+</span> * @method loadNormalBitmap
+ * Loads a Bitmap at a specified hue.
+ * Checks ImageManager._imageCache for cached Bitmap before loading.
+ * @param {String} path the combined path of the image file
+ * @param {Number} hue the desired hue
+ * @return {Bitmap}
+ */
 ImageManager.loadNormalBitmap = function(path, hue) {
     var key = this._generateCacheKey(path, hue);
     var bitmap = this._imageCache.get(key);
@@ -1313,85 +1466,232 @@ ImageManager.loadNormalBitmap = function(path, hue) {
     return bitmap;
 };
 
+<span id='ImageManager-method-clear'>/**
+</span> * @method clear
+ * Clears ImageManager._imageCache.
+ */
 ImageManager.clear = function() {
     this._imageCache = new ImageCache();
 };
 
+<span id='ImageManager-method-isReady'>/**
+</span> * @method isReady
+ * Checks if ImageManager._imageCache is ready.
+ */
 ImageManager.isReady = function() {
     return this._imageCache.isReady();
 };
 
+<span id='ImageManager-method-isObjectCharacter'>/**
+</span> * @method isObjectCharacter
+ * Checks an image filename for '!',
+ * meaning that it is a character sheet.
+ * @param {String} filename the image file
+ */
 ImageManager.isObjectCharacter = function(filename) {
     var sign = filename.match(/^[\!\$]+/);
     return sign &amp;&amp; sign[0].contains('!');
 };
 
+<span id='ImageManager-method-isBigCharacter'>/**
+</span> * @method isBigCharacter
+ * Checks an image filename for '$',
+ * meaning that it is a big character sheet.
+ * @param {String} filename the image file
+ */
 ImageManager.isBigCharacter = function(filename) {
     var sign = filename.match(/^[\!\$]+/);
     return sign &amp;&amp; sign[0].contains('$');
 };
 
+<span id='ImageManager-method-isZeroParallax'>/**
+</span> * @method isZeroParallax
+ * Checks if an image name begins with '!',
+ * meaning that it does not have parallax.
+ * @param {String} filename the image file
+ */
 ImageManager.isZeroParallax = function(filename) {
     return filename.charAt(0) === '!';
 };
 
-
+<span id='ImageManager-method-reserveAnimation'>/**
+</span> * @method reserveAnimation
+ * Loads a Bitmap.
+ * @param {String} filename the image file
+ * @param {Number} hue the desired hue
+ * @param {Number} reservationId
+ * @return {Bitmap}
+ */
 ImageManager.reserveAnimation = function(filename, hue, reservationId) {
     return this.reserveBitmap('img/animations/', filename, hue, true, reservationId);
 };
 
+<span id='ImageManager-method-reserveBattleback1'>/**
+</span> * @method reserveBattleback1
+ * Loads a Bitmap.
+ * @param {String} filename the image file
+ * @param {Number} hue the desired hue
+ * @param {Number} reservationId
+ * @return {Bitmap}
+ */
 ImageManager.reserveBattleback1 = function(filename, hue, reservationId) {
     return this.reserveBitmap('img/battlebacks1/', filename, hue, true, reservationId);
 };
 
+<span id='ImageManager-method-reserveBattleback2'>/**
+</span> * @method reserveBattleback2
+ * Loads a Bitmap.
+ * @param {String} filename the image file
+ * @param {Number} hue the desired hue
+ * @param {Number} reservationId
+ * @return {Bitmap}
+ */
 ImageManager.reserveBattleback2 = function(filename, hue, reservationId) {
     return this.reserveBitmap('img/battlebacks2/', filename, hue, true, reservationId);
 };
 
+<span id='ImageManager-method-reserveEnemy'>/**
+</span> * @method reserveEnemy
+ * Loads a Bitmap.
+ * @param {String} filename the image file
+ * @param {Number} hue the desired hue
+ * @param {Number} reservationId
+ * @return {Bitmap}
+ */
 ImageManager.reserveEnemy = function(filename, hue, reservationId) {
     return this.reserveBitmap('img/enemies/', filename, hue, true, reservationId);
 };
 
+<span id='ImageManager-method-reserveCharacter'>/**
+</span> * @method reserveCharacter
+ * Loads a Bitmap.
+ * @param {String} filename the image file
+ * @param {Number} hue the desired hue
+ * @param {Number} reservationId
+ * @return {Bitmap}
+ */
 ImageManager.reserveCharacter = function(filename, hue, reservationId) {
     return this.reserveBitmap('img/characters/', filename, hue, false, reservationId);
 };
 
+<span id='ImageManager-method-reserveFace'>/**
+</span> * @method reserveFace
+ * Loads a Bitmap.
+ * @param {String} filename the image file
+ * @param {Number} hue the desired hue
+ * @param {Number} reservationId
+ * @return {Bitmap}
+ */
 ImageManager.reserveFace = function(filename, hue, reservationId) {
     return this.reserveBitmap('img/faces/', filename, hue, true, reservationId);
 };
 
+<span id='ImageManager-method-reserveParallax'>/**
+</span> * @method reserveParallax
+ * Loads a Bitmap.
+ * @param {String} filename the image file
+ * @param {Number} hue the desired hue
+ * @param {Number} reservationId
+ * @return {Bitmap}
+ */
 ImageManager.reserveParallax = function(filename, hue, reservationId) {
     return this.reserveBitmap('img/parallaxes/', filename, hue, true, reservationId);
 };
 
+<span id='ImageManager-method-reservePicture'>/**
+</span> * @method reservePicture
+ * Loads a Bitmap.
+ * @param {String} filename the image file
+ * @param {Number} hue the desired hue
+ * @param {Number} reservationId
+ * @return {Bitmap}
+ */
 ImageManager.reservePicture = function(filename, hue, reservationId) {
     return this.reserveBitmap('img/pictures/', filename, hue, true, reservationId);
 };
 
+<span id='ImageManager-method-reserveSvActor'>/**
+</span> * @method reserveSvActor
+ * Loads a Bitmap.
+ * @param {String} filename the image file
+ * @param {Number} hue the desired hue
+ * @param {Number} reservationId
+ * @return {Bitmap}
+ */
 ImageManager.reserveSvActor = function(filename, hue, reservationId) {
     return this.reserveBitmap('img/sv_actors/', filename, hue, false, reservationId);
 };
 
+<span id='ImageManager-method-reserveSvEnemy'>/**
+</span> * @method reserveSvEnemy
+ * Loads a Bitmap.
+ * @param {String} filename the image file
+ * @param {Number} hue the desired hue
+ * @param {Number} reservationId
+ * @return {Bitmap}
+ */
 ImageManager.reserveSvEnemy = function(filename, hue, reservationId) {
     return this.reserveBitmap('img/sv_enemies/', filename, hue, true, reservationId);
 };
 
+<span id='ImageManager-method-reserveSystem'>/**
+</span> * @method reserveSystem
+ * Loads a Bitmap.
+ * @param {String} filename the image file
+ * @param {Number} hue the desired hue
+ * @param {Number} reservationId
+ * @return {Bitmap}
+ */
 ImageManager.reserveSystem = function(filename, hue, reservationId) {
     return this.reserveBitmap('img/system/', filename, hue, false, reservationId || this._systemReservationId);
 };
 
+<span id='ImageManager-method-reserveTileset'>/**
+</span> * @method reserveTileset
+ * Loads a Bitmap.
+ * @param {String} filename the image file
+ * @param {Number} hue the desired hue
+ * @param {Number} reservationId
+ * @return {Bitmap}
+ */
 ImageManager.reserveTileset = function(filename, hue, reservationId) {
     return this.reserveBitmap('img/tilesets/', filename, hue, false, reservationId);
 };
 
+<span id='ImageManager-method-reserveTitle1'>/**
+</span> * @method reserveTitle1
+ * Loads a Bitmap.
+ * @param {String} filename the image file
+ * @param {Number} hue the desired hue
+ * @param {Number} reservationId
+ * @return {Bitmap}
+ */
 ImageManager.reserveTitle1 = function(filename, hue, reservationId) {
     return this.reserveBitmap('img/titles1/', filename, hue, true, reservationId);
 };
 
+<span id='ImageManager-method-reserveTitle2'>/**
+</span> * @method reserveTitle2
+ * Loads a Bitmap.
+ * @param {String} filename the image file
+ * @param {Number} hue the desired hue
+ * @param {Number} reservationId
+ * @return {Bitmap}
+ */
 ImageManager.reserveTitle2 = function(filename, hue, reservationId) {
     return this.reserveBitmap('img/titles2/', filename, hue, true, reservationId);
 };
 
+<span id='ImageManager-method-reserveBitmap'>/**
+</span> * @method reserveBitmap
+ * Loads a Bitmap and reserves it in ImageManager._imageCache
+ * @param {String} folder the directory of images
+ * @param {String} filename the image file
+ * @param {Number} hue the desired hue
+ * @param {Number} smooth whether to filter the image or not
+ * @param {Number} reservationId
+ * @return {Bitmap}
+ */
 ImageManager.reserveBitmap = function(folder, filename, hue, smooth, reservationId) {
     if (filename) {
         var path = folder + encodeURIComponent(filename) + '.png';
@@ -1403,6 +1703,14 @@ ImageManager.reserveBitmap = function(folder, filename, hue, smooth, reservation
     }
 };
 
+<span id='ImageManager-method-reserveNormalBitmap'>/**
+</span> * @method reserveNormalBitmap
+ * Reserve a Bitmap in ImageManager._imageCache
+ * @param {String} path the combined path of the image file
+ * @param {Number} hue the desired hue
+ * @param {Number} reservationId
+ * @return {Bitmap}
+ */
 ImageManager.reserveNormalBitmap = function(path, hue, reservationId){
     var bitmap = this.loadNormalBitmap(path, hue);
     this._imageCache.reserve(this._generateCacheKey(path, hue), bitmap, reservationId);
@@ -1410,71 +1718,188 @@ ImageManager.reserveNormalBitmap = function(path, hue, reservationId){
     return bitmap;
 };
 
+<span id='ImageManager-method-releaseReservation'>/**
+</span> * @method releaseReservation
+ * Release an image's reservation from ImageManager._imageCache.
+ * @param {Number} reservationId
+ */
 ImageManager.releaseReservation = function(reservationId){
     this._imageCache.releaseReservation(reservationId);
 };
 
+<span id='ImageManager-method-setDefaultReservationId'>/**
+</span> * @method setDefaultReservationId
+ * Set the default reservationId
+ * @param {Number} reservationId
+ */
 ImageManager.setDefaultReservationId = function(reservationId){
     this._defaultReservationId = reservationId;
 };
 
-
+<span id='ImageManager-method-requestAnimation'>/**
+</span> * @method requestAnimation
+ * Ask for an animation image.
+ * @param {String} filename the image file
+ * @param {Number} hue the desired hue
+ * @return {Bitmap} the loaded Bitmap
+ */
 ImageManager.requestAnimation = function(filename, hue) {
     return this.requestBitmap('img/animations/', filename, hue, true);
 };
 
+<span id='ImageManager-method-requestBattleback1'>/**
+</span> * @method requestBattleback1
+ * Ask for a battleback image.
+ * @param {String} filename the image file
+ * @param {Number} hue the desired hue
+ * @return {Bitmap} the loaded Bitmap
+ */
 ImageManager.requestBattleback1 = function(filename, hue) {
     return this.requestBitmap('img/battlebacks1/', filename, hue, true);
 };
 
+<span id='ImageManager-method-requestBattleback2'>/**
+</span> * @method requestBattleback2
+ * Ask for a battleback image.
+ * @param {String} filename the image file
+ * @param {Number} hue the desired hue
+ * @return {Bitmap} the loaded Bitmap
+ */
 ImageManager.requestBattleback2 = function(filename, hue) {
     return this.requestBitmap('img/battlebacks2/', filename, hue, true);
 };
 
+<span id='ImageManager-method-requestEnemy'>/**
+</span> * @method requestEnemy
+ * Ask for an enemy image.
+ * @param {String} filename the image file
+ * @param {Number} hue the desired hue
+ * @return {Bitmap} the loaded Bitmap
+ */
 ImageManager.requestEnemy = function(filename, hue) {
     return this.requestBitmap('img/enemies/', filename, hue, true);
 };
 
+<span id='ImageManager-method-requestCharacter'>/**
+</span> * @method requestCharacter
+ * Ask for a character image.
+ * @param {String} filename the image file
+ * @param {Number} hue the desired hue
+ * @return {Bitmap} the loaded Bitmap
+ */
 ImageManager.requestCharacter = function(filename, hue) {
     return this.requestBitmap('img/characters/', filename, hue, false);
 };
 
+<span id='ImageManager-method-requestFace'>/**
+</span> * @method requestFace
+ * Ask for a face image.
+ * @param {String} filename the image file
+ * @param {Number} hue the desired hue
+ * @return {Bitmap} the loaded Bitmap
+ */
 ImageManager.requestFace = function(filename, hue) {
     return this.requestBitmap('img/faces/', filename, hue, true);
 };
 
+<span id='ImageManager-method-requestParallax'>/**
+</span> * @method requestParallax
+ * Ask for a parallax image.
+ * @param {String} filename the image file
+ * @param {Number} hue the desired hue
+ * @return {Bitmap} the loaded Bitmap
+ */
 ImageManager.requestParallax = function(filename, hue) {
     return this.requestBitmap('img/parallaxes/', filename, hue, true);
 };
 
+<span id='ImageManager-method-requestPicture'>/**
+</span> * @method requestPicture
+ * Ask for a picture image.
+ * @param {String} filename the image file
+ * @param {Number} hue the desired hue
+ * @return {Bitmap} the loaded Bitmap
+ */
 ImageManager.requestPicture = function(filename, hue) {
     return this.requestBitmap('img/pictures/', filename, hue, true);
 };
 
+
+<span id='ImageManager-method-requestSvActor'>/**
+</span> * @method requestSvActor
+ * Ask for an sv actor image.
+ * @param {String} filename the image file
+ * @param {Number} hue the desired hue
+ * @return {Bitmap} the loaded Bitmap
+ */
 ImageManager.requestSvActor = function(filename, hue) {
     return this.requestBitmap('img/sv_actors/', filename, hue, false);
 };
 
+<span id='ImageManager-method-requestSvEnemy'>/**
+</span> * @method requestSvEnemy
+ * Ask for an sv enemy image.
+ * @param {String} filename the image file
+ * @param {Number} hue the desired hue
+ * @return {Bitmap} the loaded Bitmap
+ */
 ImageManager.requestSvEnemy = function(filename, hue) {
     return this.requestBitmap('img/sv_enemies/', filename, hue, true);
 };
 
+<span id='ImageManager-method-requestSystem'>/**
+</span> * @method requestSystem
+ * Ask for a system image.
+ * @param {String} filename the image file
+ * @param {Number} hue the desired hue
+ * @return {Bitmap} the loaded Bitmap
+ */
 ImageManager.requestSystem = function(filename, hue) {
     return this.requestBitmap('img/system/', filename, hue, false);
 };
 
+<span id='ImageManager-method-requestTileset'>/**
+</span> * @method requestTileset
+ * Ask for a tileset image.
+ * @param {String} filename the image file
+ * @param {Number} hue the desired hue
+ * @return {Bitmap} the loaded Bitmap
+ */
 ImageManager.requestTileset = function(filename, hue) {
     return this.requestBitmap('img/tilesets/', filename, hue, false);
 };
 
+<span id='ImageManager-method-requestTitle1'>/**
+</span> * @method requestTitle1
+ * Ask for a title image.
+ * @param {String} filename the image file
+ * @param {Number} hue the desired hue
+ * @return {Bitmap} the loaded Bitmap
+ */
 ImageManager.requestTitle1 = function(filename, hue) {
     return this.requestBitmap('img/titles1/', filename, hue, true);
 };
 
+<span id='ImageManager-method-requestTitle2'>/**
+</span> * @method requestTitle2
+ * Ask for a title image.
+ * @param {String} filename the image file
+ * @param {Number} hue the desired hue
+ * @return {Bitmap} the loaded Bitmap
+ */
 ImageManager.requestTitle2 = function(filename, hue) {
     return this.requestBitmap('img/titles2/', filename, hue, true);
 };
 
+<span id='ImageManager-method-requestBitmap'>/**
+</span> * @method requestBitmap
+ * Request a Bitmap to be loaded.
+ * @param {String} folder the directory of images
+ * @param {String} filename the image file
+ * @param {Number} hue the desired hue
+ * @param {Boolean} smooth whether to filter the image
+ * @return {Bitmap} the loaded Bitmap
+ */
 ImageManager.requestBitmap = function(folder, filename, hue, smooth) {
     if (filename) {
         var path = folder + encodeURIComponent(filename) + '.png';
@@ -1486,6 +1911,14 @@ ImageManager.requestBitmap = function(folder, filename, hue, smooth) {
     }
 };
 
+<span id='ImageManager-method-requestNormalBitmap'>/**
+</span> * @method requestNormalBitmap
+ * Request a Bitmap to be loaded.
+ * An image already cached will have its priority escalated.
+ * @param {String} path the combined path of the image file
+ * @param {Number} hue the desired hue
+ * @return {Bitmap} the loaded Bitmap
+ */
 ImageManager.requestNormalBitmap = function(path, hue){
     var key = this._generateCacheKey(path, hue);
     var bitmap = this._imageCache.get(key);
@@ -1503,13 +1936,22 @@ ImageManager.requestNormalBitmap = function(path, hue){
     return bitmap;
 };
 
+<span id='ImageManager-method-update'>/**
+</span> * @method update
+ * Updates ImageManager._requestQueue
+ */
 ImageManager.update = function(){
     this._requestQueue.update();
 };
 
+<span id='ImageManager-method-clearRequest'>/**
+</span> * @method clearRequest
+ * Clears ImageManager._requestQueue
+ */
 ImageManager.clearRequest = function(){
     this._requestQueue.clear();
 };
+
 
 //-----------------------------------------------------------------------------
 // AudioManager
