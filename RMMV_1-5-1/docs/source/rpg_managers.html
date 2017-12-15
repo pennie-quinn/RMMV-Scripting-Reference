@@ -163,7 +163,7 @@ DataManager.isDatabaseLoaded = function() {
 </span> * @method loadMapData
  * Loads a map with id `mapId` into `$dataMap`
  * - Creates an empty map if given an id &lt;= 0
- * @param {Number} The numeric ID of the map to load.
+ * @param {Number} mapId The numeric ID of the map to load.
  */
 DataManager.loadMapData = function(mapId) {
     if (mapId &gt; 0) {
@@ -664,18 +664,39 @@ DataManager.extractSaveContents = function(contents) {
     $gamePlayer        = contents.player;
 };
 
+
 //-----------------------------------------------------------------------------
 // ConfigManager
 //
 // The static class that manages the configuration data.
 
+<span id='ConfigManager-method-constructor'><span id='ConfigManager'>/**
+</span></span> * The static class that manages the configuration data.
+ * @class ConfigManager
+ * @singleton
+ * @constructor should never be called
+ */
 function ConfigManager() {
     throw new Error('This is a static class');
 }
 
+<span id='ConfigManager-property-alwaysDash'>/**
+</span> * @property alwaysDash
+ * @type Boolean
+ */
 ConfigManager.alwaysDash        = false;
+
+<span id='ConfigManager-property-commandRemember'>/**
+</span> * @property commandRemember
+ * @type Boolean
+ */
 ConfigManager.commandRemember   = false;
 
+<span id='ConfigManager-property-bgmVolume'>/**
+</span> * @property bgmVolume
+ * the volume of BGM
+ * @type Number
+ */
 Object.defineProperty(ConfigManager, 'bgmVolume', {
     get: function() {
         return AudioManager._bgmVolume;
@@ -686,6 +707,11 @@ Object.defineProperty(ConfigManager, 'bgmVolume', {
     configurable: true
 });
 
+<span id='ConfigManager-property-bgsVolume'>/**
+</span> * @property bgsVolume
+ * the volume of BGS
+ * @type Number
+ */
 Object.defineProperty(ConfigManager, 'bgsVolume', {
     get: function() {
         return AudioManager.bgsVolume;
@@ -696,6 +722,11 @@ Object.defineProperty(ConfigManager, 'bgsVolume', {
     configurable: true
 });
 
+<span id='ConfigManager-property-meVolume'>/**
+</span> * @property meVolume
+ * the volume of ME
+ * @type Number
+ */
 Object.defineProperty(ConfigManager, 'meVolume', {
     get: function() {
         return AudioManager.meVolume;
@@ -706,6 +737,11 @@ Object.defineProperty(ConfigManager, 'meVolume', {
     configurable: true
 });
 
+<span id='ConfigManager-property-seVolume'>/**
+</span> * @property seVolume
+ * the volume of SE
+ * @type Number
+ */
 Object.defineProperty(ConfigManager, 'seVolume', {
     get: function() {
         return AudioManager.seVolume;
@@ -716,6 +752,10 @@ Object.defineProperty(ConfigManager, 'seVolume', {
     configurable: true
 });
 
+<span id='ConfigManager-method-load'>/**
+</span> * @method load
+ * loads the game's config
+ */
 ConfigManager.load = function() {
     var json;
     var config = {};
@@ -730,10 +770,19 @@ ConfigManager.load = function() {
     this.applyData(config);
 };
 
+<span id='ConfigManager-method-save'>/**
+</span> * @method save
+ * saves the game's config
+ */
 ConfigManager.save = function() {
     StorageManager.save(-1, JSON.stringify(this.makeData()));
 };
 
+<span id='ConfigManager-method-makeData'>/**
+</span> * @method makeData
+ * takes current state to create a `config` object
+ * @return {Object} config
+ */
 ConfigManager.makeData = function() {
     var config = {};
     config.alwaysDash = this.alwaysDash;
@@ -745,6 +794,12 @@ ConfigManager.makeData = function() {
     return config;
 };
 
+<span id='ConfigManager-method-applyData'>/**
+</span> * @method applyData
+ * applies a `config` object.
+ * see ConfigManager.makeData for structure of `config`
+ * @param {Object} config
+ */
 ConfigManager.applyData = function(config) {
     this.alwaysDash = this.readFlag(config, 'alwaysDash');
     this.commandRemember = this.readFlag(config, 'commandRemember');
@@ -754,10 +809,24 @@ ConfigManager.applyData = function(config) {
     this.seVolume = this.readVolume(config, 'seVolume');
 };
 
+<span id='ConfigManager-method-readFlag'>/**
+</span> * @method readFlag
+ * Reads a boolean flag from a `config` object.
+ * @param {Object} config the `config` object to read from
+ * @param {String} name the name of the flag
+ * @return {Boolean}
+ */
 ConfigManager.readFlag = function(config, name) {
     return !!config[name];
 };
 
+<span id='ConfigManager-method-readVolume'>/**
+</span> * @method readVolume
+ * Reads a volume setting from a `config` object.
+ * @param {Object} config the `config` object to read from
+ * @param {String} name the name of the flag
+ * @return {Number} [0, 100]
+ */
 ConfigManager.readVolume = function(config, name) {
     var value = config[name];
     if (value !== undefined) {
@@ -772,10 +841,22 @@ ConfigManager.readVolume = function(config, name) {
 //
 // The static class that manages storage for saving game data.
 
+<span id='StorageManager-method-constructor'><span id='StorageManager'>/**
+</span></span> * The static class that manages storage for saving game data.
+ * @class StorageManager
+ * @singleton
+ * @constructor should never be used
+ */
 function StorageManager() {
     throw new Error('This is a static class');
 }
 
+<span id='StorageManager-method-save'>/**
+</span> * @method save
+ * Writes a savefile.
+ * @param {Number} savefileId the index of the savefile
+ * @param {String} json the data to save
+ */
 StorageManager.save = function(savefileId, json) {
     if (this.isLocalMode()) {
         this.saveToLocalFile(savefileId, json);
@@ -784,6 +865,12 @@ StorageManager.save = function(savefileId, json) {
     }
 };
 
+<span id='StorageManager-method-load'>/**
+</span> * @method load
+ * Loads a savefile. `true` on success
+ * @param {Number} savefileId the index of the savefile
+ * @return {Boolean} true on success
+ */
 StorageManager.load = function(savefileId) {
     if (this.isLocalMode()) {
         return this.loadFromLocalFile(savefileId);
@@ -792,6 +879,12 @@ StorageManager.load = function(savefileId) {
     }
 };
 
+<span id='StorageManager-method-exists'>/**
+</span> * @method exists
+ * Check if a savefile exists.
+ * @param {Number} savefileId the index of the savefile
+ * @return {Boolean} true on success
+ */
 StorageManager.exists = function(savefileId) {
     if (this.isLocalMode()) {
         return this.localFileExists(savefileId);
@@ -800,6 +893,11 @@ StorageManager.exists = function(savefileId) {
     }
 };
 
+<span id='StorageManager-method-remove'>/**
+</span> * @method remove
+ * Remove a savefile.
+ * @param {Number} savefileId the index of the savefile
+ */
 StorageManager.remove = function(savefileId) {
     if (this.isLocalMode()) {
         this.removeLocalFile(savefileId);
@@ -808,6 +906,11 @@ StorageManager.remove = function(savefileId) {
     }
 };
 
+<span id='StorageManager-method-backup'>/**
+</span> * @method backup
+ * Backup a save file, in case of corruption.
+ * @param {Number} savefileId the index of the savefile
+ */
 StorageManager.backup = function(savefileId) {
     if (this.exists(savefileId)) {
         if (this.isLocalMode()) {
@@ -829,6 +932,12 @@ StorageManager.backup = function(savefileId) {
     }
 };
 
+<span id='StorageManager-method-backupExists'>/**
+</span> * @method backupExists
+ * Check if a backup exists for a savefile.
+ * @param {Number} savefileId the index of the savefile
+ * @return {Boolean} true if there's a backup
+ */
 StorageManager.backupExists = function(savefileId) {
     if (this.isLocalMode()) {
         return this.localFileBackupExists(savefileId);
@@ -837,6 +946,11 @@ StorageManager.backupExists = function(savefileId) {
     }
 };
 
+<span id='StorageManager-method-cleanBackup'>/**
+</span> * @method cleanBackup
+ * Remove a savefile backup.
+ * @param {Number} savefileId the index of the savefile
+ */
 StorageManager.cleanBackup = function(savefileId) {
 	if (this.backupExists(savefileId)) {
 		if (this.isLocalMode()) {
@@ -851,6 +965,11 @@ StorageManager.cleanBackup = function(savefileId) {
 	}
 };
 
+<span id='StorageManager-method-restoreBackup'>/**
+</span> * @method restoreBackup
+ * Restore a savefile from a backup.
+ * @param {Number} savefileId the index of the savefile
+ */
 StorageManager.restoreBackup = function(savefileId) {
     if (this.backupExists(savefileId)) {
         if (this.isLocalMode()) {
@@ -874,10 +993,21 @@ StorageManager.restoreBackup = function(savefileId) {
     }
 };
 
+<span id='StorageManager-method-isLocalMode'>/**
+</span> * @method isLocalMode
+ * Check if we're running locally or on the web.
+ * @return {Boolean}
+ */
 StorageManager.isLocalMode = function() {
     return Utils.isNwjs();
 };
 
+<span id='StorageManager-method-saveToLocalFile'>/**
+</span> * @method saveToLocalFile
+ * Write a savefile locally.
+ * @param {Number} savefileId the savefile index to use.
+ * @param {String} json the savedata.
+ */
 StorageManager.saveToLocalFile = function(savefileId, json) {
     var data = LZString.compressToBase64(json);
     var fs = require('fs');
@@ -889,6 +1019,12 @@ StorageManager.saveToLocalFile = function(savefileId, json) {
     fs.writeFileSync(filePath, data);
 };
 
+<span id='StorageManager-method-loadFromLocalFile'>/**
+</span> * @method loadFromLocalFile
+ * Load a local savefile. Returns decompressed savedata.
+ * @param {Number} savefileId the savefile index to use.
+ * @return {String} decompressed savedata
+ */
 StorageManager.loadFromLocalFile = function(savefileId) {
     var data = null;
     var fs = require('fs');
@@ -899,6 +1035,12 @@ StorageManager.loadFromLocalFile = function(savefileId) {
     return LZString.decompressFromBase64(data);
 };
 
+<span id='StorageManager-method-loadFromLocalBackupFile'>/**
+</span> * @method loadFromLocalBackupFile
+ * Load a local savefile backup. Returns decompressed savedata.
+ * @param {Number} savefileId the savefile index to use.
+ * @return {String} decompressed savedata
+ */
 StorageManager.loadFromLocalBackupFile = function(savefileId) {
     var data = null;
     var fs = require('fs');
@@ -909,16 +1051,33 @@ StorageManager.loadFromLocalBackupFile = function(savefileId) {
     return LZString.decompressFromBase64(data);
 };
 
+<span id='StorageManager-method-localFileBackupExists'>/**
+</span> * @method localFileBackupExists
+ * Check if a local savefile has a backup.
+ * @param {Number} savefileId the savefile index to use.
+ * @return {Boolean}
+ */
 StorageManager.localFileBackupExists = function(savefileId) {
     var fs = require('fs');
     return fs.existsSync(this.localFilePath(savefileId) + &quot;.bak&quot;);
 };
 
+<span id='StorageManager-method-localFileExists'>/**
+</span> * @method localFileExists
+ * Check if a local savefile exists.
+ * @param {Number} savefileId the savefile index to use.
+ * @return {Boolean}
+ */
 StorageManager.localFileExists = function(savefileId) {
     var fs = require('fs');
     return fs.existsSync(this.localFilePath(savefileId));
 };
 
+<span id='StorageManager-method-removeLocalFile'>/**
+</span> * @method removeLocalFile
+ * Remove a local savefile
+ * @param {Number} savefileId the savefile index to use.
+ */
 StorageManager.removeLocalFile = function(savefileId) {
     var fs = require('fs');
     var filePath = this.localFilePath(savefileId);
@@ -927,39 +1086,79 @@ StorageManager.removeLocalFile = function(savefileId) {
     }
 };
 
+<span id='StorageManager-method-saveToWebStorage'>/**
+</span> * @method saveToWebStorage
+ * Write a savefile to web storage.
+ * @param {Number} savefileId the savefile index to use.
+ * @param {String} json savedata
+ */
 StorageManager.saveToWebStorage = function(savefileId, json) {
     var key = this.webStorageKey(savefileId);
     var data = LZString.compressToBase64(json);
     localStorage.setItem(key, data);
 };
 
+<span id='StorageManager-method-loadFromWebStorage'>/**
+</span> * @method loadFromWebStorage
+ * Load a savefile from web storage. Returns decompressed savedata.
+ * @param {Number} savefileId the savefile index to use.
+ * @return {String} decompressed savedata
+ */
 StorageManager.loadFromWebStorage = function(savefileId) {
     var key = this.webStorageKey(savefileId);
     var data = localStorage.getItem(key);
     return LZString.decompressFromBase64(data);
 };
 
+<span id='StorageManager-method-loadFromWebStorageBackup'>/**
+</span> * @method loadFromWebStorageBackup
+ * Load a savefile backup from web storage. Returns decompressed savedata.
+ * @param {Number} savefileId the savefile index to use.
+ * @return {String} decompressed savedata
+ */
 StorageManager.loadFromWebStorageBackup = function(savefileId) {
     var key = this.webStorageKey(savefileId) + &quot;bak&quot;;
     var data = localStorage.getItem(key);
     return LZString.decompressFromBase64(data);
 };
 
+<span id='StorageManager-method-webStorageBackupExists'>/**
+</span> * @method webStorageBackupExists
+ * Check if a web storage backup exists for a savefile.
+ * @param {Number} savefileId the savefile index to use.
+ * @return {Boolean}
+ */
 StorageManager.webStorageBackupExists = function(savefileId) {
     var key = this.webStorageKey(savefileId) + &quot;bak&quot;;
     return !!localStorage.getItem(key);
 };
 
+<span id='StorageManager-method-webStorageExists'>/**
+</span> * @method webStorageExists
+ * Check if a web storage savefile exists.
+ * @param {Number} savefileId the savefile index to use.
+ * @return {Boolean}
+ */
 StorageManager.webStorageExists = function(savefileId) {
     var key = this.webStorageKey(savefileId);
     return !!localStorage.getItem(key);
 };
 
+<span id='StorageManager-method-removeWebStorage'>/**
+</span> * @method removeWebStorage
+ * Remove a savefile in web storage.
+ * @param {Number} savefileId the savefile index to use.
+ */
 StorageManager.removeWebStorage = function(savefileId) {
     var key = this.webStorageKey(savefileId);
     localStorage.removeItem(key);
 };
 
+<span id='StorageManager-method-localFileDirectoryPath'>/**
+</span> * @method localFileDirectoryPath
+ * Get the savefile path.
+ * @return {String} the path
+ */
 StorageManager.localFileDirectoryPath = function() {
     var path = require('path');
 
@@ -967,6 +1166,12 @@ StorageManager.localFileDirectoryPath = function() {
     return path.join(base, 'save/');
 };
 
+<span id='StorageManager-method-localFilePath'>/**
+</span> * @method localFilePath
+ * Get the savefile path for a specific savefile.
+ * @param {Number} savefileId the index of the savefile
+ * @return {String} the path
+ */
 StorageManager.localFilePath = function(savefileId) {
     var name;
     if (savefileId &lt; 0) {
@@ -979,6 +1184,12 @@ StorageManager.localFilePath = function(savefileId) {
     return this.localFileDirectoryPath() + name;
 };
 
+<span id='StorageManager-method-webStorageKey'>/**
+</span> * @method webStorageKey
+ * Get the key for a specific savefile.
+ * @param {Number} savefileId the index of the savefile
+ * @return {String} the storage key
+ */
 StorageManager.webStorageKey = function(savefileId) {
     if (savefileId &lt; 0) {
         return 'RPG Config';
