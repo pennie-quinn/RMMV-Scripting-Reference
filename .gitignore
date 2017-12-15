@@ -1,0 +1,15 @@
+
+# jsduck
+jsduck.exe
+**/*.bat
+
+# RMMV cruft
+**/RMMV_*/audio
+**/RMMV_*/data
+**/RMMV_*/fonts
+**/RMMV_*/icon
+**/RMMV_*/img
+**/RMMV_*/js
+**/RMMV_*/movies
+**/RMMV_*/*.html
+**/RMMV_*/*.rpgproject
