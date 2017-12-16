@@ -3395,43 +3395,44 @@ SceneManager._getTimeInMsWithoutMobileSafari = function() {
 };
 
 <span id='SceneManager-static-property-_scene'>/**
-</span> * @property {FIXME} _scene
+</span> * @property {Scene_Base} _scene
  * @private
  * @static
  */
 SceneManager._scene             = null;
 <span id='SceneManager-static-property-_nextScene'>/**
-</span> * @property {FIXME} _nextScene
+</span> * @property {Scene_Base} _nextScene
  * @private
  * @static
  */
 SceneManager._nextScene         = null;
 <span id='SceneManager-static-property-_stack'>/**
-</span> * @property {FIXME} _stack
+</span> * @property {Array} _stack
  * @private
  * @static
  */
 SceneManager._stack             = [];
 <span id='SceneManager-static-property-_stopped'>/**
-</span> * @property {FIXME} _stopped
+</span> * @property {Boolean} _stopped
  * @private
  * @static
  */
 SceneManager._stopped           = false;
 <span id='SceneManager-static-property-_sceneStarted'>/**
-</span> * @property {FIXME} _sceneStarted
+</span> * @property {Boolean} _sceneStarted
  * @private
  * @static
  */
 SceneManager._sceneStarted      = false;
 <span id='SceneManager-static-property-_exiting'>/**
-</span> * @property {FIXME} _exiting
+</span> * @property {Boolean} _exiting
  * @private
  * @static
  */
 SceneManager._exiting           = false;
 <span id='SceneManager-static-property-_previousClass'>/**
-</span> * @property {FIXME} _previousClass
+</span> * @property {Function} _previousClass
+ * The constructor of the previous scene class.
  * @private
  * @static
  */
@@ -3468,7 +3469,7 @@ SceneManager._boxWidth          = 816;
 SceneManager._boxHeight         = 624;
 <span id='SceneManager-static-property-_deltaTime'>/**
 </span> * @property {Number} _deltaTime
- * the length of 1 tick, in seconds
+ * the length of 1 tick, in seconds (1.0/60.0 by default)
  * @private
  * @static
  */
@@ -3580,7 +3581,7 @@ SceneManager.checkFileAccess = function() {
 
 <span id='SceneManager-static-method-initAudio'>/**
 </span> * @method initAudio
- * FIXME
+ * Initialize WebAudio
  * @static
  */
 SceneManager.initAudio = function() {
@@ -3592,7 +3593,7 @@ SceneManager.initAudio = function() {
 
 <span id='SceneManager-static-method-initInput'>/**
 </span> * @method initInput
- * FIXME
+ * Initialize Input and TouchInput
  * @static
  */
 SceneManager.initInput = function() {
@@ -3602,7 +3603,7 @@ SceneManager.initInput = function() {
 
 <span id='SceneManager-static-method-initNwjs'>/**
 </span> * @method initNwjs
- * FIXME
+ * Initialize Nwjs
  * @static
  */
 SceneManager.initNwjs = function() {
@@ -3620,7 +3621,7 @@ SceneManager.initNwjs = function() {
 
 <span id='SceneManager-static-method-checkPluginErrors'>/**
 </span> * @method checkPluginErrors
- * FIXME
+ * Runs PluginManager.checkErrors()
  * @static
  */
 SceneManager.checkPluginErrors = function() {
@@ -3629,7 +3630,8 @@ SceneManager.checkPluginErrors = function() {
 
 <span id='SceneManager-static-method-setupErrorHandlers'>/**
 </span> * @method setupErrorHandlers
- * FIXME
+ * Adds error event listener to window.
+ * Adds keydown listener to document.
  * @static
  */
 SceneManager.setupErrorHandlers = function() {
@@ -3650,7 +3652,7 @@ SceneManager.requestUpdate = function() {
 
 <span id='SceneManager-static-method-update'>/**
 </span> * @method update
- * FIXME
+ * High-level update function.
  * @static
  */
 SceneManager.update = function() {
@@ -3669,7 +3671,7 @@ SceneManager.update = function() {
 
 <span id='SceneManager-static-method-terminate'>/**
 </span> * @method terminate
- * FIXME
+ * Closes the window.
  * @static
  */
 SceneManager.terminate = function() {
@@ -3678,7 +3680,8 @@ SceneManager.terminate = function() {
 
 <span id='SceneManager-static-method-onError'>/**
 </span> * @method onError
- * FIXME
+ * Top-level error handler for the class.
+ * Stops the scene, prints the error, stops all audio.
  * @param {Error} e
  * @static
  */
@@ -3695,7 +3698,7 @@ SceneManager.onError = function(e) {
 
 <span id='SceneManager-static-method-onKeyDown'>/**
 </span> * @method onKeyDown
- * FIXME
+ * Debug key listener.
  * @static
  */
 SceneManager.onKeyDown = function(event) {
@@ -3717,7 +3720,7 @@ SceneManager.onKeyDown = function(event) {
 
 <span id='SceneManager-static-method-catchException'>/**
 </span> * @method catchException
- * FIXME
+ * Logs exceptions, stops audio, stops the scene.
  * @static
  */
 SceneManager.catchException = function(e) {
@@ -3733,7 +3736,7 @@ SceneManager.catchException = function(e) {
 
 <span id='SceneManager-static-method-tickStart'>/**
 </span> * @method tickStart
- * FIXME
+ * Runs Graphics.tickStart
  * @static
  */
 SceneManager.tickStart = function() {
@@ -3742,7 +3745,7 @@ SceneManager.tickStart = function() {
 
 <span id='SceneManager-static-method-tickEnd'>/**
 </span> * @method tickEnd
- * FIXME
+ * Runs Graphics.tickEnd
  * @static
  */
 SceneManager.tickEnd = function() {
@@ -3751,7 +3754,7 @@ SceneManager.tickEnd = function() {
 
 <span id='SceneManager-static-method-updateInputData'>/**
 </span> * @method updateInputData
- * FIXME
+ * Runs Input.update and TouchInput.update
  * @static
  */
 SceneManager.updateInputData = function() {
@@ -3761,7 +3764,7 @@ SceneManager.updateInputData = function() {
 
 <span id='SceneManager-static-method-updateMain'>/**
 </span> * @method updateMain
- * FIXME
+ * The core update-render step of the engine.
  * @static
  */
 SceneManager.updateMain = function() {
@@ -3787,7 +3790,7 @@ SceneManager.updateMain = function() {
 
 <span id='SceneManager-static-method-updateManagers'>/**
 </span> * @method updateManagers
- * FIXME
+ * Runs ImageManager.update
  * @static
  */
 SceneManager.updateManagers = function() {
@@ -3796,7 +3799,7 @@ SceneManager.updateManagers = function() {
 
 <span id='SceneManager-static-method-changeScene'>/**
 </span> * @method changeScene
- * FIXME
+ * Stops the SceneManager._scene, swaps to SceneManager._nextScene
  * @static
  */
 SceneManager.changeScene = function() {
@@ -3822,7 +3825,8 @@ SceneManager.changeScene = function() {
 
 <span id='SceneManager-static-method-updateScene'>/**
 </span> * @method updateScene
- * FIXME
+ * If the scene isn't started, runs the scene's `start` method.
+ * Then, if the scene _is_ started, runs the scene's `update` method.
  * @static
  */
 SceneManager.updateScene = function() {
@@ -3840,7 +3844,8 @@ SceneManager.updateScene = function() {
 
 <span id='SceneManager-static-method-renderScene'>/**
 </span> * @method renderScene
- * FIXME
+ * If the scene is started, runs Graphhics.render on the scene.
+ * Otherwise, runs SceneManager.onSceneLoading
  * @static
  */
 SceneManager.renderScene = function() {
@@ -3853,7 +3858,7 @@ SceneManager.renderScene = function() {
 
 <span id='SceneManager-static-method-onSceneCreate'>/**
 </span> * @method onSceneCreate
- * FIXME
+ * Runs Graphics.startLoading
  * @static
  */
 SceneManager.onSceneCreate = function() {
@@ -3862,7 +3867,7 @@ SceneManager.onSceneCreate = function() {
 
 <span id='SceneManager-static-method-onSceneStart'>/**
 </span> * @method onSceneStart
- * FIXME
+ * Runs Graphics.endLoading
  * @static
  */
 SceneManager.onSceneStart = function() {
@@ -3871,7 +3876,7 @@ SceneManager.onSceneStart = function() {
 
 <span id='SceneManager-static-method-onSceneLoading'>/**
 </span> * @method onSceneLoading
- * FIXME
+ * Runs Graphics.updateLoading
  * @static
  */
 SceneManager.onSceneLoading = function() {
@@ -3880,8 +3885,9 @@ SceneManager.onSceneLoading = function() {
 
 <span id='SceneManager-static-method-isSceneChanging'>/**
 </span> * @method isSceneChanging
- * FIXME
+ * Check if the scene is exiting or if SceneManager._nextScene exists.
  * @static
+ * @return {Boolean}
  */
 SceneManager.isSceneChanging = function() {
     return this._exiting || !!this._nextScene;
@@ -3889,8 +3895,9 @@ SceneManager.isSceneChanging = function() {
 
 <span id='SceneManager-static-method-isCurrentSceneBusy'>/**
 </span> * @method isCurrentSceneBusy
- * FIXME
+ * Check if the scene is busy (ie, don't change scenes).
  * @static
+ * @return {Boolean}
  */
 SceneManager.isCurrentSceneBusy = function() {
     return this._scene &amp;&amp; this._scene.isBusy();
@@ -3898,8 +3905,9 @@ SceneManager.isCurrentSceneBusy = function() {
 
 <span id='SceneManager-static-method-isCurrentSceneStarted'>/**
 </span> * @method isCurrentSceneStarted
- * FIXME
+ * Check if the scene has been started.
  * @static
+ * @return {Boolean}
  */
 SceneManager.isCurrentSceneStarted = function() {
     return this._scene &amp;&amp; this._sceneStarted;
@@ -3907,8 +3915,10 @@ SceneManager.isCurrentSceneStarted = function() {
 
 <span id='SceneManager-static-method-isNextScene'>/**
 </span> * @method isNextScene
- * FIXME
+ * Check if a scene class constructor is that of SceneManager._nextScene
  * @static
+ * @param {Function} sceneClass the constructor of a scene class
+ * @return {Boolean}
  */
 SceneManager.isNextScene = function(sceneClass) {
     return this._nextScene &amp;&amp; this._nextScene.constructor === sceneClass;
@@ -3916,8 +3926,10 @@ SceneManager.isNextScene = function(sceneClass) {
 
 <span id='SceneManager-static-method-isPreviousScene'>/**
 </span> * @method isPreviousScene
- * FIXME
+ * Check if a scene class constructor is that of SceneManager._previousClass
  * @static
+ * @param {Function} sceneClass the constructor of a scene class
+ * @return {Boolean}
  */
 SceneManager.isPreviousScene = function(sceneClass) {
     return this._previousClass === sceneClass;
@@ -3925,8 +3937,9 @@ SceneManager.isPreviousScene = function(sceneClass) {
 
 <span id='SceneManager-static-method-goto'>/**
 </span> * @method goto
- * FIXME
+ * Uses sceneClass to instantiate a new scene in SceneManager._nextScene. Stops the current scene.
  * @static
+ * @param {Function} sceneClass the constructor of a scene class
  */
 SceneManager.goto = function(sceneClass) {
     if (sceneClass) {
@@ -3939,8 +3952,9 @@ SceneManager.goto = function(sceneClass) {
 
 <span id='SceneManager-static-method-push'>/**
 </span> * @method push
- * FIXME
+ * Pushes a new scene onto the stack, runs SceneManager.goto
  * @static
+ * @param {Function} sceneClass the constructor of a scene class
  */
 SceneManager.push = function(sceneClass) {
     this._stack.push(this._scene.constructor);
@@ -3949,7 +3963,7 @@ SceneManager.push = function(sceneClass) {
 
 <span id='SceneManager-static-method-pop'>/**
 </span> * @method pop
- * FIXME
+ * Pops a scene off the stack, exits the game if the stack is empty.
  * @static
  */
 SceneManager.pop = function() {
@@ -3962,7 +3976,7 @@ SceneManager.pop = function() {
 
 <span id='SceneManager-static-method-exit'>/**
 </span> * @method exit
- * FIXME
+ * Exit the game.
  * @static
  */
 SceneManager.exit = function() {
@@ -3972,7 +3986,7 @@ SceneManager.exit = function() {
 
 <span id='SceneManager-static-method-clearStack'>/**
 </span> * @method clearStack
- * FIXME
+ * Reset the scene stack.
  * @static
  */
 SceneManager.clearStack = function() {
@@ -3981,7 +3995,7 @@ SceneManager.clearStack = function() {
 
 <span id='SceneManager-static-method-stop'>/**
 </span> * @method stop
- * FIXME
+ * Stops the SceneManager.
  * @static
  */
 SceneManager.stop = function() {
@@ -3990,7 +4004,7 @@ SceneManager.stop = function() {
 
 <span id='SceneManager-static-method-prepareNextScene'>/**
 </span> * @method prepareNextScene
- * FIXME
+ * Prepares the next scene.
  * @static
  */
 SceneManager.prepareNextScene = function() {
@@ -4018,7 +4032,7 @@ SceneManager.snapForBackground = function() {
 
 <span id='SceneManager-static-method-backgroundBitmap'>/**
 </span> * @method backgroundBitmap
- * FIXME
+ * Get a reference to SceneManager._backgroundBitmap
  * @static
  */
 SceneManager.backgroundBitmap = function() {
@@ -4027,7 +4041,7 @@ SceneManager.backgroundBitmap = function() {
 
 <span id='SceneManager-static-method-resume'>/**
 </span> * @method resume
- * FIXME
+ * Resume updating. Resets the accumulator.
  * @static
  */
 SceneManager.resume = function() {

@@ -14,3 +14,6 @@ jsduck.exe
 **/RMMV_*/*.html
 **/RMMV_*/*.rpgproject
 **/RMMV_*/*.json
+
+# misc
+*.js
