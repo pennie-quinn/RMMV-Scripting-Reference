@@ -24,6 +24,7 @@
  *       are not classes, like sounds.
  * TODO: figure out what is read-only.
  * TODO: figure out what is private.
+ * TODO: figure out what is static.
  */
 //-----------------------------------------------------------------------------
 
@@ -2704,10 +2705,22 @@ AudioManager.checkWebAudioError = function(webAudio) {
 //
 // The static class that plays sound effects defined in the database.
 
+<span id='SoundManager-method-constructor'><span id='SoundManager'>/**
+</span></span> * @class SoundManager
+ * The static class that plays sound effects defined in the database.
+ * @uses AudioManager
+ * @uses $dataSystem
+ * @singleton
+ * @constructor should never be used
+ */
 function SoundManager() {
     throw new Error('This is a static class');
 }
 
+<span id='SoundManager-method-preloadImportantSounds'>/**
+</span> * @method preloadImportantSounds
+ * Loads system sounds 0..3.
+ */
 SoundManager.preloadImportantSounds = function() {
     this.loadSystemSound(0);
     this.loadSystemSound(1);
@@ -2715,110 +2728,218 @@ SoundManager.preloadImportantSounds = function() {
     this.loadSystemSound(3);
 };
 
+<span id='SoundManager-method-loadSystemSound'>/**
+</span> * @method loadSystemSound
+ * Loads a system sound from $dataSystem.sounds by index.
+ * Uses AudioManager.loadStaticSe
+ * @param {Number} n the sound to load
+ */
 SoundManager.loadSystemSound = function(n) {
     if ($dataSystem) {
         AudioManager.loadStaticSe($dataSystem.sounds[n]);
     }
 };
 
+<span id='SoundManager-method-playSystemSound'>/**
+</span> * @method playSystemSound
+ * Plays a system sound by index.
+ * Uses AudioManager.playStaticSe
+ * @param {Number} n the sound to play
+ */
 SoundManager.playSystemSound = function(n) {
     if ($dataSystem) {
         AudioManager.playStaticSe($dataSystem.sounds[n]);
     }
 };
 
+<span id='SoundManager-method-playCursor'>/**
+</span> * @method playCursor
+ * Plays the Cursor sound (system sound 0)
+ */
 SoundManager.playCursor = function() {
     this.playSystemSound(0);
 };
 
+<span id='SoundManager-method-playOk'>/**
+</span> * @method playOk
+ * Plays the Ok sound (system sound 1)
+ */
 SoundManager.playOk = function() {
     this.playSystemSound(1);
 };
 
+<span id='SoundManager-method-playCancel'>/**
+</span> * @method playCancel
+ * Plays the Cancel sound (system sound 2)
+ */
 SoundManager.playCancel = function() {
     this.playSystemSound(2);
 };
 
+<span id='SoundManager-method-playBuzzer'>/**
+</span> * @method playBuzzer
+ * Plays the Buzzer sound (system sound 3)
+ */
 SoundManager.playBuzzer = function() {
     this.playSystemSound(3);
 };
 
+<span id='SoundManager-method-playEquip'>/**
+</span> * @method playEquip
+ * Plays the Equip sound (system sound 4)
+ */
 SoundManager.playEquip = function() {
     this.playSystemSound(4);
 };
 
+<span id='SoundManager-method-playSave'>/**
+</span> * @method playSave
+ * Plays the Save sound (system sound 5)
+ */
 SoundManager.playSave = function() {
     this.playSystemSound(5);
 };
 
+<span id='SoundManager-method-playLoad'>/**
+</span> * @method playLoad
+ * Plays the Load sound (system sound 6)
+ */
 SoundManager.playLoad = function() {
     this.playSystemSound(6);
 };
 
+<span id='SoundManager-method-playBattleStart'>/**
+</span> * @method playBattleStart
+ * Plays the BattleStart sound (system sound 7)
+ */
 SoundManager.playBattleStart = function() {
     this.playSystemSound(7);
 };
 
+<span id='SoundManager-method-playEscape'>/**
+</span> * @method playEscape
+ * Plays the Escape sound (system sound 8)
+ */
 SoundManager.playEscape = function() {
     this.playSystemSound(8);
 };
 
+<span id='SoundManager-method-playEnemyAttack'>/**
+</span> * @method playEnemyAttack
+ * Plays the EnemyAttack sound (system sound 9)
+ */
 SoundManager.playEnemyAttack = function() {
     this.playSystemSound(9);
 };
 
+<span id='SoundManager-method-playEnemyDamage'>/**
+</span> * @method playEnemyDamage
+ * Plays the EnemyDamage sound (system sound 10)
+ */
 SoundManager.playEnemyDamage = function() {
     this.playSystemSound(10);
 };
 
+<span id='SoundManager-method-playEnemyCollapse'>/**
+</span> * @method playEnemyCollapse
+ * Plays the EnemyCollapse sound (system sound 11)
+ */
 SoundManager.playEnemyCollapse = function() {
     this.playSystemSound(11);
 };
 
+<span id='SoundManager-method-playBossCollapse1'>/**
+</span> * @method playBossCollapse1
+ * Plays the BossCollapse1 sound (system sound 12)
+ */
 SoundManager.playBossCollapse1 = function() {
     this.playSystemSound(12);
 };
 
+<span id='SoundManager-method-playBossCollapse2'>/**
+</span> * @method playBossCollapse2
+ * Plays the BossCollapse2 sound (system sound 13)
+ */
 SoundManager.playBossCollapse2 = function() {
     this.playSystemSound(13);
 };
 
+<span id='SoundManager-method-playActorDamage'>/**
+</span> * @method playActorDamage
+ * Plays the ActorDamage sound (system sound 14)
+ */
 SoundManager.playActorDamage = function() {
     this.playSystemSound(14);
 };
 
+<span id='SoundManager-method-playActorCollapse'>/**
+</span> * @method playActorCollapse
+ * Plays the ActorCollapse sound (system sound 15)
+ */
 SoundManager.playActorCollapse = function() {
     this.playSystemSound(15);
 };
 
+<span id='SoundManager-method-playRecovery'>/**
+</span> * @method playRecovery
+ * Plays the Recovery sound (system sound 16)
+ */
 SoundManager.playRecovery = function() {
     this.playSystemSound(16);
 };
 
+<span id='SoundManager-method-playMiss'>/**
+</span> * @method playMiss
+ * Plays the Miss sound (system sound 17)
+ */
 SoundManager.playMiss = function() {
     this.playSystemSound(17);
 };
 
+<span id='SoundManager-method-playEvasion'>/**
+</span> * @method playEvasion
+ * Plays the Evasion sound (system sound 18)
+ */
 SoundManager.playEvasion = function() {
     this.playSystemSound(18);
 };
 
+<span id='SoundManager-method-playMagicEvasion'>/**
+</span> * @method playMagicEvasion
+ * Plays the MagicEvasion sound (system sound 19)
+ */
 SoundManager.playMagicEvasion = function() {
     this.playSystemSound(19);
 };
 
+<span id='SoundManager-method-playReflection'>/**
+</span> * @method playReflection
+ * Plays the Reflection sound (system sound 20)
+ */
 SoundManager.playReflection = function() {
     this.playSystemSound(20);
 };
 
+<span id='SoundManager-method-playShop'>/**
+</span> * @method playShop
+ * Plays the Shop sound (system sound 21)
+ */
 SoundManager.playShop = function() {
     this.playSystemSound(21);
 };
 
+<span id='SoundManager-method-playUseItem'>/**
+</span> * @method playUseItem
+ * Plays the UseItem sound (system sound 22)
+ */
 SoundManager.playUseItem = function() {
     this.playSystemSound(22);
 };
 
+<span id='SoundManager-method-playUseSkill'>/**
+</span> * @method playUseSkill
+ * Plays the UseSkill sound (system sound 23)
+ */
 SoundManager.playUseSkill = function() {
     this.playSystemSound(23);
 };
