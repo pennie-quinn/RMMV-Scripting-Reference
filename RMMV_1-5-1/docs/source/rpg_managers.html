@@ -18,7 +18,13 @@
   <pre class="prettyprint lang-js">//=============================================================================
 // rpg_managers.js v1.5.1
 //=============================================================================
-
+/*
+ * TODO: finish the first pass.
+ * TODO: add docs for &quot;structs&quot;--Objects that have a specified structure but
+ *       are not classes, like sounds.
+ * TODO: figure out what is read-only.
+ * TODO: figure out what is private.
+ */
 //-----------------------------------------------------------------------------
 
 <span id='DataManager-method-constructor'><span id='DataManager'>/**
@@ -674,6 +680,10 @@ DataManager.extractSaveContents = function(contents) {
 </span></span> * The static class that manages the configuration data.
  * @class ConfigManager
  * @singleton
+ * @uses AudioManager
+ * @uses StorageManager
+ * @uses JSON
+ *
  * @constructor should never be called
  */
 function ConfigManager() {
@@ -845,6 +855,11 @@ ConfigManager.readVolume = function(config, name) {
 </span></span> * The static class that manages storage for saving game data.
  * @class StorageManager
  * @singleton
+ * @uses LZString
+ * @uses fs
+ * @uses JSON
+ * @uses Utils
+ *
  * @constructor should never be used
  */
 function StorageManager() {
@@ -1208,13 +1223,13 @@ StorageManager.webStorageKey = function(savefileId) {
 <span id='ImageManager-method-constructor'><span id='ImageManager'>/**
 </span></span> * The static class that loads images, creates bitmap objects and retains them.
  * @class ImageManager
- * @singleton
- * @constructor should never be used
- *
  * @uses Bitmap
  * @uses CacheMap
  * @uses ImageCache
  * @uses RequestQueue
+ * @singleton
+ * @constructor should never be used
+ *
  */
 function ImageManager() {
     throw new Error('This is a static class');
@@ -1958,26 +1973,115 @@ ImageManager.clearRequest = function(){
 //
 // The static class that handles BGM, BGS, ME and SE.
 
+
+// NOTE: this code is ADDED so sound can be documented.
+//       sound is not _actually_ a vanilla class,
+//       but an object literal.
+<span id='sound-method-constructor'><span id='sound'>/**
+</span></span> * @class sound
+ * The Object for representing sounds.
+ * @constructor
+ */
+ function sound() {
+     throw new Error('This is an object literal type');
+ }
+<span id='sound-property-name'>/**
+</span> * @property {String} name the filename without extension
+ */
+<span id='sound-property-volume'>/**
+</span> * @property {Number} volume [0,100]
+ */
+<span id='sound-property-pitch'>/**
+</span> * @property {Number} pitch [50,150]
+ */
+<span id='sound-property-pan'>/**
+</span> * @property {Number} pan [-100,100]
+ */
+<span id='sound-property-pos'>/**
+</span> * @property {Number} pos in seconds
+ */
+
+<span id='AudioManager-method-constructor'><span id='AudioManager'>/**
+</span></span> * @class AudioManager
+ * The static class that handles BGM, BGS, ME and SE.
+ * @uses sound
+ * @uses WebAudio
+ * @uses Html5Audio
+ *
+ * @singleton
+ * @constructor should never be used
+ */
 function AudioManager() {
     throw new Error('This is a static class');
 }
 
+<span id='AudioManager-property-_masterVolume'>/**
+</span> * @property {Number} _masterVolume Range: [0.0,1.0]
+ */
 AudioManager._masterVolume   = 1;   // (min: 0, max: 1)
+<span id='AudioManager-property-_bgmVolume'>/**
+</span> * @property _bgmVolume
+ * Range: [0,100]
+ * @type Number
+ */
 AudioManager._bgmVolume      = 100;
+<span id='AudioManager-property-_bgsVolume'>/**
+</span> * @property {Number} _bgsVolume Range: [0,100]
+ */
 AudioManager._bgsVolume      = 100;
+<span id='AudioManager-property-_meVolume'>/**
+</span> * @property {Number} _meVolume Range: [0,100]
+ */
 AudioManager._meVolume       = 100;
+<span id='AudioManager-property-_seVolume'>/**
+</span> * @property {Number} _seVolume Range: [0,100]
+ */
 AudioManager._seVolume       = 100;
+<span id='AudioManager-property-_currentBgm'>/**
+</span> * @property {sound} _currentBgm
+ */
 AudioManager._currentBgm     = null;
+<span id='AudioManager-property-_currentBgs'>/**
+</span> * @property {sound} _currentBgs
+ */
 AudioManager._currentBgs     = null;
+<span id='AudioManager-property-_bgmBuffer'>/**
+</span> * @property {WebAudio|Html5Audio} _bgmBuffer
+ */
 AudioManager._bgmBuffer      = null;
+<span id='AudioManager-property-_bgsBuffer'>/**
+</span> * @property {WebAudio|Html5Audio} _bgsBuffer
+ */
 AudioManager._bgsBuffer      = null;
+<span id='AudioManager-property-_meBuffer'>/**
+</span> * @property {WebAudio|Html5Audio} _meBuffer
+ */
 AudioManager._meBuffer       = null;
+<span id='AudioManager-property-_seBuffers'>/**
+</span> * @property {WebAudio[]|Html5Audio[]}_seBuffers
+ */
 AudioManager._seBuffers      = [];
+<span id='AudioManager-property-_staticBuffers'>/**
+</span> * @property {WebAudio[]|Html5Audio[]} _staticBuffers
+ */
 AudioManager._staticBuffers  = [];
+<span id='AudioManager-property-_replayFadeTime'>/**
+</span> * @property {Number} _replayFadeTime
+ */
 AudioManager._replayFadeTime = 0.5;
+<span id='AudioManager-property-_path'>/**
+</span> * @property {String} _path
+ * the path to your project's audio/ directory
+ */
 AudioManager._path           = 'audio/';
+<span id='AudioManager-property-_blobUrl'>/**
+</span> * @property {String} _blobUrl
+ */
 AudioManager._blobUrl        = null;
 
+<span id='AudioManager-property-masterVolume'>/**
+</span> * @property {Number} masterVolume Range: [0.0,1.0]
+ */
 Object.defineProperty(AudioManager, 'masterVolume', {
     get: function() {
         return this._masterVolume;
@@ -1990,6 +2094,9 @@ Object.defineProperty(AudioManager, 'masterVolume', {
     configurable: true
 });
 
+<span id='AudioManager-property-bgmVolume'>/**
+</span> * @property {Number} bgmVolume Range: [0,100]
+ */
 Object.defineProperty(AudioManager, 'bgmVolume', {
     get: function() {
         return this._bgmVolume;
@@ -2001,6 +2108,9 @@ Object.defineProperty(AudioManager, 'bgmVolume', {
     configurable: true
 });
 
+<span id='AudioManager-property-bgsVolume'>/**
+</span> * @property {Number} bgsVolume Range: [0,100]
+ */
 Object.defineProperty(AudioManager, 'bgsVolume', {
     get: function() {
         return this._bgsVolume;
@@ -2012,6 +2122,9 @@ Object.defineProperty(AudioManager, 'bgsVolume', {
     configurable: true
 });
 
+<span id='AudioManager-property-meVolume'>/**
+</span> * @property {Number} meVolume Range: [0,100]
+ */
 Object.defineProperty(AudioManager, 'meVolume', {
     get: function() {
         return this._meVolume;
@@ -2023,6 +2136,9 @@ Object.defineProperty(AudioManager, 'meVolume', {
     configurable: true
 });
 
+<span id='AudioManager-property-seVolume'>/**
+</span> * @property {Number} seVolume Range: [0,100]
+ */
 Object.defineProperty(AudioManager, 'seVolume', {
     get: function() {
         return this._seVolume;
@@ -2033,6 +2149,12 @@ Object.defineProperty(AudioManager, 'seVolume', {
     configurable: true
 });
 
+<span id='AudioManager-method-playBgm'>/**
+</span> * @method playBgm
+ * Play a BGM
+ * @param {sound} bgm the bgm you want to play
+ * @param {Number} pos the position to play from, in seconds
+ */
 AudioManager.playBgm = function(bgm, pos) {
     if (this.isCurrentBgm(bgm)) {
         this.updateBgmParameters(bgm);
@@ -2054,6 +2176,12 @@ AudioManager.playBgm = function(bgm, pos) {
     this.updateCurrentBgm(bgm, pos);
 };
 
+<span id='AudioManager-method-playEncryptedBgm'>/**
+</span> * @method playEncryptedBgm
+ * Play an encrypted BGM
+ * @param {sound} bgm the bgm you want to play
+ * @param {Number} pos the position to play from, in seconds
+ */
 AudioManager.playEncryptedBgm = function(bgm, pos) {
     var ext = this.audioFileExt();
     var url = this._path + 'bgm/' + encodeURIComponent(bgm.name) + ext;
@@ -2061,6 +2189,14 @@ AudioManager.playEncryptedBgm = function(bgm, pos) {
     Decrypter.decryptHTML5Audio(url, bgm, pos);
 };
 
+<span id='AudioManager-method-createDecryptBuffer'>/**
+</span> * @method createDecryptBuffer
+ * Creates a buffer for BGM playback.
+ * Plays the BGM if no ME is playing.
+ * @param {String} url the url from AudioManager._blobUrl
+ * @param {sound} bgm the BGM to play
+ * @param {Number} pos the position to play from, in seconds
+ */
 AudioManager.createDecryptBuffer = function(url, bgm, pos){
     this._blobUrl = url;
     this._bgmBuffer = this.createBuffer('bgm', bgm.name);
@@ -2071,6 +2207,12 @@ AudioManager.createDecryptBuffer = function(url, bgm, pos){
     this.updateCurrentBgm(bgm, pos);
 };
 
+<span id='AudioManager-method-replayBgm'>/**
+</span> * @method replayBgm
+ * Update the current BGM if it was passed in,
+ * else fade into the new BGM.
+ * @param {sound} bgm the BGM to replay
+ */
 AudioManager.replayBgm = function(bgm) {
     if (this.isCurrentBgm(bgm)) {
         this.updateBgmParameters(bgm);
@@ -2082,15 +2224,32 @@ AudioManager.replayBgm = function(bgm) {
     }
 };
 
+<span id='AudioManager-method-isCurrentBgm'>/**
+</span> * @method isCurrentBgm
+ * Check if a specified BGM is the current one.
+ * @param {sound} bgm the BGM to check
+ * @return {Boolean}
+ */
 AudioManager.isCurrentBgm = function(bgm) {
     return (this._currentBgm &amp;&amp; this._bgmBuffer &amp;&amp;
             this._currentBgm.name === bgm.name);
 };
 
+<span id='AudioManager-method-updateBgmParameters'>/**
+</span> * @method updateBgmParameters
+ * Update AudioManager._bgmBuffer with the BGM given.
+ * @param {sound} bgm the BGM to use
+ */
 AudioManager.updateBgmParameters = function(bgm) {
     this.updateBufferParameters(this._bgmBuffer, this._bgmVolume, bgm);
 };
 
+<span id='AudioManager-method-updateCurrentBgm'>/**
+</span> * @method updateCurrentBgm
+ * Update AudioManager._currentBgm to the new bgm.
+ * @param {sound} bgm the BGM to use
+ * @param {Number} pos the position to play from, in seconds
+ */
 AudioManager.updateCurrentBgm = function(bgm, pos) {
     this._currentBgm = {
         name: bgm.name,
@@ -2101,6 +2260,10 @@ AudioManager.updateCurrentBgm = function(bgm, pos) {
     };
 };
 
+<span id='AudioManager-method-stopBgm'>/**
+</span> * @method stopBgm
+ * Stops and clears AudioManager._bgmBuffer
+ */
 AudioManager.stopBgm = function() {
     if (this._bgmBuffer) {
         this._bgmBuffer.stop();
@@ -2109,6 +2272,11 @@ AudioManager.stopBgm = function() {
     }
 };
 
+<span id='AudioManager-method-fadeOutBgm'>/**
+</span> * @method fadeOutBgm
+ * Fade out the current BGM.
+ * @param {Number} duration how long to fade out, in seconds
+ */
 AudioManager.fadeOutBgm = function(duration) {
     if (this._bgmBuffer &amp;&amp; this._currentBgm) {
         this._bgmBuffer.fadeOut(duration);
@@ -2116,12 +2284,23 @@ AudioManager.fadeOutBgm = function(duration) {
     }
 };
 
+<span id='AudioManager-method-fadeInBgm'>/**
+</span> * @method fadeInBgm
+ * Fade in the current BGM.
+ * @param {Number} duration how long to fade out, in seconds
+ */
 AudioManager.fadeInBgm = function(duration) {
     if (this._bgmBuffer &amp;&amp; this._currentBgm) {
         this._bgmBuffer.fadeIn(duration);
     }
 };
 
+<span id='AudioManager-method-playBgs'>/**
+</span> * @method playBgs
+ * Play a BGS.
+ * @param {sound} bgs the BGS to play
+ * @param {Number} pos the position to play from, in seconds
+ */
 AudioManager.playBgs = function(bgs, pos) {
     if (this.isCurrentBgs(bgs)) {
         this.updateBgsParameters(bgs);
@@ -2136,6 +2315,11 @@ AudioManager.playBgs = function(bgs, pos) {
     this.updateCurrentBgs(bgs, pos);
 };
 
+<span id='AudioManager-method-replayBgs'>/**
+</span> * @method replayBgs
+ * Replay a BGS.
+ * @param {sound} bgs the BGS to replay
+ */
 AudioManager.replayBgs = function(bgs) {
     if (this.isCurrentBgs(bgs)) {
         this.updateBgsParameters(bgs);
@@ -2147,15 +2331,32 @@ AudioManager.replayBgs = function(bgs) {
     }
 };
 
+<span id='AudioManager-method-isCurrentBgs'>/**
+</span> * @method isCurrentBgs
+ * Check if a BGS is the current one
+ * @param {sound} bgs the BGS to check
+ * @return {Boolean}
+ */
 AudioManager.isCurrentBgs = function(bgs) {
     return (this._currentBgs &amp;&amp; this._bgsBuffer &amp;&amp;
             this._currentBgs.name === bgs.name);
 };
 
+<span id='AudioManager-method-updateBgsParameters'>/**
+</span> * @method updateBgsParameters
+ * Update AudioManager._bgsBuffer with a BGS object
+ * @param {sound} bgs the BGS to use
+ */
 AudioManager.updateBgsParameters = function(bgs) {
     this.updateBufferParameters(this._bgsBuffer, this._bgsVolume, bgs);
 };
 
+<span id='AudioManager-method-updateCurrentBgs'>/**
+</span> * @method updateCurrentBgs
+ * Update AudioManager._currentBgm with a BGS object
+ * @param {sound} bgs the BGS to use
+ * @param {Number} pos the position to play from, in seconds
+ */
 AudioManager.updateCurrentBgs = function(bgs, pos) {
     this._currentBgs = {
         name: bgs.name,
@@ -2166,6 +2367,10 @@ AudioManager.updateCurrentBgs = function(bgs, pos) {
     };
 };
 
+<span id='AudioManager-method-stopBgs'>/**
+</span> * @method stopBgs
+ * Stop the current BGS and clear AudioManager._bgsBuffer
+ */
 AudioManager.stopBgs = function() {
     if (this._bgsBuffer) {
         this._bgsBuffer.stop();
@@ -2174,6 +2379,11 @@ AudioManager.stopBgs = function() {
     }
 };
 
+<span id='AudioManager-method-fadeOutBgs'>/**
+</span> * @method fadeOutBgs
+ * Fade out the current BGS
+ * @param {Number} duration the fade duration in seconds
+ */
 AudioManager.fadeOutBgs = function(duration) {
     if (this._bgsBuffer &amp;&amp; this._currentBgs) {
         this._bgsBuffer.fadeOut(duration);
@@ -2181,12 +2391,22 @@ AudioManager.fadeOutBgs = function(duration) {
     }
 };
 
+<span id='AudioManager-method-fadeInBgs'>/**
+</span> * @method fadeInBgs
+ * Fade in the current BGS.
+ * @param {Number} duration the fade in duration in seconds
+ */
 AudioManager.fadeInBgs = function(duration) {
     if (this._bgsBuffer &amp;&amp; this._currentBgs) {
         this._bgsBuffer.fadeIn(duration);
     }
 };
 
+<span id='AudioManager-method-playMe'>/**
+</span> * @method playMe
+ * Stops the current ME. Pauses the BGM. Plays the new ME.
+ * @param {sound} me the ME to play
+ */
 AudioManager.playMe = function(me) {
     this.stopMe();
     if (me.name) {
@@ -2201,16 +2421,31 @@ AudioManager.playMe = function(me) {
     }
 };
 
+<span id='AudioManager-method-updateMeParameters'>/**
+</span> * @method updateMeParameters
+ * Updates AudioManager._meBuffer with an ME
+ * @param {sound} me the ME to play
+ */
 AudioManager.updateMeParameters = function(me) {
     this.updateBufferParameters(this._meBuffer, this._meVolume, me);
 };
 
+<span id='AudioManager-method-updateMeParameters'>/**
+</span> * @method updateMeParameters
+ * Fade out the current ME.
+ * @param {Number} duration the fade duration in seconds
+ */
 AudioManager.fadeOutMe = function(duration) {
     if (this._meBuffer) {
         this._meBuffer.fadeOut(duration);
     }
 };
 
+<span id='AudioManager-method-stopMe'>/**
+</span> * @method stopMe
+ * Stop the current ME and clear AudioManager._meBuffer.
+ * Also resumes the BGM, if one was playing.
+ */
 AudioManager.stopMe = function() {
     if (this._meBuffer) {
         this._meBuffer.stop();
@@ -2222,6 +2457,11 @@ AudioManager.stopMe = function() {
     }
 };
 
+<span id='AudioManager-method-playSe'>/**
+</span> * @method playSe
+ * Play an SE.
+ * @param {sound} se the SE to play
+ */
 AudioManager.playSe = function(se) {
     if (se.name) {
         this._seBuffers = this._seBuffers.filter(function(audio) {
@@ -2234,10 +2474,21 @@ AudioManager.playSe = function(se) {
     }
 };
 
+<span id='AudioManager-method-updateSeParameters'>/**
+</span> * @method updateSeParameters
+ * Updates a buffer with an SE.
+ * @param {WebAudio|Html5Audio} buffer the buffer to update
+ * @param {sound} se the SE to apply to the buffer
+ */
 AudioManager.updateSeParameters = function(buffer, se) {
     this.updateBufferParameters(buffer, this._seVolume, se);
 };
 
+<span id='AudioManager-method-stopSe'>/**
+</span> * @method stopSe
+ * Stops every SE currently playing.
+ * Clears every buffer in AudioManager._seBuffers
+ */
 AudioManager.stopSe = function() {
     this._seBuffers.forEach(function(buffer) {
         buffer.stop();
@@ -2245,6 +2496,11 @@ AudioManager.stopSe = function() {
     this._seBuffers = [];
 };
 
+<span id='AudioManager-method-playStaticSe'>/**
+</span> * @method playStaticSe
+ * Plays an SE with a static buffer.
+ * @param {sound} se the SE to play
+ */
 AudioManager.playStaticSe = function(se) {
     if (se.name) {
         this.loadStaticSe(se);
@@ -2260,6 +2516,12 @@ AudioManager.playStaticSe = function(se) {
     }
 };
 
+<span id='AudioManager-method-loadStaticSe'>/**
+</span> * @method loadStaticSe
+ * Loads an SE to be played on a static buffer.
+ * Creates a static buffer to use for playback.
+ * @param {sound} se the SE to load
+ */
 AudioManager.loadStaticSe = function(se) {
     if (se.name &amp;&amp; !this.isStaticSe(se)) {
         var buffer = this.createBuffer('se', se.name);
@@ -2271,6 +2533,12 @@ AudioManager.loadStaticSe = function(se) {
     }
 };
 
+<span id='AudioManager-method-isStaticSe'>/**
+</span> * @method isStaticSe
+ * Checks if a static buffer exists for this SE.
+ * @param {sound} se the SE to check
+ * @return {Boolean}
+ */
 AudioManager.isStaticSe = function(se) {
     for (var i = 0; i &lt; this._staticBuffers.length; i++) {
         var buffer = this._staticBuffers[i];
@@ -2281,6 +2549,10 @@ AudioManager.isStaticSe = function(se) {
     return false;
 };
 
+<span id='AudioManager-method-stopAll'>/**
+</span> * @method stopAll
+ * Stops all ME, BGM, BGS, and SE.
+ */
 AudioManager.stopAll = function() {
     this.stopMe();
     this.stopBgm();
@@ -2288,6 +2560,12 @@ AudioManager.stopAll = function() {
     this.stopSe();
 };
 
+<span id='AudioManager-method-saveBgm'>/**
+</span> * @method saveBgm
+ * Returns a sound of the current BGM, or an empty sound if
+ * no BGM is playing.
+ * @return {sound}
+ */
 AudioManager.saveBgm = function() {
     if (this._currentBgm) {
         var bgm = this._currentBgm;
@@ -2303,6 +2581,12 @@ AudioManager.saveBgm = function() {
     }
 };
 
+<span id='AudioManager-method-saveBgs'>/**
+</span> * @method saveBgs
+ * Returns a sound of the current BGS, or an empty sound if
+ * no BGM is playing.
+ * @return {sound}
+ */
 AudioManager.saveBgs = function() {
     if (this._currentBgs) {
         var bgs = this._currentBgs;
@@ -2318,10 +2602,23 @@ AudioManager.saveBgs = function() {
     }
 };
 
+<span id='AudioManager-method-makeEmptyAudioObject'>/**
+</span> * @method makeEmptyAudioObject
+ * Returns an empty sound object of
+ * the form { name: '', volume: 0, pitch: 0 }.
+ * @return {sound}
+ */
 AudioManager.makeEmptyAudioObject = function() {
     return { name: '', volume: 0, pitch: 0 };
 };
 
+<span id='AudioManager-method-createBuffer'>/**
+</span> * @method createBuffer
+ * Returns either a WebAudio instance or a ref to Html5Audio.
+ * @param {String} folder the directory of audio files
+ * @param {String} name the name of the audio file, without extension
+ * @return {WebAudio|Html5Audio}
+ */
 AudioManager.createBuffer = function(folder, name) {
     var ext = this.audioFileExt();
     var url = this._path + folder + '/' + encodeURIComponent(name) + ext;
@@ -2334,6 +2631,13 @@ AudioManager.createBuffer = function(folder, name) {
     }
 };
 
+<span id='AudioManager-method-updateBufferParameters'>/**
+</span> * @method updateBufferParameters
+ * Updates the volume, pitch, and pan of the buffer.
+ * @param {WebAudio|Html5Audio} buffer the buffer to update
+ * @param {Number} configVolume
+ * @param {FIXME} audio
+ */
 AudioManager.updateBufferParameters = function(buffer, configVolume, audio) {
     if (buffer &amp;&amp; audio) {
         buffer.volume = configVolume * (audio.volume || 0) / 10000;
@@ -2342,6 +2646,11 @@ AudioManager.updateBufferParameters = function(buffer, configVolume, audio) {
     }
 };
 
+<span id='AudioManager-method-audioFileExt'>/**
+</span> * @method audioFileExt
+ * Gets the audio extension used by the platform.
+ * @return {String} '.ogg' or '.m4a'
+ */
 AudioManager.audioFileExt = function() {
     if (WebAudio.canPlayOgg() &amp;&amp; !Utils.isMobileDevice()) {
         return '.ogg';
@@ -2350,12 +2659,23 @@ AudioManager.audioFileExt = function() {
     }
 };
 
+<span id='AudioManager-method-shouldUseHtml5Audio'>/**
+</span> * @method shouldUseHtml5Audio
+ * Always returns false. So Html5Audio is _never_ used.
+ * This means that all buffers are WebAudio instances.
+ * @return {Boolean}
+ */
 AudioManager.shouldUseHtml5Audio = function() {
     // The only case where we wanted html5audio was android/ no encrypt
     // Atsuma-ru asked to force webaudio there too, so just return false for ALL    // return Utils.isAndroidChrome() &amp;&amp; !Decrypter.hasEncryptedAudio;
  return false;
 };
 
+<span id='AudioManager-method-checkErrors'>/**
+</span> * @method checkErrors
+ * Checks for errors in all audio buffers using
+ * AudioManager.checkWebAudioError
+ */
 AudioManager.checkErrors = function() {
     this.checkWebAudioError(this._bgmBuffer);
     this.checkWebAudioError(this._bgsBuffer);
@@ -2368,6 +2688,11 @@ AudioManager.checkErrors = function() {
     }.bind(this));
 };
 
+<span id='AudioManager-method-checkWebAudioError'>/**
+</span> * @method checkWebAudioError
+ * Checks an audio buffer for errors, throws any found.
+ * @param {WebAudio} webAudio the buffer to check
+ */
 AudioManager.checkWebAudioError = function(webAudio) {
     if (webAudio &amp;&amp; webAudio.isError()) {
         throw new Error('Failed to load: ' + webAudio.url);
