@@ -4058,10 +4058,31 @@ SceneManager.resume = function() {
 //
 // The static class that manages battle progress.
 
+<span id='BattleManager-method-constructor'><span id='BattleManager'>/**
+</span></span> * @class BattleManager
+ * @singleton
+ * @static
+ * @uses $gameMessage
+ * @uses $gameParty
+ * @uses $gameScreen
+ * @uses $gameSystem
+ * @uses $gameTroop
+ * @uses AudioManager
+ * @uses SceneManager
+ * The static class that manages battle progress.
+ * @constructor should never be used
+ */
 function BattleManager() {
     throw new Error('This is a static class');
 }
 
+<span id='BattleManager-static-method-setup'>/**
+</span> * @method setup
+ * @static
+ * @param {Number} troopId the troop's ID in Database
+ * @param {Boolean} canEscape
+ * @param {Boolean} canLose
+ */
 BattleManager.setup = function(troopId, canEscape, canLose) {
     this.initMembers();
     this._canEscape = canEscape;
@@ -4071,6 +4092,11 @@ BattleManager.setup = function(troopId, canEscape, canLose) {
     this.makeEscapeRatio();
 };
 
+<span id='BattleManager-static-method-initMembers'>/**
+</span> * @method initMembers
+ * @static
+ * Sets all private variables to their (empty) defaults.
+ */
 BattleManager.initMembers = function() {
     this._phase = 'init';
     this._canEscape = false;
@@ -4096,61 +4122,137 @@ BattleManager.initMembers = function() {
     this._turnForced = false;
 };
 
+<span id='BattleManager-static-method-isBattleTest'>/**
+</span> * @method isBattleTest
+ * @static
+ * Check if we're running a battle test
+ * @return {Boolean}
+ */
 BattleManager.isBattleTest = function() {
     return this._battleTest;
 };
 
+<span id='BattleManager-static-method-setBattleTest'>/**
+</span> * @method setBattleTest
+ * @static
+ * Set whether we're running a battle test
+ * @param {Boolean} battleTest
+ */
 BattleManager.setBattleTest = function(battleTest) {
     this._battleTest = battleTest;
 };
 
+<span id='BattleManager-static-method-setEventCallback'>/**
+</span> * @method setEventCallback
+ * @static
+ * Set the event callback. FIXME: function sig
+ * @param {Function} callback the callback function
+ */
 BattleManager.setEventCallback = function(callback) {
     this._eventCallback = callback;
 };
 
+<span id='BattleManager-static-method-setLogWindow'>/**
+</span> * @method setLogWindow
+ * @static
+ * Sets the log window.
+ * @param {Window} logWindow
+ */
 BattleManager.setLogWindow = function(logWindow) {
     this._logWindow = logWindow;
 };
 
+<span id='BattleManager-static-method-setStatusWindow'>/**
+</span> * @method setStatusWindow
+ * @static
+ * Sets the status window
+ * @param {Window} statusWindow
+ */
 BattleManager.setStatusWindow = function(statusWindow) {
     this._statusWindow = statusWindow;
 };
 
+<span id='BattleManager-static-method-setSpriteset'>/**
+</span> * @method setSpriteset
+ * @static
+ * FIXME
+ * @param {FIXME} spriteset
+ */
 BattleManager.setSpriteset = function(spriteset) {
     this._spriteset = spriteset;
 };
 
+<span id='BattleManager-static-method-onEncounter'>/**
+</span> * @method onEncounter
+ * @static
+ * FIXME
+ */
 BattleManager.onEncounter = function() {
     this._preemptive = (Math.random() &lt; this.ratePreemptive());
     this._surprise = (Math.random() &lt; this.rateSurprise() &amp;&amp; !this._preemptive);
 };
 
+<span id='BattleManager-static-method-ratePreemptive'>/**
+</span> * @method ratePreemptive
+ * @static
+ * FIXME
+ */
 BattleManager.ratePreemptive = function() {
     return $gameParty.ratePreemptive($gameTroop.agility());
 };
 
+<span id='BattleManager-static-method-rateSurprise'>/**
+</span> * @method rateSurprise
+ * @static
+ * FIXME
+ */
 BattleManager.rateSurprise = function() {
     return $gameParty.rateSurprise($gameTroop.agility());
 };
 
+<span id='BattleManager-static-method-saveBgmAndBgs'>/**
+</span> * @method saveBgmAndBgs
+ * @static
+ * FIXME
+ */
 BattleManager.saveBgmAndBgs = function() {
     this._mapBgm = AudioManager.saveBgm();
     this._mapBgs = AudioManager.saveBgs();
 };
 
+<span id='BattleManager-static-method-playBattleBgm'>/**
+</span> * @method playBattleBgm
+ * @static
+ * FIXME
+ */
 BattleManager.playBattleBgm = function() {
     AudioManager.playBgm($gameSystem.battleBgm());
     AudioManager.stopBgs();
 };
 
+<span id='BattleManager-static-method-playVictoryMe'>/**
+</span> * @method playVictoryMe
+ * @static
+ * FIXME
+ */
 BattleManager.playVictoryMe = function() {
     AudioManager.playMe($gameSystem.victoryMe());
 };
 
+<span id='BattleManager-static-method-playDefeatMe'>/**
+</span> * @method playDefeatMe
+ * @static
+ * FIXME
+ */
 BattleManager.playDefeatMe = function() {
     AudioManager.playMe($gameSystem.defeatMe());
 };
 
+<span id='BattleManager-static-method-replayBgmAndBgs'>/**
+</span> * @method replayBgmAndBgs
+ * @static
+ * FIXME
+ */
 BattleManager.replayBgmAndBgs = function() {
     if (this._mapBgm) {
         AudioManager.replayBgm(this._mapBgm);
@@ -4162,10 +4264,20 @@ BattleManager.replayBgmAndBgs = function() {
     }
 };
 
+<span id='BattleManager-static-method-makeEscapeRatio'>/**
+</span> * @method makeEscapeRatio
+ * @static
+ * FIXME
+ */
 BattleManager.makeEscapeRatio = function() {
     this._escapeRatio = 0.5 * $gameParty.agility() / $gameTroop.agility();
 };
 
+<span id='BattleManager-static-method-update'>/**
+</span> * @method update
+ * @static
+ * FIXME
+ */
 BattleManager.update = function() {
     if (!this.isBusy() &amp;&amp; !this.updateEvent()) {
         switch (this._phase) {
@@ -4188,6 +4300,11 @@ BattleManager.update = function() {
     }
 };
 
+<span id='BattleManager-static-method-updateEvent'>/**
+</span> * @method updateEvent
+ * @static
+ * FIXME
+ */
 BattleManager.updateEvent = function() {
     switch (this._phase) {
         case 'start':
@@ -4203,6 +4320,11 @@ BattleManager.updateEvent = function() {
     return this.checkAbort2();
 };
 
+<span id='BattleManager-static-method-updateEventMain'>/**
+</span> * @method updateEventMain
+ * @static
+ * FIXME
+ */
 BattleManager.updateEventMain = function() {
     $gameTroop.updateInterpreter();
     $gameParty.requestMotionRefresh();
@@ -4216,51 +4338,111 @@ BattleManager.updateEventMain = function() {
     return false;
 };
 
+<span id='BattleManager-static-method-isBusy'>/**
+</span> * @method isBusy
+ * @static
+ * FIXME
+ */
 BattleManager.isBusy = function() {
     return ($gameMessage.isBusy() || this._spriteset.isBusy() ||
             this._logWindow.isBusy());
 };
 
+<span id='BattleManager-static-method-initInputting'>/**
+</span> * @method initInputting
+ * @static
+ * FIXME
+ */
 BattleManager.isInputting = function() {
     return this._phase === 'input';
 };
 
+<span id='BattleManager-static-method-isInTurn'>/**
+</span> * @method isInTurn
+ * @static
+ * FIXME
+ */
 BattleManager.isInTurn = function() {
     return this._phase === 'turn';
 };
 
+<span id='BattleManager-static-method-isTurnEnd'>/**
+</span> * @method isTurnEnd
+ * @static
+ * FIXME
+ */
 BattleManager.isTurnEnd = function() {
     return this._phase === 'turnEnd';
 };
 
+<span id='BattleManager-static-method-isAborting'>/**
+</span> * @method isAborting
+ * @static
+ * FIXME
+ */
 BattleManager.isAborting = function() {
     return this._phase === 'aborting';
 };
 
+<span id='BattleManager-static-method-isBattleEnd'>/**
+</span> * @method isBattleEnd
+ * @static
+ * FIXME
+ */
 BattleManager.isBattleEnd = function() {
     return this._phase === 'battleEnd';
 };
 
+<span id='BattleManager-static-method-canEscape'>/**
+</span> * @method canEscape
+ * @static
+ * FIXME
+ */
 BattleManager.canEscape = function() {
     return this._canEscape;
 };
 
+<span id='BattleManager-static-method-canLose'>/**
+</span> * @method canLose
+ * @static
+ * FIXME
+ */
 BattleManager.canLose = function() {
     return this._canLose;
 };
 
+<span id='BattleManager-static-method-isEscaped'>/**
+</span> * @method isEscaped
+ * @static
+ * FIXME
+ */
 BattleManager.isEscaped = function() {
     return this._escaped;
 };
 
+<span id='BattleManager-static-method-actor'>/**
+</span> * @method actor
+ * @static
+ * FIXME
+ */
 BattleManager.actor = function() {
     return this._actorIndex &gt;= 0 ? $gameParty.members()[this._actorIndex] : null;
 };
 
+<span id='BattleManager-static-method-clearActor'>/**
+</span> * @method clearActor
+ * @static
+ * FIXME
+ */
 BattleManager.clearActor = function() {
     this.changeActor(-1, '');
 };
 
+<span id='BattleManager-static-method-changeActor'>/**
+</span> * @method changeActor
+ * @static
+ * FIXME
+ */
 BattleManager.changeActor = function(newActorIndex, lastActorActionState) {
     var lastActor = this.actor();
     this._actorIndex = newActorIndex;
@@ -4273,6 +4455,11 @@ BattleManager.changeActor = function(newActorIndex, lastActorActionState) {
     }
 };
 
+<span id='BattleManager-static-method-startBattle'>/**
+</span> * @method startBattle
+ * @static
+ * FIXME
+ */
 BattleManager.startBattle = function() {
     this._phase = 'start';
     $gameSystem.onBattleStart();
@@ -4281,6 +4468,11 @@ BattleManager.startBattle = function() {
     this.displayStartMessages();
 };
 
+<span id='BattleManager-static-method-displayStartMessages'>/**
+</span> * @method displayStartMessages
+ * @static
+ * FIXME
+ */
 BattleManager.displayStartMessages = function() {
     $gameTroop.enemyNames().forEach(function(name) {
         $gameMessage.add(TextManager.emerge.format(name));
@@ -4292,6 +4484,11 @@ BattleManager.displayStartMessages = function() {
     }
 };
 
+<span id='BattleManager-static-method-startInput'>/**
+</span> * @method startInput
+ * @static
+ * FIXME
+ */
 BattleManager.startInput = function() {
     this._phase = 'input';
     $gameParty.makeActions();
@@ -4302,10 +4499,20 @@ BattleManager.startInput = function() {
     }
 };
 
+<span id='BattleManager-static-method-inputtingAction'>/**
+</span> * @method inputtingAction
+ * @static
+ * FIXME
+ */
 BattleManager.inputtingAction = function() {
     return this.actor() ? this.actor().inputtingAction() : null;
 };
 
+<span id='BattleManager-static-method-selectNextCommand'>/**
+</span> * @method selectNextCommand
+ * @static
+ * FIXME
+ */
 BattleManager.selectNextCommand = function() {
     do {
         if (!this.actor() || !this.actor().selectNextCommand()) {
@@ -4318,6 +4525,11 @@ BattleManager.selectNextCommand = function() {
     } while (!this.actor().canInput());
 };
 
+<span id='BattleManager-static-method-selectPreviousCommand'>/**
+</span> * @method selectPreviousCommand
+ * @static
+ * FIXME
+ */
 BattleManager.selectPreviousCommand = function() {
     do {
         if (!this.actor() || !this.actor().selectPreviousCommand()) {
@@ -4329,10 +4541,20 @@ BattleManager.selectPreviousCommand = function() {
     } while (!this.actor().canInput());
 };
 
+<span id='BattleManager-static-method-refreshStatus'>/**
+</span> * @method refreshStatus
+ * @static
+ * FIXME
+ */
 BattleManager.refreshStatus = function() {
     this._statusWindow.refresh();
 };
 
+<span id='BattleManager-static-method-startTurn'>/**
+</span> * @method startTurn
+ * @static
+ * FIXME
+ */
 BattleManager.startTurn = function() {
     this._phase = 'turn';
     this.clearActor();
@@ -4342,6 +4564,11 @@ BattleManager.startTurn = function() {
     this._logWindow.startTurn();
 };
 
+<span id='BattleManager-static-method-updateTurn'>/**
+</span> * @method updateTurn
+ * @static
+ * FIXME
+ */
 BattleManager.updateTurn = function() {
     $gameParty.requestMotionRefresh();
     if (!this._subject) {
@@ -4354,6 +4581,11 @@ BattleManager.updateTurn = function() {
     }
 };
 
+<span id='BattleManager-static-method-processTurn'>/**
+</span> * @method processTurn
+ * @static
+ * FIXME
+ */
 BattleManager.processTurn = function() {
     var subject = this._subject;
     var action = subject.currentAction();
@@ -4373,6 +4605,11 @@ BattleManager.processTurn = function() {
     }
 };
 
+<span id='BattleManager-static-method-endTurn'>/**
+</span> * @method endTurn
+ * @static
+ * FIXME
+ */
 BattleManager.endTurn = function() {
     this._phase = 'turnEnd';
     this._preemptive = false;
@@ -4388,14 +4625,29 @@ BattleManager.endTurn = function() {
     }
 };
 
+<span id='BattleManager-static-method-isForcedTurn'>/**
+</span> * @method isForcedTurn
+ * @static
+ * FIXME
+ */
 BattleManager.isForcedTurn = function () {
     return this._turnForced;
 };
 
+<span id='BattleManager-static-method-updateTurnEnd'>/**
+</span> * @method updateTurnEnd
+ * @static
+ * FIXME
+ */
 BattleManager.updateTurnEnd = function() {
     this.startInput();
 };
 
+<span id='BattleManager-static-method-getNextSubject'>/**
+</span> * @method getNextSubject
+ * @static
+ * FIXME
+ */
 BattleManager.getNextSubject = function() {
     for (;;) {
         var battler = this._actionBattlers.shift();
@@ -4408,10 +4660,20 @@ BattleManager.getNextSubject = function() {
     }
 };
 
+<span id='BattleManager-static-method-allBattleMembers'>/**
+</span> * @method allBattleMembers
+ * @static
+ * FIXME
+ */
 BattleManager.allBattleMembers = function() {
     return $gameParty.members().concat($gameTroop.members());
 };
 
+<span id='BattleManager-static-method-makeActionOrders'>/**
+</span> * @method makeActionOrders
+ * @static
+ * FIXME
+ */
 BattleManager.makeActionOrders = function() {
     var battlers = [];
     if (!this._surprise) {
@@ -4429,6 +4691,11 @@ BattleManager.makeActionOrders = function() {
     this._actionBattlers = battlers;
 };
 
+<span id='BattleManager-static-method-startAction'>/**
+</span> * @method startAction
+ * @static
+ * FIXME
+ */
 BattleManager.startAction = function() {
     var subject = this._subject;
     var action = subject.currentAction();
@@ -4442,6 +4709,11 @@ BattleManager.startAction = function() {
     this._logWindow.startAction(subject, action, targets);
 };
 
+<span id='BattleManager-static-method-updateAction'>/**
+</span> * @method updateAction
+ * @static
+ * FIXME
+ */
 BattleManager.updateAction = function() {
     var target = this._targets.shift();
     if (target) {
@@ -4451,11 +4723,21 @@ BattleManager.updateAction = function() {
     }
 };
 
+<span id='BattleManager-static-method-endAction'>/**
+</span> * @method endAction
+ * @static
+ * FIXME
+ */
 BattleManager.endAction = function() {
     this._logWindow.endAction(this._subject);
     this._phase = 'turn';
 };
 
+<span id='BattleManager-static-method-invokeAction'>/**
+</span> * @method invokeAction
+ * @static
+ * FIXME
+ */
 BattleManager.invokeAction = function(subject, target) {
     this._logWindow.push('pushBaseLine');
     if (Math.random() &lt; this._action.itemCnt(target)) {
@@ -4470,12 +4752,22 @@ BattleManager.invokeAction = function(subject, target) {
     this.refreshStatus();
 };
 
+<span id='BattleManager-static-method-invokeNormalAction'>/**
+</span> * @method invokeNormalAction
+ * @static
+ * FIXME
+ */
 BattleManager.invokeNormalAction = function(subject, target) {
     var realTarget = this.applySubstitute(target);
     this._action.apply(realTarget);
     this._logWindow.displayActionResults(subject, realTarget);
 };
 
+<span id='BattleManager-static-method-invokeCounterAttack'>/**
+</span> * @method invokeCounterAttack
+ * @static
+ * FIXME
+ */
 BattleManager.invokeCounterAttack = function(subject, target) {
     var action = new Game_Action(target);
     action.setAttack();
@@ -4484,6 +4776,11 @@ BattleManager.invokeCounterAttack = function(subject, target) {
     this._logWindow.displayActionResults(target, subject);
 };
 
+<span id='BattleManager-static-method-invokeMagicReflection'>/**
+</span> * @method invokeMagicReflection
+ * @static
+ * FIXME
+ */
 BattleManager.invokeMagicReflection = function(subject, target) {
 	this._action._reflectionTarget = target;
     this._logWindow.displayReflection(target);
@@ -4491,6 +4788,11 @@ BattleManager.invokeMagicReflection = function(subject, target) {
     this._logWindow.displayActionResults(target, subject);
 };
 
+<span id='BattleManager-static-method-applySubstitute'>/**
+</span> * @method applySubstitute
+ * @static
+ * FIXME
+ */
 BattleManager.applySubstitute = function(target) {
     if (this.checkSubstitute(target)) {
         var substitute = target.friendsUnit().substituteBattler();
@@ -4502,14 +4804,29 @@ BattleManager.applySubstitute = function(target) {
     return target;
 };
 
+<span id='BattleManager-static-method-checkSubstitute'>/**
+</span> * @method checkSubstitute
+ * @static
+ * FIXME
+ */
 BattleManager.checkSubstitute = function(target) {
     return target.isDying() &amp;&amp; !this._action.isCertainHit();
 };
 
+<span id='BattleManager-static-method-isActionForced'>/**
+</span> * @method isActionForced
+ * @static
+ * FIXME
+ */
 BattleManager.isActionForced = function() {
     return !!this._actionForcedBattler;
 };
 
+<span id='BattleManager-static-method-forceAction'>/**
+</span> * @method forceAction
+ * @static
+ * FIXME
+ */
 BattleManager.forceAction = function(battler) {
     this._actionForcedBattler = battler;
     var index = this._actionBattlers.indexOf(battler);
@@ -4518,6 +4835,11 @@ BattleManager.forceAction = function(battler) {
     }
 };
 
+<span id='BattleManager-static-method-processForcedAction'>/**
+</span> * @method processForcedAction
+ * @static
+ * FIXME
+ */
 BattleManager.processForcedAction = function() {
     if (this._actionForcedBattler) {
         this._turnForced = true;
@@ -4528,10 +4850,20 @@ BattleManager.processForcedAction = function() {
     }
 };
 
+<span id='BattleManager-static-method-abort'>/**
+</span> * @method abort
+ * @static
+ * FIXME
+ */
 BattleManager.abort = function() {
     this._phase = 'aborting';
 };
 
+<span id='BattleManager-static-method-checkBattleEnd'>/**
+</span> * @method checkBattleEnd
+ * @static
+ * FIXME
+ */
 BattleManager.checkBattleEnd = function() {
     if (this._phase) {
         if (this.checkAbort()) {
@@ -4547,6 +4879,11 @@ BattleManager.checkBattleEnd = function() {
     return false;
 };
 
+<span id='BattleManager-static-method-checkAbort'>/**
+</span> * @method checkAbort
+ * @static
+ * FIXME
+ */
 BattleManager.checkAbort = function() {
     if ($gameParty.isEmpty() || this.isAborting()) {
         this.processAbort();
@@ -4555,6 +4892,11 @@ BattleManager.checkAbort = function() {
     return false;
 };
 
+<span id='BattleManager-static-method-checkAbort2'>/**
+</span> * @method checkAbort2
+ * @static
+ * FIXME
+ */
 BattleManager.checkAbort2 = function() {
     if ($gameParty.isEmpty() || this.isAborting()) {
         SoundManager.playEscape();
@@ -4564,6 +4906,11 @@ BattleManager.checkAbort2 = function() {
     return false;
 };
 
+<span id='BattleManager-static-method-processVictory'>/**
+</span> * @method processVictory
+ * @static
+ * FIXME
+ */
 BattleManager.processVictory = function() {
     $gameParty.removeBattleStates();
     $gameParty.performVictory();
@@ -4576,6 +4923,11 @@ BattleManager.processVictory = function() {
     this.endBattle(0);
 };
 
+<span id='BattleManager-static-method-processEscape'>/**
+</span> * @method processEscape
+ * @static
+ * FIXME
+ */
 BattleManager.processEscape = function() {
     $gameParty.performEscape();
     SoundManager.playEscape();
@@ -4593,12 +4945,22 @@ BattleManager.processEscape = function() {
     return success;
 };
 
+<span id='BattleManager-static-method-processAbort'>/**
+</span> * @method processAbort
+ * @static
+ * FIXME
+ */
 BattleManager.processAbort = function() {
     $gameParty.removeBattleStates();
     this.replayBgmAndBgs();
     this.endBattle(1);
 };
 
+<span id='BattleManager-static-method-processDefeat'>/**
+</span> * @method processDefeat
+ * @static
+ * FIXME
+ */
 BattleManager.processDefeat = function() {
     this.displayDefeatMessage();
     this.playDefeatMe();
@@ -4610,6 +4972,11 @@ BattleManager.processDefeat = function() {
     this.endBattle(2);
 };
 
+<span id='BattleManager-static-method-endBattle'>/**
+</span> * @method endBattle
+ * @static
+ * FIXME
+ */
 BattleManager.endBattle = function(result) {
     this._phase = 'battleEnd';
     if (this._eventCallback) {
@@ -4622,6 +4989,11 @@ BattleManager.endBattle = function(result) {
     }
 };
 
+<span id='BattleManager-static-method-updateBattleEnd'>/**
+</span> * @method updateBattleEnd
+ * @static
+ * FIXME
+ */
 BattleManager.updateBattleEnd = function() {
     if (this.isBattleTest()) {
         AudioManager.stopBgm();
@@ -4639,6 +5011,11 @@ BattleManager.updateBattleEnd = function() {
     this._phase = null;
 };
 
+<span id='BattleManager-static-method-makeRewards'>/**
+</span> * @method makeRewards
+ * @static
+ * FIXME
+ */
 BattleManager.makeRewards = function() {
     this._rewards = {};
     this._rewards.gold = $gameTroop.goldTotal();
@@ -4646,29 +5023,59 @@ BattleManager.makeRewards = function() {
     this._rewards.items = $gameTroop.makeDropItems();
 };
 
+<span id='BattleManager-static-method-displayVictoryMessage'>/**
+</span> * @method displayVictoryMessage
+ * @static
+ * FIXME
+ */
 BattleManager.displayVictoryMessage = function() {
     $gameMessage.add(TextManager.victory.format($gameParty.name()));
 };
 
+<span id='BattleManager-static-method-displayDefeatMessage'>/**
+</span> * @method displayDefeatMessage
+ * @static
+ * FIXME
+ */
 BattleManager.displayDefeatMessage = function() {
     $gameMessage.add(TextManager.defeat.format($gameParty.name()));
 };
 
+<span id='BattleManager-static-method-displayEscapeSuccessMessage'>/**
+</span> * @method displayEscapeSuccessMessage
+ * @static
+ * FIXME
+ */
 BattleManager.displayEscapeSuccessMessage = function() {
     $gameMessage.add(TextManager.escapeStart.format($gameParty.name()));
 };
 
+<span id='BattleManager-static-method-displayEscapeFailureMessage'>/**
+</span> * @method displayEscapeFailureMessage
+ * @static
+ * FIXME
+ */
 BattleManager.displayEscapeFailureMessage = function() {
     $gameMessage.add(TextManager.escapeStart.format($gameParty.name()));
     $gameMessage.add('\\.' + TextManager.escapeFailure);
 };
 
+<span id='BattleManager-static-method-displayRewards'>/**
+</span> * @method displayRewards
+ * @static
+ * FIXME
+ */
 BattleManager.displayRewards = function() {
     this.displayExp();
     this.displayGold();
     this.displayDropItems();
 };
 
+<span id='BattleManager-static-method-displayExp'>/**
+</span> * @method displayExp
+ * @static
+ * FIXME
+ */
 BattleManager.displayExp = function() {
     var exp = this._rewards.exp;
     if (exp &gt; 0) {
@@ -4677,6 +5084,11 @@ BattleManager.displayExp = function() {
     }
 };
 
+<span id='BattleManager-static-method-displayGold'>/**
+</span> * @method displayGold
+ * @static
+ * FIXME
+ */
 BattleManager.displayGold = function() {
     var gold = this._rewards.gold;
     if (gold &gt; 0) {
@@ -4684,6 +5096,11 @@ BattleManager.displayGold = function() {
     }
 };
 
+<span id='BattleManager-static-method-displayDropItems'>/**
+</span> * @method displayDropItems
+ * @static
+ * FIXME
+ */
 BattleManager.displayDropItems = function() {
     var items = this._rewards.items;
     if (items.length &gt; 0) {
@@ -4694,12 +5111,22 @@ BattleManager.displayDropItems = function() {
     }
 };
 
+<span id='BattleManager-static-method-gainRewards'>/**
+</span> * @method gainRewards
+ * @static
+ * FIXME
+ */
 BattleManager.gainRewards = function() {
     this.gainExp();
     this.gainGold();
     this.gainDropItems();
 };
 
+<span id='BattleManager-static-method-gainExp'>/**
+</span> * @method gainExp
+ * @static
+ * FIXME
+ */
 BattleManager.gainExp = function() {
     var exp = this._rewards.exp;
     $gameParty.allMembers().forEach(function(actor) {
@@ -4707,10 +5134,20 @@ BattleManager.gainExp = function() {
     });
 };
 
+<span id='BattleManager-static-method-gainGold'>/**
+</span> * @method gainGold
+ * @static
+ * FIXME
+ */
 BattleManager.gainGold = function() {
     $gameParty.gainGold(this._rewards.gold);
 };
 
+<span id='BattleManager-static-method-gainDropItems'>/**
+</span> * @method gainDropItems
+ * @static
+ * FIXME
+ */
 BattleManager.gainDropItems = function() {
     var items = this._rewards.items;
     items.forEach(function(item) {
