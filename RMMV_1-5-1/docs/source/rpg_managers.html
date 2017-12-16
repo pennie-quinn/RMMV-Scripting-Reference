@@ -116,10 +116,11 @@ DataManager._databaseFiles = [
     { name: '$dataMapInfos',     src: 'MapInfos.json'     }
 ];
 
-<span id='DataManager-method-loadDatabase'>/**
+<span id='DataManager-static-method-loadDatabase'>/**
 </span> * @method loadDatabase
  * Load all the files in DataManager._databaseFiles
  * - also loads event test files.
+ * @static
  */
 DataManager.loadDatabase = function() {
     var test = this.isBattleTest() || this.isEventTest();
@@ -134,13 +135,14 @@ DataManager.loadDatabase = function() {
     }
 };
 
-<span id='DataManager-method-loadDataFile'>/**
+<span id='DataManager-static-method-loadDataFile'>/**
 </span> * @method loadDataFile
  * @param {String} name the name for loaded data i.e. '$dataActors'
  * @param {String} src the source file ie 'Actors.json'
  * Load a JSON datafile from from disk.
  * - Sends loaded data to DataManager.onLoad().
  * - Sets DataManager._errorUrl on errors.
+ * @static
  */
 DataManager.loadDataFile = function(name, src) {
     var xhr = new XMLHttpRequest();
@@ -160,10 +162,11 @@ DataManager.loadDataFile = function(name, src) {
     xhr.send();
 };
 
-<span id='DataManager-method-isDatabaseLoaded'>/**
+<span id='DataManager-static-method-isDatabaseLoaded'>/**
 </span> * @method isDatabaseLoaded
  * Checks if window[name] exists for each database entry.
  * @return {Boolean} whether the database has been loaded.
+ * @static
  */
 DataManager.isDatabaseLoaded = function() {
     this.checkError();
@@ -175,11 +178,12 @@ DataManager.isDatabaseLoaded = function() {
     return true;
 };
 
-<span id='DataManager-method-loadMapData'>/**
+<span id='DataManager-static-method-loadMapData'>/**
 </span> * @method loadMapData
  * Loads a map with id `mapId` into `$dataMap`
  * - Creates an empty map if given an id &lt;= 0
  * @param {Number} mapId The numeric ID of the map to load.
+ * @static
  */
 DataManager.loadMapData = function(mapId) {
     if (mapId &gt; 0) {
@@ -191,9 +195,10 @@ DataManager.loadMapData = function(mapId) {
     }
 };
 
-<span id='DataManager-method-makeEmptyMap'>/**
+<span id='DataManager-static-method-makeEmptyMap'>/**
 </span> * @method makeEmptyMap
  * Creates an empty map by clearing `$dataMap`
+ * @static
  */
 DataManager.makeEmptyMap = function() {
     $dataMap = {};
@@ -204,20 +209,22 @@ DataManager.makeEmptyMap = function() {
     $dataMap.scrollType = 3;
 };
 
-<span id='DataManager-method-isMapLoaded'>/**
+<span id='DataManager-static-method-isMapLoaded'>/**
 </span> * true if $dataMap exists and there are no errors.
  * @method isMapLoaded
  * @return {Boolean}
+ * @static
  */
 DataManager.isMapLoaded = function() {
     this.checkError();
     return !!$dataMap;
 };
 
-<span id='DataManager-method-onLoad'>/**
+<span id='DataManager-static-method-onLoad'>/**
 </span> * @method onLoad
  * 'Finishes' loaded objects.
  * @param {Object} object the object to 'finish'
+ * @static
  */
 DataManager.onLoad = function(object) {
     var array;
@@ -242,10 +249,11 @@ DataManager.onLoad = function(object) {
     }
 };
 
-<span id='DataManager-method-extractMetadata'>/**
+<span id='DataManager-static-method-extractMetadata'>/**
 </span> * @method extractMetadata
  * Extracts notetags from loaded objects.
  * @param {Object} data the object to extract notetags from
+ * @static
  */
 DataManager.extractMetadata = function(data) {
     var re = /&lt;([^&lt;&gt;:]+)(:?)([^&gt;]*)&gt;/g;
@@ -264,9 +272,10 @@ DataManager.extractMetadata = function(data) {
     }
 };
 
-<span id='DataManager-method-checkError'>/**
+<span id='DataManager-static-method-checkError'>/**
 </span> * @method checkError
  * Checks DataManager._errorUrl and throws an error if necessary.
+ * @static
  */
 DataManager.checkError = function() {
     if (DataManager._errorUrl) {
@@ -274,61 +283,68 @@ DataManager.checkError = function() {
     }
 };
 
-<span id='DataManager-method-isBattleTest'>/**
+<span id='DataManager-static-method-isBattleTest'>/**
 </span> * @method isBattleTest
  * @return {Boolean}
+ * @static
  */
 DataManager.isBattleTest = function() {
     return Utils.isOptionValid('btest');
 };
 
-<span id='DataManager-method-isEventTest'>/**
+<span id='DataManager-static-method-isEventTest'>/**
 </span> * @method isEventTest
  * @return {Boolean}
+ * @static
  */
 DataManager.isEventTest = function() {
     return Utils.isOptionValid('etest');
 };
 
-<span id='DataManager-method-isSkill'>/**
+<span id='DataManager-static-method-isSkill'>/**
 </span> * @method isSkill
  * @param {Object} item The item to check.
  * @return {Boolean}
+ * @static
  */
 DataManager.isSkill = function(item) {
     return item &amp;&amp; $dataSkills.contains(item);
 };
 
-<span id='DataManager-method-isItem'>/**
+<span id='DataManager-static-method-isItem'>/**
 </span> * @method isItem
  * @param {Object} item The item to check.
  * @return {Boolean}
+ * @static
  */
 DataManager.isItem = function(item) {
     return item &amp;&amp; $dataItems.contains(item);
 };
 
-<span id='DataManager-method-isWeapon'>/**
+<span id='DataManager-static-method-isWeapon'>/**
 </span> * @method isWeapon
  * @param {Object} item The item to check.
  * @return {Boolean}
+ * @static
  */
 DataManager.isWeapon = function(item) {
     return item &amp;&amp; $dataWeapons.contains(item);
 };
 
-<span id='DataManager-method-isArmor'>/**
+<span id='DataManager-static-method-isArmor'>/**
 </span> * @method isArmor
  * @param {Object} item The item to check.
  * @return {Boolean}
+ * @static
  */
 DataManager.isArmor = function(item) {
     return item &amp;&amp; $dataArmors.contains(item);
 };
 
-<span id='DataManager-method-createGameObjects'>/**
+<span id='DataManager-static-method-createGameObjects'>/**
 </span> * @method createGameObjects
  * Creates a fresh instance of each game container ($gameTemp, etc).
+ * @static
  */
 DataManager.createGameObjects = function() {
     $gameTemp          = new Game_Temp();
@@ -346,9 +362,10 @@ DataManager.createGameObjects = function() {
     $gamePlayer        = new Game_Player();
 };
 
-<span id='DataManager-method-setupNewGame'>/**
+<span id='DataManager-static-method-setupNewGame'>/**
 </span> * @method setupNewGame
  * Sets up core game data, sets up a new save file, resets frame count, etc.
+ * @static
  */
 DataManager.setupNewGame = function() {
     this.createGameObjects();
@@ -359,8 +376,9 @@ DataManager.setupNewGame = function() {
     Graphics.frameCount = 0;
 };
 
-<span id='DataManager-method-setupBattleTest'>/**
+<span id='DataManager-static-method-setupBattleTest'>/**
 </span> * @method setupBattleTest
+ * @static
  */
 DataManager.setupBattleTest = function() {
     this.createGameObjects();
@@ -370,8 +388,9 @@ DataManager.setupBattleTest = function() {
     BattleManager.playBattleBgm();
 };
 
-<span id='DataManager-method-setupEventTest'>/**
+<span id='DataManager-static-method-setupEventTest'>/**
 </span> * @method setupEventTest
+ * @static
  */
 DataManager.setupEventTest = function() {
     this.createGameObjects();
@@ -381,9 +400,10 @@ DataManager.setupEventTest = function() {
     $gamePlayer.setTransparent(false);
 };
 
-<span id='DataManager-method-loadGlobalInfo'>/**
+<span id='DataManager-static-method-loadGlobalInfo'>/**
 </span> * @method loadGlobalInfo
  * @return {Array}
+ * @static
  */
 DataManager.loadGlobalInfo = function() {
     var json;
@@ -406,18 +426,20 @@ DataManager.loadGlobalInfo = function() {
     }
 };
 
-<span id='DataManager-method-saveGlobalInfo'>/**
+<span id='DataManager-static-method-saveGlobalInfo'>/**
 </span> * @method saveGlobalInfo
  * @param {Object} info the data to be saved
+ * @static
  */
 DataManager.saveGlobalInfo = function(info) {
     StorageManager.save(0, JSON.stringify(info));
 };
 
-<span id='DataManager-method-isThisGameFile'>/**
+<span id='DataManager-static-method-isThisGameFile'>/**
 </span> * @method isThisGameFile
  * @param {Number} savefileId the save file to check
  * @return {Boolean}
+ * @static
  */
 DataManager.isThisGameFile = function(savefileId) {
     var globalInfo = this.loadGlobalInfo();
@@ -434,9 +456,10 @@ DataManager.isThisGameFile = function(savefileId) {
     }
 };
 
-<span id='DataManager-method-isAnySavefileExists'>/**
+<span id='DataManager-static-method-isAnySavefileExists'>/**
 </span> * @method isAnySavefileExists
  * @return {Boolean}
+ * @static
  */
 DataManager.isAnySavefileExists = function() {
     var globalInfo = this.loadGlobalInfo();
@@ -450,9 +473,10 @@ DataManager.isAnySavefileExists = function() {
     return false;
 };
 
-<span id='DataManager-method-latestSavefileId'>/**
+<span id='DataManager-static-method-latestSavefileId'>/**
 </span> * @method latestSavefileId
  * @return {Number}
+ * @static
  */
 DataManager.latestSavefileId = function() {
     var globalInfo = this.loadGlobalInfo();
@@ -469,8 +493,9 @@ DataManager.latestSavefileId = function() {
     return savefileId;
 };
 
-<span id='DataManager-method-loadAllSavefileImages'>/**
+<span id='DataManager-static-method-loadAllSavefileImages'>/**
 </span> * @method loadAllSavefileImages
+ * @static
  */
 DataManager.loadAllSavefileImages = function() {
     var globalInfo = this.loadGlobalInfo();
@@ -484,9 +509,10 @@ DataManager.loadAllSavefileImages = function() {
     }
 };
 
-<span id='DataManager-method-loadSavefileImages'>/**
+<span id='DataManager-static-method-loadSavefileImages'>/**
 </span> * @method loadSavefileImages
  * Reserves needed images.
+ * @static
  */
 DataManager.loadSavefileImages = function(info) {
     if (info.characters) {
@@ -501,19 +527,21 @@ DataManager.loadSavefileImages = function(info) {
     }
 };
 
-<span id='DataManager-method-maxSavefiles'>/**
+<span id='DataManager-static-method-maxSavefiles'>/**
 </span> * @method maxSavefiles
  * Always returns 20.
  * @return {Number}
+ * @static
  */
 DataManager.maxSavefiles = function() {
     return 20;
 };
 
-<span id='DataManager-method-saveGame'>/**
+<span id='DataManager-static-method-saveGame'>/**
 </span> * @method saveGame
  * @param {Number} savefileId the file to save to.
  * @return {Boolean} true if successful.
+ * @static
  */
 DataManager.saveGame = function(savefileId) {
     try {
@@ -530,10 +558,11 @@ DataManager.saveGame = function(savefileId) {
     }
 };
 
-<span id='DataManager-method-loadGame'>/**
+<span id='DataManager-static-method-loadGame'>/**
 </span> * @method loadGame
  * @param {Number} savefileId the file to load.
  * @return {Boolean} true if successful.
+ * @static
  */
 DataManager.loadGame = function(savefileId) {
     try {
@@ -544,28 +573,31 @@ DataManager.loadGame = function(savefileId) {
     }
 };
 
-<span id='DataManager-method-loadSavefileInfo'>/**
+<span id='DataManager-static-method-loadSavefileInfo'>/**
 </span> * @method loadSavefileInfo
  * @param {Number} savefileId the file to get info for.
  * @return {Array} the info or null if unsuccessful.
+ * @static
  */
 DataManager.loadSavefileInfo = function(savefileId) {
     var globalInfo = this.loadGlobalInfo();
     return (globalInfo &amp;&amp; globalInfo[savefileId]) ? globalInfo[savefileId] : null;
 };
 
-<span id='DataManager-method-lastAccessedSavefileId'>/**
+<span id='DataManager-static-method-lastAccessedSavefileId'>/**
 </span> * @method lastAccessedSavefileId
  * @return {Number}
+ * @static
  */
 DataManager.lastAccessedSavefileId = function() {
     return this._lastAccessedId;
 };
 
-<span id='DataManager-method-saveGameWithoutRescue'>/**
+<span id='DataManager-static-method-saveGameWithoutRescue'>/**
 </span> * @method saveGameWithoutRescue
  * @param {Number} savefileId
  * @return {Boolean}
+ * @static
  */
 DataManager.saveGameWithoutRescue = function(savefileId) {
     var json = JsonEx.stringify(this.makeSaveContents());
@@ -580,10 +612,11 @@ DataManager.saveGameWithoutRescue = function(savefileId) {
     return true;
 };
 
-<span id='DataManager-method-loadGameWithoutRescue'>/**
+<span id='DataManager-static-method-loadGameWithoutRescue'>/**
 </span> * @method loadGameWithoutRescue
  * @param {Number} savefileId
  * @return {Boolean}
+ * @static
  */
 DataManager.loadGameWithoutRescue = function(savefileId) {
     var globalInfo = this.loadGlobalInfo();
@@ -598,9 +631,10 @@ DataManager.loadGameWithoutRescue = function(savefileId) {
     }
 };
 
-<span id='DataManager-method-selectSavefileForNewGame'>/**
+<span id='DataManager-static-method-selectSavefileForNewGame'>/**
 </span> * @method selectSavefileForNewGame
  * @return {Number}
+ * @static
  */
 DataManager.selectSavefileForNewGame = function() {
     var globalInfo = this.loadGlobalInfo();
@@ -625,9 +659,10 @@ DataManager.selectSavefileForNewGame = function() {
     }
 };
 
-<span id='DataManager-method-makeSavefileInfo'>/**
+<span id='DataManager-static-method-makeSavefileInfo'>/**
 </span> * @method makeSavefileInfo
  * @return {Object}
+ * @static
  */
 DataManager.makeSavefileInfo = function() {
     var info = {};
@@ -640,10 +675,11 @@ DataManager.makeSavefileInfo = function() {
     return info;
 };
 
-<span id='DataManager-method-makeSaveContents'>/**
+<span id='DataManager-static-method-makeSaveContents'>/**
 </span> * @method makeSaveContents
  * Get data from global containers to save ($gameSystem, etc).
  * @return {Object}
+ * @static
  */
 DataManager.makeSaveContents = function() {
     // A save data does not contain $gameTemp, $gameMessage, and $gameTroop.
@@ -661,11 +697,12 @@ DataManager.makeSaveContents = function() {
     return contents;
 };
 
-<span id='DataManager-method-extractSaveContents'>/**
+<span id='DataManager-static-method-extractSaveContents'>/**
 </span> * @method extractSaveContents
  * Take data from loaded save contents and put it in global data containers
  * ($gameSystem, etc)
  * @param {Object} contents the data to extract.
+ * @static
  */
 DataManager.extractSaveContents = function(contents) {
     $gameSystem        = contents.system;
@@ -769,8 +806,9 @@ Object.defineProperty(ConfigManager, 'seVolume', {
     configurable: true
 });
 
-<span id='ConfigManager-method-load'>/**
+<span id='ConfigManager-static-method-load'>/**
 </span> * @method load loads the game's config
+ * @static
  */
 ConfigManager.load = function() {
     var json;
@@ -786,8 +824,9 @@ ConfigManager.load = function() {
     this.applyData(config);
 };
 
-<span id='ConfigManager-method-save'>/**
+<span id='ConfigManager-static-method-save'>/**
 </span> * @method save saves the game's config
+ * @static
  */
 ConfigManager.save = function() {
     StorageManager.save(-1, JSON.stringify(this.makeData()));
@@ -3355,22 +3394,100 @@ SceneManager._getTimeInMsWithoutMobileSafari = function() {
     return performance.now();
 };
 
+<span id='SceneManager-static-property-_scene'>/**
+</span> * @property {FIXME} _scene
+ * @private
+ * @static
+ */
 SceneManager._scene             = null;
+<span id='SceneManager-static-property-_nextScene'>/**
+</span> * @property {FIXME} _nextScene
+ * @private
+ * @static
+ */
 SceneManager._nextScene         = null;
+<span id='SceneManager-static-property-_stack'>/**
+</span> * @property {FIXME} _stack
+ * @private
+ * @static
+ */
 SceneManager._stack             = [];
+<span id='SceneManager-static-property-_stopped'>/**
+</span> * @property {FIXME} _stopped
+ * @private
+ * @static
+ */
 SceneManager._stopped           = false;
+<span id='SceneManager-static-property-_sceneStarted'>/**
+</span> * @property {FIXME} _sceneStarted
+ * @private
+ * @static
+ */
 SceneManager._sceneStarted      = false;
+<span id='SceneManager-static-property-_exiting'>/**
+</span> * @property {FIXME} _exiting
+ * @private
+ * @static
+ */
 SceneManager._exiting           = false;
+<span id='SceneManager-static-property-_previousClass'>/**
+</span> * @property {FIXME} _previousClass
+ * @private
+ * @static
+ */
 SceneManager._previousClass     = null;
+<span id='SceneManager-static-property-_backgroundBitmap'>/**
+</span> * @property {Bitmap} _backgroundBitmap
+ * @private
+ * @static
+ */
 SceneManager._backgroundBitmap  = null;
+<span id='SceneManager-static-property-_screenWidth'>/**
+</span> * @property {Number} _screenWidth
+ * @private
+ * @static
+ */
 SceneManager._screenWidth       = 816;
+<span id='SceneManager-static-property-_screenHeight'>/**
+</span> * @property {Number} _screenHeight
+ * @private
+ * @static
+ */
 SceneManager._screenHeight      = 624;
+<span id='SceneManager-static-property-_boxWidth'>/**
+</span> * @property {Number} _boxWidth
+ * @private
+ * @static
+ */
 SceneManager._boxWidth          = 816;
+<span id='SceneManager-static-property-_boxHeight'>/**
+</span> * @property {Number} _boxHeight
+ * @private
+ * @static
+ */
 SceneManager._boxHeight         = 624;
+<span id='SceneManager-static-property-_deltaTime'>/**
+</span> * @property {Number} _deltaTime
+ * the length of 1 tick, in seconds
+ * @private
+ * @static
+ */
 SceneManager._deltaTime = 1.0 / 60.0;
 if (!Utils.isMobileSafari()) SceneManager._currentTime = SceneManager._getTimeInMsWithoutMobileSafari();
+<span id='SceneManager-static-property-_accumulator'>/**
+</span> * @property {Number} _accumulator
+ * used to track unprocessed time
+ * @private
+ * @static
+ */
 SceneManager._accumulator = 0.0;
 
+<span id='SceneManager-static-method-run'>/**
+</span> * @method run
+ * FIXME
+ * @static
+ * @param {FIXME} sceneClass
+ */
 SceneManager.run = function(sceneClass) {
     try {
         this.initialize();
@@ -3381,6 +3498,11 @@ SceneManager.run = function(sceneClass) {
     }
 };
 
+<span id='SceneManager-static-method-initialize'>/**
+</span> * @method initialize
+ * FIXME
+ * @static
+ */
 SceneManager.initialize = function() {
     this.initGraphics();
     this.checkFileAccess();
@@ -3391,6 +3513,11 @@ SceneManager.initialize = function() {
     this.setupErrorHandlers();
 };
 
+<span id='SceneManager-static-method-initGraphics'>/**
+</span> * @method initGraphics
+ * FIXME
+ * @static
+ */
 SceneManager.initGraphics = function() {
     var type = this.preferableRendererType();
     Graphics.initialize(this._screenWidth, this._screenHeight, type);
@@ -3405,6 +3532,11 @@ SceneManager.initGraphics = function() {
     }
 };
 
+<span id='SceneManager-static-method-preferableRendererType'>/**
+</span> * @method preferableRendererType
+ * FIXME
+ * @static
+ */
 SceneManager.preferableRendererType = function() {
     if (Utils.isOptionValid('canvas')) {
         return 'canvas';
@@ -3415,22 +3547,42 @@ SceneManager.preferableRendererType = function() {
     }
 };
 
+<span id='SceneManager-static-method-shouldUseCanvasRenderer'>/**
+</span> * @method shouldUseCanvasRenderer
+ * FIXME
+ * @static
+ */
 SceneManager.shouldUseCanvasRenderer = function() {
     return Utils.isMobileDevice();
 };
 
+<span id='SceneManager-static-method-checkWebGL'>/**
+</span> * @method checkWebGL
+ * FIXME
+ * @static
+ */
 SceneManager.checkWebGL = function() {
     if (!Graphics.hasWebGL()) {
         throw new Error('Your browser does not support WebGL.');
     }
 };
 
+<span id='SceneManager-static-method-checkFileAccess'>/**
+</span> * @method checkFileAccess
+ * FIXME
+ * @static
+ */
 SceneManager.checkFileAccess = function() {
     if (!Utils.canReadGameFiles()) {
         throw new Error('Your browser does not allow to read local files.');
     }
 };
 
+<span id='SceneManager-static-method-initAudio'>/**
+</span> * @method initAudio
+ * FIXME
+ * @static
+ */
 SceneManager.initAudio = function() {
     var noAudio = Utils.isOptionValid('noaudio');
     if (!WebAudio.initialize(noAudio) &amp;&amp; !noAudio) {
@@ -3438,11 +3590,21 @@ SceneManager.initAudio = function() {
     }
 };
 
+<span id='SceneManager-static-method-initInput'>/**
+</span> * @method initInput
+ * FIXME
+ * @static
+ */
 SceneManager.initInput = function() {
     Input.initialize();
     TouchInput.initialize();
 };
 
+<span id='SceneManager-static-method-initNwjs'>/**
+</span> * @method initNwjs
+ * FIXME
+ * @static
+ */
 SceneManager.initNwjs = function() {
     if (Utils.isNwjs()) {
         var gui = require('nw.gui');
@@ -3456,21 +3618,41 @@ SceneManager.initNwjs = function() {
     }
 };
 
+<span id='SceneManager-static-method-checkPluginErrors'>/**
+</span> * @method checkPluginErrors
+ * FIXME
+ * @static
+ */
 SceneManager.checkPluginErrors = function() {
     PluginManager.checkErrors();
 };
 
+<span id='SceneManager-static-method-setupErrorHandlers'>/**
+</span> * @method setupErrorHandlers
+ * FIXME
+ * @static
+ */
 SceneManager.setupErrorHandlers = function() {
     window.addEventListener('error', this.onError.bind(this));
     document.addEventListener('keydown', this.onKeyDown.bind(this));
 };
 
+<span id='SceneManager-static-method-requestUpdate'>/**
+</span> * @method requestUpdate
+ * FIXME
+ * @static
+ */
 SceneManager.requestUpdate = function() {
     if (!this._stopped) {
         requestAnimationFrame(this.update.bind(this));
     }
 };
 
+<span id='SceneManager-static-method-update'>/**
+</span> * @method update
+ * FIXME
+ * @static
+ */
 SceneManager.update = function() {
     try {
         this.tickStart();
@@ -3485,10 +3667,21 @@ SceneManager.update = function() {
     }
 };
 
+<span id='SceneManager-static-method-terminate'>/**
+</span> * @method terminate
+ * FIXME
+ * @static
+ */
 SceneManager.terminate = function() {
     window.close();
 };
 
+<span id='SceneManager-static-method-onError'>/**
+</span> * @method onError
+ * FIXME
+ * @param {Error} e
+ * @static
+ */
 SceneManager.onError = function(e) {
     console.error(e.message);
     console.error(e.filename, e.lineno);
@@ -3500,6 +3693,11 @@ SceneManager.onError = function(e) {
     }
 };
 
+<span id='SceneManager-static-method-onKeyDown'>/**
+</span> * @method onKeyDown
+ * FIXME
+ * @static
+ */
 SceneManager.onKeyDown = function(event) {
     if (!event.ctrlKey &amp;&amp; !event.altKey) {
         switch (event.keyCode) {
@@ -3517,6 +3715,11 @@ SceneManager.onKeyDown = function(event) {
     }
 };
 
+<span id='SceneManager-static-method-catchException'>/**
+</span> * @method catchException
+ * FIXME
+ * @static
+ */
 SceneManager.catchException = function(e) {
     if (e instanceof Error) {
         Graphics.printError(e.name, e.message);
@@ -3528,19 +3731,39 @@ SceneManager.catchException = function(e) {
     this.stop();
 };
 
+<span id='SceneManager-static-method-tickStart'>/**
+</span> * @method tickStart
+ * FIXME
+ * @static
+ */
 SceneManager.tickStart = function() {
     Graphics.tickStart();
 };
 
+<span id='SceneManager-static-method-tickEnd'>/**
+</span> * @method tickEnd
+ * FIXME
+ * @static
+ */
 SceneManager.tickEnd = function() {
     Graphics.tickEnd();
 };
 
+<span id='SceneManager-static-method-updateInputData'>/**
+</span> * @method updateInputData
+ * FIXME
+ * @static
+ */
 SceneManager.updateInputData = function() {
     Input.update();
     TouchInput.update();
 };
 
+<span id='SceneManager-static-method-updateMain'>/**
+</span> * @method updateMain
+ * FIXME
+ * @static
+ */
 SceneManager.updateMain = function() {
     if (Utils.isMobileSafari()) {
         this.changeScene();
@@ -3562,10 +3785,20 @@ SceneManager.updateMain = function() {
     this.requestUpdate();
 };
 
+<span id='SceneManager-static-method-updateManagers'>/**
+</span> * @method updateManagers
+ * FIXME
+ * @static
+ */
 SceneManager.updateManagers = function() {
     ImageManager.update();
 };
 
+<span id='SceneManager-static-method-changeScene'>/**
+</span> * @method changeScene
+ * FIXME
+ * @static
+ */
 SceneManager.changeScene = function() {
     if (this.isSceneChanging() &amp;&amp; !this.isCurrentSceneBusy()) {
         if (this._scene) {
@@ -3587,6 +3820,11 @@ SceneManager.changeScene = function() {
     }
 };
 
+<span id='SceneManager-static-method-updateScene'>/**
+</span> * @method updateScene
+ * FIXME
+ * @static
+ */
 SceneManager.updateScene = function() {
     if (this._scene) {
         if (!this._sceneStarted &amp;&amp; this._scene.isReady()) {
@@ -3600,6 +3838,11 @@ SceneManager.updateScene = function() {
     }
 };
 
+<span id='SceneManager-static-method-renderScene'>/**
+</span> * @method renderScene
+ * FIXME
+ * @static
+ */
 SceneManager.renderScene = function() {
     if (this.isCurrentSceneStarted()) {
         Graphics.render(this._scene);
@@ -3608,38 +3851,83 @@ SceneManager.renderScene = function() {
     }
 };
 
+<span id='SceneManager-static-method-onSceneCreate'>/**
+</span> * @method onSceneCreate
+ * FIXME
+ * @static
+ */
 SceneManager.onSceneCreate = function() {
     Graphics.startLoading();
 };
 
+<span id='SceneManager-static-method-onSceneStart'>/**
+</span> * @method onSceneStart
+ * FIXME
+ * @static
+ */
 SceneManager.onSceneStart = function() {
     Graphics.endLoading();
 };
 
+<span id='SceneManager-static-method-onSceneLoading'>/**
+</span> * @method onSceneLoading
+ * FIXME
+ * @static
+ */
 SceneManager.onSceneLoading = function() {
     Graphics.updateLoading();
 };
 
+<span id='SceneManager-static-method-isSceneChanging'>/**
+</span> * @method isSceneChanging
+ * FIXME
+ * @static
+ */
 SceneManager.isSceneChanging = function() {
     return this._exiting || !!this._nextScene;
 };
 
+<span id='SceneManager-static-method-isCurrentSceneBusy'>/**
+</span> * @method isCurrentSceneBusy
+ * FIXME
+ * @static
+ */
 SceneManager.isCurrentSceneBusy = function() {
     return this._scene &amp;&amp; this._scene.isBusy();
 };
 
+<span id='SceneManager-static-method-isCurrentSceneStarted'>/**
+</span> * @method isCurrentSceneStarted
+ * FIXME
+ * @static
+ */
 SceneManager.isCurrentSceneStarted = function() {
     return this._scene &amp;&amp; this._sceneStarted;
 };
 
+<span id='SceneManager-static-method-isNextScene'>/**
+</span> * @method isNextScene
+ * FIXME
+ * @static
+ */
 SceneManager.isNextScene = function(sceneClass) {
     return this._nextScene &amp;&amp; this._nextScene.constructor === sceneClass;
 };
 
+<span id='SceneManager-static-method-isPreviousScene'>/**
+</span> * @method isPreviousScene
+ * FIXME
+ * @static
+ */
 SceneManager.isPreviousScene = function(sceneClass) {
     return this._previousClass === sceneClass;
 };
 
+<span id='SceneManager-static-method-goto'>/**
+</span> * @method goto
+ * FIXME
+ * @static
+ */
 SceneManager.goto = function(sceneClass) {
     if (sceneClass) {
         this._nextScene = new sceneClass();
@@ -3649,11 +3937,21 @@ SceneManager.goto = function(sceneClass) {
     }
 };
 
+<span id='SceneManager-static-method-push'>/**
+</span> * @method push
+ * FIXME
+ * @static
+ */
 SceneManager.push = function(sceneClass) {
     this._stack.push(this._scene.constructor);
     this.goto(sceneClass);
 };
 
+<span id='SceneManager-static-method-pop'>/**
+</span> * @method pop
+ * FIXME
+ * @static
+ */
 SceneManager.pop = function() {
     if (this._stack.length &gt; 0) {
         this.goto(this._stack.pop());
@@ -3662,36 +3960,76 @@ SceneManager.pop = function() {
     }
 };
 
+<span id='SceneManager-static-method-exit'>/**
+</span> * @method exit
+ * FIXME
+ * @static
+ */
 SceneManager.exit = function() {
     this.goto(null);
     this._exiting = true;
 };
 
+<span id='SceneManager-static-method-clearStack'>/**
+</span> * @method clearStack
+ * FIXME
+ * @static
+ */
 SceneManager.clearStack = function() {
     this._stack = [];
 };
 
+<span id='SceneManager-static-method-stop'>/**
+</span> * @method stop
+ * FIXME
+ * @static
+ */
 SceneManager.stop = function() {
     this._stopped = true;
 };
 
+<span id='SceneManager-static-method-prepareNextScene'>/**
+</span> * @method prepareNextScene
+ * FIXME
+ * @static
+ */
 SceneManager.prepareNextScene = function() {
     this._nextScene.prepare.apply(this._nextScene, arguments);
 };
 
+<span id='SceneManager-static-method-snap'>/**
+</span> * @method snap
+ * FIXME
+ * @static
+ */
 SceneManager.snap = function() {
     return Bitmap.snap(this._scene);
 };
 
+<span id='SceneManager-static-method-snapForBackground'>/**
+</span> * @method snapForBackground
+ * FIXME
+ * @static
+ */
 SceneManager.snapForBackground = function() {
     this._backgroundBitmap = this.snap();
     this._backgroundBitmap.blur();
 };
 
+<span id='SceneManager-static-method-backgroundBitmap'>/**
+</span> * @method backgroundBitmap
+ * FIXME
+ * @static
+ */
 SceneManager.backgroundBitmap = function() {
     return this._backgroundBitmap;
 };
 
+<span id='SceneManager-static-method-resume'>/**
+</span> * @method resume
+ * FIXME
+ * @static
+ */
 SceneManager.resume = function() {
     this._stopped = false;
     this.requestUpdate();
