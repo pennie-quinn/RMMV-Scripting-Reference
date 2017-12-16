@@ -5160,15 +5160,49 @@ BattleManager.gainDropItems = function() {
 //
 // The static class that manages the plugins.
 
+<span id='PluginManager-method-constructor'><span id='PluginManager'>/**
+</span></span> * @class PluginManager
+ * The static class that manages the plugins.
+ * @singleton
+ * @static
+ *
+ * @constructor should never be used
+ */
 function PluginManager() {
     throw new Error('This is a static class');
 }
 
+<span id='PluginManager-static-property-_path'>/**
+</span> * @property {String} _path
+ * @private
+ * @static
+ * The path to search for plugin files.
+ */
 PluginManager._path         = 'js/plugins/';
+<span id='PluginManager-static-property-_scripts'>/**
+</span> * @property {FIXME[]} _scripts
+ * @private
+ * @static
+ */
 PluginManager._scripts      = [];
+<span id='PluginManager-static-property-_errorUrls'>/**
+</span> * @property {String[]} _errorUrls
+ * @private
+ * @static
+ */
 PluginManager._errorUrls    = [];
+<span id='PluginManager-static-property-_parameters'>/**
+</span> * @property {FIXME} _parameters
+ * @private
+ * @static
+ */
 PluginManager._parameters   = {};
 
+<span id='PluginManager-static-method-setup'>/**
+</span> * @method setup
+ * @static
+ * FIXME
+ */
 PluginManager.setup = function(plugins) {
     plugins.forEach(function(plugin) {
         if (plugin.status &amp;&amp; !this._scripts.contains(plugin.name)) {
@@ -5179,6 +5213,11 @@ PluginManager.setup = function(plugins) {
     }, this);
 };
 
+<span id='PluginManager-static-method-checkErrors'>/**
+</span> * @method checkErrors
+ * @static
+ * FIXME
+ */
 PluginManager.checkErrors = function() {
     var url = this._errorUrls.shift();
     if (url) {
@@ -5186,14 +5225,29 @@ PluginManager.checkErrors = function() {
     }
 };
 
+<span id='PluginManager-static-method-parameters'>/**
+</span> * @method parameters
+ * @static
+ * FIXME
+ */
 PluginManager.parameters = function(name) {
     return this._parameters[name.toLowerCase()] || {};
 };
 
+<span id='PluginManager-static-method-setParameters'>/**
+</span> * @method setParameters
+ * @static
+ * FIXME
+ */
 PluginManager.setParameters = function(name, parameters) {
     this._parameters[name.toLowerCase()] = parameters;
 };
 
+<span id='PluginManager-static-method-loadScript'>/**
+</span> * @method loadScript
+ * @static
+ * FIXME
+ */
 PluginManager.loadScript = function(name) {
     var url = this._path + name;
     var script = document.createElement('script');
@@ -5205,6 +5259,11 @@ PluginManager.loadScript = function(name) {
     document.body.appendChild(script);
 };
 
+<span id='PluginManager-static-method-onError'>/**
+</span> * @method onError
+ * @static
+ * FIXME
+ */
 PluginManager.onError = function(e) {
     this._errorUrls.push(e.target._url);
 };
