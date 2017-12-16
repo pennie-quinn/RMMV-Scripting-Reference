@@ -31,6 +31,7 @@
 <span id='DataManager-method-constructor'><span id='DataManager'>/**
 </span></span> * The static class that manages the database and game objects.
  * @class DataManager
+ * @static
  * @singleton
  * @constructor should never be called
  */
@@ -38,6 +39,10 @@ function DataManager() {
     throw new Error('This is a static class');
 }
 
+/*
+TODO: make a fake class called &quot;global&quot; or something
+      to document bits like these
+*/
 var $dataActors       = null;
 var $dataClasses      = null;
 var $dataSkills       = null;
@@ -68,27 +73,31 @@ var $gameMap          = null;
 var $gamePlayer       = null;
 var $testEvent        = null;
 
-<span id='DataManager-property-_globalId'>/**
-</span> * @property _globalId
- * @type String
+<span id='DataManager-static-property-_globalId'>/**
+</span> * @property {String} _globalId
+ * @static
+ * @private
  */
 DataManager._globalId       = 'RPGMV';
 
-<span id='DataManager-property-_lastAccessedId'>/**
-</span> * @property _lastAccessedId
- * @type Number
+<span id='DataManager-static-property-_lastAccessedId'>/**
+</span> * @property {Number} _lastAccessedId
+ * @static
+ * @private
  */
 DataManager._lastAccessedId = 1;
 
-<span id='DataManager-property-_errorUrl'>/**
-</span> * @property _errorUrl
- * @type String
+<span id='DataManager-static-property-_errorUrl'>/**
+</span> * @property {String} _errorUrl
+ * @static
+ * @private
  */
 DataManager._errorUrl       = null;
 
-<span id='DataManager-property-_databaseFiles'>/**
-</span> * @property _databaseFiles
- * @type Array
+<span id='DataManager-static-property-_databaseFiles'>/**
+</span> * @property {Object[]} _databaseFiles
+ * @static
+ * @private
  */
 DataManager._databaseFiles = [
     { name: '$dataActors',       src: 'Actors.json'       },
@@ -681,6 +690,7 @@ DataManager.extractSaveContents = function(contents) {
 </span></span> * The static class that manages the configuration data.
  * @class ConfigManager
  * @singleton
+ * @static
  * @uses AudioManager
  * @uses StorageManager
  * @uses JSON
@@ -691,22 +701,21 @@ function ConfigManager() {
     throw new Error('This is a static class');
 }
 
-<span id='ConfigManager-property-alwaysDash'>/**
-</span> * @property alwaysDash
- * @type Boolean
+<span id='ConfigManager-static-property-alwaysDash'>/**
+</span> * @property {Boolean} alwaysDash
+ * @static
  */
 ConfigManager.alwaysDash        = false;
 
-<span id='ConfigManager-property-commandRemember'>/**
-</span> * @property commandRemember
- * @type Boolean
+<span id='ConfigManager-static-property-commandRemember'>/**
+</span> * @property {Boolean} commandRemember
+ * @static
  */
 ConfigManager.commandRemember   = false;
 
-<span id='ConfigManager-property-bgmVolume'>/**
-</span> * @property bgmVolume
- * the volume of BGM
- * @type Number
+<span id='ConfigManager-static-property-bgmVolume'>/**
+</span> * @property {Number} bgmVolume the volume of BGM, range [0,100]
+ * @static
  */
 Object.defineProperty(ConfigManager, 'bgmVolume', {
     get: function() {
@@ -718,10 +727,9 @@ Object.defineProperty(ConfigManager, 'bgmVolume', {
     configurable: true
 });
 
-<span id='ConfigManager-property-bgsVolume'>/**
-</span> * @property bgsVolume
- * the volume of BGS
- * @type Number
+<span id='ConfigManager-static-property-bgsVolume'>/**
+</span> * @property {Number} bgsVolume the volume of BGS, range [0,100]
+ * @static
  */
 Object.defineProperty(ConfigManager, 'bgsVolume', {
     get: function() {
@@ -733,10 +741,9 @@ Object.defineProperty(ConfigManager, 'bgsVolume', {
     configurable: true
 });
 
-<span id='ConfigManager-property-meVolume'>/**
-</span> * @property meVolume
- * the volume of ME
- * @type Number
+<span id='ConfigManager-static-property-meVolume'>/**
+</span> * @property {Number} meVolume the volume of ME, range [0,100]
+ * @static
  */
 Object.defineProperty(ConfigManager, 'meVolume', {
     get: function() {
@@ -748,10 +755,9 @@ Object.defineProperty(ConfigManager, 'meVolume', {
     configurable: true
 });
 
-<span id='ConfigManager-property-seVolume'>/**
-</span> * @property seVolume
- * the volume of SE
- * @type Number
+<span id='ConfigManager-static-property-seVolume'>/**
+</span> * @property {Number} seVolume the volume of SE, range [0,100]
+ * @static
  */
 Object.defineProperty(ConfigManager, 'seVolume', {
     get: function() {
@@ -764,8 +770,7 @@ Object.defineProperty(ConfigManager, 'seVolume', {
 });
 
 <span id='ConfigManager-method-load'>/**
-</span> * @method load
- * loads the game's config
+</span> * @method load loads the game's config
  */
 ConfigManager.load = function() {
     var json;
@@ -782,17 +787,17 @@ ConfigManager.load = function() {
 };
 
 <span id='ConfigManager-method-save'>/**
-</span> * @method save
- * saves the game's config
+</span> * @method save saves the game's config
  */
 ConfigManager.save = function() {
     StorageManager.save(-1, JSON.stringify(this.makeData()));
 };
 
-<span id='ConfigManager-method-makeData'>/**
+<span id='ConfigManager-static-method-makeData'>/**
 </span> * @method makeData
  * takes current state to create a `config` object
  * @return {Object} config
+ * @static
  */
 ConfigManager.makeData = function() {
     var config = {};
@@ -805,8 +810,9 @@ ConfigManager.makeData = function() {
     return config;
 };
 
-<span id='ConfigManager-method-applyData'>/**
+<span id='ConfigManager-static-method-applyData'>/**
 </span> * @method applyData
+ * @static
  * applies a `config` object.
  * see ConfigManager.makeData for structure of `config`
  * @param {Object} config
@@ -820,9 +826,10 @@ ConfigManager.applyData = function(config) {
     this.seVolume = this.readVolume(config, 'seVolume');
 };
 
-<span id='ConfigManager-method-readFlag'>/**
+<span id='ConfigManager-static-method-readFlag'>/**
 </span> * @method readFlag
  * Reads a boolean flag from a `config` object.
+ * @static
  * @param {Object} config the `config` object to read from
  * @param {String} name the name of the flag
  * @return {Boolean}
@@ -831,9 +838,10 @@ ConfigManager.readFlag = function(config, name) {
     return !!config[name];
 };
 
-<span id='ConfigManager-method-readVolume'>/**
+<span id='ConfigManager-static-method-readVolume'>/**
 </span> * @method readVolume
  * Reads a volume setting from a `config` object.
+ * @static
  * @param {Object} config the `config` object to read from
  * @param {String} name the name of the flag
  * @return {Number} [0, 100]
@@ -855,6 +863,7 @@ ConfigManager.readVolume = function(config, name) {
 <span id='StorageManager-method-constructor'><span id='StorageManager'>/**
 </span></span> * The static class that manages storage for saving game data.
  * @class StorageManager
+ * @static
  * @singleton
  * @uses LZString
  * @uses fs
@@ -867,9 +876,10 @@ function StorageManager() {
     throw new Error('This is a static class');
 }
 
-<span id='StorageManager-method-save'>/**
+<span id='StorageManager-static-method-save'>/**
 </span> * @method save
  * Writes a savefile.
+ * @static
  * @param {Number} savefileId the index of the savefile
  * @param {String} json the data to save
  */
@@ -881,9 +891,10 @@ StorageManager.save = function(savefileId, json) {
     }
 };
 
-<span id='StorageManager-method-load'>/**
+<span id='StorageManager-static-method-load'>/**
 </span> * @method load
  * Loads a savefile. `true` on success
+ * @static
  * @param {Number} savefileId the index of the savefile
  * @return {Boolean} true on success
  */
@@ -895,9 +906,10 @@ StorageManager.load = function(savefileId) {
     }
 };
 
-<span id='StorageManager-method-exists'>/**
+<span id='StorageManager-static-method-exists'>/**
 </span> * @method exists
  * Check if a savefile exists.
+ * @static
  * @param {Number} savefileId the index of the savefile
  * @return {Boolean} true on success
  */
@@ -909,9 +921,10 @@ StorageManager.exists = function(savefileId) {
     }
 };
 
-<span id='StorageManager-method-remove'>/**
+<span id='StorageManager-static-method-remove'>/**
 </span> * @method remove
  * Remove a savefile.
+ * @static
  * @param {Number} savefileId the index of the savefile
  */
 StorageManager.remove = function(savefileId) {
@@ -922,9 +935,10 @@ StorageManager.remove = function(savefileId) {
     }
 };
 
-<span id='StorageManager-method-backup'>/**
+<span id='StorageManager-static-method-backup'>/**
 </span> * @method backup
  * Backup a save file, in case of corruption.
+ * @static
  * @param {Number} savefileId the index of the savefile
  */
 StorageManager.backup = function(savefileId) {
@@ -948,9 +962,10 @@ StorageManager.backup = function(savefileId) {
     }
 };
 
-<span id='StorageManager-method-backupExists'>/**
+<span id='StorageManager-static-method-backupExists'>/**
 </span> * @method backupExists
  * Check if a backup exists for a savefile.
+ * @static
  * @param {Number} savefileId the index of the savefile
  * @return {Boolean} true if there's a backup
  */
@@ -962,9 +977,10 @@ StorageManager.backupExists = function(savefileId) {
     }
 };
 
-<span id='StorageManager-method-cleanBackup'>/**
+<span id='StorageManager-static-method-cleanBackup'>/**
 </span> * @method cleanBackup
  * Remove a savefile backup.
+ * @static
  * @param {Number} savefileId the index of the savefile
  */
 StorageManager.cleanBackup = function(savefileId) {
@@ -981,9 +997,10 @@ StorageManager.cleanBackup = function(savefileId) {
 	}
 };
 
-<span id='StorageManager-method-restoreBackup'>/**
+<span id='StorageManager-static-method-restoreBackup'>/**
 </span> * @method restoreBackup
  * Restore a savefile from a backup.
+ * @static
  * @param {Number} savefileId the index of the savefile
  */
 StorageManager.restoreBackup = function(savefileId) {
@@ -1009,18 +1026,20 @@ StorageManager.restoreBackup = function(savefileId) {
     }
 };
 
-<span id='StorageManager-method-isLocalMode'>/**
+<span id='StorageManager-static-method-isLocalMode'>/**
 </span> * @method isLocalMode
  * Check if we're running locally or on the web.
+ * @static
  * @return {Boolean}
  */
 StorageManager.isLocalMode = function() {
     return Utils.isNwjs();
 };
 
-<span id='StorageManager-method-saveToLocalFile'>/**
+<span id='StorageManager-static-method-saveToLocalFile'>/**
 </span> * @method saveToLocalFile
  * Write a savefile locally.
+ * @static
  * @param {Number} savefileId the savefile index to use.
  * @param {String} json the savedata.
  */
@@ -1035,9 +1054,10 @@ StorageManager.saveToLocalFile = function(savefileId, json) {
     fs.writeFileSync(filePath, data);
 };
 
-<span id='StorageManager-method-loadFromLocalFile'>/**
+<span id='StorageManager-static-method-loadFromLocalFile'>/**
 </span> * @method loadFromLocalFile
  * Load a local savefile. Returns decompressed savedata.
+ * @static
  * @param {Number} savefileId the savefile index to use.
  * @return {String} decompressed savedata
  */
@@ -1051,9 +1071,10 @@ StorageManager.loadFromLocalFile = function(savefileId) {
     return LZString.decompressFromBase64(data);
 };
 
-<span id='StorageManager-method-loadFromLocalBackupFile'>/**
+<span id='StorageManager-static-method-loadFromLocalBackupFile'>/**
 </span> * @method loadFromLocalBackupFile
  * Load a local savefile backup. Returns decompressed savedata.
+ * @static
  * @param {Number} savefileId the savefile index to use.
  * @return {String} decompressed savedata
  */
@@ -1067,9 +1088,10 @@ StorageManager.loadFromLocalBackupFile = function(savefileId) {
     return LZString.decompressFromBase64(data);
 };
 
-<span id='StorageManager-method-localFileBackupExists'>/**
+<span id='StorageManager-static-method-localFileBackupExists'>/**
 </span> * @method localFileBackupExists
  * Check if a local savefile has a backup.
+ * @static
  * @param {Number} savefileId the savefile index to use.
  * @return {Boolean}
  */
@@ -1078,9 +1100,10 @@ StorageManager.localFileBackupExists = function(savefileId) {
     return fs.existsSync(this.localFilePath(savefileId) + &quot;.bak&quot;);
 };
 
-<span id='StorageManager-method-localFileExists'>/**
+<span id='StorageManager-static-method-localFileExists'>/**
 </span> * @method localFileExists
  * Check if a local savefile exists.
+ * @static
  * @param {Number} savefileId the savefile index to use.
  * @return {Boolean}
  */
@@ -1089,9 +1112,10 @@ StorageManager.localFileExists = function(savefileId) {
     return fs.existsSync(this.localFilePath(savefileId));
 };
 
-<span id='StorageManager-method-removeLocalFile'>/**
+<span id='StorageManager-static-method-removeLocalFile'>/**
 </span> * @method removeLocalFile
  * Remove a local savefile
+ * @static
  * @param {Number} savefileId the savefile index to use.
  */
 StorageManager.removeLocalFile = function(savefileId) {
@@ -1102,9 +1126,10 @@ StorageManager.removeLocalFile = function(savefileId) {
     }
 };
 
-<span id='StorageManager-method-saveToWebStorage'>/**
+<span id='StorageManager-static-method-saveToWebStorage'>/**
 </span> * @method saveToWebStorage
  * Write a savefile to web storage.
+ * @static
  * @param {Number} savefileId the savefile index to use.
  * @param {String} json savedata
  */
@@ -1114,9 +1139,10 @@ StorageManager.saveToWebStorage = function(savefileId, json) {
     localStorage.setItem(key, data);
 };
 
-<span id='StorageManager-method-loadFromWebStorage'>/**
+<span id='StorageManager-static-method-loadFromWebStorage'>/**
 </span> * @method loadFromWebStorage
  * Load a savefile from web storage. Returns decompressed savedata.
+ * @static
  * @param {Number} savefileId the savefile index to use.
  * @return {String} decompressed savedata
  */
@@ -1126,9 +1152,10 @@ StorageManager.loadFromWebStorage = function(savefileId) {
     return LZString.decompressFromBase64(data);
 };
 
-<span id='StorageManager-method-loadFromWebStorageBackup'>/**
+<span id='StorageManager-static-method-loadFromWebStorageBackup'>/**
 </span> * @method loadFromWebStorageBackup
  * Load a savefile backup from web storage. Returns decompressed savedata.
+ * @static
  * @param {Number} savefileId the savefile index to use.
  * @return {String} decompressed savedata
  */
@@ -1138,9 +1165,10 @@ StorageManager.loadFromWebStorageBackup = function(savefileId) {
     return LZString.decompressFromBase64(data);
 };
 
-<span id='StorageManager-method-webStorageBackupExists'>/**
+<span id='StorageManager-static-method-webStorageBackupExists'>/**
 </span> * @method webStorageBackupExists
  * Check if a web storage backup exists for a savefile.
+ * @static
  * @param {Number} savefileId the savefile index to use.
  * @return {Boolean}
  */
@@ -1149,9 +1177,10 @@ StorageManager.webStorageBackupExists = function(savefileId) {
     return !!localStorage.getItem(key);
 };
 
-<span id='StorageManager-method-webStorageExists'>/**
+<span id='StorageManager-static-method-webStorageExists'>/**
 </span> * @method webStorageExists
  * Check if a web storage savefile exists.
+ * @static
  * @param {Number} savefileId the savefile index to use.
  * @return {Boolean}
  */
@@ -1160,9 +1189,10 @@ StorageManager.webStorageExists = function(savefileId) {
     return !!localStorage.getItem(key);
 };
 
-<span id='StorageManager-method-removeWebStorage'>/**
+<span id='StorageManager-static-method-removeWebStorage'>/**
 </span> * @method removeWebStorage
  * Remove a savefile in web storage.
+ * @static
  * @param {Number} savefileId the savefile index to use.
  */
 StorageManager.removeWebStorage = function(savefileId) {
@@ -1170,9 +1200,10 @@ StorageManager.removeWebStorage = function(savefileId) {
     localStorage.removeItem(key);
 };
 
-<span id='StorageManager-method-localFileDirectoryPath'>/**
+<span id='StorageManager-static-method-localFileDirectoryPath'>/**
 </span> * @method localFileDirectoryPath
  * Get the savefile path.
+ * @static
  * @return {String} the path
  */
 StorageManager.localFileDirectoryPath = function() {
@@ -1182,9 +1213,10 @@ StorageManager.localFileDirectoryPath = function() {
     return path.join(base, 'save/');
 };
 
-<span id='StorageManager-method-localFilePath'>/**
+<span id='StorageManager-static-method-localFilePath'>/**
 </span> * @method localFilePath
  * Get the savefile path for a specific savefile.
+ * @static
  * @param {Number} savefileId the index of the savefile
  * @return {String} the path
  */
@@ -1200,9 +1232,10 @@ StorageManager.localFilePath = function(savefileId) {
     return this.localFileDirectoryPath() + name;
 };
 
-<span id='StorageManager-method-webStorageKey'>/**
+<span id='StorageManager-static-method-webStorageKey'>/**
 </span> * @method webStorageKey
  * Get the key for a specific savefile.
+ * @static
  * @param {Number} savefileId the index of the savefile
  * @return {String} the storage key
  */
@@ -1229,6 +1262,7 @@ StorageManager.webStorageKey = function(savefileId) {
  * @uses ImageCache
  * @uses RequestQueue
  * @singleton
+ * @static
  * @constructor should never be used
  *
  */
@@ -1236,41 +1270,47 @@ function ImageManager() {
     throw new Error('This is a static class');
 }
 
-<span id='ImageManager-property-cache'>/**
-</span> * @property cache
- * @type {CacheMap}
+<span id='ImageManager-static-property-cache'>/**
+</span> * @property {CacheMap} cache
+ * @static
  */
 ImageManager.cache = new CacheMap(ImageManager);
-<span id='ImageManager-property-_imageCache'>/**
-</span> * @property _imageCache
- * @type {ImageCache}
+<span id='ImageManager-static-property-_imageCache'>/**
+</span> * @property {ImageCache} _imageCache
+ * @static
+ * @private
  */
 ImageManager._imageCache = new ImageCache();
-<span id='ImageManager-property-_requestQueue'>/**
-</span> * @property _requestQueue
- * @type {RequestQueue}
+<span id='ImageManager-static-property-_requestQueue'>/**
+</span> * @property {RequestQueue} _requestQueue
+ * @static
+ * @private
  */
 ImageManager._requestQueue = new RequestQueue();
-<span id='ImageManager-property-_systemReservationId'>/**
-</span> * @property _systemReservationId
- * @type {Number}
+<span id='ImageManager-static-property-_systemReservationId'>/**
+</span> * @property {Number} _systemReservationId
+ * @static
+ * @private
  */
 ImageManager._systemReservationId = Utils.generateRuntimeId();
 
-<span id='ImageManager-method-_generateCacheKey'>/**
+<span id='ImageManager-static-method-_generateCacheKey'>/**
 </span> * @method _generateCacheKey
  * Generates the cache key for an image at a specific hue.
+ * @static
  * @param {String} path the image path
  * @param {Number} hue the desired hue
  * @return {String}
+ * @private
  */
 ImageManager._generateCacheKey = function(path, hue){
     return  path + ':' + hue;
 };
 
-<span id='ImageManager-method-loadAnimation'>/**
+<span id='ImageManager-static-method-loadAnimation'>/**
 </span> * @method loadAnimation
  * Loads an animation at a specified hue.
+ * @static
  * @param {String} filename the image file
  * @param {Number} hue the desired hue
  * @return {Bitmap}
@@ -1279,9 +1319,10 @@ ImageManager.loadAnimation = function(filename, hue) {
     return this.loadBitmap('img/animations/', filename, hue, true);
 };
 
-<span id='ImageManager-method-loadBattleback1'>/**
+<span id='ImageManager-static-method-loadBattleback1'>/**
 </span> * @method loadBattleback1
  * Loads a battleback at a specified hue.
+ * @static
  * @param {String} filename the image file
  * @param {Number} hue the desired hue
  * @return {Bitmap}
@@ -1290,9 +1331,10 @@ ImageManager.loadBattleback1 = function(filename, hue) {
     return this.loadBitmap('img/battlebacks1/', filename, hue, true);
 };
 
-<span id='ImageManager-method-loadBattleback2'>/**
+<span id='ImageManager-static-method-loadBattleback2'>/**
 </span> * @method loadBattleback2
  * Loads a battleback at a specified hue.
+ * @static
  * @param {String} filename the image file
  * @param {Number} hue the desired hue
  * @return {Bitmap}
@@ -1301,9 +1343,10 @@ ImageManager.loadBattleback2 = function(filename, hue) {
     return this.loadBitmap('img/battlebacks2/', filename, hue, true);
 };
 
-<span id='ImageManager-method-loadEnemy'>/**
+<span id='ImageManager-static-method-loadEnemy'>/**
 </span> * @method loadEnemy
  * Loads an enemy graphic at a specified hue.
+ * @static
  * @param {String} filename the image file
  * @param {Number} hue the desired hue
  * @return {Bitmap}
@@ -1312,9 +1355,10 @@ ImageManager.loadEnemy = function(filename, hue) {
     return this.loadBitmap('img/enemies/', filename, hue, true);
 };
 
-<span id='ImageManager-method-loadCharacter'>/**
+<span id='ImageManager-static-method-loadCharacter'>/**
 </span> * @method loadCharacter
  * Loads a character graphic at a specified hue.
+ * @static
  * @param {String} filename the image file
  * @param {Number} hue the desired hue
  * @return {Bitmap}
@@ -1323,9 +1367,10 @@ ImageManager.loadCharacter = function(filename, hue) {
     return this.loadBitmap('img/characters/', filename, hue, false);
 };
 
-<span id='ImageManager-method-loadFace'>/**
+<span id='ImageManager-static-method-loadFace'>/**
 </span> * @method loadFace
  * Loads a face at a specified hue.
+ * @static
  * @param {String} filename the image file
  * @param {Number} hue the desired hue
  * @return {Bitmap}
@@ -1334,9 +1379,10 @@ ImageManager.loadFace = function(filename, hue) {
     return this.loadBitmap('img/faces/', filename, hue, true);
 };
 
-<span id='ImageManager-method-loadParallax'>/**
+<span id='ImageManager-static-method-loadParallax'>/**
 </span> * @method loadParallax
  * Loads a parallax at a specified hue.
+ * @static
  * @param {String} filename the image file
  * @param {Number} hue the desired hue
  * @return {Bitmap}
@@ -1345,9 +1391,10 @@ ImageManager.loadParallax = function(filename, hue) {
     return this.loadBitmap('img/parallaxes/', filename, hue, true);
 };
 
-<span id='ImageManager-method-loadPicture'>/**
+<span id='ImageManager-static-method-loadPicture'>/**
 </span> * @method loadPicture
  * Loads a picture at a specified hue.
+ * @static
  * @param {String} filename the image file
  * @param {Number} hue the desired hue
  * @return {Bitmap}
@@ -1356,9 +1403,10 @@ ImageManager.loadPicture = function(filename, hue) {
     return this.loadBitmap('img/pictures/', filename, hue, true);
 };
 
-<span id='ImageManager-method-loadSvActor1'>/**
+<span id='ImageManager-static-method-loadSvActor1'>/**
 </span> * @method loadSvActor1
  * Loads an sv actor at a specified hue.
+ * @static
  * @param {String} filename the image file
  * @param {Number} hue the desired hue
  * @return {Bitmap}
@@ -1367,9 +1415,10 @@ ImageManager.loadSvActor = function(filename, hue) {
     return this.loadBitmap('img/sv_actors/', filename, hue, false);
 };
 
-<span id='ImageManager-method-loadSvEnemy'>/**
+<span id='ImageManager-static-method-loadSvEnemy'>/**
 </span> * @method loadSvEnemy
  * Loads an sv enemy at a specified hue.
+ * @static
  * @param {String} filename the image file
  * @param {Number} hue the desired hue
  * @return {Bitmap}
@@ -1378,9 +1427,10 @@ ImageManager.loadSvEnemy = function(filename, hue) {
     return this.loadBitmap('img/sv_enemies/', filename, hue, true);
 };
 
-<span id='ImageManager-method-loadSystem'>/**
+<span id='ImageManager-static-method-loadSystem'>/**
 </span> * @method loadSystem
  * Loads a system image at a specified hue.
+ * @static
  * @param {String} filename the image file
  * @param {Number} hue the desired hue
  * @return {Bitmap}
@@ -1389,9 +1439,10 @@ ImageManager.loadSystem = function(filename, hue) {
     return this.loadBitmap('img/system/', filename, hue, false);
 };
 
-<span id='ImageManager-method-loadTileset'>/**
+<span id='ImageManager-static-method-loadTileset'>/**
 </span> * @method loadTileset
  * Loads a tileset image at a specified hue.
+ * @static
  * @param {String} filename the image file
  * @param {Number} hue the desired hue
  * @return {Bitmap}
@@ -1400,9 +1451,10 @@ ImageManager.loadTileset = function(filename, hue) {
     return this.loadBitmap('img/tilesets/', filename, hue, false);
 };
 
-<span id='ImageManager-method-loadTitle1'>/**
+<span id='ImageManager-static-method-loadTitle1'>/**
 </span> * @method loadTitle1
  * Loads a title image at a specified hue.
+ * @static
  * @param {String} filename the image file
  * @param {Number} hue the desired hue
  * @return {Bitmap}
@@ -1411,9 +1463,10 @@ ImageManager.loadTitle1 = function(filename, hue) {
     return this.loadBitmap('img/titles1/', filename, hue, true);
 };
 
-<span id='ImageManager-method-loadTitle1'>/**
+<span id='ImageManager-static-method-loadTitle1'>/**
 </span> * @method loadTitle1
  * Loads a title image at a specified hue.
+ * @static
  * @param {String} filename the image file
  * @param {Number} hue the desired hue
  * @return {Bitmap}
@@ -1422,9 +1475,10 @@ ImageManager.loadTitle2 = function(filename, hue) {
     return this.loadBitmap('img/titles2/', filename, hue, true);
 };
 
-<span id='ImageManager-method-loadBitmap'>/**
+<span id='ImageManager-static-method-loadBitmap'>/**
 </span> * @method loadBitmap
  * Loads a Bitmap at a specified hue.
+ * @static
  * @param {String} folder the directory of images, ie 'img/titles1/'
  * @param {String} filename the image file
  * @param {Number} hue the desired hue
@@ -1442,9 +1496,10 @@ ImageManager.loadBitmap = function(folder, filename, hue, smooth) {
     }
 };
 
-<span id='ImageManager-method-loadEmptyBitmap'>/**
+<span id='ImageManager-static-method-loadEmptyBitmap'>/**
 </span> * @method loadEmptyBitmap
  * Loads an empty Bitmap as a placeholder.
+ * @static
  * @return {Bitmap}
  */
 ImageManager.loadEmptyBitmap = function() {
@@ -1458,10 +1513,11 @@ ImageManager.loadEmptyBitmap = function() {
     return empty;
 };
 
-<span id='ImageManager-method-loadNormalBitmap'>/**
+<span id='ImageManager-static-method-loadNormalBitmap'>/**
 </span> * @method loadNormalBitmap
  * Loads a Bitmap at a specified hue.
  * Checks ImageManager._imageCache for cached Bitmap before loading.
+ * @static
  * @param {String} path the combined path of the image file
  * @param {Number} hue the desired hue
  * @return {Bitmap}
@@ -1482,26 +1538,29 @@ ImageManager.loadNormalBitmap = function(path, hue) {
     return bitmap;
 };
 
-<span id='ImageManager-method-clear'>/**
+<span id='ImageManager-static-method-clear'>/**
 </span> * @method clear
  * Clears ImageManager._imageCache.
+ * @static
  */
 ImageManager.clear = function() {
     this._imageCache = new ImageCache();
 };
 
-<span id='ImageManager-method-isReady'>/**
+<span id='ImageManager-static-method-isReady'>/**
 </span> * @method isReady
  * Checks if ImageManager._imageCache is ready.
+ * @static
  */
 ImageManager.isReady = function() {
     return this._imageCache.isReady();
 };
 
-<span id='ImageManager-method-isObjectCharacter'>/**
+<span id='ImageManager-static-method-isObjectCharacter'>/**
 </span> * @method isObjectCharacter
  * Checks an image filename for '!',
  * meaning that it is a character sheet.
+ * @static
  * @param {String} filename the image file
  */
 ImageManager.isObjectCharacter = function(filename) {
@@ -1509,10 +1568,11 @@ ImageManager.isObjectCharacter = function(filename) {
     return sign &amp;&amp; sign[0].contains('!');
 };
 
-<span id='ImageManager-method-isBigCharacter'>/**
+<span id='ImageManager-static-method-isBigCharacter'>/**
 </span> * @method isBigCharacter
  * Checks an image filename for '$',
  * meaning that it is a big character sheet.
+ * @static
  * @param {String} filename the image file
  */
 ImageManager.isBigCharacter = function(filename) {
@@ -1520,19 +1580,21 @@ ImageManager.isBigCharacter = function(filename) {
     return sign &amp;&amp; sign[0].contains('$');
 };
 
-<span id='ImageManager-method-isZeroParallax'>/**
+<span id='ImageManager-static-method-isZeroParallax'>/**
 </span> * @method isZeroParallax
  * Checks if an image name begins with '!',
  * meaning that it does not have parallax.
+ * @static
  * @param {String} filename the image file
  */
 ImageManager.isZeroParallax = function(filename) {
     return filename.charAt(0) === '!';
 };
 
-<span id='ImageManager-method-reserveAnimation'>/**
+<span id='ImageManager-static-method-reserveAnimation'>/**
 </span> * @method reserveAnimation
  * Loads a Bitmap.
+ * @static
  * @param {String} filename the image file
  * @param {Number} hue the desired hue
  * @param {Number} reservationId
@@ -1542,9 +1604,10 @@ ImageManager.reserveAnimation = function(filename, hue, reservationId) {
     return this.reserveBitmap('img/animations/', filename, hue, true, reservationId);
 };
 
-<span id='ImageManager-method-reserveBattleback1'>/**
+<span id='ImageManager-static-method-reserveBattleback1'>/**
 </span> * @method reserveBattleback1
  * Loads a Bitmap.
+ * @static
  * @param {String} filename the image file
  * @param {Number} hue the desired hue
  * @param {Number} reservationId
@@ -1554,9 +1617,10 @@ ImageManager.reserveBattleback1 = function(filename, hue, reservationId) {
     return this.reserveBitmap('img/battlebacks1/', filename, hue, true, reservationId);
 };
 
-<span id='ImageManager-method-reserveBattleback2'>/**
+<span id='ImageManager-static-method-reserveBattleback2'>/**
 </span> * @method reserveBattleback2
  * Loads a Bitmap.
+ * @static
  * @param {String} filename the image file
  * @param {Number} hue the desired hue
  * @param {Number} reservationId
@@ -1566,9 +1630,10 @@ ImageManager.reserveBattleback2 = function(filename, hue, reservationId) {
     return this.reserveBitmap('img/battlebacks2/', filename, hue, true, reservationId);
 };
 
-<span id='ImageManager-method-reserveEnemy'>/**
+<span id='ImageManager-static-method-reserveEnemy'>/**
 </span> * @method reserveEnemy
  * Loads a Bitmap.
+ * @static
  * @param {String} filename the image file
  * @param {Number} hue the desired hue
  * @param {Number} reservationId
@@ -1578,9 +1643,10 @@ ImageManager.reserveEnemy = function(filename, hue, reservationId) {
     return this.reserveBitmap('img/enemies/', filename, hue, true, reservationId);
 };
 
-<span id='ImageManager-method-reserveCharacter'>/**
+<span id='ImageManager-static-method-reserveCharacter'>/**
 </span> * @method reserveCharacter
  * Loads a Bitmap.
+ * @static
  * @param {String} filename the image file
  * @param {Number} hue the desired hue
  * @param {Number} reservationId
@@ -1590,9 +1656,10 @@ ImageManager.reserveCharacter = function(filename, hue, reservationId) {
     return this.reserveBitmap('img/characters/', filename, hue, false, reservationId);
 };
 
-<span id='ImageManager-method-reserveFace'>/**
+<span id='ImageManager-static-method-reserveFace'>/**
 </span> * @method reserveFace
  * Loads a Bitmap.
+ * @static
  * @param {String} filename the image file
  * @param {Number} hue the desired hue
  * @param {Number} reservationId
@@ -1602,9 +1669,10 @@ ImageManager.reserveFace = function(filename, hue, reservationId) {
     return this.reserveBitmap('img/faces/', filename, hue, true, reservationId);
 };
 
-<span id='ImageManager-method-reserveParallax'>/**
+<span id='ImageManager-static-method-reserveParallax'>/**
 </span> * @method reserveParallax
  * Loads a Bitmap.
+ * @static
  * @param {String} filename the image file
  * @param {Number} hue the desired hue
  * @param {Number} reservationId
@@ -1614,9 +1682,10 @@ ImageManager.reserveParallax = function(filename, hue, reservationId) {
     return this.reserveBitmap('img/parallaxes/', filename, hue, true, reservationId);
 };
 
-<span id='ImageManager-method-reservePicture'>/**
+<span id='ImageManager-static-method-reservePicture'>/**
 </span> * @method reservePicture
  * Loads a Bitmap.
+ * @static
  * @param {String} filename the image file
  * @param {Number} hue the desired hue
  * @param {Number} reservationId
@@ -1626,9 +1695,10 @@ ImageManager.reservePicture = function(filename, hue, reservationId) {
     return this.reserveBitmap('img/pictures/', filename, hue, true, reservationId);
 };
 
-<span id='ImageManager-method-reserveSvActor'>/**
+<span id='ImageManager-static-method-reserveSvActor'>/**
 </span> * @method reserveSvActor
  * Loads a Bitmap.
+ * @static
  * @param {String} filename the image file
  * @param {Number} hue the desired hue
  * @param {Number} reservationId
@@ -1638,9 +1708,10 @@ ImageManager.reserveSvActor = function(filename, hue, reservationId) {
     return this.reserveBitmap('img/sv_actors/', filename, hue, false, reservationId);
 };
 
-<span id='ImageManager-method-reserveSvEnemy'>/**
+<span id='ImageManager-static-method-reserveSvEnemy'>/**
 </span> * @method reserveSvEnemy
  * Loads a Bitmap.
+ * @static
  * @param {String} filename the image file
  * @param {Number} hue the desired hue
  * @param {Number} reservationId
@@ -1650,9 +1721,10 @@ ImageManager.reserveSvEnemy = function(filename, hue, reservationId) {
     return this.reserveBitmap('img/sv_enemies/', filename, hue, true, reservationId);
 };
 
-<span id='ImageManager-method-reserveSystem'>/**
+<span id='ImageManager-static-method-reserveSystem'>/**
 </span> * @method reserveSystem
  * Loads a Bitmap.
+ * @static
  * @param {String} filename the image file
  * @param {Number} hue the desired hue
  * @param {Number} reservationId
@@ -1662,9 +1734,10 @@ ImageManager.reserveSystem = function(filename, hue, reservationId) {
     return this.reserveBitmap('img/system/', filename, hue, false, reservationId || this._systemReservationId);
 };
 
-<span id='ImageManager-method-reserveTileset'>/**
+<span id='ImageManager-static-method-reserveTileset'>/**
 </span> * @method reserveTileset
  * Loads a Bitmap.
+ * @static
  * @param {String} filename the image file
  * @param {Number} hue the desired hue
  * @param {Number} reservationId
@@ -1674,9 +1747,10 @@ ImageManager.reserveTileset = function(filename, hue, reservationId) {
     return this.reserveBitmap('img/tilesets/', filename, hue, false, reservationId);
 };
 
-<span id='ImageManager-method-reserveTitle1'>/**
+<span id='ImageManager-static-method-reserveTitle1'>/**
 </span> * @method reserveTitle1
  * Loads a Bitmap.
+ * @static
  * @param {String} filename the image file
  * @param {Number} hue the desired hue
  * @param {Number} reservationId
@@ -1686,9 +1760,10 @@ ImageManager.reserveTitle1 = function(filename, hue, reservationId) {
     return this.reserveBitmap('img/titles1/', filename, hue, true, reservationId);
 };
 
-<span id='ImageManager-method-reserveTitle2'>/**
+<span id='ImageManager-static-method-reserveTitle2'>/**
 </span> * @method reserveTitle2
  * Loads a Bitmap.
+ * @static
  * @param {String} filename the image file
  * @param {Number} hue the desired hue
  * @param {Number} reservationId
@@ -1698,9 +1773,10 @@ ImageManager.reserveTitle2 = function(filename, hue, reservationId) {
     return this.reserveBitmap('img/titles2/', filename, hue, true, reservationId);
 };
 
-<span id='ImageManager-method-reserveBitmap'>/**
+<span id='ImageManager-static-method-reserveBitmap'>/**
 </span> * @method reserveBitmap
  * Loads a Bitmap and reserves it in ImageManager._imageCache
+ * @static
  * @param {String} folder the directory of images
  * @param {String} filename the image file
  * @param {Number} hue the desired hue
@@ -1719,9 +1795,10 @@ ImageManager.reserveBitmap = function(folder, filename, hue, smooth, reservation
     }
 };
 
-<span id='ImageManager-method-reserveNormalBitmap'>/**
+<span id='ImageManager-static-method-reserveNormalBitmap'>/**
 </span> * @method reserveNormalBitmap
  * Reserve a Bitmap in ImageManager._imageCache
+ * @static
  * @param {String} path the combined path of the image file
  * @param {Number} hue the desired hue
  * @param {Number} reservationId
@@ -1734,27 +1811,30 @@ ImageManager.reserveNormalBitmap = function(path, hue, reservationId){
     return bitmap;
 };
 
-<span id='ImageManager-method-releaseReservation'>/**
+<span id='ImageManager-static-method-releaseReservation'>/**
 </span> * @method releaseReservation
  * Release an image's reservation from ImageManager._imageCache.
+ * @static
  * @param {Number} reservationId
  */
 ImageManager.releaseReservation = function(reservationId){
     this._imageCache.releaseReservation(reservationId);
 };
 
-<span id='ImageManager-method-setDefaultReservationId'>/**
+<span id='ImageManager-static-method-setDefaultReservationId'>/**
 </span> * @method setDefaultReservationId
  * Set the default reservationId
+ * @static
  * @param {Number} reservationId
  */
 ImageManager.setDefaultReservationId = function(reservationId){
     this._defaultReservationId = reservationId;
 };
 
-<span id='ImageManager-method-requestAnimation'>/**
+<span id='ImageManager-static-method-requestAnimation'>/**
 </span> * @method requestAnimation
  * Ask for an animation image.
+ * @static
  * @param {String} filename the image file
  * @param {Number} hue the desired hue
  * @return {Bitmap} the loaded Bitmap
@@ -1763,9 +1843,10 @@ ImageManager.requestAnimation = function(filename, hue) {
     return this.requestBitmap('img/animations/', filename, hue, true);
 };
 
-<span id='ImageManager-method-requestBattleback1'>/**
+<span id='ImageManager-static-method-requestBattleback1'>/**
 </span> * @method requestBattleback1
  * Ask for a battleback image.
+ * @static
  * @param {String} filename the image file
  * @param {Number} hue the desired hue
  * @return {Bitmap} the loaded Bitmap
@@ -1774,9 +1855,10 @@ ImageManager.requestBattleback1 = function(filename, hue) {
     return this.requestBitmap('img/battlebacks1/', filename, hue, true);
 };
 
-<span id='ImageManager-method-requestBattleback2'>/**
+<span id='ImageManager-static-method-requestBattleback2'>/**
 </span> * @method requestBattleback2
  * Ask for a battleback image.
+ * @static
  * @param {String} filename the image file
  * @param {Number} hue the desired hue
  * @return {Bitmap} the loaded Bitmap
@@ -1785,9 +1867,10 @@ ImageManager.requestBattleback2 = function(filename, hue) {
     return this.requestBitmap('img/battlebacks2/', filename, hue, true);
 };
 
-<span id='ImageManager-method-requestEnemy'>/**
+<span id='ImageManager-static-method-requestEnemy'>/**
 </span> * @method requestEnemy
  * Ask for an enemy image.
+ * @static
  * @param {String} filename the image file
  * @param {Number} hue the desired hue
  * @return {Bitmap} the loaded Bitmap
@@ -1796,9 +1879,10 @@ ImageManager.requestEnemy = function(filename, hue) {
     return this.requestBitmap('img/enemies/', filename, hue, true);
 };
 
-<span id='ImageManager-method-requestCharacter'>/**
+<span id='ImageManager-static-method-requestCharacter'>/**
 </span> * @method requestCharacter
  * Ask for a character image.
+ * @static
  * @param {String} filename the image file
  * @param {Number} hue the desired hue
  * @return {Bitmap} the loaded Bitmap
@@ -1807,9 +1891,10 @@ ImageManager.requestCharacter = function(filename, hue) {
     return this.requestBitmap('img/characters/', filename, hue, false);
 };
 
-<span id='ImageManager-method-requestFace'>/**
+<span id='ImageManager-static-method-requestFace'>/**
 </span> * @method requestFace
  * Ask for a face image.
+ * @static
  * @param {String} filename the image file
  * @param {Number} hue the desired hue
  * @return {Bitmap} the loaded Bitmap
@@ -1818,9 +1903,10 @@ ImageManager.requestFace = function(filename, hue) {
     return this.requestBitmap('img/faces/', filename, hue, true);
 };
 
-<span id='ImageManager-method-requestParallax'>/**
+<span id='ImageManager-static-method-requestParallax'>/**
 </span> * @method requestParallax
  * Ask for a parallax image.
+ * @static
  * @param {String} filename the image file
  * @param {Number} hue the desired hue
  * @return {Bitmap} the loaded Bitmap
@@ -1829,9 +1915,10 @@ ImageManager.requestParallax = function(filename, hue) {
     return this.requestBitmap('img/parallaxes/', filename, hue, true);
 };
 
-<span id='ImageManager-method-requestPicture'>/**
+<span id='ImageManager-static-method-requestPicture'>/**
 </span> * @method requestPicture
  * Ask for a picture image.
+ * @static
  * @param {String} filename the image file
  * @param {Number} hue the desired hue
  * @return {Bitmap} the loaded Bitmap
@@ -1841,9 +1928,10 @@ ImageManager.requestPicture = function(filename, hue) {
 };
 
 
-<span id='ImageManager-method-requestSvActor'>/**
+<span id='ImageManager-static-method-requestSvActor'>/**
 </span> * @method requestSvActor
  * Ask for an sv actor image.
+ * @static
  * @param {String} filename the image file
  * @param {Number} hue the desired hue
  * @return {Bitmap} the loaded Bitmap
@@ -1852,9 +1940,10 @@ ImageManager.requestSvActor = function(filename, hue) {
     return this.requestBitmap('img/sv_actors/', filename, hue, false);
 };
 
-<span id='ImageManager-method-requestSvEnemy'>/**
+<span id='ImageManager-static-method-requestSvEnemy'>/**
 </span> * @method requestSvEnemy
  * Ask for an sv enemy image.
+ * @static
  * @param {String} filename the image file
  * @param {Number} hue the desired hue
  * @return {Bitmap} the loaded Bitmap
@@ -1863,9 +1952,10 @@ ImageManager.requestSvEnemy = function(filename, hue) {
     return this.requestBitmap('img/sv_enemies/', filename, hue, true);
 };
 
-<span id='ImageManager-method-requestSystem'>/**
+<span id='ImageManager-static-method-requestSystem'>/**
 </span> * @method requestSystem
  * Ask for a system image.
+ * @static
  * @param {String} filename the image file
  * @param {Number} hue the desired hue
  * @return {Bitmap} the loaded Bitmap
@@ -1874,9 +1964,10 @@ ImageManager.requestSystem = function(filename, hue) {
     return this.requestBitmap('img/system/', filename, hue, false);
 };
 
-<span id='ImageManager-method-requestTileset'>/**
+<span id='ImageManager-static-method-requestTileset'>/**
 </span> * @method requestTileset
  * Ask for a tileset image.
+ * @static
  * @param {String} filename the image file
  * @param {Number} hue the desired hue
  * @return {Bitmap} the loaded Bitmap
@@ -1885,9 +1976,10 @@ ImageManager.requestTileset = function(filename, hue) {
     return this.requestBitmap('img/tilesets/', filename, hue, false);
 };
 
-<span id='ImageManager-method-requestTitle1'>/**
+<span id='ImageManager-static-method-requestTitle1'>/**
 </span> * @method requestTitle1
  * Ask for a title image.
+ * @static
  * @param {String} filename the image file
  * @param {Number} hue the desired hue
  * @return {Bitmap} the loaded Bitmap
@@ -1896,9 +1988,10 @@ ImageManager.requestTitle1 = function(filename, hue) {
     return this.requestBitmap('img/titles1/', filename, hue, true);
 };
 
-<span id='ImageManager-method-requestTitle2'>/**
+<span id='ImageManager-static-method-requestTitle2'>/**
 </span> * @method requestTitle2
  * Ask for a title image.
+ * @static
  * @param {String} filename the image file
  * @param {Number} hue the desired hue
  * @return {Bitmap} the loaded Bitmap
@@ -1907,9 +2000,10 @@ ImageManager.requestTitle2 = function(filename, hue) {
     return this.requestBitmap('img/titles2/', filename, hue, true);
 };
 
-<span id='ImageManager-method-requestBitmap'>/**
+<span id='ImageManager-static-method-requestBitmap'>/**
 </span> * @method requestBitmap
  * Request a Bitmap to be loaded.
+ * @static
  * @param {String} folder the directory of images
  * @param {String} filename the image file
  * @param {Number} hue the desired hue
@@ -1927,10 +2021,11 @@ ImageManager.requestBitmap = function(folder, filename, hue, smooth) {
     }
 };
 
-<span id='ImageManager-method-requestNormalBitmap'>/**
+<span id='ImageManager-static-method-requestNormalBitmap'>/**
 </span> * @method requestNormalBitmap
  * Request a Bitmap to be loaded.
  * An image already cached will have its priority escalated.
+ * @static
  * @param {String} path the combined path of the image file
  * @param {Number} hue the desired hue
  * @return {Bitmap} the loaded Bitmap
@@ -1952,17 +2047,19 @@ ImageManager.requestNormalBitmap = function(path, hue){
     return bitmap;
 };
 
-<span id='ImageManager-method-update'>/**
+<span id='ImageManager-static-method-update'>/**
 </span> * @method update
  * Updates ImageManager._requestQueue
+ * @static
  */
 ImageManager.update = function(){
     this._requestQueue.update();
 };
 
-<span id='ImageManager-method-clearRequest'>/**
+<span id='ImageManager-static-method-clearRequest'>/**
 </span> * @method clearRequest
  * Clears ImageManager._requestQueue
+ * @static
  */
 ImageManager.clearRequest = function(){
     this._requestQueue.clear();
@@ -2009,6 +2106,7 @@ ImageManager.clearRequest = function(){
  * @uses WebAudio
  * @uses Html5Audio
  *
+ * @static
  * @singleton
  * @constructor should never be used
  */
@@ -2016,72 +2114,101 @@ function AudioManager() {
     throw new Error('This is a static class');
 }
 
-<span id='AudioManager-property-_masterVolume'>/**
+<span id='AudioManager-static-property-_masterVolume'>/**
 </span> * @property {Number} _masterVolume Range: [0.0,1.0]
+ * @static
+ * @private
  */
 AudioManager._masterVolume   = 1;   // (min: 0, max: 1)
-<span id='AudioManager-property-_bgmVolume'>/**
-</span> * @property _bgmVolume
- * Range: [0,100]
- * @type Number
+<span id='AudioManager-static-property-_bgmVolume'>/**
+</span> * @property {Number} _bgmVolume Range: [0,100]
+ * @static
+ * @private
  */
 AudioManager._bgmVolume      = 100;
-<span id='AudioManager-property-_bgsVolume'>/**
+<span id='AudioManager-static-property-_bgsVolume'>/**
 </span> * @property {Number} _bgsVolume Range: [0,100]
+ * @static
+ * @private
  */
 AudioManager._bgsVolume      = 100;
-<span id='AudioManager-property-_meVolume'>/**
+<span id='AudioManager-static-property-_meVolume'>/**
 </span> * @property {Number} _meVolume Range: [0,100]
+ * @static
+ * @private
  */
 AudioManager._meVolume       = 100;
-<span id='AudioManager-property-_seVolume'>/**
+<span id='AudioManager-static-property-_seVolume'>/**
 </span> * @property {Number} _seVolume Range: [0,100]
+ * @static
+ * @private
  */
 AudioManager._seVolume       = 100;
-<span id='AudioManager-property-_currentBgm'>/**
+<span id='AudioManager-static-property-_currentBgm'>/**
 </span> * @property {sound} _currentBgm
+ * @static
+ * @private
  */
 AudioManager._currentBgm     = null;
-<span id='AudioManager-property-_currentBgs'>/**
+<span id='AudioManager-static-property-_currentBgs'>/**
 </span> * @property {sound} _currentBgs
+ * @static
+ * @private
  */
 AudioManager._currentBgs     = null;
-<span id='AudioManager-property-_bgmBuffer'>/**
+<span id='AudioManager-static-property-_bgmBuffer'>/**
 </span> * @property {WebAudio|Html5Audio} _bgmBuffer
+ * @static
+ * @private
  */
 AudioManager._bgmBuffer      = null;
-<span id='AudioManager-property-_bgsBuffer'>/**
+<span id='AudioManager-static-property-_bgsBuffer'>/**
 </span> * @property {WebAudio|Html5Audio} _bgsBuffer
+ * @static
+ * @private
  */
 AudioManager._bgsBuffer      = null;
-<span id='AudioManager-property-_meBuffer'>/**
+<span id='AudioManager-static-property-_meBuffer'>/**
 </span> * @property {WebAudio|Html5Audio} _meBuffer
+ * @static
+ * @private
  */
 AudioManager._meBuffer       = null;
-<span id='AudioManager-property-_seBuffers'>/**
+<span id='AudioManager-static-property-_seBuffers'>/**
 </span> * @property {WebAudio[]|Html5Audio[]}_seBuffers
+ * @static
+ * @private
  */
 AudioManager._seBuffers      = [];
-<span id='AudioManager-property-_staticBuffers'>/**
+<span id='AudioManager-static-property-_staticBuffers'>/**
 </span> * @property {WebAudio[]|Html5Audio[]} _staticBuffers
+ * @static
+ * @private
  */
 AudioManager._staticBuffers  = [];
-<span id='AudioManager-property-_replayFadeTime'>/**
+<span id='AudioManager-static-property-_replayFadeTime'>/**
 </span> * @property {Number} _replayFadeTime
+ * @static
+ * @private
  */
 AudioManager._replayFadeTime = 0.5;
-<span id='AudioManager-property-_path'>/**
+<span id='AudioManager-static-property-_path'>/**
 </span> * @property {String} _path
  * the path to your project's audio/ directory
+ * @static
+ * @private
  */
 AudioManager._path           = 'audio/';
-<span id='AudioManager-property-_blobUrl'>/**
+<span id='AudioManager-static-property-_blobUrl'>/**
 </span> * @property {String} _blobUrl
+ * @static
+ * @private
  */
 AudioManager._blobUrl        = null;
 
-<span id='AudioManager-property-masterVolume'>/**
+<span id='AudioManager-static-property-masterVolume'>/**
 </span> * @property {Number} masterVolume Range: [0.0,1.0]
+ * @static
  */
 Object.defineProperty(AudioManager, 'masterVolume', {
     get: function() {
@@ -2095,8 +2222,9 @@ Object.defineProperty(AudioManager, 'masterVolume', {
     configurable: true
 });
 
-<span id='AudioManager-property-bgmVolume'>/**
+<span id='AudioManager-static-property-bgmVolume'>/**
 </span> * @property {Number} bgmVolume Range: [0,100]
+ * @static
  */
 Object.defineProperty(AudioManager, 'bgmVolume', {
     get: function() {
@@ -2109,8 +2237,9 @@ Object.defineProperty(AudioManager, 'bgmVolume', {
     configurable: true
 });
 
-<span id='AudioManager-property-bgsVolume'>/**
+<span id='AudioManager-static-property-bgsVolume'>/**
 </span> * @property {Number} bgsVolume Range: [0,100]
+ * @static
  */
 Object.defineProperty(AudioManager, 'bgsVolume', {
     get: function() {
@@ -2123,8 +2252,9 @@ Object.defineProperty(AudioManager, 'bgsVolume', {
     configurable: true
 });
 
-<span id='AudioManager-property-meVolume'>/**
+<span id='AudioManager-static-property-meVolume'>/**
 </span> * @property {Number} meVolume Range: [0,100]
+ * @static
  */
 Object.defineProperty(AudioManager, 'meVolume', {
     get: function() {
@@ -2137,8 +2267,9 @@ Object.defineProperty(AudioManager, 'meVolume', {
     configurable: true
 });
 
-<span id='AudioManager-property-seVolume'>/**
+<span id='AudioManager-static-property-seVolume'>/**
 </span> * @property {Number} seVolume Range: [0,100]
+ * @static
  */
 Object.defineProperty(AudioManager, 'seVolume', {
     get: function() {
@@ -2150,9 +2281,10 @@ Object.defineProperty(AudioManager, 'seVolume', {
     configurable: true
 });
 
-<span id='AudioManager-method-playBgm'>/**
+<span id='AudioManager-static-method-playBgm'>/**
 </span> * @method playBgm
  * Play a BGM
+ * @static
  * @param {sound} bgm the bgm you want to play
  * @param {Number} pos the position to play from, in seconds
  */
@@ -2177,9 +2309,10 @@ AudioManager.playBgm = function(bgm, pos) {
     this.updateCurrentBgm(bgm, pos);
 };
 
-<span id='AudioManager-method-playEncryptedBgm'>/**
+<span id='AudioManager-static-method-playEncryptedBgm'>/**
 </span> * @method playEncryptedBgm
  * Play an encrypted BGM
+ * @static
  * @param {sound} bgm the bgm you want to play
  * @param {Number} pos the position to play from, in seconds
  */
@@ -2190,10 +2323,11 @@ AudioManager.playEncryptedBgm = function(bgm, pos) {
     Decrypter.decryptHTML5Audio(url, bgm, pos);
 };
 
-<span id='AudioManager-method-createDecryptBuffer'>/**
+<span id='AudioManager-static-method-createDecryptBuffer'>/**
 </span> * @method createDecryptBuffer
  * Creates a buffer for BGM playback.
  * Plays the BGM if no ME is playing.
+ * @static
  * @param {String} url the url from AudioManager._blobUrl
  * @param {sound} bgm the BGM to play
  * @param {Number} pos the position to play from, in seconds
@@ -2208,10 +2342,11 @@ AudioManager.createDecryptBuffer = function(url, bgm, pos){
     this.updateCurrentBgm(bgm, pos);
 };
 
-<span id='AudioManager-method-replayBgm'>/**
+<span id='AudioManager-static-method-replayBgm'>/**
 </span> * @method replayBgm
  * Update the current BGM if it was passed in,
  * else fade into the new BGM.
+ * @static
  * @param {sound} bgm the BGM to replay
  */
 AudioManager.replayBgm = function(bgm) {
@@ -2225,9 +2360,10 @@ AudioManager.replayBgm = function(bgm) {
     }
 };
 
-<span id='AudioManager-method-isCurrentBgm'>/**
+<span id='AudioManager-static-method-isCurrentBgm'>/**
 </span> * @method isCurrentBgm
  * Check if a specified BGM is the current one.
+ * @static
  * @param {sound} bgm the BGM to check
  * @return {Boolean}
  */
@@ -2236,18 +2372,20 @@ AudioManager.isCurrentBgm = function(bgm) {
             this._currentBgm.name === bgm.name);
 };
 
-<span id='AudioManager-method-updateBgmParameters'>/**
+<span id='AudioManager-static-method-updateBgmParameters'>/**
 </span> * @method updateBgmParameters
  * Update AudioManager._bgmBuffer with the BGM given.
+ * @static
  * @param {sound} bgm the BGM to use
  */
 AudioManager.updateBgmParameters = function(bgm) {
     this.updateBufferParameters(this._bgmBuffer, this._bgmVolume, bgm);
 };
 
-<span id='AudioManager-method-updateCurrentBgm'>/**
+<span id='AudioManager-static-method-updateCurrentBgm'>/**
 </span> * @method updateCurrentBgm
  * Update AudioManager._currentBgm to the new bgm.
+ * @static
  * @param {sound} bgm the BGM to use
  * @param {Number} pos the position to play from, in seconds
  */
@@ -2261,9 +2399,10 @@ AudioManager.updateCurrentBgm = function(bgm, pos) {
     };
 };
 
-<span id='AudioManager-method-stopBgm'>/**
+<span id='AudioManager-static-method-stopBgm'>/**
 </span> * @method stopBgm
  * Stops and clears AudioManager._bgmBuffer
+ * @static
  */
 AudioManager.stopBgm = function() {
     if (this._bgmBuffer) {
@@ -2273,9 +2412,10 @@ AudioManager.stopBgm = function() {
     }
 };
 
-<span id='AudioManager-method-fadeOutBgm'>/**
+<span id='AudioManager-static-method-fadeOutBgm'>/**
 </span> * @method fadeOutBgm
  * Fade out the current BGM.
+ * @static
  * @param {Number} duration how long to fade out, in seconds
  */
 AudioManager.fadeOutBgm = function(duration) {
@@ -2285,9 +2425,10 @@ AudioManager.fadeOutBgm = function(duration) {
     }
 };
 
-<span id='AudioManager-method-fadeInBgm'>/**
+<span id='AudioManager-static-method-fadeInBgm'>/**
 </span> * @method fadeInBgm
  * Fade in the current BGM.
+ * @static
  * @param {Number} duration how long to fade out, in seconds
  */
 AudioManager.fadeInBgm = function(duration) {
@@ -2296,9 +2437,10 @@ AudioManager.fadeInBgm = function(duration) {
     }
 };
 
-<span id='AudioManager-method-playBgs'>/**
+<span id='AudioManager-static-method-playBgs'>/**
 </span> * @method playBgs
  * Play a BGS.
+ * @static
  * @param {sound} bgs the BGS to play
  * @param {Number} pos the position to play from, in seconds
  */
@@ -2316,9 +2458,10 @@ AudioManager.playBgs = function(bgs, pos) {
     this.updateCurrentBgs(bgs, pos);
 };
 
-<span id='AudioManager-method-replayBgs'>/**
+<span id='AudioManager-static-method-replayBgs'>/**
 </span> * @method replayBgs
  * Replay a BGS.
+ * @static
  * @param {sound} bgs the BGS to replay
  */
 AudioManager.replayBgs = function(bgs) {
@@ -2332,9 +2475,10 @@ AudioManager.replayBgs = function(bgs) {
     }
 };
 
-<span id='AudioManager-method-isCurrentBgs'>/**
+<span id='AudioManager-static-method-isCurrentBgs'>/**
 </span> * @method isCurrentBgs
  * Check if a BGS is the current one
+ * @static
  * @param {sound} bgs the BGS to check
  * @return {Boolean}
  */
@@ -2343,18 +2487,20 @@ AudioManager.isCurrentBgs = function(bgs) {
             this._currentBgs.name === bgs.name);
 };
 
-<span id='AudioManager-method-updateBgsParameters'>/**
+<span id='AudioManager-static-method-updateBgsParameters'>/**
 </span> * @method updateBgsParameters
  * Update AudioManager._bgsBuffer with a BGS object
+ * @static
  * @param {sound} bgs the BGS to use
  */
 AudioManager.updateBgsParameters = function(bgs) {
     this.updateBufferParameters(this._bgsBuffer, this._bgsVolume, bgs);
 };
 
-<span id='AudioManager-method-updateCurrentBgs'>/**
+<span id='AudioManager-static-method-updateCurrentBgs'>/**
 </span> * @method updateCurrentBgs
  * Update AudioManager._currentBgm with a BGS object
+ * @static
  * @param {sound} bgs the BGS to use
  * @param {Number} pos the position to play from, in seconds
  */
@@ -2368,9 +2514,10 @@ AudioManager.updateCurrentBgs = function(bgs, pos) {
     };
 };
 
-<span id='AudioManager-method-stopBgs'>/**
+<span id='AudioManager-static-method-stopBgs'>/**
 </span> * @method stopBgs
  * Stop the current BGS and clear AudioManager._bgsBuffer
+ * @static
  */
 AudioManager.stopBgs = function() {
     if (this._bgsBuffer) {
@@ -2380,9 +2527,10 @@ AudioManager.stopBgs = function() {
     }
 };
 
-<span id='AudioManager-method-fadeOutBgs'>/**
+<span id='AudioManager-static-method-fadeOutBgs'>/**
 </span> * @method fadeOutBgs
  * Fade out the current BGS
+ * @static
  * @param {Number} duration the fade duration in seconds
  */
 AudioManager.fadeOutBgs = function(duration) {
@@ -2392,9 +2540,10 @@ AudioManager.fadeOutBgs = function(duration) {
     }
 };
 
-<span id='AudioManager-method-fadeInBgs'>/**
+<span id='AudioManager-static-method-fadeInBgs'>/**
 </span> * @method fadeInBgs
  * Fade in the current BGS.
+ * @static
  * @param {Number} duration the fade in duration in seconds
  */
 AudioManager.fadeInBgs = function(duration) {
@@ -2403,9 +2552,10 @@ AudioManager.fadeInBgs = function(duration) {
     }
 };
 
-<span id='AudioManager-method-playMe'>/**
+<span id='AudioManager-static-method-playMe'>/**
 </span> * @method playMe
  * Stops the current ME. Pauses the BGM. Plays the new ME.
+ * @static
  * @param {sound} me the ME to play
  */
 AudioManager.playMe = function(me) {
@@ -2422,18 +2572,20 @@ AudioManager.playMe = function(me) {
     }
 };
 
-<span id='AudioManager-method-updateMeParameters'>/**
+<span id='AudioManager-static-method-updateMeParameters'>/**
 </span> * @method updateMeParameters
  * Updates AudioManager._meBuffer with an ME
+ * @static
  * @param {sound} me the ME to play
  */
 AudioManager.updateMeParameters = function(me) {
     this.updateBufferParameters(this._meBuffer, this._meVolume, me);
 };
 
-<span id='AudioManager-method-updateMeParameters'>/**
+<span id='AudioManager-static-method-updateMeParameters'>/**
 </span> * @method updateMeParameters
  * Fade out the current ME.
+ * @static
  * @param {Number} duration the fade duration in seconds
  */
 AudioManager.fadeOutMe = function(duration) {
@@ -2442,10 +2594,11 @@ AudioManager.fadeOutMe = function(duration) {
     }
 };
 
-<span id='AudioManager-method-stopMe'>/**
+<span id='AudioManager-static-method-stopMe'>/**
 </span> * @method stopMe
  * Stop the current ME and clear AudioManager._meBuffer.
  * Also resumes the BGM, if one was playing.
+ * @static
  */
 AudioManager.stopMe = function() {
     if (this._meBuffer) {
@@ -2458,9 +2611,10 @@ AudioManager.stopMe = function() {
     }
 };
 
-<span id='AudioManager-method-playSe'>/**
+<span id='AudioManager-static-method-playSe'>/**
 </span> * @method playSe
  * Play an SE.
+ * @static
  * @param {sound} se the SE to play
  */
 AudioManager.playSe = function(se) {
@@ -2475,9 +2629,10 @@ AudioManager.playSe = function(se) {
     }
 };
 
-<span id='AudioManager-method-updateSeParameters'>/**
+<span id='AudioManager-static-method-updateSeParameters'>/**
 </span> * @method updateSeParameters
  * Updates a buffer with an SE.
+ * @static
  * @param {WebAudio|Html5Audio} buffer the buffer to update
  * @param {sound} se the SE to apply to the buffer
  */
@@ -2485,10 +2640,11 @@ AudioManager.updateSeParameters = function(buffer, se) {
     this.updateBufferParameters(buffer, this._seVolume, se);
 };
 
-<span id='AudioManager-method-stopSe'>/**
+<span id='AudioManager-static-method-stopSe'>/**
 </span> * @method stopSe
  * Stops every SE currently playing.
  * Clears every buffer in AudioManager._seBuffers
+ * @static
  */
 AudioManager.stopSe = function() {
     this._seBuffers.forEach(function(buffer) {
@@ -2497,9 +2653,10 @@ AudioManager.stopSe = function() {
     this._seBuffers = [];
 };
 
-<span id='AudioManager-method-playStaticSe'>/**
+<span id='AudioManager-static-method-playStaticSe'>/**
 </span> * @method playStaticSe
  * Plays an SE with a static buffer.
+ * @static
  * @param {sound} se the SE to play
  */
 AudioManager.playStaticSe = function(se) {
@@ -2517,10 +2674,11 @@ AudioManager.playStaticSe = function(se) {
     }
 };
 
-<span id='AudioManager-method-loadStaticSe'>/**
+<span id='AudioManager-static-method-loadStaticSe'>/**
 </span> * @method loadStaticSe
  * Loads an SE to be played on a static buffer.
  * Creates a static buffer to use for playback.
+ * @static
  * @param {sound} se the SE to load
  */
 AudioManager.loadStaticSe = function(se) {
@@ -2534,9 +2692,10 @@ AudioManager.loadStaticSe = function(se) {
     }
 };
 
-<span id='AudioManager-method-isStaticSe'>/**
+<span id='AudioManager-static-method-isStaticSe'>/**
 </span> * @method isStaticSe
  * Checks if a static buffer exists for this SE.
+ * @static
  * @param {sound} se the SE to check
  * @return {Boolean}
  */
@@ -2550,9 +2709,10 @@ AudioManager.isStaticSe = function(se) {
     return false;
 };
 
-<span id='AudioManager-method-stopAll'>/**
+<span id='AudioManager-static-method-stopAll'>/**
 </span> * @method stopAll
  * Stops all ME, BGM, BGS, and SE.
+ * @static
  */
 AudioManager.stopAll = function() {
     this.stopMe();
@@ -2561,10 +2721,11 @@ AudioManager.stopAll = function() {
     this.stopSe();
 };
 
-<span id='AudioManager-method-saveBgm'>/**
+<span id='AudioManager-static-method-saveBgm'>/**
 </span> * @method saveBgm
  * Returns a sound of the current BGM, or an empty sound if
  * no BGM is playing.
+ * @static
  * @return {sound}
  */
 AudioManager.saveBgm = function() {
@@ -2582,10 +2743,11 @@ AudioManager.saveBgm = function() {
     }
 };
 
-<span id='AudioManager-method-saveBgs'>/**
+<span id='AudioManager-static-method-saveBgs'>/**
 </span> * @method saveBgs
  * Returns a sound of the current BGS, or an empty sound if
  * no BGM is playing.
+ * @static
  * @return {sound}
  */
 AudioManager.saveBgs = function() {
@@ -2603,19 +2765,21 @@ AudioManager.saveBgs = function() {
     }
 };
 
-<span id='AudioManager-method-makeEmptyAudioObject'>/**
+<span id='AudioManager-static-method-makeEmptyAudioObject'>/**
 </span> * @method makeEmptyAudioObject
  * Returns an empty sound object of
  * the form { name: '', volume: 0, pitch: 0 }.
+ * @static
  * @return {sound}
  */
 AudioManager.makeEmptyAudioObject = function() {
     return { name: '', volume: 0, pitch: 0 };
 };
 
-<span id='AudioManager-method-createBuffer'>/**
+<span id='AudioManager-static-method-createBuffer'>/**
 </span> * @method createBuffer
  * Returns either a WebAudio instance or a ref to Html5Audio.
+ * @static
  * @param {String} folder the directory of audio files
  * @param {String} name the name of the audio file, without extension
  * @return {WebAudio|Html5Audio}
@@ -2632,9 +2796,10 @@ AudioManager.createBuffer = function(folder, name) {
     }
 };
 
-<span id='AudioManager-method-updateBufferParameters'>/**
+<span id='AudioManager-static-method-updateBufferParameters'>/**
 </span> * @method updateBufferParameters
  * Updates the volume, pitch, and pan of the buffer.
+ * @static
  * @param {WebAudio|Html5Audio} buffer the buffer to update
  * @param {Number} configVolume
  * @param {FIXME} audio
@@ -2647,9 +2812,10 @@ AudioManager.updateBufferParameters = function(buffer, configVolume, audio) {
     }
 };
 
-<span id='AudioManager-method-audioFileExt'>/**
+<span id='AudioManager-static-method-audioFileExt'>/**
 </span> * @method audioFileExt
  * Gets the audio extension used by the platform.
+ * @static
  * @return {String} '.ogg' or '.m4a'
  */
 AudioManager.audioFileExt = function() {
@@ -2660,10 +2826,11 @@ AudioManager.audioFileExt = function() {
     }
 };
 
-<span id='AudioManager-method-shouldUseHtml5Audio'>/**
+<span id='AudioManager-static-method-shouldUseHtml5Audio'>/**
 </span> * @method shouldUseHtml5Audio
  * Always returns false. So Html5Audio is _never_ used.
  * This means that all buffers are WebAudio instances.
+ * @static
  * @return {Boolean}
  */
 AudioManager.shouldUseHtml5Audio = function() {
@@ -2672,10 +2839,11 @@ AudioManager.shouldUseHtml5Audio = function() {
  return false;
 };
 
-<span id='AudioManager-method-checkErrors'>/**
+<span id='AudioManager-static-method-checkErrors'>/**
 </span> * @method checkErrors
  * Checks for errors in all audio buffers using
  * AudioManager.checkWebAudioError
+ * @static
  */
 AudioManager.checkErrors = function() {
     this.checkWebAudioError(this._bgmBuffer);
@@ -2689,9 +2857,10 @@ AudioManager.checkErrors = function() {
     }.bind(this));
 };
 
-<span id='AudioManager-method-checkWebAudioError'>/**
+<span id='AudioManager-static-method-checkWebAudioError'>/**
 </span> * @method checkWebAudioError
  * Checks an audio buffer for errors, throws any found.
+ * @static
  * @param {WebAudio} webAudio the buffer to check
  */
 AudioManager.checkWebAudioError = function(webAudio) {
@@ -2708,18 +2877,21 @@ AudioManager.checkWebAudioError = function(webAudio) {
 <span id='SoundManager-method-constructor'><span id='SoundManager'>/**
 </span></span> * @class SoundManager
  * The static class that plays sound effects defined in the database.
+ * @static
  * @uses AudioManager
  * @uses $dataSystem
  * @singleton
+ * @static
  * @constructor should never be used
  */
 function SoundManager() {
     throw new Error('This is a static class');
 }
 
-<span id='SoundManager-method-preloadImportantSounds'>/**
+<span id='SoundManager-static-method-preloadImportantSounds'>/**
 </span> * @method preloadImportantSounds
  * Loads system sounds 0..3.
+ * @static
  */
 SoundManager.preloadImportantSounds = function() {
     this.loadSystemSound(0);
@@ -2728,10 +2900,11 @@ SoundManager.preloadImportantSounds = function() {
     this.loadSystemSound(3);
 };
 
-<span id='SoundManager-method-loadSystemSound'>/**
+<span id='SoundManager-static-method-loadSystemSound'>/**
 </span> * @method loadSystemSound
  * Loads a system sound from $dataSystem.sounds by index.
  * Uses AudioManager.loadStaticSe
+ * @static
  * @param {Number} n the sound to load
  */
 SoundManager.loadSystemSound = function(n) {
@@ -2740,10 +2913,11 @@ SoundManager.loadSystemSound = function(n) {
     }
 };
 
-<span id='SoundManager-method-playSystemSound'>/**
+<span id='SoundManager-static-method-playSystemSound'>/**
 </span> * @method playSystemSound
  * Plays a system sound by index.
  * Uses AudioManager.playStaticSe
+ * @static
  * @param {Number} n the sound to play
  */
 SoundManager.playSystemSound = function(n) {
@@ -2752,193 +2926,217 @@ SoundManager.playSystemSound = function(n) {
     }
 };
 
-<span id='SoundManager-method-playCursor'>/**
+<span id='SoundManager-static-method-playCursor'>/**
 </span> * @method playCursor
  * Plays the Cursor sound (system sound 0)
+ * @static
  */
 SoundManager.playCursor = function() {
     this.playSystemSound(0);
 };
 
-<span id='SoundManager-method-playOk'>/**
+<span id='SoundManager-static-method-playOk'>/**
 </span> * @method playOk
  * Plays the Ok sound (system sound 1)
+ * @static
  */
 SoundManager.playOk = function() {
     this.playSystemSound(1);
 };
 
-<span id='SoundManager-method-playCancel'>/**
+<span id='SoundManager-static-method-playCancel'>/**
 </span> * @method playCancel
  * Plays the Cancel sound (system sound 2)
+ * @static
  */
 SoundManager.playCancel = function() {
     this.playSystemSound(2);
 };
 
-<span id='SoundManager-method-playBuzzer'>/**
+<span id='SoundManager-static-method-playBuzzer'>/**
 </span> * @method playBuzzer
  * Plays the Buzzer sound (system sound 3)
+ * @static
  */
 SoundManager.playBuzzer = function() {
     this.playSystemSound(3);
 };
 
-<span id='SoundManager-method-playEquip'>/**
+<span id='SoundManager-static-method-playEquip'>/**
 </span> * @method playEquip
  * Plays the Equip sound (system sound 4)
+ * @static
  */
 SoundManager.playEquip = function() {
     this.playSystemSound(4);
 };
 
-<span id='SoundManager-method-playSave'>/**
+<span id='SoundManager-static-method-playSave'>/**
 </span> * @method playSave
  * Plays the Save sound (system sound 5)
+ * @static
  */
 SoundManager.playSave = function() {
     this.playSystemSound(5);
 };
 
-<span id='SoundManager-method-playLoad'>/**
+<span id='SoundManager-static-method-playLoad'>/**
 </span> * @method playLoad
  * Plays the Load sound (system sound 6)
+ * @static
  */
 SoundManager.playLoad = function() {
     this.playSystemSound(6);
 };
 
-<span id='SoundManager-method-playBattleStart'>/**
+<span id='SoundManager-static-method-playBattleStart'>/**
 </span> * @method playBattleStart
  * Plays the BattleStart sound (system sound 7)
+ * @static
  */
 SoundManager.playBattleStart = function() {
     this.playSystemSound(7);
 };
 
-<span id='SoundManager-method-playEscape'>/**
+<span id='SoundManager-static-method-playEscape'>/**
 </span> * @method playEscape
  * Plays the Escape sound (system sound 8)
+ * @static
  */
 SoundManager.playEscape = function() {
     this.playSystemSound(8);
 };
 
-<span id='SoundManager-method-playEnemyAttack'>/**
+<span id='SoundManager-static-method-playEnemyAttack'>/**
 </span> * @method playEnemyAttack
  * Plays the EnemyAttack sound (system sound 9)
+ * @static
  */
 SoundManager.playEnemyAttack = function() {
     this.playSystemSound(9);
 };
 
-<span id='SoundManager-method-playEnemyDamage'>/**
+<span id='SoundManager-static-method-playEnemyDamage'>/**
 </span> * @method playEnemyDamage
  * Plays the EnemyDamage sound (system sound 10)
+ * @static
  */
 SoundManager.playEnemyDamage = function() {
     this.playSystemSound(10);
 };
 
-<span id='SoundManager-method-playEnemyCollapse'>/**
+<span id='SoundManager-static-method-playEnemyCollapse'>/**
 </span> * @method playEnemyCollapse
  * Plays the EnemyCollapse sound (system sound 11)
+ * @static
  */
 SoundManager.playEnemyCollapse = function() {
     this.playSystemSound(11);
 };
 
-<span id='SoundManager-method-playBossCollapse1'>/**
+<span id='SoundManager-static-method-playBossCollapse1'>/**
 </span> * @method playBossCollapse1
  * Plays the BossCollapse1 sound (system sound 12)
+ * @static
  */
 SoundManager.playBossCollapse1 = function() {
     this.playSystemSound(12);
 };
 
-<span id='SoundManager-method-playBossCollapse2'>/**
+<span id='SoundManager-static-method-playBossCollapse2'>/**
 </span> * @method playBossCollapse2
  * Plays the BossCollapse2 sound (system sound 13)
+ * @static
  */
 SoundManager.playBossCollapse2 = function() {
     this.playSystemSound(13);
 };
 
-<span id='SoundManager-method-playActorDamage'>/**
+<span id='SoundManager-static-method-playActorDamage'>/**
 </span> * @method playActorDamage
  * Plays the ActorDamage sound (system sound 14)
+ * @static
  */
 SoundManager.playActorDamage = function() {
     this.playSystemSound(14);
 };
 
-<span id='SoundManager-method-playActorCollapse'>/**
+<span id='SoundManager-static-method-playActorCollapse'>/**
 </span> * @method playActorCollapse
  * Plays the ActorCollapse sound (system sound 15)
+ * @static
  */
 SoundManager.playActorCollapse = function() {
     this.playSystemSound(15);
 };
 
-<span id='SoundManager-method-playRecovery'>/**
+<span id='SoundManager-static-method-playRecovery'>/**
 </span> * @method playRecovery
  * Plays the Recovery sound (system sound 16)
+ * @static
  */
 SoundManager.playRecovery = function() {
     this.playSystemSound(16);
 };
 
-<span id='SoundManager-method-playMiss'>/**
+<span id='SoundManager-static-method-playMiss'>/**
 </span> * @method playMiss
  * Plays the Miss sound (system sound 17)
+ * @static
  */
 SoundManager.playMiss = function() {
     this.playSystemSound(17);
 };
 
-<span id='SoundManager-method-playEvasion'>/**
+<span id='SoundManager-static-method-playEvasion'>/**
 </span> * @method playEvasion
  * Plays the Evasion sound (system sound 18)
+ * @static
  */
 SoundManager.playEvasion = function() {
     this.playSystemSound(18);
 };
 
-<span id='SoundManager-method-playMagicEvasion'>/**
+<span id='SoundManager-static-method-playMagicEvasion'>/**
 </span> * @method playMagicEvasion
  * Plays the MagicEvasion sound (system sound 19)
+ * @static
  */
 SoundManager.playMagicEvasion = function() {
     this.playSystemSound(19);
 };
 
-<span id='SoundManager-method-playReflection'>/**
+<span id='SoundManager-static-method-playReflection'>/**
 </span> * @method playReflection
  * Plays the Reflection sound (system sound 20)
+ * @static
  */
 SoundManager.playReflection = function() {
     this.playSystemSound(20);
 };
 
-<span id='SoundManager-method-playShop'>/**
+<span id='SoundManager-static-method-playShop'>/**
 </span> * @method playShop
  * Plays the Shop sound (system sound 21)
+ * @static
  */
 SoundManager.playShop = function() {
     this.playSystemSound(21);
 };
 
-<span id='SoundManager-method-playUseItem'>/**
+<span id='SoundManager-static-method-playUseItem'>/**
 </span> * @method playUseItem
  * Plays the UseItem sound (system sound 22)
+ * @static
  */
 SoundManager.playUseItem = function() {
     this.playSystemSound(22);
 };
 
-<span id='SoundManager-method-playUseSkill'>/**
+<span id='SoundManager-static-method-playUseSkill'>/**
 </span> * @method playUseSkill
  * Plays the UseSkill sound (system sound 23)
+ * @static
  */
 SoundManager.playUseSkill = function() {
     this.playSystemSound(23);
@@ -2949,26 +3147,70 @@ SoundManager.playUseSkill = function() {
 //
 // The static class that handles terms and messages.
 
+<span id='TextManager-method-constructor'><span id='TextManager'>/**
+</span></span> * @class TextManager
+ * The static class that handles terms and messages.
+ * @uses $dataSystem
+ * @singleton
+ * @static
+ * @constructor should never be used
+ */
 function TextManager() {
     throw new Error('This is a static class');
 }
 
+<span id='TextManager-static-method-basic'>/**
+</span> * @method basic
+ * Gets a term from Basic Statuses in the Database
+ * @param {String} basicId which term
+ * @return {String} the term set in Database
+ * @static
+ */
 TextManager.basic = function(basicId) {
     return $dataSystem.terms.basic[basicId] || '';
 };
 
+<span id='TextManager-static-method-param'>/**
+</span> * @method param
+ * Gets a term from Parameters in the Database
+ * @param {String} paramId which term
+ * @return {String} the term set in Database
+ * @static
+ */
 TextManager.param = function(paramId) {
     return $dataSystem.terms.params[paramId] || '';
 };
 
+<span id='TextManager-static-method-command'>/**
+</span> * @method command
+ * Gets a term from Commands in the Database
+ * @param {String} commandId which term
+ * @return {String} the term set in Database
+ * @static
+ */
 TextManager.command = function(commandId) {
     return $dataSystem.terms.commands[commandId] || '';
 };
 
+<span id='TextManager-static-method-message'>/**
+</span> * @method message
+ * Gets a term from Messages in the Database
+ * @param {String} messageId which term
+ * @return {String} the term set in Database
+ * @static
+ */
 TextManager.message = function(messageId) {
     return $dataSystem.terms.messages[messageId] || '';
 };
 
+<span id='TextManager-static-method-getter'>/**
+</span> * [read-only] @method getter
+ * Used to create a read-only property for _every_ Term in the Database.
+ * @param {String} method 'basic', 'command', or 'message'
+ * @param {String|Number} param the ID or name of the Term
+ * @return {String} the value of the Term
+ * @static
+ */
 TextManager.getter = function(method, param) {
     return {
         get: function() {
@@ -2978,11 +3220,18 @@ TextManager.getter = function(method, param) {
     };
 };
 
+<span id='TextManager-static-property-currencyUnit'>/**
+</span> * [read-only] @property {String} currencyUnit
+ * @static
+ */
 Object.defineProperty(TextManager, 'currencyUnit', {
     get: function() { return $dataSystem.currencyUnit; },
     configurable: true
 });
 
+/*
+TODO: codegen doc comments for these properties lol
+*/
 Object.defineProperties(TextManager, {
     level           : TextManager.getter('basic', 0),
     levelA          : TextManager.getter('basic', 1),
@@ -3076,13 +3325,31 @@ Object.defineProperties(TextManager, {
 //
 // The static class that manages scene transitions.
 
+<span id='SceneManager-method-constructor'><span id='SceneManager'>/**
+</span></span> * @class SceneManager
+ * The static class that manages scene transitions.
+ * @uses Graphics
+ * @uses WebAudio
+ * @uses Input
+ * @uses TouchInput
+ * @uses Utils
+ * @uses PluginManager
+ * @uses Window
+ * @uses ImageManager
+ * @uses Bitmap
+ * @singleton
+ * @static
+ * @constructor should never be used
+ */
 function SceneManager() {
     throw new Error('This is a static class');
 }
 
-/*
+<span id='SceneManager-static-method-_getTimeInMsWithoutMobileSafari'>/**
+</span> * @method _getTimeInMsWithoutMobileSafari
  * Gets the current time in ms without on iOS Safari.
  * @private
+ * @static
  */
 SceneManager._getTimeInMsWithoutMobileSafari = function() {
     return performance.now();
