@@ -16,4 +16,4 @@ jsduck.exe
 **/RMMV_*/*.json
 
 # misc
-*.js
+comment_template.js
