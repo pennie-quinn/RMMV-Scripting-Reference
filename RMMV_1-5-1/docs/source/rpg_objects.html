@@ -24,10 +24,19 @@
 //
 // The game object class for temporary data that is not included in save data.
 
+<span id='Game_Temp-method-constructor'><span id='Game_Temp'>/**
+</span></span> * @class Game_Temp
+ * The game object class for temporary data that is not included in save data.
+ * @constructor
+ */
 function Game_Temp() {
     this.initialize.apply(this, arguments);
 }
 
+<span id='Game_Temp-method-initialize'>/**
+</span> * @method initialize
+ * FIXME
+ */
 Game_Temp.prototype.initialize = function() {
     this._isPlaytest = Utils.isOptionValid('test');
     this._commonEventId = 0;
@@ -35,44 +44,84 @@ Game_Temp.prototype.initialize = function() {
     this._destinationY = null;
 };
 
+<span id='Game_Temp-method-isPlayTest'>/**
+</span> * @method isPlayTest
+ * FIXME
+ */
 Game_Temp.prototype.isPlaytest = function() {
     return this._isPlaytest;
 };
 
+<span id='Game_Temp-method-reserveCommonEvent'>/**
+</span> * @method reserveCommonEvent
+ * FIXME
+ */
 Game_Temp.prototype.reserveCommonEvent = function(commonEventId) {
     this._commonEventId = commonEventId;
 };
 
+<span id='Game_Temp-method-clearCommonEvent'>/**
+</span> * @method clearCommonEvent
+ * FIXME
+ */
 Game_Temp.prototype.clearCommonEvent = function() {
     this._commonEventId = 0;
 };
 
+<span id='Game_Temp-method-isCommonEventReserved'>/**
+</span> * @method isCommonEventReserved
+ * FIXME
+ */
 Game_Temp.prototype.isCommonEventReserved = function() {
     return this._commonEventId &gt; 0;
 };
 
+<span id='Game_Temp-method-reservedCommonEvent'>/**
+</span> * @method reservedCommonEvent
+ * FIXME
+ */
 Game_Temp.prototype.reservedCommonEvent = function() {
     return $dataCommonEvents[this._commonEventId];
 };
 
+<span id='Game_Temp-method-setDestination'>/**
+</span> * @method setDestination
+ * FIXME
+ */
 Game_Temp.prototype.setDestination = function(x, y) {
     this._destinationX = x;
     this._destinationY = y;
 };
 
+<span id='Game_Temp-method-clearDestination'>/**
+</span> * @method clearDestination
+ * FIXME
+ */
 Game_Temp.prototype.clearDestination = function() {
     this._destinationX = null;
     this._destinationY = null;
 };
 
+<span id='Game_Temp-method-isDestinationValid'>/**
+</span> * @method isDestinationValid
+ * FIXME
+ */
 Game_Temp.prototype.isDestinationValid = function() {
     return this._destinationX !== null;
 };
 
+<span id='Game_Temp-method-destinationX'>/**
+</span> * @method destinationX
+ * FIXME
+ */
 Game_Temp.prototype.destinationX = function() {
     return this._destinationX;
 };
 
+<span id='Game_Temp-method-destinationY'>/**
+</span> * @method destinationY
+ * FIXME
+ */
 Game_Temp.prototype.destinationY = function() {
     return this._destinationY;
 };
@@ -82,10 +131,20 @@ Game_Temp.prototype.destinationY = function() {
 //
 // The game object class for the system data.
 
+<span id='Game_System-method-constructor'><span id='Game_System'>/**
+</span></span> * @class Game_System
+ * The game object class for the system data.
+ *
+ * @constructor
+ */
 function Game_System() {
     this.initialize.apply(this, arguments);
 }
 
+<span id='Game_System-method-initialize'>/**
+</span> * @method initialize
+ * FIXME
+ */
 Game_System.prototype.initialize = function() {
     this._saveEnabled = true;
     this._menuEnabled = true;
@@ -107,142 +166,282 @@ Game_System.prototype.initialize = function() {
     this._walkingBgm = null;
 };
 
+<span id='Game_System-method-isJapanese'>/**
+</span> * @method isJapanese
+ * FIXME
+ */
 Game_System.prototype.isJapanese = function() {
     return $dataSystem.locale.match(/^ja/);
 };
 
+<span id='Game_System-method-isChinese'>/**
+</span> * @method isChinese
+ * FIXME
+ */
 Game_System.prototype.isChinese = function() {
     return $dataSystem.locale.match(/^zh/);
 };
 
+<span id='Game_System-method-isKorean'>/**
+</span> * @method isKorean
+ * FIXME
+ */
 Game_System.prototype.isKorean = function() {
     return $dataSystem.locale.match(/^ko/);
 };
 
+<span id='Game_System-method-isCJK'>/**
+</span> * @method isCJK
+ * FIXME
+ */
 Game_System.prototype.isCJK = function() {
     return $dataSystem.locale.match(/^(ja|zh|ko)/);
 };
 
+<span id='Game_System-method-isRussian'>/**
+</span> * @method isRussian
+ * FIXME
+ */
 Game_System.prototype.isRussian = function() {
     return $dataSystem.locale.match(/^ru/);
 };
 
+<span id='Game_System-method-isSideView'>/**
+</span> * @method isSideView
+ * FIXME
+ */
 Game_System.prototype.isSideView = function() {
     return $dataSystem.optSideView;
 };
 
+<span id='Game_System-method-isSaveEnabled'>/**
+</span> * @method isSaveEnabled
+ * FIXME
+ */
 Game_System.prototype.isSaveEnabled = function() {
     return this._saveEnabled;
 };
 
+<span id='Game_System-method-disableSave'>/**
+</span> * @method disableSave
+ * FIXME
+ */
 Game_System.prototype.disableSave = function() {
     this._saveEnabled = false;
 };
 
+<span id='Game_System-method-enableSave'>/**
+</span> * @method enableSave
+ * FIXME
+ */
 Game_System.prototype.enableSave = function() {
     this._saveEnabled = true;
 };
 
+<span id='Game_System-method-isMenuEnabled'>/**
+</span> * @method isMenuEnabled
+ * FIXME
+ */
 Game_System.prototype.isMenuEnabled = function() {
     return this._menuEnabled;
 };
 
+<span id='Game_System-method-disableMenu'>/**
+</span> * @method disableMenu
+ * FIXME
+ */
 Game_System.prototype.disableMenu = function() {
     this._menuEnabled = false;
 };
 
+<span id='Game_System-method-enableMenu'>/**
+</span> * @method enableMenu
+ * FIXME
+ */
 Game_System.prototype.enableMenu = function() {
     this._menuEnabled = true;
 };
 
+<span id='Game_System-method-isEncounterEnabled'>/**
+</span> * @method isEncounterEnabled
+ * FIXME
+ */
 Game_System.prototype.isEncounterEnabled = function() {
     return this._encounterEnabled;
 };
 
+<span id='Game_System-method-disableEncounter'>/**
+</span> * @method disableEncounter
+ * FIXME
+ */
 Game_System.prototype.disableEncounter = function() {
     this._encounterEnabled = false;
 };
 
+<span id='Game_System-method-enableEncounter'>/**
+</span> * @method enableEncounter
+ * FIXME
+ */
 Game_System.prototype.enableEncounter = function() {
     this._encounterEnabled = true;
 };
 
+<span id='Game_System-method-isFormationEnabled'>/**
+</span> * @method isFormationEnabled
+ * FIXME
+ */
 Game_System.prototype.isFormationEnabled = function() {
     return this._formationEnabled;
 };
 
+<span id='Game_System-method-disableFormation'>/**
+</span> * @method disableFormation
+ * FIXME
+ */
 Game_System.prototype.disableFormation = function() {
     this._formationEnabled = false;
 };
 
+<span id='Game_System-method-enableFormation'>/**
+</span> * @method enableFormation
+ * FIXME
+ */
 Game_System.prototype.enableFormation = function() {
     this._formationEnabled = true;
 };
 
+<span id='Game_System-method-battleCount'>/**
+</span> * @method battleCount
+ * FIXME
+ */
 Game_System.prototype.battleCount = function() {
     return this._battleCount;
 };
 
+<span id='Game_System-method-winCount'>/**
+</span> * @method winCount
+ * FIXME
+ */
 Game_System.prototype.winCount = function() {
     return this._winCount;
 };
 
+<span id='Game_System-method-escapeCount'>/**
+</span> * @method escapeCount
+ * FIXME
+ */
 Game_System.prototype.escapeCount = function() {
     return this._escapeCount;
 };
 
+<span id='Game_System-method-saveCount'>/**
+</span> * @method saveCount
+ * FIXME
+ */
 Game_System.prototype.saveCount = function() {
     return this._saveCount;
 };
 
+<span id='Game_System-method-versionId'>/**
+</span> * @method versionId
+ * FIXME
+ */
 Game_System.prototype.versionId = function() {
     return this._versionId;
 };
 
+<span id='Game_System-method-windowTone'>/**
+</span> * @method windowTone
+ * FIXME
+ */
 Game_System.prototype.windowTone = function() {
     return this._windowTone || $dataSystem.windowTone;
 };
 
+<span id='Game_System-method-setWindowTone'>/**
+</span> * @method setWindowTone
+ * FIXME
+ */
 Game_System.prototype.setWindowTone = function(value) {
     this._windowTone = value;
 };
 
+<span id='Game_System-method-battleBgm'>/**
+</span> * @method battleBgm
+ * FIXME
+ */
 Game_System.prototype.battleBgm = function() {
     return this._battleBgm || $dataSystem.battleBgm;
 };
 
+<span id='Game_System-method-setBattleBgm'>/**
+</span> * @method setBattleBgm
+ * FIXME
+ */
 Game_System.prototype.setBattleBgm = function(value) {
     this._battleBgm = value;
 };
 
+<span id='Game_System-method-victoryMe'>/**
+</span> * @method victoryMe
+ * FIXME
+ */
 Game_System.prototype.victoryMe = function() {
     return this._victoryMe || $dataSystem.victoryMe;
 };
 
+<span id='Game_System-method-setVictoryMe'>/**
+</span> * @method setVictoryMe
+ * FIXME
+ */
 Game_System.prototype.setVictoryMe = function(value) {
     this._victoryMe = value;
 };
 
+<span id='Game_System-method-defeatMe'>/**
+</span> * @method defeatMe
+ * FIXME
+ */
 Game_System.prototype.defeatMe = function() {
     return this._defeatMe || $dataSystem.defeatMe;
 };
 
+<span id='Game_System-method-setDefeatMe'>/**
+</span> * @method setDefeatMe
+ * FIXME
+ */
 Game_System.prototype.setDefeatMe = function(value) {
     this._defeatMe = value;
 };
 
+<span id='Game_System-method-onBattleStart'>/**
+</span> * @method onBattleStart
+ * FIXME
+ */
 Game_System.prototype.onBattleStart = function() {
     this._battleCount++;
 };
 
+<span id='Game_System-method-onBattleWin'>/**
+</span> * @method onBattleWin
+ * FIXME
+ */
 Game_System.prototype.onBattleWin = function() {
     this._winCount++;
 };
 
+<span id='Game_System-method-onBattleEscape'>/**
+</span> * @method onBattleEscape
+ * FIXME
+ */
 Game_System.prototype.onBattleEscape = function() {
     this._escapeCount++;
 };
 
+<span id='Game_System-method-onBeforeSave'>/**
+</span> * @method onBeforeSave
+ * FIXME
+ */
 Game_System.prototype.onBeforeSave = function() {
     this._saveCount++;
     this._versionId = $dataSystem.versionId;
@@ -251,16 +450,28 @@ Game_System.prototype.onBeforeSave = function() {
     this._bgsOnSave = AudioManager.saveBgs();
 };
 
+<span id='Game_System-method-onAfterLoad'>/**
+</span> * @method onAfterLoad
+ * FIXME
+ */
 Game_System.prototype.onAfterLoad = function() {
     Graphics.frameCount = this._framesOnSave;
     AudioManager.playBgm(this._bgmOnSave);
     AudioManager.playBgs(this._bgsOnSave);
 };
 
+<span id='Game_System-method-playtime'>/**
+</span> * @method playtime
+ * FIXME
+ */
 Game_System.prototype.playtime = function() {
     return Math.floor(Graphics.frameCount / 60);
 };
 
+<span id='Game_System-method-playtimeText'>/**
+</span> * @method playtimeText
+ * FIXME
+ */
 Game_System.prototype.playtimeText = function() {
     var hour = Math.floor(this.playtime() / 60 / 60);
     var min = Math.floor(this.playtime() / 60) % 60;
@@ -268,26 +479,46 @@ Game_System.prototype.playtimeText = function() {
     return hour.padZero(2) + ':' + min.padZero(2) + ':' + sec.padZero(2);
 };
 
+<span id='Game_System-method-saveBgm'>/**
+</span> * @method saveBgm
+ * FIXME
+ */
 Game_System.prototype.saveBgm = function() {
     this._savedBgm = AudioManager.saveBgm();
 };
 
+<span id='Game_System-method-replayBgm'>/**
+</span> * @method replayBgm
+ * FIXME
+ */
 Game_System.prototype.replayBgm = function() {
     if (this._savedBgm) {
         AudioManager.replayBgm(this._savedBgm);
     }
 };
 
+<span id='Game_System-method-saveWalkingBgm'>/**
+</span> * @method saveWalkingBgm
+ * FIXME
+ */
 Game_System.prototype.saveWalkingBgm = function() {
     this._walkingBgm = AudioManager.saveBgm();
 };
 
+<span id='Game_System-method-replayWalkingBgm'>/**
+</span> * @method replayWalkingBgm
+ * FIXME
+ */
 Game_System.prototype.replayWalkingBgm = function() {
     if (this._walkingBgm) {
         AudioManager.playBgm(this._walkingBgm);
     }
 };
 
+<span id='Game_System-method-saveWalkingBgm2'>/**
+</span> * @method saveWalkingBgm2
+ * FIXME
+ */
 Game_System.prototype.saveWalkingBgm2 = function() {
 	this._walkingBgm = $dataMap.bgm;
 };
@@ -297,15 +528,29 @@ Game_System.prototype.saveWalkingBgm2 = function() {
 //
 // The game object class for the timer.
 
+<span id='Game_Timer-method-constructor'><span id='Game_Timer'>/**
+</span></span> * @class Game_Timer
+ * The game object class for the timer.
+ *
+ * @constructor
+ */
 function Game_Timer() {
     this.initialize.apply(this, arguments);
 }
 
+<span id='Game_Timer-method-initialize'>/**
+</span> * @method initialize
+ * FIXME
+ */
 Game_Timer.prototype.initialize = function() {
     this._frames = 0;
     this._working = false;
 };
 
+<span id='Game_Timer-method-update'>/**
+</span> * @method update
+ * FIXME
+ */
 Game_Timer.prototype.update = function(sceneActive) {
     if (sceneActive &amp;&amp; this._working &amp;&amp; this._frames &gt; 0) {
         this._frames--;
@@ -315,23 +560,43 @@ Game_Timer.prototype.update = function(sceneActive) {
     }
 };
 
+<span id='Game_Timer-method-start'>/**
+</span> * @method start
+ * FIXME
+ */
 Game_Timer.prototype.start = function(count) {
     this._frames = count;
     this._working = true;
 };
 
+<span id='Game_Timer-method-stop'>/**
+</span> * @method stop
+ * FIXME
+ */
 Game_Timer.prototype.stop = function() {
     this._working = false;
 };
 
+<span id='Game_Timer-method-isWorking'>/**
+</span> * @method isWorking
+ * FIXME
+ */
 Game_Timer.prototype.isWorking = function() {
     return this._working;
 };
 
+<span id='Game_Timer-method-seconds'>/**
+</span> * @method seconds
+ * FIXME
+ */
 Game_Timer.prototype.seconds = function() {
     return Math.floor(this._frames / 60);
 };
 
+<span id='Game_Timer-method-onExpire'>/**
+</span> * @method onExpire
+ * FIXME
+ */
 Game_Timer.prototype.onExpire = function() {
     BattleManager.abort();
 };
@@ -342,14 +607,27 @@ Game_Timer.prototype.onExpire = function() {
 // The game object class for the state of the message window that displays text
 // or selections, etc.
 
+<span id='Game_Message-method-constructor'><span id='Game_Message'>/**
+</span></span> * @class Game_Message
+ * The game object class for the state of the message window that displays text or selections, etc.
+ * @constructor
+ */
 function Game_Message() {
     this.initialize.apply(this, arguments);
 }
 
+<span id='Game_Message-method-initialize'>/**
+</span> * @method initialize
+ * FIXME
+ */
 Game_Message.prototype.initialize = function() {
     this.clear();
 };
 
+<span id='Game_Message-method-clear'>/**
+</span> * @method clear
+ * FIXME
+ */
 Game_Message.prototype.clear = function() {
     this._texts = [];
     this._choices = [];
@@ -371,121 +649,233 @@ Game_Message.prototype.clear = function() {
     this._choiceCallback = null;
 };
 
+<span id='Game_Message-method-choices'>/**
+</span> * @method choices
+ * FIXME
+ */
 Game_Message.prototype.choices = function() {
     return this._choices;
 };
 
+<span id='Game_Message-method-faceName'>/**
+</span> * @method faceName
+ * FIXME
+ */
 Game_Message.prototype.faceName = function() {
     return this._faceName;
 };
 
+<span id='Game_Message-method-faceIndex'>/**
+</span> * @method faceIndex
+ * FIXME
+ */
 Game_Message.prototype.faceIndex = function() {
     return this._faceIndex;
 };
 
+<span id='Game_Message-method-background'>/**
+</span> * @method background
+ * FIXME
+ */
 Game_Message.prototype.background = function() {
     return this._background;
 };
 
+<span id='Game_Message-method-positionType'>/**
+</span> * @method positionType
+ * FIXME
+ */
 Game_Message.prototype.positionType = function() {
     return this._positionType;
 };
 
+<span id='Game_Message-method-choiceDefaultType'>/**
+</span> * @method choiceDefaultType
+ * FIXME
+ */
 Game_Message.prototype.choiceDefaultType = function() {
     return this._choiceDefaultType;
 };
 
+<span id='Game_Message-method-choiceCancelType'>/**
+</span> * @method choiceCancelType
+ * FIXME
+ */
 Game_Message.prototype.choiceCancelType = function() {
     return this._choiceCancelType;
 };
 
+<span id='Game_Message-method-choiceBackground'>/**
+</span> * @method choiceBackground
+ * FIXME
+ */
 Game_Message.prototype.choiceBackground = function() {
     return this._choiceBackground;
 };
 
+<span id='Game_Message-method-choicePositionType'>/**
+</span> * @method choicePositionType
+ * FIXME
+ */
 Game_Message.prototype.choicePositionType = function() {
     return this._choicePositionType;
 };
 
+<span id='Game_Message-method-numInputVariableId'>/**
+</span> * @method numInputVariableId
+ * FIXME
+ */
 Game_Message.prototype.numInputVariableId = function() {
     return this._numInputVariableId;
 };
 
+<span id='Game_Message-method-numInputMaxDigits'>/**
+</span> * @method numInputMaxDigits
+ * FIXME
+ */
 Game_Message.prototype.numInputMaxDigits = function() {
     return this._numInputMaxDigits;
 };
 
+<span id='Game_Message-method-itemChoiceVariableId'>/**
+</span> * @method itemChoiceVariableId
+ * FIXME
+ */
 Game_Message.prototype.itemChoiceVariableId = function() {
     return this._itemChoiceVariableId;
 };
 
+<span id='Game_Message-method-itemChoiceItypeId'>/**
+</span> * @method itemChoiceItypeId
+ * FIXME
+ */
 Game_Message.prototype.itemChoiceItypeId = function() {
     return this._itemChoiceItypeId;
 };
 
+<span id='Game_Message-method-scrollMode'>/**
+</span> * @method scrollMode
+ * FIXME
+ */
 Game_Message.prototype.scrollMode = function() {
     return this._scrollMode;
 };
 
+<span id='Game_Message-method-scrollSpeed'>/**
+</span> * @method scrollSpeed
+ * FIXME
+ */
 Game_Message.prototype.scrollSpeed = function() {
     return this._scrollSpeed;
 };
 
+<span id='Game_Message-method-scrollNoFast'>/**
+</span> * @method scrollNoFast
+ * FIXME
+ */
 Game_Message.prototype.scrollNoFast = function() {
     return this._scrollNoFast;
 };
 
+<span id='Game_Message-method-add'>/**
+</span> * @method add
+ * FIXME
+ */
 Game_Message.prototype.add = function(text) {
     this._texts.push(text);
 };
 
+<span id='Game_Message-method-setFaceImage'>/**
+</span> * @method setFaceImage
+ * FIXME
+ */
 Game_Message.prototype.setFaceImage = function(faceName, faceIndex) {
     this._faceName = faceName;
     this._faceIndex = faceIndex;
 };
 
+<span id='Game_Message-method-setBackground'>/**
+</span> * @method setBackground
+ * FIXME
+ */
 Game_Message.prototype.setBackground = function(background) {
     this._background = background;
 };
 
+<span id='Game_Message-method-setPositionType'>/**
+</span> * @method setPositionType
+ * FIXME
+ */
 Game_Message.prototype.setPositionType = function(positionType) {
     this._positionType = positionType;
 };
 
+<span id='Game_Message-method-setChoices'>/**
+</span> * @method setChoices
+ * FIXME
+ */
 Game_Message.prototype.setChoices = function(choices, defaultType, cancelType) {
     this._choices = choices;
     this._choiceDefaultType = defaultType;
     this._choiceCancelType = cancelType;
 };
 
+<span id='Game_Message-method-setChoiceBackground'>/**
+</span> * @method setChoiceBackground
+ * FIXME
+ */
 Game_Message.prototype.setChoiceBackground = function(background) {
     this._choiceBackground = background;
 };
 
+<span id='Game_Message-method-setChoicePositionType'>/**
+</span> * @method setChoicePositionType
+ * FIXME
+ */
 Game_Message.prototype.setChoicePositionType = function(positionType) {
     this._choicePositionType = positionType;
 };
 
+<span id='Game_Message-method-setNumberInput'>/**
+</span> * @method setNumberInput
+ * FIXME
+ */
 Game_Message.prototype.setNumberInput = function(variableId, maxDigits) {
     this._numInputVariableId = variableId;
     this._numInputMaxDigits = maxDigits;
 };
 
+<span id='Game_Message-method-setItemChoice'>/**
+</span> * @method setItemChoice
+ * FIXME
+ */
 Game_Message.prototype.setItemChoice = function(variableId, itemType) {
     this._itemChoiceVariableId = variableId;
     this._itemChoiceItypeId = itemType;
 };
 
+<span id='Game_Message-method-setScroll'>/**
+</span> * @method setScroll
+ * FIXME
+ */
 Game_Message.prototype.setScroll = function(speed, noFast) {
     this._scrollMode = true;
     this._scrollSpeed = speed;
     this._scrollNoFast = noFast;
 };
 
+<span id='Game_Message-method-setChoiceCallback'>/**
+</span> * @method setChoiceCallback
+ * FIXME
+ */
 Game_Message.prototype.setChoiceCallback = function(callback) {
     this._choiceCallback = callback;
 };
 
+<span id='Game_Message-method-onChoice'>/**
+</span> * @method onChoice
+ * FIXME
+ */
 Game_Message.prototype.onChoice = function(n) {
     if (this._choiceCallback) {
         this._choiceCallback(n);
@@ -493,33 +883,61 @@ Game_Message.prototype.onChoice = function(n) {
     }
 };
 
+<span id='Game_Message-method-hasText'>/**
+</span> * @method hasText
+ * FIXME
+ */
 Game_Message.prototype.hasText = function() {
     return this._texts.length &gt; 0;
 };
 
+<span id='Game_Message-method-isChoice'>/**
+</span> * @method isChoice
+ * FIXME
+ */
 Game_Message.prototype.isChoice = function() {
     return this._choices.length &gt; 0;
 };
 
+<span id='Game_Message-method-isNumberInput'>/**
+</span> * @method isNumberInput
+ * FIXME
+ */
 Game_Message.prototype.isNumberInput = function() {
     return this._numInputVariableId &gt; 0;
 };
 
+<span id='Game_Message-method-isItemChoice'>/**
+</span> * @method isItemChoice
+ * FIXME
+ */
 Game_Message.prototype.isItemChoice = function() {
     return this._itemChoiceVariableId &gt; 0;
 };
 
+<span id='Game_Message-method-isBusy'>/**
+</span> * @method isBusy
+ * FIXME
+ */
 Game_Message.prototype.isBusy = function() {
     return (this.hasText() || this.isChoice() ||
             this.isNumberInput() || this.isItemChoice());
 };
 
+<span id='Game_Message-method-newPage'>/**
+</span> * @method newPage
+ * FIXME
+ */
 Game_Message.prototype.newPage = function() {
     if (this._texts.length &gt; 0) {
         this._texts[this._texts.length - 1] += '\f';
     }
 };
 
+<span id='Game_Message-method-allText'>/**
+</span> * @method allText
+ * FIXME
+ */
 Game_Message.prototype.allText = function() {
     return this._texts.join('\n');
 };
@@ -529,22 +947,44 @@ Game_Message.prototype.allText = function() {
 //
 // The game object class for switches.
 
+<span id='Game_Switches-method-constructor'><span id='Game_Switches'>/**
+</span></span> * @class Game_Switches
+ * The game object class for switches.
+ *
+ * @constructor
+ */
 function Game_Switches() {
     this.initialize.apply(this, arguments);
 }
 
+<span id='Game_Switches-method-initialize'>/**
+</span> * @method initialize
+ * FIXME
+ */
 Game_Switches.prototype.initialize = function() {
     this.clear();
 };
 
+<span id='Game_Switches-method-clear'>/**
+</span> * @method clear
+ * FIXME
+ */
 Game_Switches.prototype.clear = function() {
     this._data = [];
 };
 
+<span id='Game_Switches-method-value'>/**
+</span> * @method value
+ * FIXME
+ */
 Game_Switches.prototype.value = function(switchId) {
     return !!this._data[switchId];
 };
 
+<span id='Game_Switches-method-setValue'>/**
+</span> * @method setValue
+ * FIXME
+ */
 Game_Switches.prototype.setValue = function(switchId, value) {
     if (switchId &gt; 0 &amp;&amp; switchId &lt; $dataSystem.switches.length) {
         this._data[switchId] = value;
@@ -552,6 +992,10 @@ Game_Switches.prototype.setValue = function(switchId, value) {
     }
 };
 
+<span id='Game_Switches-method-onChange'>/**
+</span> * @method onChange
+ * FIXME
+ */
 Game_Switches.prototype.onChange = function() {
     $gameMap.requestRefresh();
 };
@@ -561,22 +1005,44 @@ Game_Switches.prototype.onChange = function() {
 //
 // The game object class for variables.
 
+<span id='Game_Variables-method-constructor'><span id='Game_Variables'>/**
+</span></span> * @class Game_Variables
+ * The game object class for variables.
+ *
+ * @constructor
+ */
 function Game_Variables() {
     this.initialize.apply(this, arguments);
 }
 
+<span id='Game_Variables-method-initialize'>/**
+</span> * @method initialize
+ * FIXME
+ */
 Game_Variables.prototype.initialize = function() {
     this.clear();
 };
 
+<span id='Game_Variables-method-clear'>/**
+</span> * @method clear
+ * FIXME
+ */
 Game_Variables.prototype.clear = function() {
     this._data = [];
 };
 
+<span id='Game_Variables-method-value'>/**
+</span> * @method value
+ * FIXME
+ */
 Game_Variables.prototype.value = function(variableId) {
     return this._data[variableId] || 0;
 };
 
+<span id='Game_Variables-method-setValue'>/**
+</span> * @method setValue
+ * FIXME
+ */
 Game_Variables.prototype.setValue = function(variableId, value) {
     if (variableId &gt; 0 &amp;&amp; variableId &lt; $dataSystem.variables.length) {
         if (typeof value === 'number') {
@@ -587,6 +1053,10 @@ Game_Variables.prototype.setValue = function(variableId, value) {
     }
 };
 
+<span id='Game_Variables-method-onChange'>/**
+</span> * @method onChange
+ * FIXME
+ */
 Game_Variables.prototype.onChange = function() {
     $gameMap.requestRefresh();
 };
@@ -596,22 +1066,44 @@ Game_Variables.prototype.onChange = function() {
 //
 // The game object class for self switches.
 
+<span id='Game_SelfSwitches-method-constructor'><span id='Game_SelfSwitches'>/**
+</span></span> * @class Game_SelfSwitches
+ * The game object class for self switches.
+ *
+ * @constructor
+ */
 function Game_SelfSwitches() {
     this.initialize.apply(this, arguments);
 }
 
+<span id='Game_SelfSwitches-method-initialize'>/**
+</span> * @method initialize
+ * FIXME
+ */
 Game_SelfSwitches.prototype.initialize = function() {
     this.clear();
 };
 
+<span id='Game_SelfSwitches-method-clear'>/**
+</span> * @method clear
+ * FIXME
+ */
 Game_SelfSwitches.prototype.clear = function() {
     this._data = {};
 };
 
+<span id='Game_SelfSwitches-method-value'>/**
+</span> * @method value
+ * FIXME
+ */
 Game_SelfSwitches.prototype.value = function(key) {
     return !!this._data[key];
 };
 
+<span id='Game_SelfSwitches-method-setValue'>/**
+</span> * @method setValue
+ * FIXME
+ */
 Game_SelfSwitches.prototype.setValue = function(key, value) {
     if (value) {
         this._data[key] = true;
@@ -621,6 +1113,10 @@ Game_SelfSwitches.prototype.setValue = function(key, value) {
     this.onChange();
 };
 
+<span id='Game_SelfSwitches-method-onChange'>/**
+</span> * @method onChange
+ * FIXME
+ */
 Game_SelfSwitches.prototype.onChange = function() {
     $gameMap.requestRefresh();
 };
@@ -631,14 +1127,28 @@ Game_SelfSwitches.prototype.onChange = function() {
 // The game object class for screen effect data, such as changes in color tone
 // and flashes.
 
+<span id='Game_Screem-method-constructor'><span id='Game_Screem'>/**
+</span></span> * @class Game_Screem
+ * The game object class for screen effect data, such as changes in color tone and flashes.
+ *
+ * @constructor
+ */
 function Game_Screen() {
     this.initialize.apply(this, arguments);
 }
 
+<span id='Game_Screem-method-initialize'>/**
+</span> * @method initialize
+ * FIXME
+ */
 Game_Screen.prototype.initialize = function() {
     this.clear();
 };
 
+<span id='Game_Screem-method-clear'>/**
+</span> * @method clear
+ * FIXME
+ */
 Game_Screen.prototype.clear = function() {
     this.clearFade();
     this.clearTone();
@@ -649,6 +1159,10 @@ Game_Screen.prototype.clear = function() {
     this.clearPictures();
 };
 
+<span id='Game_Screem-method-onBattleStart'>/**
+</span> * @method onBattleStart
+ * FIXME
+ */
 Game_Screen.prototype.onBattleStart = function() {
     this.clearFade();
     this.clearFlash();
@@ -657,47 +1171,91 @@ Game_Screen.prototype.onBattleStart = function() {
     this.eraseBattlePictures();
 };
 
+<span id='Game_Screem-method-brightness'>/**
+</span> * @method brightness
+ * FIXME
+ */
 Game_Screen.prototype.brightness = function() {
     return this._brightness;
 };
 
+<span id='Game_Screem-method-tone'>/**
+</span> * @method tone
+ * FIXME
+ */
 Game_Screen.prototype.tone = function() {
     return this._tone;
 };
 
+<span id='Game_Screem-method-flashColor'>/**
+</span> * @method flashColor
+ * FIXME
+ */
 Game_Screen.prototype.flashColor = function() {
     return this._flashColor;
 };
 
+<span id='Game_Screem-method-shake'>/**
+</span> * @method shake
+ * FIXME
+ */
 Game_Screen.prototype.shake = function() {
     return this._shake;
 };
 
+<span id='Game_Screem-method-zoomX'>/**
+</span> * @method zoomX
+ * FIXME
+ */
 Game_Screen.prototype.zoomX = function() {
     return this._zoomX;
 };
 
+<span id='Game_Screem-method-zoomY'>/**
+</span> * @method zoomY
+ * FIXME
+ */
 Game_Screen.prototype.zoomY = function() {
     return this._zoomY;
 };
 
+<span id='Game_Screem-method-zoomScale'>/**
+</span> * @method zoomScale
+ * FIXME
+ */
 Game_Screen.prototype.zoomScale = function() {
     return this._zoomScale;
 };
 
+<span id='Game_Screem-method-weatherType'>/**
+</span> * @method weatherType
+ * FIXME
+ */
 Game_Screen.prototype.weatherType = function() {
     return this._weatherType;
 };
 
+<span id='Game_Screem-method-weatherPower'>/**
+</span> * @method weatherPower
+ * FIXME
+ */
 Game_Screen.prototype.weatherPower = function() {
     return this._weatherPower;
 };
 
+<span id='Game_Screem-method-picture'>/**
+</span> * @method picture
+ * FIXME
+ */
 Game_Screen.prototype.picture = function(pictureId) {
     var realPictureId = this.realPictureId(pictureId);
     return this._pictures[realPictureId];
 };
 
+<span id='Game_Screem-method-realPictureId'>/**
+</span> * @method realPictureId
+ * FIXME
+ */
 Game_Screen.prototype.realPictureId = function(pictureId) {
     if ($gameParty.inBattle()) {
         return pictureId + this.maxPictures();
@@ -706,23 +1264,39 @@ Game_Screen.prototype.realPictureId = function(pictureId) {
     }
 };
 
+<span id='Game_Screem-method-clearFade'>/**
+</span> * @method clearFade
+ * FIXME
+ */
 Game_Screen.prototype.clearFade = function() {
     this._brightness = 255;
     this._fadeOutDuration = 0;
     this._fadeInDuration = 0;
 };
 
+<span id='Game_Screem-method-clearTone'>/**
+</span> * @method clearTone
+ * FIXME
+ */
 Game_Screen.prototype.clearTone = function() {
     this._tone = [0, 0, 0, 0];
     this._toneTarget = [0, 0, 0, 0];
     this._toneDuration = 0;
 };
 
+<span id='Game_Screem-method-clearFlash'>/**
+</span> * @method clearFlash
+ * FIXME
+ */
 Game_Screen.prototype.clearFlash = function() {
     this._flashColor = [0, 0, 0, 0];
     this._flashDuration = 0;
 };
 
+<span id='Game_Screem-method-clearShake'>/**
+</span> * @method clearShake
+ * FIXME
+ */
 Game_Screen.prototype.clearShake = function() {
     this._shakePower = 0;
     this._shakeSpeed = 0;
@@ -731,6 +1305,10 @@ Game_Screen.prototype.clearShake = function() {
     this._shake = 0;
 };
 
+<span id='Game_Screem-method-clearZoom'>/**
+</span> * @method clearZoom
+ * FIXME
+ */
 Game_Screen.prototype.clearZoom = function() {
     this._zoomX = 0;
     this._zoomY = 0;
@@ -739,6 +1317,10 @@ Game_Screen.prototype.clearZoom = function() {
     this._zoomDuration = 0;
 };
 
+<span id='Game_Screem-method-clearWeather'>/**
+</span> * @method clearWeather
+ * FIXME
+ */
 Game_Screen.prototype.clearWeather = function() {
     this._weatherType = 'none';
     this._weatherPower = 0;
@@ -746,28 +1328,52 @@ Game_Screen.prototype.clearWeather = function() {
     this._weatherDuration = 0;
 };
 
+<span id='Game_Screem-method-clearPictures'>/**
+</span> * @method clearPictures
+ * FIXME
+ */
 Game_Screen.prototype.clearPictures = function() {
     this._pictures = [];
 };
 
+<span id='Game_Screem-method-eraseBattlePictures'>/**
+</span> * @method eraseBattlePictures
+ * FIXME
+ */
 Game_Screen.prototype.eraseBattlePictures = function() {
     this._pictures = this._pictures.slice(0, this.maxPictures() + 1);
 };
 
+<span id='Game_Screem-method-maxPictures'>/**
+</span> * @method maxPictures
+ * FIXME
+ */
 Game_Screen.prototype.maxPictures = function() {
     return 100;
 };
 
+<span id='Game_Screem-method-startFadeOut'>/**
+</span> * @method startFadeOut
+ * FIXME
+ */
 Game_Screen.prototype.startFadeOut = function(duration) {
     this._fadeOutDuration = duration;
     this._fadeInDuration = 0;
 };
 
+<span id='Game_Screem-method-startFadeIn'>/**
+</span> * @method startFadeIn
+ * FIXME
+ */
 Game_Screen.prototype.startFadeIn = function(duration) {
     this._fadeInDuration = duration;
     this._fadeOutDuration = 0;
 };
 
+<span id='Game_Screem-method-startTint'>/**
+</span> * @method startTint
+ * FIXME
+ */
 Game_Screen.prototype.startTint = function(tone, duration) {
     this._toneTarget = tone.clone();
     this._toneDuration = duration;
@@ -776,17 +1382,29 @@ Game_Screen.prototype.startTint = function(tone, duration) {
     }
 };
 
+<span id='Game_Screem-method-startFlash'>/**
+</span> * @method startFlash
+ * FIXME
+ */
 Game_Screen.prototype.startFlash = function(color, duration) {
     this._flashColor = color.clone();
     this._flashDuration = duration;
 };
 
+<span id='Game_Screem-method-startShake'>/**
+</span> * @method startShake
+ * FIXME
+ */
 Game_Screen.prototype.startShake = function(power, speed, duration) {
     this._shakePower = power;
     this._shakeSpeed = speed;
     this._shakeDuration = duration;
 };
 
+<span id='Game_Screem-method-startZoom'>/**
+</span> * @method startZoom
+ * FIXME
+ */
 Game_Screen.prototype.startZoom = function(x, y, scale, duration) {
     this._zoomX = x;
     this._zoomY = y;
@@ -794,12 +1412,20 @@ Game_Screen.prototype.startZoom = function(x, y, scale, duration) {
     this._zoomDuration = duration;
 };
 
+<span id='Game_Screem-method-setZoom'>/**
+</span> * @method setZoom
+ * FIXME
+ */
 Game_Screen.prototype.setZoom = function(x, y, scale) {
     this._zoomX = x;
     this._zoomY = y;
     this._zoomScale = scale;
 };
 
+<span id='Game_Screem-method-changeWeather'>/**
+</span> * @method changeWeather
+ * FIXME
+ */
 Game_Screen.prototype.changeWeather = function(type, power, duration) {
     if (type !== 'none' || duration === 0) {
         this._weatherType = type;
@@ -811,6 +1437,10 @@ Game_Screen.prototype.changeWeather = function(type, power, duration) {
     }
 };
 
+<span id='Game_Screem-method-update'>/**
+</span> * @method update
+ * FIXME
+ */
 Game_Screen.prototype.update = function() {
     this.updateFadeOut();
     this.updateFadeIn();
@@ -822,6 +1452,10 @@ Game_Screen.prototype.update = function() {
     this.updatePictures();
 };
 
+<span id='Game_Screem-method-updateFadeOut'>/**
+</span> * @method updateFadeOut
+ * FIXME
+ */
 Game_Screen.prototype.updateFadeOut = function() {
     if (this._fadeOutDuration &gt; 0) {
         var d = this._fadeOutDuration;
@@ -830,6 +1464,10 @@ Game_Screen.prototype.updateFadeOut = function() {
     }
 };
 
+<span id='Game_Screem-method-updateFadeIn'>/**
+</span> * @method updateFadeIn
+ * FIXME
+ */
 Game_Screen.prototype.updateFadeIn = function() {
     if (this._fadeInDuration &gt; 0) {
         var d = this._fadeInDuration;
@@ -838,6 +1476,10 @@ Game_Screen.prototype.updateFadeIn = function() {
     }
 };
 
+<span id='Game_Screem-method-updateTone'>/**
+</span> * @method updateTone
+ * FIXME
+ */
 Game_Screen.prototype.updateTone = function() {
     if (this._toneDuration &gt; 0) {
         var d = this._toneDuration;
@@ -848,6 +1490,10 @@ Game_Screen.prototype.updateTone = function() {
     }
 };
 
+<span id='Game_Screem-method-updateFlash'>/**
+</span> * @method updateFlash
+ * FIXME
+ */
 Game_Screen.prototype.updateFlash = function() {
     if (this._flashDuration &gt; 0) {
         var d = this._flashDuration;
@@ -856,6 +1502,10 @@ Game_Screen.prototype.updateFlash = function() {
     }
 };
 
+<span id='Game_Screem-method-updateShake'>/**
+</span> * @method updateShake
+ * FIXME
+ */
 Game_Screen.prototype.updateShake = function() {
     if (this._shakeDuration &gt; 0 || this._shake !== 0) {
         var delta = (this._shakePower * this._shakeSpeed * this._shakeDirection) / 10;
@@ -874,6 +1524,10 @@ Game_Screen.prototype.updateShake = function() {
     }
 };
 
+<span id='Game_Screem-method-updateZoom'>/**
+</span> * @method updateZoom
+ * FIXME
+ */
 Game_Screen.prototype.updateZoom = function() {
     if (this._zoomDuration &gt; 0) {
         var d = this._zoomDuration;
@@ -883,6 +1537,10 @@ Game_Screen.prototype.updateZoom = function() {
     }
 };
 
+<span id='Game_Screem-method-updateWeather'>/**
+</span> * @method updateWeather
+ * FIXME
+ */
 Game_Screen.prototype.updateWeather = function() {
     if (this._weatherDuration &gt; 0) {
         var d = this._weatherDuration;
@@ -895,6 +1553,10 @@ Game_Screen.prototype.updateWeather = function() {
     }
 };
 
+<span id='Game_Screem-method-updatePictures'>/**
+</span> * @method updatePictures
+ * FIXME
+ */
 Game_Screen.prototype.updatePictures = function() {
     this._pictures.forEach(function(picture) {
         if (picture) {
@@ -903,10 +1565,18 @@ Game_Screen.prototype.updatePictures = function() {
     });
 };
 
+<span id='Game_Screem-method-startFlashForDamage'>/**
+</span> * @method startFlashForDamage
+ * FIXME
+ */
 Game_Screen.prototype.startFlashForDamage = function() {
     this.startFlash([255, 0, 0, 128], 8);
 };
 
+<span id='Game_Screem-method-showPicture'>/**
+</span> * @method showPicture
+ * FIXME
+ */
 Game_Screen.prototype.showPicture = function(pictureId, name, origin, x, y,
                                              scaleX, scaleY, opacity, blendMode) {
     var realPictureId = this.realPictureId(pictureId);
@@ -915,6 +1585,10 @@ Game_Screen.prototype.showPicture = function(pictureId, name, origin, x, y,
     this._pictures[realPictureId] = picture;
 };
 
+<span id='Game_Screem-method-movePicture'>/**
+</span> * @method movePicture
+ * FIXME
+ */
 Game_Screen.prototype.movePicture = function(pictureId, origin, x, y, scaleX,
                                              scaleY, opacity, blendMode, duration) {
     var picture = this.picture(pictureId);
@@ -923,6 +1597,10 @@ Game_Screen.prototype.movePicture = function(pictureId, origin, x, y, scaleX,
     }
 };
 
+<span id='Game_Screem-method-rotatePicture'>/**
+</span> * @method rotatePicture
+ * FIXME
+ */
 Game_Screen.prototype.rotatePicture = function(pictureId, speed) {
     var picture = this.picture(pictureId);
     if (picture) {
@@ -930,6 +1608,10 @@ Game_Screen.prototype.rotatePicture = function(pictureId, speed) {
     }
 };
 
+<span id='Game_Screem-method-tintPicture'>/**
+</span> * @method tintPicture
+ * FIXME
+ */
 Game_Screen.prototype.tintPicture = function(pictureId, tone, duration) {
     var picture = this.picture(pictureId);
     if (picture) {
@@ -937,6 +1619,10 @@ Game_Screen.prototype.tintPicture = function(pictureId, tone, duration) {
     }
 };
 
+<span id='Game_Screem-method-erasePicture'>/**
+</span> * @method erasePicture
+ * FIXME
+ */
 Game_Screen.prototype.erasePicture = function(pictureId) {
     var realPictureId = this.realPictureId(pictureId);
     this._pictures[realPictureId] = null;
@@ -947,10 +1633,20 @@ Game_Screen.prototype.erasePicture = function(pictureId) {
 //
 // The game object class for a picture.
 
+<span id='Game_Picture-method-constructor'><span id='Game_Picture'>/**
+</span></span> * @class Game_Picture
+ * The game object class for a picture.
+ *
+ * @constructor
+ */
 function Game_Picture() {
     this.initialize.apply(this, arguments);
 }
 
+<span id='Game_Picture-method-initialize'>/**
+</span> * @method initialize
+ * FIXME
+ */
 Game_Picture.prototype.initialize = function() {
     this.initBasic();
     this.initTarget();
@@ -958,46 +1654,90 @@ Game_Picture.prototype.initialize = function() {
     this.initRotation();
 };
 
+<span id='Game_Picture-method-name'>/**
+</span> * @method name
+ * FIXME
+ */
 Game_Picture.prototype.name = function() {
     return this._name;
 };
 
+<span id='Game_Picture-method-origin'>/**
+</span> * @method origin
+ * FIXME
+ */
 Game_Picture.prototype.origin = function() {
     return this._origin;
 };
 
+<span id='Game_Picture-method-x'>/**
+</span> * @method x
+ * FIXME
+ */
 Game_Picture.prototype.x = function() {
     return this._x;
 };
 
+<span id='Game_Picture-method-y'>/**
+</span> * @method y
+ * FIXME
+ */
 Game_Picture.prototype.y = function() {
     return this._y;
 };
 
+<span id='Game_Picture-method-scaleX'>/**
+</span> * @method scaleX
+ * FIXME
+ */
 Game_Picture.prototype.scaleX = function() {
     return this._scaleX;
 };
 
+<span id='Game_Picture-method-scaleY'>/**
+</span> * @method scaleY
+ * FIXME
+ */
 Game_Picture.prototype.scaleY = function() {
     return this._scaleY;
 };
 
+<span id='Game_Picture-method-opacity'>/**
+</span> * @method opacity
+ * FIXME
+ */
 Game_Picture.prototype.opacity = function() {
     return this._opacity;
 };
 
+<span id='Game_Picture-method-blendMode'>/**
+</span> * @method blendMode
+ * FIXME
+ */
 Game_Picture.prototype.blendMode = function() {
     return this._blendMode;
 };
 
+<span id='Game_Picture-method-ToneSprite'>/**
+</span> * @method ToneSprite
+ * FIXME
+ */
 Game_Picture.prototype.tone = function() {
     return this._tone;
 };
 
+<span id='Game_Picture-method-angle'>/**
+</span> * @method angle
+ * FIXME
+ */
 Game_Picture.prototype.angle = function() {
     return this._angle;
 };
 
+<span id='Game_Picture-method-initBasic'>/**
+</span> * @method initBasic
+ * FIXME
+ */
 Game_Picture.prototype.initBasic = function() {
     this._name = '';
     this._origin = 0;
@@ -1009,6 +1749,10 @@ Game_Picture.prototype.initBasic = function() {
     this._blendMode = 0;
 };
 
+<span id='Game_Picture-method-initTarget'>/**
+</span> * @method initTarget
+ * FIXME
+ */
 Game_Picture.prototype.initTarget = function() {
     this._targetX = this._x;
     this._targetY = this._y;
@@ -1018,17 +1762,29 @@ Game_Picture.prototype.initTarget = function() {
     this._duration = 0;
 };
 
+<span id='Game_Picture-method-initTone'>/**
+</span> * @method initTone
+ * FIXME
+ */
 Game_Picture.prototype.initTone = function() {
     this._tone = null;
     this._toneTarget = null;
     this._toneDuration = 0;
 };
 
+<span id='Game_Picture-method-initRotation'>/**
+</span> * @method initRotation
+ * FIXME
+ */
 Game_Picture.prototype.initRotation = function() {
     this._angle = 0;
     this._rotationSpeed = 0;
 };
 
+<span id='Game_Picture-method-show'>/**
+</span> * @method show
+ * FIXME
+ */
 Game_Picture.prototype.show = function(name, origin, x, y, scaleX,
                                        scaleY, opacity, blendMode) {
     this._name = name;
@@ -1044,6 +1800,10 @@ Game_Picture.prototype.show = function(name, origin, x, y, scaleX,
     this.initRotation();
 };
 
+<span id='Game_Picture-method-move'>/**
+</span> * @method move
+ * FIXME
+ */
 Game_Picture.prototype.move = function(origin, x, y, scaleX, scaleY,
                                        opacity, blendMode, duration) {
     this._origin = origin;
@@ -1056,10 +1816,18 @@ Game_Picture.prototype.move = function(origin, x, y, scaleX, scaleY,
     this._duration = duration;
 };
 
+<span id='Game_Picture-method-rotate'>/**
+</span> * @method rotate
+ * FIXME
+ */
 Game_Picture.prototype.rotate = function(speed) {
     this._rotationSpeed = speed;
 };
 
+<span id='Game_Picture-method-tint'>/**
+</span> * @method tint
+ * FIXME
+ */
 Game_Picture.prototype.tint = function(tone, duration) {
     if (!this._tone) {
         this._tone = [0, 0, 0, 0];
@@ -1071,6 +1839,10 @@ Game_Picture.prototype.tint = function(tone, duration) {
     }
 };
 
+<span id='Game_Picture-method-erase'>/**
+</span> * @method erase
+ * FIXME
+ */
 Game_Picture.prototype.erase = function() {
     this._name = '';
     this._origin = 0;
@@ -1079,12 +1851,20 @@ Game_Picture.prototype.erase = function() {
     this.initRotation();
 };
 
+<span id='Game_Picture-method-update'>/**
+</span> * @method update
+ * FIXME
+ */
 Game_Picture.prototype.update = function() {
     this.updateMove();
     this.updateTone();
     this.updateRotation();
 };
 
+<span id='Game_Picture-method-updateMove'>/**
+</span> * @method updateMove
+ * FIXME
+ */
 Game_Picture.prototype.updateMove = function() {
     if (this._duration &gt; 0) {
         var d = this._duration;
@@ -1097,6 +1877,10 @@ Game_Picture.prototype.updateMove = function() {
     }
 };
 
+<span id='Game_Picture-method-updateTone'>/**
+</span> * @method updateTone
+ * FIXME
+ */
 Game_Picture.prototype.updateTone = function() {
     if (this._toneDuration &gt; 0) {
         var d = this._toneDuration;
@@ -1107,6 +1891,10 @@ Game_Picture.prototype.updateTone = function() {
     }
 };
 
+<span id='Game_Picture-method-updateRotation'>/**
+</span> * @method updateRotation
+ * FIXME
+ */
 Game_Picture.prototype.updateRotation = function() {
     if (this._rotationSpeed !== 0) {
         this._angle += this._rotationSpeed / 2;
@@ -1119,10 +1907,21 @@ Game_Picture.prototype.updateRotation = function() {
 // The game object class for handling skills, items, weapons, and armor. It is
 // required because save data should not include the database object itself.
 
+<span id='Game_Item-method-constructor'><span id='Game_Item'>/**
+</span></span> * @class Game_Item
+ * The game object class for handling skills, items, weapons, and armor. It is
+ * required because save data should not include the database object itself.
+ *
+ * @constructor
+ */
 function Game_Item() {
     this.initialize.apply(this, arguments);
 }
 
+<span id='Game_Item-method-initialize'>/**
+</span> * @method initialize
+ * FIXME
+ */
 Game_Item.prototype.initialize = function(item) {
     this._dataClass = '';
     this._itemId = 0;
@@ -1131,38 +1930,74 @@ Game_Item.prototype.initialize = function(item) {
     }
 };
 
+<span id='Game_Item-method-isSkill'>/**
+</span> * @method isSkill
+ * FIXME
+ */
 Game_Item.prototype.isSkill = function() {
     return this._dataClass === 'skill';
 };
 
+<span id='Game_Item-method-isItem'>/**
+</span> * @method isItem
+ * FIXME
+ */
 Game_Item.prototype.isItem = function() {
     return this._dataClass === 'item';
 };
 
+<span id='Game_Item-method-isUsableItem'>/**
+</span> * @method isUsableItem
+ * FIXME
+ */
 Game_Item.prototype.isUsableItem = function() {
     return this.isSkill() || this.isItem();
 };
 
+<span id='Game_Item-method-isWeapon'>/**
+</span> * @method isWeapon
+ * FIXME
+ */
 Game_Item.prototype.isWeapon = function() {
     return this._dataClass === 'weapon';
 };
 
+<span id='Game_Item-method-isArmor'>/**
+</span> * @method isArmor
+ * FIXME
+ */
 Game_Item.prototype.isArmor = function() {
     return this._dataClass === 'armor';
 };
 
+<span id='Game_Item-method-isEquipItem'>/**
+</span> * @method isEquipItem
+ * FIXME
+ */
 Game_Item.prototype.isEquipItem = function() {
     return this.isWeapon() || this.isArmor();
 };
 
+<span id='Game_Item-method-isNull'>/**
+</span> * @method isNull
+ * FIXME
+ */
 Game_Item.prototype.isNull = function() {
     return this._dataClass === '';
 };
 
+<span id='Game_Item-method-itemId'>/**
+</span> * @method itemId
+ * FIXME
+ */
 Game_Item.prototype.itemId = function() {
     return this._itemId;
 };
 
+<span id='Game_Item-method-object'>/**
+</span> * @method object
+ * FIXME
+ */
 Game_Item.prototype.object = function() {
     if (this.isSkill()) {
         return $dataSkills[this._itemId];
@@ -1177,6 +2012,10 @@ Game_Item.prototype.object = function() {
     }
 };
 
+<span id='Game_Item-method-setObject'>/**
+</span> * @method setObject
+ * FIXME
+ */
 Game_Item.prototype.setObject = function(item) {
     if (DataManager.isSkill(item)) {
         this._dataClass = 'skill';
@@ -1192,6 +2031,10 @@ Game_Item.prototype.setObject = function(item) {
     this._itemId = item ? item.id : 0;
 };
 
+<span id='Game_Item-method-setEquip'>/**
+</span> * @method setEquip
+ * FIXME
+ */
 Game_Item.prototype.setEquip = function(isWeapon, itemId) {
     this._dataClass = isWeapon ? 'weapon' : 'armor';
     this._itemId = itemId;
@@ -1202,28 +2045,89 @@ Game_Item.prototype.setEquip = function(isWeapon, itemId) {
 //
 // The game object class for a battle action.
 
+<span id='Game_Action-method-constructor'><span id='Game_Action'>/**
+</span></span> * @class Game_Action
+ * The game object class for a battle action.
+ *
+ * @constructor
+ */
 function Game_Action() {
     this.initialize.apply(this, arguments);
 }
 
+<span id='Game_Action-property-FIXME'>/**
+</span> * @property {} FIXME
+ */
 Game_Action.EFFECT_RECOVER_HP       = 11;
+<span id='Game_Action-property-FIXME'>/**
+</span> * @property {} FIXME
+ */
 Game_Action.EFFECT_RECOVER_MP       = 12;
+<span id='Game_Action-property-FIXME'>/**
+</span> * @property {} FIXME
+ */
 Game_Action.EFFECT_GAIN_TP          = 13;
+<span id='Game_Action-property-FIXME'>/**
+</span> * @property {} FIXME
+ */
 Game_Action.EFFECT_ADD_STATE        = 21;
+<span id='Game_Action-property-FIXME'>/**
+</span> * @property {} FIXME
+ */
 Game_Action.EFFECT_REMOVE_STATE     = 22;
+<span id='Game_Action-property-FIXME'>/**
+</span> * @property {} FIXME
+ */
 Game_Action.EFFECT_ADD_BUFF         = 31;
+<span id='Game_Action-property-FIXME'>/**
+</span> * @property {} FIXME
+ */
 Game_Action.EFFECT_ADD_DEBUFF       = 32;
+<span id='Game_Action-property-FIXME'>/**
+</span> * @property {} FIXME
+ */
 Game_Action.EFFECT_REMOVE_BUFF      = 33;
+<span id='Game_Action-property-FIXME'>/**
+</span> * @property {} FIXME
+ */
 Game_Action.EFFECT_REMOVE_DEBUFF    = 34;
+<span id='Game_Action-property-FIXME'>/**
+</span> * @property {} FIXME
+ */
 Game_Action.EFFECT_SPECIAL          = 41;
+<span id='Game_Action-property-FIXME'>/**
+</span> * @property {} FIXME
+ */
 Game_Action.EFFECT_GROW             = 42;
-Game_Action.EFFECT_LEARN_SKILL      = 43;
+<span id='Game_Action-property-FIXME'>/**
+</span> * @property {} FIXME
+ */
 Game_Action.EFFECT_COMMON_EVENT     = 44;
+<span id='Game_Action-property-FIXME'>/**
+</span> * @property {} FIXME
+ */
+Game_Action.EFFECT_LEARN_SKILL      = 43;
+<span id='Game_Action-property-FIXME'>/**
+</span> * @property {} FIXME
+ */
 Game_Action.SPECIAL_EFFECT_ESCAPE   = 0;
+<span id='Game_Action-property-FIXME'>/**
+</span> * @property {} FIXME
+ */
 Game_Action.HITTYPE_CERTAIN         = 0;
+<span id='Game_Action-property-FIXME'>/**
+</span> * @property {} FIXME
+ */
 Game_Action.HITTYPE_PHYSICAL        = 1;
+<span id='Game_Action-property-FIXME'>/**
+</span> * @property {} FIXME
+ */
 Game_Action.HITTYPE_MAGICAL         = 2;
 
+<span id='Game_Action-method-initialize'>/**
+</span> * @method initialize
+ * FIXME
+ */
 Game_Action.prototype.initialize = function(subject, forcing) {
     this._subjectActorId = 0;
     this._subjectEnemyIndex = -1;
@@ -1232,11 +2136,19 @@ Game_Action.prototype.initialize = function(subject, forcing) {
     this.clear();
 };
 
+<span id='Game_Action-method-clear'>/**
+</span> * @method clear
+ * FIXME
+ */
 Game_Action.prototype.clear = function() {
     this._item = new Game_Item();
     this._targetIndex = -1;
 };
 
+<span id='Game_Action-method-setSubject'>/**
+</span> * @method setSubject
+ * FIXME
+ */
 Game_Action.prototype.setSubject = function(subject) {
     if (subject.isActor()) {
         this._subjectActorId = subject.actorId();
@@ -1247,6 +2159,10 @@ Game_Action.prototype.setSubject = function(subject) {
     }
 };
 
+<span id='Game_Action-method-subject'>/**
+</span> * @method subject
+ * FIXME
+ */
 Game_Action.prototype.subject = function() {
     if (this._subjectActorId &gt; 0) {
         return $gameActors.actor(this._subjectActorId);
@@ -1255,14 +2171,26 @@ Game_Action.prototype.subject = function() {
     }
 };
 
+<span id='Game_Action-method-friendsUnit'>/**
+</span> * @method friendsUnit
+ * FIXME
+ */
 Game_Action.prototype.friendsUnit = function() {
     return this.subject().friendsUnit();
 };
 
+<span id='Game_Action-method-opponentsUnit'>/**
+</span> * @method opponentsUnit
+ * FIXME
+ */
 Game_Action.prototype.opponentsUnit = function() {
     return this.subject().opponentsUnit();
 };
 
+<span id='Game_Action-method-setEnemyAction'>/**
+</span> * @method setEnemyAction
+ * FIXME
+ */
 Game_Action.prototype.setEnemyAction = function(action) {
     if (action) {
         this.setSkill(action.skillId);
@@ -1271,42 +2199,82 @@ Game_Action.prototype.setEnemyAction = function(action) {
     }
 };
 
+<span id='Game_Action-method-setAttack'>/**
+</span> * @method setAttack
+ * FIXME
+ */
 Game_Action.prototype.setAttack = function() {
     this.setSkill(this.subject().attackSkillId());
 };
 
+<span id='Game_Action-method-setGuard'>/**
+</span> * @method setGuard
+ * FIXME
+ */
 Game_Action.prototype.setGuard = function() {
     this.setSkill(this.subject().guardSkillId());
 };
 
+<span id='Game_Action-method-setSkill'>/**
+</span> * @method setSkill
+ * FIXME
+ */
 Game_Action.prototype.setSkill = function(skillId) {
     this._item.setObject($dataSkills[skillId]);
 };
 
+<span id='Game_Action-method-setItem'>/**
+</span> * @method setItem
+ * FIXME
+ */
 Game_Action.prototype.setItem = function(itemId) {
     this._item.setObject($dataItems[itemId]);
 };
 
+<span id='Game_Action-method-setItemObject'>/**
+</span> * @method setItemObject
+ * FIXME
+ */
 Game_Action.prototype.setItemObject = function(object) {
     this._item.setObject(object);
 };
 
+<span id='Game_Action-method-setTarget'>/**
+</span> * @method setTarget
+ * FIXME
+ */
 Game_Action.prototype.setTarget = function(targetIndex) {
     this._targetIndex = targetIndex;
 };
 
+<span id='Game_Action-method-item'>/**
+</span> * @method item
+ * FIXME
+ */
 Game_Action.prototype.item = function() {
     return this._item.object();
 };
 
+<span id='Game_Action-method-isSkill'>/**
+</span> * @method isSkill
+ * FIXME
+ */
 Game_Action.prototype.isSkill = function() {
     return this._item.isSkill();
 };
 
+<span id='Game_Action-method-isItem'>/**
+</span> * @method isItem
+ * FIXME
+ */
 Game_Action.prototype.isItem = function() {
     return this._item.isItem();
 };
 
+<span id='Game_Action-method-numRepeats'>/**
+</span> * @method numRepeats
+ * FIXME
+ */
 Game_Action.prototype.numRepeats = function() {
     var repeats = this.item().repeats;
     if (this.isAttack()) {
@@ -1315,98 +2283,194 @@ Game_Action.prototype.numRepeats = function() {
     return Math.floor(repeats);
 };
 
+<span id='Game_Action-method-checkItemScope'>/**
+</span> * @method checkItemScope
+ * FIXME
+ */
 Game_Action.prototype.checkItemScope = function(list) {
     return list.contains(this.item().scope);
 };
 
+<span id='Game_Action-method-isForOpponent'>/**
+</span> * @method isForOpponent
+ * FIXME
+ */
 Game_Action.prototype.isForOpponent = function() {
     return this.checkItemScope([1, 2, 3, 4, 5, 6]);
 };
 
+<span id='Game_Action-method-isForFriend'>/**
+</span> * @method isForFriend
+ * FIXME
+ */
 Game_Action.prototype.isForFriend = function() {
     return this.checkItemScope([7, 8, 9, 10, 11]);
 };
 
+<span id='Game_Action-method-isForDeadFriend'>/**
+</span> * @method isForDeadFriend
+ * FIXME
+ */
 Game_Action.prototype.isForDeadFriend = function() {
     return this.checkItemScope([9, 10]);
 };
 
+<span id='Game_Action-method-isForUser'>/**
+</span> * @method isForUser
+ * FIXME
+ */
 Game_Action.prototype.isForUser = function() {
     return this.checkItemScope([11]);
 };
 
+<span id='Game_Action-method-isForOne'>/**
+</span> * @method isForOne
+ * FIXME
+ */
 Game_Action.prototype.isForOne = function() {
     return this.checkItemScope([1, 3, 7, 9, 11]);
 };
 
+<span id='Game_Action-method-isForRandom'>/**
+</span> * @method isForRandom
+ * FIXME
+ */
 Game_Action.prototype.isForRandom = function() {
     return this.checkItemScope([3, 4, 5, 6]);
 };
 
+<span id='Game_Action-method-isForAll'>/**
+</span> * @method isForAll
+ * FIXME
+ */
 Game_Action.prototype.isForAll = function() {
     return this.checkItemScope([2, 8, 10]);
 };
 
+<span id='Game_Action-method-needsSelection'>/**
+</span> * @method needsSelection
+ * FIXME
+ */
 Game_Action.prototype.needsSelection = function() {
     return this.checkItemScope([1, 7, 9]);
 };
 
+<span id='Game_Action-method-numTargets'>/**
+</span> * @method numTargets
+ * FIXME
+ */
 Game_Action.prototype.numTargets = function() {
     return this.isForRandom() ? this.item().scope - 2 : 0;
 };
 
+<span id='Game_Action-method-checkDamageType'>/**
+</span> * @method checkDamageType
+ * FIXME
+ */
 Game_Action.prototype.checkDamageType = function(list) {
     return list.contains(this.item().damage.type);
 };
 
+<span id='Game_Action-method-isHpEffect'>/**
+</span> * @method isHpEffect
+ * FIXME
+ */
 Game_Action.prototype.isHpEffect = function() {
     return this.checkDamageType([1, 3, 5]);
 };
 
+<span id='Game_Action-method-isMpEffect'>/**
+</span> * @method isMpEffect
+ * FIXME
+ */
 Game_Action.prototype.isMpEffect = function() {
     return this.checkDamageType([2, 4, 6]);
 };
 
+<span id='Game_Action-method-isDamage'>/**
+</span> * @method isDamage
+ * FIXME
+ */
 Game_Action.prototype.isDamage = function() {
     return this.checkDamageType([1, 2]);
 };
 
+<span id='Game_Action-method-isRecover'>/**
+</span> * @method isRecover
+ * FIXME
+ */
 Game_Action.prototype.isRecover = function() {
     return this.checkDamageType([3, 4]);
 };
 
+<span id='Game_Action-method-isDrain'>/**
+</span> * @method isDrain
+ * FIXME
+ */
 Game_Action.prototype.isDrain = function() {
     return this.checkDamageType([5, 6]);
 };
 
+<span id='Game_Action-method-isHpRecover'>/**
+</span> * @method isHpRecover
+ * FIXME
+ */
 Game_Action.prototype.isHpRecover = function() {
     return this.checkDamageType([3]);
 };
 
+<span id='Game_Action-method-isMpRecover'>/**
+</span> * @method isMpRecover
+ * FIXME
+ */
 Game_Action.prototype.isMpRecover = function() {
     return this.checkDamageType([4]);
 };
 
+<span id='Game_Action-method-isCertainHit'>/**
+</span> * @method isCertainHit
+ * FIXME
+ */
 Game_Action.prototype.isCertainHit = function() {
     return this.item().hitType === Game_Action.HITTYPE_CERTAIN;
 };
 
+<span id='Game_Action-method-isPhysical'>/**
+</span> * @method isPhysical
+ * FIXME
+ */
 Game_Action.prototype.isPhysical = function() {
     return this.item().hitType === Game_Action.HITTYPE_PHYSICAL;
 };
 
+<span id='Game_Action-method-isMagical'>/**
+</span> * @method isMagical
+ * FIXME
+ */
 Game_Action.prototype.isMagical = function() {
     return this.item().hitType === Game_Action.HITTYPE_MAGICAL;
 };
 
+<span id='Game_Action-method-isAttack'>/**
+</span> * @method isAttack
+ * FIXME
+ */
 Game_Action.prototype.isAttack = function() {
     return this.item() === $dataSkills[this.subject().attackSkillId()];
 };
 
+<span id='Game_Action-method-isGuard'>/**
+</span> * @method isGuard
+ * FIXME
+ */
 Game_Action.prototype.isGuard = function() {
     return this.item() === $dataSkills[this.subject().guardSkillId()];
 };
 
+<span id='Game_Action-method-isMagicSkill'>/**
+</span> * @method isMagicSkill
+ * FIXME
+ */
 Game_Action.prototype.isMagicSkill = function() {
     if (this.isSkill()) {
         return $dataSystem.magicSkills.contains(this.item().stypeId);
@@ -1415,6 +2479,10 @@ Game_Action.prototype.isMagicSkill = function() {
     }
 };
 
+<span id='Game_Action-method-decideRandomTarget'>/**
+</span> * @method decideRandomTarget
+ * FIXME
+ */
 Game_Action.prototype.decideRandomTarget = function() {
     var target;
     if (this.isForDeadFriend()) {
@@ -1431,20 +2499,36 @@ Game_Action.prototype.decideRandomTarget = function() {
     }
 };
 
+<span id='Game_Action-method-setConfusion'>/**
+</span> * @method setConfusion
+ * FIXME
+ */
 Game_Action.prototype.setConfusion = function() {
     this.setAttack();
 };
 
+<span id='Game_Action-method-prepare'>/**
+</span> * @method prepare
+ * FIXME
+ */
 Game_Action.prototype.prepare = function() {
     if (this.subject().isConfused() &amp;&amp; !this._forcing) {
         this.setConfusion();
     }
 };
 
+<span id='Game_Action-method-isValid'>/**
+</span> * @method isValid
+ * FIXME
+ */
 Game_Action.prototype.isValid = function() {
     return (this._forcing &amp;&amp; this.item()) || this.subject().canUse(this.item());
 };
 
+<span id='Game_Action-method-speed'>/**
+</span> * @method speed
+ * FIXME
+ */
 Game_Action.prototype.speed = function() {
     var agi = this.subject().agi;
     var speed = agi + Math.randomInt(Math.floor(5 + agi / 4));
@@ -1457,6 +2541,10 @@ Game_Action.prototype.speed = function() {
     return speed;
 };
 
+<span id='Game_Action-method-makeTargets'>/**
+</span> * @method makeTargets
+ * FIXME
+ */
 Game_Action.prototype.makeTargets = function() {
     var targets = [];
     if (!this._forcing &amp;&amp; this.subject().isConfused()) {
@@ -1469,6 +2557,10 @@ Game_Action.prototype.makeTargets = function() {
     return this.repeatTargets(targets);
 };
 
+<span id='Game_Action-method-repeatTargets'>/**
+</span> * @method repeatTargets
+ * FIXME
+ */
 Game_Action.prototype.repeatTargets = function(targets) {
     var repeatedTargets = [];
     var repeats = this.numRepeats();
@@ -1483,6 +2575,10 @@ Game_Action.prototype.repeatTargets = function(targets) {
     return repeatedTargets;
 };
 
+<span id='Game_Action-method-confusionTarget'>/**
+</span> * @method confusionTarget
+ * FIXME
+ */
 Game_Action.prototype.confusionTarget = function() {
     switch (this.subject().confusionLevel()) {
     case 1:
@@ -1497,6 +2593,10 @@ Game_Action.prototype.confusionTarget = function() {
     }
 };
 
+<span id='Game_Action-method-targetsForOpponents'>/**
+</span> * @method targetsForOpponents
+ * FIXME
+ */
 Game_Action.prototype.targetsForOpponents = function() {
     var targets = [];
     var unit = this.opponentsUnit();
@@ -1516,6 +2616,10 @@ Game_Action.prototype.targetsForOpponents = function() {
     return targets;
 };
 
+<span id='Game_Action-method-targetsForFriends'>/**
+</span> * @method targetsForFriends
+ * FIXME
+ */
 Game_Action.prototype.targetsForFriends = function() {
     var targets = [];
     var unit = this.friendsUnit();
@@ -1539,6 +2643,10 @@ Game_Action.prototype.targetsForFriends = function() {
     return targets;
 };
 
+<span id='Game_Action-method-evaluate'>/**
+</span> * @method evaluate
+ * FIXME
+ */
 Game_Action.prototype.evaluate = function() {
     var value = 0;
     this.itemTargetCandidates().forEach(function(target) {
@@ -1557,6 +2665,10 @@ Game_Action.prototype.evaluate = function() {
     return value;
 };
 
+<span id='Game_Action-method-itemTargetCandidates'>/**
+</span> * @method itemTargetCandidates
+ * FIXME
+ */
 Game_Action.prototype.itemTargetCandidates = function() {
     if (!this.isValid()) {
         return [];
@@ -1571,6 +2683,10 @@ Game_Action.prototype.itemTargetCandidates = function() {
     }
 };
 
+<span id='Game_Action-method-evaluateWithTarget'>/**
+</span> * @method evaluateWithTarget
+ * FIXME
+ */
 Game_Action.prototype.evaluateWithTarget = function(target) {
     if (this.isHpEffect()) {
         var value = this.makeDamageValue(target, false);
@@ -1583,6 +2699,10 @@ Game_Action.prototype.evaluateWithTarget = function(target) {
     }
 };
 
+<span id='Game_Action-method-testApply'>/**
+</span> * @method testApply
+ * FIXME
+ */
 Game_Action.prototype.testApply = function(target) {
     return (this.isForDeadFriend() === target.isDead() &amp;&amp;
             ($gameParty.inBattle() || this.isForOpponent() ||
@@ -1591,12 +2711,20 @@ Game_Action.prototype.testApply = function(target) {
             (this.hasItemAnyValidEffects(target))));
 };
 
+<span id='Game_Action-method-hasItemAnyValidEffects'>/**
+</span> * @method hasItemAnyValidEffects
+ * FIXME
+ */
 Game_Action.prototype.hasItemAnyValidEffects = function(target) {
     return this.item().effects.some(function(effect) {
         return this.testItemEffect(target, effect);
     }, this);
 };
 
+<span id='Game_Action-method-testItemEffect'>/**
+</span> * @method testItemEffect
+ * FIXME
+ */
 Game_Action.prototype.testItemEffect = function(target, effect) {
     switch (effect.code) {
     case Game_Action.EFFECT_RECOVER_HP:
@@ -1622,6 +2750,10 @@ Game_Action.prototype.testItemEffect = function(target, effect) {
     }
 };
 
+<span id='Game_Action-method-itemCnt'>/**
+</span> * @method itemCnt
+ * FIXME
+ */
 Game_Action.prototype.itemCnt = function(target) {
     if (this.isPhysical() &amp;&amp; target.canMove()) {
         return target.cnt;
@@ -1630,6 +2762,10 @@ Game_Action.prototype.itemCnt = function(target) {
     }
 };
 
+<span id='Game_Action-method-itemMrf'>/**
+</span> * @method itemMrf
+ * FIXME
+ */
 Game_Action.prototype.itemMrf = function(target) {
     if (this.isMagical()) {
         return target.mrf;
@@ -1638,6 +2774,10 @@ Game_Action.prototype.itemMrf = function(target) {
     }
 };
 
+<span id='Game_Action-method-itemHit'>/**
+</span> * @method itemHit
+ * FIXME
+ */
 Game_Action.prototype.itemHit = function(target) {
     if (this.isPhysical()) {
         return this.item().successRate * 0.01 * this.subject().hit;
@@ -1646,6 +2786,10 @@ Game_Action.prototype.itemHit = function(target) {
     }
 };
 
+<span id='Game_Action-method-itemEva'>/**
+</span> * @method itemEva
+ * FIXME
+ */
 Game_Action.prototype.itemEva = function(target) {
     if (this.isPhysical()) {
         return target.eva;
@@ -1656,10 +2800,18 @@ Game_Action.prototype.itemEva = function(target) {
     }
 };
 
+<span id='Game_Action-method-itemCri'>/**
+</span> * @method itemCri
+ * FIXME
+ */
 Game_Action.prototype.itemCri = function(target) {
     return this.item().damage.critical ? this.subject().cri * (1 - target.cev) : 0;
 };
 
+<span id='Game_Action-method-apply'>/**
+</span> * @method apply
+ * FIXME
+ */
 Game_Action.prototype.apply = function(target) {
     var result = target.result();
     this.subject().clearResult();
@@ -1682,6 +2834,10 @@ Game_Action.prototype.apply = function(target) {
     }
 };
 
+<span id='Game_Action-method-makeDamageValue'>/**
+</span> * @method makeDamageValue
+ * FIXME
+ */
 Game_Action.prototype.makeDamageValue = function(target, critical) {
     var item = this.item();
     var baseValue = this.evalDamageFormula(target);
@@ -1704,6 +2860,10 @@ Game_Action.prototype.makeDamageValue = function(target, critical) {
     return value;
 };
 
+<span id='Game_Action-method-evalDamageFormula'>/**
+</span> * @method evalDamageFormula
+ * FIXME
+ */
 Game_Action.prototype.evalDamageFormula = function(target) {
     try {
         var item = this.item();
@@ -1719,6 +2879,10 @@ Game_Action.prototype.evalDamageFormula = function(target) {
     }
 };
 
+<span id='Game_Action-method-calcElementRate'>/**
+</span> * @method calcElementRate
+ * FIXME
+ */
 Game_Action.prototype.calcElementRate = function(target) {
     if (this.item().damage.elementId &lt; 0) {
         return this.elementsMaxRate(target, this.subject().attackElements());
@@ -1727,6 +2891,10 @@ Game_Action.prototype.calcElementRate = function(target) {
     }
 };
 
+<span id='Game_Action-method-elementsMaxRate'>/**
+</span> * @method elementsMaxRate
+ * FIXME
+ */
 Game_Action.prototype.elementsMaxRate = function(target, elements) {
     if (elements.length &gt; 0) {
         return Math.max.apply(null, elements.map(function(elementId) {
@@ -1737,20 +2905,36 @@ Game_Action.prototype.elementsMaxRate = function(target, elements) {
     }
 };
 
+<span id='Game_Action-method-applyCritical'>/**
+</span> * @method applyCritical
+ * FIXME
+ */
 Game_Action.prototype.applyCritical = function(damage) {
     return damage * 3;
 };
 
+<span id='Game_Action-method-applyVariance'>/**
+</span> * @method applyVariance
+ * FIXME
+ */
 Game_Action.prototype.applyVariance = function(damage, variance) {
     var amp = Math.floor(Math.max(Math.abs(damage) * variance / 100, 0));
     var v = Math.randomInt(amp + 1) + Math.randomInt(amp + 1) - amp;
     return damage &gt;= 0 ? damage + v : damage - v;
 };
 
+<span id='Game_Action-method-applyGuard'>/**
+</span> * @method applyGuard
+ * FIXME
+ */
 Game_Action.prototype.applyGuard = function(damage, target) {
     return damage / (damage &gt; 0 &amp;&amp; target.isGuard() ? 2 * target.grd : 1);
 };
 
+<span id='Game_Action-method-executeDamage'>/**
+</span> * @method executeDamage
+ * FIXME
+ */
 Game_Action.prototype.executeDamage = function(target, value) {
     var result = target.result();
     if (value === 0) {
@@ -1764,6 +2948,10 @@ Game_Action.prototype.executeDamage = function(target, value) {
     }
 };
 
+<span id='Game_Action-method-executeHpDamage'>/**
+</span> * @method executeHpDamage
+ * FIXME
+ */
 Game_Action.prototype.executeHpDamage = function(target, value) {
     if (this.isDrain()) {
         value = Math.min(target.hp, value);
@@ -1776,6 +2964,10 @@ Game_Action.prototype.executeHpDamage = function(target, value) {
     this.gainDrainedHp(value);
 };
 
+<span id='Game_Action-method-executeMpDamage'>/**
+</span> * @method executeMpDamage
+ * FIXME
+ */
 Game_Action.prototype.executeMpDamage = function(target, value) {
     if (!this.isMpRecover()) {
         value = Math.min(target.mp, value);
@@ -1787,6 +2979,10 @@ Game_Action.prototype.executeMpDamage = function(target, value) {
     this.gainDrainedMp(value);
 };
 
+<span id='Game_Action-method-gainDrainedHp'>/**
+</span> * @method gainDrainedHp
+ * FIXME
+ */
 Game_Action.prototype.gainDrainedHp = function(value) {
     if (this.isDrain()) {
        var gainTarget = this.subject();
@@ -1797,6 +2993,10 @@ Game_Action.prototype.gainDrainedHp = function(value) {
     }
 };
 
+<span id='Game_Action-method-gainDrainedMp'>/**
+</span> * @method gainDrainedMp
+ * FIXME
+ */
 Game_Action.prototype.gainDrainedMp = function(value) {
     if (this.isDrain()) {
        var gainTarget = this.subject();
@@ -1807,6 +3007,10 @@ Game_Action.prototype.gainDrainedMp = function(value) {
     }
 };
 
+<span id='Game_Action-method-applyItemEffect'>/**
+</span> * @method applyItemEffect
+ * FIXME
+ */
 Game_Action.prototype.applyItemEffect = function(target, effect) {
     switch (effect.code) {
     case Game_Action.EFFECT_RECOVER_HP:
@@ -1851,6 +3055,10 @@ Game_Action.prototype.applyItemEffect = function(target, effect) {
     }
 };
 
+<span id='Game_Action-method-itemEffectRecoverHp'>/**
+</span> * @method itemEffectRecoverHp
+ * FIXME
+ */
 Game_Action.prototype.itemEffectRecoverHp = function(target, effect) {
     var value = (target.mhp * effect.value1 + effect.value2) * target.rec;
     if (this.isItem()) {
@@ -1863,6 +3071,10 @@ Game_Action.prototype.itemEffectRecoverHp = function(target, effect) {
     }
 };
 
+<span id='Game_Action-method-itemEffectRecoverMp'>/**
+</span> * @method itemEffectRecoverMp
+ * FIXME
+ */
 Game_Action.prototype.itemEffectRecoverMp = function(target, effect) {
     var value = (target.mmp * effect.value1 + effect.value2) * target.rec;
     if (this.isItem()) {
@@ -1875,6 +3087,10 @@ Game_Action.prototype.itemEffectRecoverMp = function(target, effect) {
     }
 };
 
+<span id='Game_Action-method-itemEffectGainTp'>/**
+</span> * @method itemEffectGainTp
+ * FIXME
+ */
 Game_Action.prototype.itemEffectGainTp = function(target, effect) {
     var value = Math.floor(effect.value1);
     if (value !== 0) {
@@ -1883,6 +3099,10 @@ Game_Action.prototype.itemEffectGainTp = function(target, effect) {
     }
 };
 
+<span id='Game_Action-method-itemEffectAddState'>/**
+</span> * @method itemEffectAddState
+ * FIXME
+ */
 Game_Action.prototype.itemEffectAddState = function(target, effect) {
     if (effect.dataId === 0) {
         this.itemEffectAddAttackState(target, effect);
@@ -1891,6 +3111,10 @@ Game_Action.prototype.itemEffectAddState = function(target, effect) {
     }
 };
 
+<span id='Game_Action-method-itemEffectAddAttackState'>/**
+</span> * @method itemEffectAddAttackState
+ * FIXME
+ */
 Game_Action.prototype.itemEffectAddAttackState = function(target, effect) {
     this.subject().attackStates().forEach(function(stateId) {
         var chance = effect.value1;
@@ -1904,6 +3128,10 @@ Game_Action.prototype.itemEffectAddAttackState = function(target, effect) {
     }.bind(this), target);
 };
 
+<span id='Game_Action-method-itemEffectAddNormalState'>/**
+</span> * @method itemEffectAddNormalState
+ * FIXME
+ */
 Game_Action.prototype.itemEffectAddNormalState = function(target, effect) {
     var chance = effect.value1;
     if (!this.isCertainHit()) {
@@ -1916,6 +3144,10 @@ Game_Action.prototype.itemEffectAddNormalState = function(target, effect) {
     }
 };
 
+<span id='Game_Action-method-itemEffectRemoveState'>/**
+</span> * @method itemEffectRemoveState
+ * FIXME
+ */
 Game_Action.prototype.itemEffectRemoveState = function(target, effect) {
     var chance = effect.value1;
     if (Math.random() &lt; chance) {
@@ -1924,11 +3156,19 @@ Game_Action.prototype.itemEffectRemoveState = function(target, effect) {
     }
 };
 
+<span id='Game_Action-method-itemEffectAddBuff'>/**
+</span> * @method itemEffectAddBuff
+ * FIXME
+ */
 Game_Action.prototype.itemEffectAddBuff = function(target, effect) {
     target.addBuff(effect.dataId, effect.value1);
     this.makeSuccess(target);
 };
 
+<span id='Game_Action-method-itemEffectAddDebuff'>/**
+</span> * @method itemEffectAddDebuff
+ * FIXME
+ */
 Game_Action.prototype.itemEffectAddDebuff = function(target, effect) {
     var chance = target.debuffRate(effect.dataId) * this.lukEffectRate(target);
     if (Math.random() &lt; chance) {
@@ -1937,6 +3177,10 @@ Game_Action.prototype.itemEffectAddDebuff = function(target, effect) {
     }
 };
 
+<span id='Game_Action-method-itemEffectRemoveBuff'>/**
+</span> * @method itemEffectRemoveBuff
+ * FIXME
+ */
 Game_Action.prototype.itemEffectRemoveBuff = function(target, effect) {
     if (target.isBuffAffected(effect.dataId)) {
         target.removeBuff(effect.dataId);
@@ -1944,6 +3188,10 @@ Game_Action.prototype.itemEffectRemoveBuff = function(target, effect) {
     }
 };
 
+<span id='Game_Action-method-itemEffectRemoveDebuff'>/**
+</span> * @method itemEffectRemoveDebuff
+ * FIXME
+ */
 Game_Action.prototype.itemEffectRemoveDebuff = function(target, effect) {
     if (target.isDebuffAffected(effect.dataId)) {
         target.removeBuff(effect.dataId);
@@ -1951,6 +3199,10 @@ Game_Action.prototype.itemEffectRemoveDebuff = function(target, effect) {
     }
 };
 
+<span id='Game_Action-method-itemEffectSpecial'>/**
+</span> * @method itemEffectSpecial
+ * FIXME
+ */
 Game_Action.prototype.itemEffectSpecial = function(target, effect) {
     if (effect.dataId === Game_Action.SPECIAL_EFFECT_ESCAPE) {
         target.escape();
@@ -1958,11 +3210,19 @@ Game_Action.prototype.itemEffectSpecial = function(target, effect) {
     }
 };
 
+<span id='Game_Action-method-itemEffectGrow'>/**
+</span> * @method itemEffectGrow
+ * FIXME
+ */
 Game_Action.prototype.itemEffectGrow = function(target, effect) {
     target.addParam(effect.dataId, Math.floor(effect.value1));
     this.makeSuccess(target);
 };
 
+<span id='Game_Action-method-itemEffectLearnSkill'>/**
+</span> * @method itemEffectLearnSkill
+ * FIXME
+ */
 Game_Action.prototype.itemEffectLearnSkill = function(target, effect) {
     if (target.isActor()) {
         target.learnSkill(effect.dataId);
@@ -1970,22 +3230,42 @@ Game_Action.prototype.itemEffectLearnSkill = function(target, effect) {
     }
 };
 
+<span id='Game_Action-method-itemEffectCommonEvent'>/**
+</span> * @method itemEffectCommonEvent
+ * FIXME
+ */
 Game_Action.prototype.itemEffectCommonEvent = function(target, effect) {
 };
 
+<span id='Game_Action-method-makeSuccess'>/**
+</span> * @method makeSuccess
+ * FIXME
+ */
 Game_Action.prototype.makeSuccess = function(target) {
     target.result().success = true;
 };
 
+<span id='Game_Action-method-applyItemUserEffect'>/**
+</span> * @method applyItemUserEffect
+ * FIXME
+ */
 Game_Action.prototype.applyItemUserEffect = function(target) {
     var value = Math.floor(this.item().tpGain * this.subject().tcr);
     this.subject().gainSilentTp(value);
 };
 
+<span id='Game_Action-method-lukEffectRate'>/**
+</span> * @method lukEffectRate
+ * FIXME
+ */
 Game_Action.prototype.lukEffectRate = function(target) {
     return Math.max(1.0 + (this.subject().luk - target.luk) * 0.001, 0.0);
 };
 
+<span id='Game_Action-method-applyGlobal'>/**
+</span> * @method applyGlobal
+ * FIXME
+ */
 Game_Action.prototype.applyGlobal = function() {
     this.item().effects.forEach(function(effect) {
         if (effect.code === Game_Action.EFFECT_COMMON_EVENT) {
@@ -2000,14 +3280,29 @@ Game_Action.prototype.applyGlobal = function() {
 // The game object class for a result of a battle action. For convinience, all
 // member variables in this class are public.
 
+<span id='Game_ActionResult-method-constructor'><span id='Game_ActionResult'>/**
+</span></span> * @class Game_ActionResult
+ * The game object class for a result of a battle action. For convinience, all
+ * member variables in this class are public.
+ *
+ * @constructor
+ */
 function Game_ActionResult() {
     this.initialize.apply(this, arguments);
 }
 
+<span id='Game_ActionResult-method-initialize'>/**
+</span> * @method initialize
+ * FIXME
+ */
 Game_ActionResult.prototype.initialize = function() {
     this.clear();
 };
 
+<span id='Game_ActionResult-method-clear'>/**
+</span> * @method clear
+ * FIXME
+ */
 Game_ActionResult.prototype.clear = function() {
     this.used = false;
     this.missed = false;
@@ -2027,72 +3322,128 @@ Game_ActionResult.prototype.clear = function() {
     this.removedBuffs = [];
 };
 
+<span id='Game_ActionResult-method-addedStateObjects'>/**
+</span> * @method addedStateObjects
+ * FIXME
+ */
 Game_ActionResult.prototype.addedStateObjects = function() {
     return this.addedStates.map(function(id) {
         return $dataStates[id];
     });
 };
 
+<span id='Game_ActionResult-method-removedStateObjects'>/**
+</span> * @method removedStateObjects
+ * FIXME
+ */
 Game_ActionResult.prototype.removedStateObjects = function() {
     return this.removedStates.map(function(id) {
         return $dataStates[id];
     });
 };
 
+<span id='Game_ActionResult-method-isStatusAffected'>/**
+</span> * @method isStatusAffected
+ * FIXME
+ */
 Game_ActionResult.prototype.isStatusAffected = function() {
     return (this.addedStates.length &gt; 0 || this.removedStates.length &gt; 0 ||
             this.addedBuffs.length &gt; 0 || this.addedDebuffs.length &gt; 0 ||
             this.removedBuffs.length &gt; 0);
 };
 
+<span id='Game_ActionResult-method-isHit'>/**
+</span> * @method isHit
+ * FIXME
+ */
 Game_ActionResult.prototype.isHit = function() {
     return this.used &amp;&amp; !this.missed &amp;&amp; !this.evaded;
 };
 
+<span id='Game_ActionResult-method-isStateAdded'>/**
+</span> * @method isStateAdded
+ * FIXME
+ */
 Game_ActionResult.prototype.isStateAdded = function(stateId) {
     return this.addedStates.contains(stateId);
 };
 
+<span id='Game_ActionResult-method-pushAddedState'>/**
+</span> * @method pushAddedState
+ * FIXME
+ */
 Game_ActionResult.prototype.pushAddedState = function(stateId) {
     if (!this.isStateAdded(stateId)) {
         this.addedStates.push(stateId);
     }
 };
 
+<span id='Game_ActionResult-method-isStateRemoved'>/**
+</span> * @method isStateRemoved
+ * FIXME
+ */
 Game_ActionResult.prototype.isStateRemoved = function(stateId) {
     return this.removedStates.contains(stateId);
 };
 
+<span id='Game_ActionResult-method-pushRemovedState'>/**
+</span> * @method pushRemovedState
+ * FIXME
+ */
 Game_ActionResult.prototype.pushRemovedState = function(stateId) {
     if (!this.isStateRemoved(stateId)) {
         this.removedStates.push(stateId);
     }
 };
 
+<span id='Game_ActionResult-method-isBuffAdded'>/**
+</span> * @method isBuffAdded
+ * FIXME
+ */
 Game_ActionResult.prototype.isBuffAdded = function(paramId) {
     return this.addedBuffs.contains(paramId);
 };
 
+<span id='Game_ActionResult-method-pushAddedBuff'>/**
+</span> * @method pushAddedBuff
+ * FIXME
+ */
 Game_ActionResult.prototype.pushAddedBuff = function(paramId) {
     if (!this.isBuffAdded(paramId)) {
         this.addedBuffs.push(paramId);
     }
 };
 
+<span id='Game_ActionResult-method-isDebuffAdded'>/**
+</span> * @method isDebuffAdded
+ * FIXME
+ */
 Game_ActionResult.prototype.isDebuffAdded = function(paramId) {
     return this.addedDebuffs.contains(paramId);
 };
 
+<span id='Game_ActionResult-method-pushAddedDebuff'>/**
+</span> * @method pushAddedDebuff
+ * FIXME
+ */
 Game_ActionResult.prototype.pushAddedDebuff = function(paramId) {
     if (!this.isDebuffAdded(paramId)) {
         this.addedDebuffs.push(paramId);
     }
 };
 
+<span id='Game_ActionResult-method-isBuffRemoved'>/**
+</span> * @method isBuffRemoved
+ * FIXME
+ */
 Game_ActionResult.prototype.isBuffRemoved = function(paramId) {
     return this.removedBuffs.contains(paramId);
 };
 
+<span id='Game_ActionResult-method-pushRemovedBuff'>/**
+</span> * @method pushRemovedBuff
+ * FIXME
+ */
 Game_ActionResult.prototype.pushRemovedBuff = function(paramId) {
     if (!this.isBuffRemoved(paramId)) {
         this.removedBuffs.push(paramId);
@@ -2104,40 +3455,137 @@ Game_ActionResult.prototype.pushRemovedBuff = function(paramId) {
 //
 // The superclass of Game_Battler. It mainly contains parameters calculation.
 
+<span id='Game_BattlerBase-method-constructor'><span id='Game_BattlerBase'>/**
+</span></span> * @class Game_BattlerBase
+ * The superclass of Game_Battler. It mainly contains parameters calculation.
+ *
+ * @constructor
+ */
 function Game_BattlerBase() {
     this.initialize.apply(this, arguments);
 }
 
+<span id='Game_BattlerBase-property-FIXME'>/**
+</span> * @property {} FIXME
+ */
 Game_BattlerBase.TRAIT_ELEMENT_RATE   = 11;
+<span id='Game_BattlerBase-property-FIXME'>/**
+</span> * @property {} FIXME
+ */
 Game_BattlerBase.TRAIT_DEBUFF_RATE    = 12;
+<span id='Game_BattlerBase-property-FIXME'>/**
+</span> * @property {} FIXME
+ */
 Game_BattlerBase.TRAIT_STATE_RATE     = 13;
+<span id='Game_BattlerBase-property-FIXME'>/**
+</span> * @property {} FIXME
+ */
 Game_BattlerBase.TRAIT_STATE_RESIST   = 14;
+<span id='Game_BattlerBase-property-FIXME'>/**
+</span> * @property {} FIXME
+ */
 Game_BattlerBase.TRAIT_PARAM          = 21;
+<span id='Game_BattlerBase-property-FIXME'>/**
+</span> * @property {} FIXME
+ */
 Game_BattlerBase.TRAIT_XPARAM         = 22;
+<span id='Game_BattlerBase-property-FIXME'>/**
+</span> * @property {} FIXME
+ */
 Game_BattlerBase.TRAIT_SPARAM         = 23;
+<span id='Game_BattlerBase-property-FIXME'>/**
+</span> * @property {} FIXME
+ */
 Game_BattlerBase.TRAIT_ATTACK_ELEMENT = 31;
+<span id='Game_BattlerBase-property-FIXME'>/**
+</span> * @property {} FIXME
+ */
 Game_BattlerBase.TRAIT_ATTACK_STATE   = 32;
+<span id='Game_BattlerBase-property-FIXME'>/**
+</span> * @property {} FIXME
+ */
 Game_BattlerBase.TRAIT_ATTACK_SPEED   = 33;
+<span id='Game_BattlerBase-property-FIXME'>/**
+</span> * @property {} FIXME
+ */
 Game_BattlerBase.TRAIT_ATTACK_TIMES   = 34;
+<span id='Game_BattlerBase-property-FIXME'>/**
+</span> * @property {} FIXME
+ */
 Game_BattlerBase.TRAIT_STYPE_ADD      = 41;
+<span id='Game_BattlerBase-property-FIXME'>/**
+</span> * @property {} FIXME
+ */
 Game_BattlerBase.TRAIT_STYPE_SEAL     = 42;
+<span id='Game_BattlerBase-property-FIXME'>/**
+</span> * @property {} FIXME
+ */
 Game_BattlerBase.TRAIT_SKILL_ADD      = 43;
+<span id='Game_BattlerBase-property-FIXME'>/**
+</span> * @property {} FIXME
+ */
 Game_BattlerBase.TRAIT_SKILL_SEAL     = 44;
+<span id='Game_BattlerBase-property-FIXME'>/**
+</span> * @property {} FIXME
+ */
 Game_BattlerBase.TRAIT_EQUIP_WTYPE    = 51;
+<span id='Game_BattlerBase-property-FIXME'>/**
+</span> * @property {} FIXME
+ */
 Game_BattlerBase.TRAIT_EQUIP_ATYPE    = 52;
+<span id='Game_BattlerBase-property-FIXME'>/**
+</span> * @property {} FIXME
+ */
 Game_BattlerBase.TRAIT_EQUIP_LOCK     = 53;
+<span id='Game_BattlerBase-property-FIXME'>/**
+</span> * @property {} FIXME
+ */
 Game_BattlerBase.TRAIT_EQUIP_SEAL     = 54;
+<span id='Game_BattlerBase-property-FIXME'>/**
+</span> * @property {} FIXME
+ */
 Game_BattlerBase.TRAIT_SLOT_TYPE      = 55;
+<span id='Game_BattlerBase-property-FIXME'>/**
+</span> * @property {} FIXME
+ */
 Game_BattlerBase.TRAIT_ACTION_PLUS    = 61;
+<span id='Game_BattlerBase-property-FIXME'>/**
+</span> * @property {} FIXME
+ */
 Game_BattlerBase.TRAIT_SPECIAL_FLAG   = 62;
+<span id='Game_BattlerBase-property-FIXME'>/**
+</span> * @property {} FIXME
+ */
 Game_BattlerBase.TRAIT_COLLAPSE_TYPE  = 63;
+<span id='Game_BattlerBase-property-FIXME'>/**
+</span> * @property {} FIXME
+ */
 Game_BattlerBase.TRAIT_PARTY_ABILITY  = 64;
+<span id='Game_BattlerBase-property-FIXME'>/**
+</span> * @property {} FIXME
+ */
 Game_BattlerBase.FLAG_ID_AUTO_BATTLE  = 0;
+<span id='Game_BattlerBase-property-FIXME'>/**
+</span> * @property {} FIXME
+ */
 Game_BattlerBase.FLAG_ID_GUARD        = 1;
+<span id='Game_BattlerBase-property-FIXME'>/**
+</span> * @property {} FIXME
+ */
 Game_BattlerBase.FLAG_ID_SUBSTITUTE   = 2;
+<span id='Game_BattlerBase-property-FIXME'>/**
+</span> * @property {} FIXME
+ */
 Game_BattlerBase.FLAG_ID_PRESERVE_TP  = 3;
+<span id='Game_BattlerBase-property-FIXME'>/**
+</span> * @property {} FIXME
+ */
 Game_BattlerBase.ICON_BUFF_START      = 32;
+<span id='Game_BattlerBase-property-FIXME'>/**
+</span> * @property {} FIXME
+ */
 Game_BattlerBase.ICON_DEBUFF_START    = 48;
+
 
 Object.defineProperties(Game_BattlerBase.prototype, {
     // Hit Points
@@ -2204,10 +3652,18 @@ Object.defineProperties(Game_BattlerBase.prototype, {
     exr: { get: function() { return this.sparam(9); }, configurable: true }
 });
 
+<span id='Game_BattlerBase-method-initialize'>/**
+</span> * @method initialize
+ * FIXME
+ */
 Game_BattlerBase.prototype.initialize = function() {
     this.initMembers();
 };
 
+<span id='Game_BattlerBase-method-initMembers'>/**
+</span> * @method initMembers
+ * FIXME
+ */
 Game_BattlerBase.prototype.initMembers = function() {
     this._hp = 1;
     this._mp = 0;
@@ -2218,15 +3674,27 @@ Game_BattlerBase.prototype.initMembers = function() {
     this.clearBuffs();
 };
 
+<span id='Game_BattlerBase-method-clearParamPlus'>/**
+</span> * @method clearParamPlus
+ * FIXME
+ */
 Game_BattlerBase.prototype.clearParamPlus = function() {
     this._paramPlus = [0,0,0,0,0,0,0,0];
 };
 
+<span id='Game_BattlerBase-method-clearStates'>/**
+</span> * @method clearStates
+ * FIXME
+ */
 Game_BattlerBase.prototype.clearStates = function() {
     this._states = [];
     this._stateTurns = {};
 };
 
+<span id='Game_BattlerBase-method-eraseState'>/**
+</span> * @method eraseState
+ * FIXME
+ */
 Game_BattlerBase.prototype.eraseState = function(stateId) {
     var index = this._states.indexOf(stateId);
     if (index &gt;= 0) {
@@ -2235,28 +3703,52 @@ Game_BattlerBase.prototype.eraseState = function(stateId) {
     delete this._stateTurns[stateId];
 };
 
+<span id='Game_BattlerBase-method-isStateAffected'>/**
+</span> * @method isStateAffected
+ * FIXME
+ */
 Game_BattlerBase.prototype.isStateAffected = function(stateId) {
     return this._states.contains(stateId);
 };
 
+<span id='Game_BattlerBase-method-isDeathStateAffected'>/**
+</span> * @method isDeathStateAffected
+ * FIXME
+ */
 Game_BattlerBase.prototype.isDeathStateAffected = function() {
     return this.isStateAffected(this.deathStateId());
 };
 
+<span id='Game_BattlerBase-method-deathStateId'>/**
+</span> * @method deathStateId
+ * FIXME
+ */
 Game_BattlerBase.prototype.deathStateId = function() {
     return 1;
 };
 
+<span id='Game_BattlerBase-method-resetStateCounts'>/**
+</span> * @method resetStateCounts
+ * FIXME
+ */
 Game_BattlerBase.prototype.resetStateCounts = function(stateId) {
     var state = $dataStates[stateId];
     var variance = 1 + Math.max(state.maxTurns - state.minTurns, 0);
     this._stateTurns[stateId] = state.minTurns + Math.randomInt(variance);
 };
 
+<span id='Game_BattlerBase-method-isStateExpired'>/**
+</span> * @method isStateExpired
+ * FIXME
+ */
 Game_BattlerBase.prototype.isStateExpired = function(stateId) {
     return this._stateTurns[stateId] === 0;
 };
 
+<span id='Game_BattlerBase-method-updateStateTurns'>/**
+</span> * @method updateStateTurns
+ * FIXME
+ */
 Game_BattlerBase.prototype.updateStateTurns = function() {
     this._states.forEach(function(stateId) {
         if (this._stateTurns[stateId] &gt; 0) {
@@ -2265,66 +3757,122 @@ Game_BattlerBase.prototype.updateStateTurns = function() {
     }, this);
 };
 
+<span id='Game_BattlerBase-method-clearBuffs'>/**
+</span> * @method clearBuffs
+ * FIXME
+ */
 Game_BattlerBase.prototype.clearBuffs = function() {
     this._buffs = [0,0,0,0,0,0,0,0];
     this._buffTurns = [0,0,0,0,0,0,0,0];
 };
 
+<span id='Game_BattlerBase-method-eraseBuff'>/**
+</span> * @method eraseBuff
+ * FIXME
+ */
 Game_BattlerBase.prototype.eraseBuff = function(paramId) {
     this._buffs[paramId] = 0;
     this._buffTurns[paramId] = 0;
 };
 
+<span id='Game_BattlerBase-method-buffLength'>/**
+</span> * @method buffLength
+ * FIXME
+ */
 Game_BattlerBase.prototype.buffLength = function() {
     return this._buffs.length;
 };
 
+<span id='Game_BattlerBase-method-buff'>/**
+</span> * @method buff
+ * FIXME
+ */
 Game_BattlerBase.prototype.buff = function(paramId) {
     return this._buffs[paramId];
 };
 
+<span id='Game_BattlerBase-method-isBuffAffected'>/**
+</span> * @method isBuffAffected
+ * FIXME
+ */
 Game_BattlerBase.prototype.isBuffAffected = function(paramId) {
     return this._buffs[paramId] &gt; 0;
 };
 
+<span id='Game_BattlerBase-method-isDebuffAffected'>/**
+</span> * @method isDebuffAffected
+ * FIXME
+ */
 Game_BattlerBase.prototype.isDebuffAffected = function(paramId) {
     return this._buffs[paramId] &lt; 0;
 };
 
+<span id='Game_BattlerBase-method-isBuffOrDebuffAffected'>/**
+</span> * @method isBuffOrDebuffAffected
+ * FIXME
+ */
 Game_BattlerBase.prototype.isBuffOrDebuffAffected = function(paramId) {
     return this._buffs[paramId] !== 0;
 };
 
+<span id='Game_BattlerBase-method-isMaxBuffAffected'>/**
+</span> * @method isMaxBuffAffected
+ * FIXME
+ */
 Game_BattlerBase.prototype.isMaxBuffAffected = function(paramId) {
     return this._buffs[paramId] === 2;
 };
 
+<span id='Game_BattlerBase-method-isMaxDebuffAffected'>/**
+</span> * @method isMaxDebuffAffected
+ * FIXME
+ */
 Game_BattlerBase.prototype.isMaxDebuffAffected = function(paramId) {
     return this._buffs[paramId] === -2;
 };
 
+<span id='Game_BattlerBase-method-increaseBuff'>/**
+</span> * @method increaseBuff
+ * FIXME
+ */
 Game_BattlerBase.prototype.increaseBuff = function(paramId) {
     if (!this.isMaxBuffAffected(paramId)) {
         this._buffs[paramId]++;
     }
 };
 
+<span id='Game_BattlerBase-method-deacreaseBuff'>/**
+</span> * @method deacreaseBuff
+ * FIXME
+ */
 Game_BattlerBase.prototype.decreaseBuff = function(paramId) {
     if (!this.isMaxDebuffAffected(paramId)) {
         this._buffs[paramId]--;
     }
 };
 
+<span id='Game_BattlerBase-method-overwriteBuffTurns'>/**
+</span> * @method overwriteBuffTurns
+ * FIXME
+ */
 Game_BattlerBase.prototype.overwriteBuffTurns = function(paramId, turns) {
     if (this._buffTurns[paramId] &lt; turns) {
         this._buffTurns[paramId] = turns;
     }
 };
 
+<span id='Game_BattlerBase-method-isBuffExpired'>/**
+</span> * @method isBuffExpired
+ * FIXME
+ */
 Game_BattlerBase.prototype.isBuffExpired = function(paramId) {
     return this._buffTurns[paramId] === 0;
 };
 
+<span id='Game_BattlerBase-method-updateBuffTurns'>/**
+</span> * @method updateBuffTurns
+ * FIXME
+ */
 Game_BattlerBase.prototype.updateBuffTurns = function() {
     for (var i = 0; i &lt; this._buffTurns.length; i++) {
         if (this._buffTurns[i] &gt; 0) {
@@ -2333,24 +3881,40 @@ Game_BattlerBase.prototype.updateBuffTurns = function() {
     }
 };
 
+<span id='Game_BattlerBase-method-die'>/**
+</span> * @method die
+ * FIXME
+ */
 Game_BattlerBase.prototype.die = function() {
     this._hp = 0;
     this.clearStates();
     this.clearBuffs();
 };
 
+<span id='Game_BattlerBase-method-revive'>/**
+</span> * @method revive
+ * FIXME
+ */
 Game_BattlerBase.prototype.revive = function() {
     if (this._hp === 0) {
         this._hp = 1;
     }
 };
 
+<span id='Game_BattlerBase-method-states'>/**
+</span> * @method states
+ * FIXME
+ */
 Game_BattlerBase.prototype.states = function() {
     return this._states.map(function(id) {
         return $dataStates[id];
     });
 };
 
+<span id='Game_BattlerBase-method-stateIcons'>/**
+</span> * @method stateIcons
+ * FIXME
+ */
 Game_BattlerBase.prototype.stateIcons = function() {
     return this.states().map(function(state) {
         return state.iconIndex;
@@ -2359,6 +3923,10 @@ Game_BattlerBase.prototype.stateIcons = function() {
     });
 };
 
+<span id='Game_BattlerBase-method-buffIcons'>/**
+</span> * @method buffIcons
+ * FIXME
+ */
 Game_BattlerBase.prototype.buffIcons = function() {
     var icons = [];
     for (var i = 0; i &lt; this._buffs.length; i++) {
@@ -2369,6 +3937,10 @@ Game_BattlerBase.prototype.buffIcons = function() {
     return icons;
 };
 
+<span id='Game_BattlerBase-method-buffIconIndex'>/**
+</span> * @method buffIconIndex
+ * FIXME
+ */
 Game_BattlerBase.prototype.buffIconIndex = function(buffLevel, paramId) {
     if (buffLevel &gt; 0) {
         return Game_BattlerBase.ICON_BUFF_START + (buffLevel - 1) * 8 + paramId;
@@ -2379,65 +3951,113 @@ Game_BattlerBase.prototype.buffIconIndex = function(buffLevel, paramId) {
     }
 };
 
+<span id='Game_BattlerBase-method-allIcons'>/**
+</span> * @method allIcons
+ * FIXME
+ */
 Game_BattlerBase.prototype.allIcons = function() {
     return this.stateIcons().concat(this.buffIcons());
 };
 
+<span id='Game_BattlerBase-method-traitObjects'>/**
+</span> * @method traitObjects
+ * FIXME
+ */
 Game_BattlerBase.prototype.traitObjects = function() {
     // Returns an array of the all objects having traits. States only here.
     return this.states();
 };
 
+<span id='Game_BattlerBase-method-allTraits'>/**
+</span> * @method allTraits
+ * FIXME
+ */
 Game_BattlerBase.prototype.allTraits = function() {
     return this.traitObjects().reduce(function(r, obj) {
         return r.concat(obj.traits);
     }, []);
 };
 
+<span id='Game_BattlerBase-method-traits'>/**
+</span> * @method traits
+ * FIXME
+ */
 Game_BattlerBase.prototype.traits = function(code) {
     return this.allTraits().filter(function(trait) {
         return trait.code === code;
     });
 };
 
+<span id='Game_BattlerBase-method-traitsWithId'>/**
+</span> * @method traitsWithId
+ * FIXME
+ */
 Game_BattlerBase.prototype.traitsWithId = function(code, id) {
     return this.allTraits().filter(function(trait) {
         return trait.code === code &amp;&amp; trait.dataId === id;
     });
 };
 
+<span id='Game_BattlerBase-method-traitsPi'>/**
+</span> * @method traitsPi
+ * FIXME
+ */
 Game_BattlerBase.prototype.traitsPi = function(code, id) {
     return this.traitsWithId(code, id).reduce(function(r, trait) {
         return r * trait.value;
     }, 1);
 };
 
+<span id='Game_BattlerBase-method-traitsSum'>/**
+</span> * @method traitsSum
+ * FIXME
+ */
 Game_BattlerBase.prototype.traitsSum = function(code, id) {
     return this.traitsWithId(code, id).reduce(function(r, trait) {
         return r + trait.value;
     }, 0);
 };
 
+<span id='Game_BattlerBase-method-traitsSumAll'>/**
+</span> * @method traitsSumAll
+ * FIXME
+ */
 Game_BattlerBase.prototype.traitsSumAll = function(code) {
     return this.traits(code).reduce(function(r, trait) {
         return r + trait.value;
     }, 0);
 };
 
+<span id='Game_BattlerBase-method-traitsSet'>/**
+</span> * @method traitsSet
+ * FIXME
+ */
 Game_BattlerBase.prototype.traitsSet = function(code) {
     return this.traits(code).reduce(function(r, trait) {
         return r.concat(trait.dataId);
     }, []);
 };
 
+<span id='Game_BattlerBase-method-paramBase'>/**
+</span> * @method paramBase
+ * FIXME
+ */
 Game_BattlerBase.prototype.paramBase = function(paramId) {
     return 0;
 };
 
+<span id='Game_BattlerBase-method-paramPlus'>/**
+</span> * @method paramPlus
+ * FIXME
+ */
 Game_BattlerBase.prototype.paramPlus = function(paramId) {
     return this._paramPlus[paramId];
 };
 
+<span id='Game_BattlerBase-method-paramMin'>/**
+</span> * @method paramMin
+ * FIXME
+ */
 Game_BattlerBase.prototype.paramMin = function(paramId) {
     if (paramId === 1) {
         return 0;   // MMP
@@ -2446,6 +4066,10 @@ Game_BattlerBase.prototype.paramMin = function(paramId) {
     }
 };
 
+<span id='Game_BattlerBase-method-paramMax'>/**
+</span> * @method paramMax
+ * FIXME
+ */
 Game_BattlerBase.prototype.paramMax = function(paramId) {
     if (paramId === 0) {
         return 999999;  // MHP
@@ -2456,14 +4080,26 @@ Game_BattlerBase.prototype.paramMax = function(paramId) {
     }
 };
 
+<span id='Game_BattlerBase-method-paramRate'>/**
+</span> * @method paramRate
+ * FIXME
+ */
 Game_BattlerBase.prototype.paramRate = function(paramId) {
     return this.traitsPi(Game_BattlerBase.TRAIT_PARAM, paramId);
 };
 
+<span id='Game_BattlerBase-method-paramBuffRate'>/**
+</span> * @method paramBuffRate
+ * FIXME
+ */
 Game_BattlerBase.prototype.paramBuffRate = function(paramId) {
     return this._buffs[paramId] * 0.25 + 1.0;
 };
 
+<span id='Game_BattlerBase-method-param'>/**
+</span> * @method param
+ * FIXME
+ */
 Game_BattlerBase.prototype.param = function(paramId) {
     var value = this.paramBase(paramId) + this.paramPlus(paramId);
     value *= this.paramRate(paramId) * this.paramBuffRate(paramId);
@@ -2472,158 +4108,302 @@ Game_BattlerBase.prototype.param = function(paramId) {
     return Math.round(value.clamp(minValue, maxValue));
 };
 
+<span id='Game_BattlerBase-method-xparam'>/**
+</span> * @method xparam
+ * FIXME
+ */
 Game_BattlerBase.prototype.xparam = function(xparamId) {
     return this.traitsSum(Game_BattlerBase.TRAIT_XPARAM, xparamId);
 };
 
+<span id='Game_BattlerBase-method-sparam'>/**
+</span> * @method sparam
+ * FIXME
+ */
 Game_BattlerBase.prototype.sparam = function(sparamId) {
     return this.traitsPi(Game_BattlerBase.TRAIT_SPARAM, sparamId);
 };
 
+<span id='Game_BattlerBase-method-elementRate'>/**
+</span> * @method elementRate
+ * FIXME
+ */
 Game_BattlerBase.prototype.elementRate = function(elementId) {
     return this.traitsPi(Game_BattlerBase.TRAIT_ELEMENT_RATE, elementId);
 };
 
+<span id='Game_BattlerBase-method-debuffRate'>/**
+</span> * @method debuffRate
+ * FIXME
+ */
 Game_BattlerBase.prototype.debuffRate = function(paramId) {
     return this.traitsPi(Game_BattlerBase.TRAIT_DEBUFF_RATE, paramId);
 };
 
+<span id='Game_BattlerBase-method-stateRate'>/**
+</span> * @method stateRate
+ * FIXME
+ */
 Game_BattlerBase.prototype.stateRate = function(stateId) {
     return this.traitsPi(Game_BattlerBase.TRAIT_STATE_RATE, stateId);
 };
 
+<span id='Game_BattlerBase-method-stateResistSet'>/**
+</span> * @method stateResistSet
+ * FIXME
+ */
 Game_BattlerBase.prototype.stateResistSet = function() {
     return this.traitsSet(Game_BattlerBase.TRAIT_STATE_RESIST);
 };
 
+<span id='Game_BattlerBase-method-isStateResist'>/**
+</span> * @method isStateResist
+ * FIXME
+ */
 Game_BattlerBase.prototype.isStateResist = function(stateId) {
     return this.stateResistSet().contains(stateId);
 };
 
+<span id='Game_BattlerBase-method-attackElements'>/**
+</span> * @method attackElements
+ * FIXME
+ */
 Game_BattlerBase.prototype.attackElements = function() {
     return this.traitsSet(Game_BattlerBase.TRAIT_ATTACK_ELEMENT);
 };
 
+<span id='Game_BattlerBase-method-attackStates'>/**
+</span> * @method attackStates
+ * FIXME
+ */
 Game_BattlerBase.prototype.attackStates = function() {
     return this.traitsSet(Game_BattlerBase.TRAIT_ATTACK_STATE);
 };
 
+<span id='Game_BattlerBase-method-attackStatesRate'>/**
+</span> * @method attackStatesRate
+ * FIXME
+ */
 Game_BattlerBase.prototype.attackStatesRate = function(stateId) {
     return this.traitsSum(Game_BattlerBase.TRAIT_ATTACK_STATE, stateId);
 };
 
+<span id='Game_BattlerBase-method-attackSpeed'>/**
+</span> * @method attackSpeed
+ * FIXME
+ */
 Game_BattlerBase.prototype.attackSpeed = function() {
     return this.traitsSumAll(Game_BattlerBase.TRAIT_ATTACK_SPEED);
 };
 
+<span id='Game_BattlerBase-method-attackTimesAdd'>/**
+</span> * @method attackTimesAdd
+ * FIXME
+ */
 Game_BattlerBase.prototype.attackTimesAdd = function() {
     return Math.max(this.traitsSumAll(Game_BattlerBase.TRAIT_ATTACK_TIMES), 0);
 };
 
+<span id='Game_BattlerBase-method-addedSkillTypes'>/**
+</span> * @method addedSkillTypes
+ * FIXME
+ */
 Game_BattlerBase.prototype.addedSkillTypes = function() {
     return this.traitsSet(Game_BattlerBase.TRAIT_STYPE_ADD);
 };
 
+<span id='Game_BattlerBase-method-isSkillTypeSealed'>/**
+</span> * @method isSkillTypeSealed
+ * FIXME
+ */
 Game_BattlerBase.prototype.isSkillTypeSealed = function(stypeId) {
     return this.traitsSet(Game_BattlerBase.TRAIT_STYPE_SEAL).contains(stypeId);
 };
 
+<span id='Game_BattlerBase-method-addedSkills'>/**
+</span> * @method addedSkills
+ * FIXME
+ */
 Game_BattlerBase.prototype.addedSkills = function() {
     return this.traitsSet(Game_BattlerBase.TRAIT_SKILL_ADD);
 };
 
+<span id='Game_BattlerBase-method-isSkillSealed'>/**
+</span> * @method isSkillSealed
+ * FIXME
+ */
 Game_BattlerBase.prototype.isSkillSealed = function(skillId) {
     return this.traitsSet(Game_BattlerBase.TRAIT_SKILL_SEAL).contains(skillId);
 };
 
+<span id='Game_BattlerBase-method-isEquipWtypeOk'>/**
+</span> * @method isEquipWtypeOk
+ * FIXME
+ */
 Game_BattlerBase.prototype.isEquipWtypeOk = function(wtypeId) {
     return this.traitsSet(Game_BattlerBase.TRAIT_EQUIP_WTYPE).contains(wtypeId);
 };
 
+<span id='Game_BattlerBase-method-isEquipAtypeOk'>/**
+</span> * @method isEquipAtypeOk
+ * FIXME
+ */
 Game_BattlerBase.prototype.isEquipAtypeOk = function(atypeId) {
     return this.traitsSet(Game_BattlerBase.TRAIT_EQUIP_ATYPE).contains(atypeId);
 };
 
+<span id='Game_BattlerBase-method-isEquipTypeLocked'>/**
+</span> * @method isEquipTypeLocked
+ * FIXME
+ */
 Game_BattlerBase.prototype.isEquipTypeLocked = function(etypeId) {
     return this.traitsSet(Game_BattlerBase.TRAIT_EQUIP_LOCK).contains(etypeId);
 };
 
+<span id='Game_BattlerBase-method-isEquipTypeSealed'>/**
+</span> * @method isEquipTypeSealed
+ * FIXME
+ */
 Game_BattlerBase.prototype.isEquipTypeSealed = function(etypeId) {
     return this.traitsSet(Game_BattlerBase.TRAIT_EQUIP_SEAL).contains(etypeId);
 };
 
+<span id='Game_BattlerBase-method-slotType'>/**
+</span> * @method slotType
+ * FIXME
+ */
 Game_BattlerBase.prototype.slotType = function() {
     var set = this.traitsSet(Game_BattlerBase.TRAIT_SLOT_TYPE);
     return set.length &gt; 0 ? Math.max.apply(null, set) : 0;
 };
 
+<span id='Game_BattlerBase-method-isDualWield'>/**
+</span> * @method isDualWield
+ * FIXME
+ */
 Game_BattlerBase.prototype.isDualWield = function() {
     return this.slotType() === 1;
 };
 
+<span id='Game_BattlerBase-method-actionPlusSet'>/**
+</span> * @method actionPlusSet
+ * FIXME
+ */
 Game_BattlerBase.prototype.actionPlusSet = function() {
     return this.traits(Game_BattlerBase.TRAIT_ACTION_PLUS).map(function(trait) {
         return trait.value;
     });
 };
 
+<span id='Game_BattlerBase-method-specialFlag'>/**
+</span> * @method specialFlag
+ * FIXME
+ */
 Game_BattlerBase.prototype.specialFlag = function(flagId) {
     return this.traits(Game_BattlerBase.TRAIT_SPECIAL_FLAG).some(function(trait) {
         return trait.dataId === flagId;
     });
 };
 
+<span id='Game_BattlerBase-method-collapseType'>/**
+</span> * @method collapseType
+ * FIXME
+ */
 Game_BattlerBase.prototype.collapseType = function() {
     var set = this.traitsSet(Game_BattlerBase.TRAIT_COLLAPSE_TYPE);
     return set.length &gt; 0 ? Math.max.apply(null, set) : 0;
 };
 
+<span id='Game_BattlerBase-method-partyAbility'>/**
+</span> * @method partyAbility
+ * FIXME
+ */
 Game_BattlerBase.prototype.partyAbility = function(abilityId) {
     return this.traits(Game_BattlerBase.TRAIT_PARTY_ABILITY).some(function(trait) {
         return trait.dataId === abilityId;
     });
 };
 
+<span id='Game_BattlerBase-method-isAutoBattle'>/**
+</span> * @method isAutoBattle
+ * FIXME
+ */
 Game_BattlerBase.prototype.isAutoBattle = function() {
     return this.specialFlag(Game_BattlerBase.FLAG_ID_AUTO_BATTLE);
 };
 
+<span id='Game_BattlerBase-method-isGuard'>/**
+</span> * @method isGuard
+ * FIXME
+ */
 Game_BattlerBase.prototype.isGuard = function() {
     return this.specialFlag(Game_BattlerBase.FLAG_ID_GUARD) &amp;&amp; this.canMove();
 };
 
+<span id='Game_BattlerBase-method-isSubstitute'>/**
+</span> * @method isSubstitute
+ * FIXME
+ */
 Game_BattlerBase.prototype.isSubstitute = function() {
     return this.specialFlag(Game_BattlerBase.FLAG_ID_SUBSTITUTE) &amp;&amp; this.canMove();
 };
 
+<span id='Game_BattlerBase-method-isPreserveTp'>/**
+</span> * @method isPreserveTp
+ * FIXME
+ */
 Game_BattlerBase.prototype.isPreserveTp = function() {
     return this.specialFlag(Game_BattlerBase.FLAG_ID_PRESERVE_TP);
 };
 
+<span id='Game_BattlerBase-method-addParam'>/**
+</span> * @method addParam
+ * FIXME
+ */
 Game_BattlerBase.prototype.addParam = function(paramId, value) {
     this._paramPlus[paramId] += value;
     this.refresh();
 };
 
+<span id='Game_BattlerBase-method-setHp'>/**
+</span> * @method setHp
+ * FIXME
+ */
 Game_BattlerBase.prototype.setHp = function(hp) {
     this._hp = hp;
     this.refresh();
 };
 
+<span id='Game_BattlerBase-method-setMp'>/**
+</span> * @method setMp
+ * FIXME
+ */
 Game_BattlerBase.prototype.setMp = function(mp) {
     this._mp = mp;
     this.refresh();
 };
 
+<span id='Game_BattlerBase-method-setTp'>/**
+</span> * @method setTp
+ * FIXME
+ */
 Game_BattlerBase.prototype.setTp = function(tp) {
     this._tp = tp;
     this.refresh();
 };
 
+<span id='Game_BattlerBase-method-maxTp'>/**
+</span> * @method maxTp
+ * FIXME
+ */
 Game_BattlerBase.prototype.maxTp = function() {
     return 100;
 };
 
+<span id='Game_BattlerBase-method-refresh'>/**
+</span> * @method refresh
+ * FIXME
+ */
 Game_BattlerBase.prototype.refresh = function() {
     this.stateResistSet().forEach(function(stateId) {
         this.eraseState(stateId);
@@ -2633,80 +4413,156 @@ Game_BattlerBase.prototype.refresh = function() {
     this._tp = this._tp.clamp(0, this.maxTp());
 };
 
+<span id='Game_BattlerBase-method-recoverAll'>/**
+</span> * @method recoverAll
+ * FIXME
+ */
 Game_BattlerBase.prototype.recoverAll = function() {
     this.clearStates();
     this._hp = this.mhp;
     this._mp = this.mmp;
 };
 
+<span id='Game_BattlerBase-method-hpRate'>/**
+</span> * @method hpRate
+ * FIXME
+ */
 Game_BattlerBase.prototype.hpRate = function() {
     return this.hp / this.mhp;
 };
 
+<span id='Game_BattlerBase-method-mpRate'>/**
+</span> * @method mpRate
+ * FIXME
+ */
 Game_BattlerBase.prototype.mpRate = function() {
     return this.mmp &gt; 0 ? this.mp / this.mmp : 0;
 };
 
+<span id='Game_BattlerBase-method-tpRate'>/**
+</span> * @method tpRate
+ * FIXME
+ */
 Game_BattlerBase.prototype.tpRate = function() {
     return this.tp / this.maxTp();
 };
 
+<span id='Game_BattlerBase-method-hide'>/**
+</span> * @method hide
+ * FIXME
+ */
 Game_BattlerBase.prototype.hide = function() {
     this._hidden = true;
 };
 
+<span id='Game_BattlerBase-method-appear'>/**
+</span> * @method appear
+ * FIXME
+ */
 Game_BattlerBase.prototype.appear = function() {
     this._hidden = false;
 };
 
+<span id='Game_BattlerBase-method-isHidden'>/**
+</span> * @method isHidden
+ * FIXME
+ */
 Game_BattlerBase.prototype.isHidden = function() {
     return this._hidden;
 };
 
+<span id='Game_BattlerBase-method-isAppeared'>/**
+</span> * @method isAppeared
+ * FIXME
+ */
 Game_BattlerBase.prototype.isAppeared = function() {
     return !this.isHidden();
 };
 
+<span id='Game_BattlerBase-method-isDead'>/**
+</span> * @method isDead
+ * FIXME
+ */
 Game_BattlerBase.prototype.isDead = function() {
     return this.isAppeared() &amp;&amp; this.isDeathStateAffected();
 };
 
+<span id='Game_BattlerBase-method-isAlive'>/**
+</span> * @method isAlive
+ * FIXME
+ */
 Game_BattlerBase.prototype.isAlive = function() {
     return this.isAppeared() &amp;&amp; !this.isDeathStateAffected();
 };
 
+<span id='Game_BattlerBase-method-isDying'>/**
+</span> * @method isDying
+ * FIXME
+ */
 Game_BattlerBase.prototype.isDying = function() {
     return this.isAlive() &amp;&amp; this._hp &lt; this.mhp / 4;
 };
 
+<span id='Game_BattlerBase-method-isRestricted'>/**
+</span> * @method isRestricted
+ * FIXME
+ */
 Game_BattlerBase.prototype.isRestricted = function() {
     return this.isAppeared() &amp;&amp; this.restriction() &gt; 0;
 };
 
+<span id='Game_BattlerBase-method-canInput'>/**
+</span> * @method canInput
+ * FIXME
+ */
 Game_BattlerBase.prototype.canInput = function() {
     return this.isAppeared() &amp;&amp; !this.isRestricted() &amp;&amp; !this.isAutoBattle();
 };
 
+<span id='Game_BattlerBase-method-canMove'>/**
+</span> * @method canMove
+ * FIXME
+ */
 Game_BattlerBase.prototype.canMove = function() {
     return this.isAppeared() &amp;&amp; this.restriction() &lt; 4;
 };
 
+<span id='Game_BattlerBase-method-isConfused'>/**
+</span> * @method isConfused
+ * FIXME
+ */
 Game_BattlerBase.prototype.isConfused = function() {
     return this.isAppeared() &amp;&amp; this.restriction() &gt;= 1 &amp;&amp; this.restriction() &lt;= 3;
 };
 
+<span id='Game_BattlerBase-method-confusionLevel'>/**
+</span> * @method confusionLevel
+ * FIXME
+ */
 Game_BattlerBase.prototype.confusionLevel = function() {
     return this.isConfused() ? this.restriction() : 0;
 };
 
+<span id='Game_BattlerBase-method-isActor'>/**
+</span> * @method isActor
+ * FIXME
+ */
 Game_BattlerBase.prototype.isActor = function() {
     return false;
 };
 
+<span id='Game_BattlerBase-method-isEnemy'>/**
+</span> * @method isEnemy
+ * FIXME
+ */
 Game_BattlerBase.prototype.isEnemy = function() {
     return false;
 };
 
+<span id='Game_BattlerBase-method-sortStates'>/**
+</span> * @method sortStates
+ * FIXME
+ */
 Game_BattlerBase.prototype.sortStates = function() {
     this._states.sort(function(a, b) {
         var p1 = $dataStates[a].priority;
@@ -2718,12 +4574,20 @@ Game_BattlerBase.prototype.sortStates = function() {
     });
 };
 
+<span id='Game_BattlerBase-method-restricted'>/**
+</span> * @method restricted
+ * FIXME
+ */
 Game_BattlerBase.prototype.restriction = function() {
     return Math.max.apply(null, this.states().map(function(state) {
         return state.restriction;
     }).concat(0));
 };
 
+<span id='Game_BattlerBase-method-addNewState'>/**
+</span> * @method addNewState
+ * FIXME
+ */
 Game_BattlerBase.prototype.addNewState = function(stateId) {
     if (stateId === this.deathStateId()) {
         this.die();
@@ -2736,9 +4600,17 @@ Game_BattlerBase.prototype.addNewState = function(stateId) {
     }
 };
 
+<span id='Game_BattlerBase-method-onRestrict'>/**
+</span> * @method onRestrict
+ * FIXME
+ */
 Game_BattlerBase.prototype.onRestrict = function() {
 };
 
+<span id='Game_BattlerBase-method-mostImportantStateText'>/**
+</span> * @method mostImportantStateText
+ * FIXME
+ */
 Game_BattlerBase.prototype.mostImportantStateText = function() {
     var states = this.states();
     for (var i = 0; i &lt; states.length; i++) {
@@ -2749,6 +4621,10 @@ Game_BattlerBase.prototype.mostImportantStateText = function() {
     return '';
 };
 
+<span id='Game_BattlerBase-method-stateMotionIndex'>/**
+</span> * @method stateMotionIndex
+ * FIXME
+ */
 Game_BattlerBase.prototype.stateMotionIndex = function() {
     var states = this.states();
     if (states.length &gt; 0) {
@@ -2758,6 +4634,10 @@ Game_BattlerBase.prototype.stateMotionIndex = function() {
     }
 };
 
+<span id='Game_BattlerBase-method-stateOverlayIndex'>/**
+</span> * @method stateOverlayIndex
+ * FIXME
+ */
 Game_BattlerBase.prototype.stateOverlayIndex = function() {
     var states = this.states();
     if (states.length &gt; 0) {
@@ -2767,27 +4647,51 @@ Game_BattlerBase.prototype.stateOverlayIndex = function() {
     }
 };
 
+<span id='Game_BattlerBase-method-isSkillWtypeOk'>/**
+</span> * @method isSkillWtypeOk
+ * FIXME
+ */
 Game_BattlerBase.prototype.isSkillWtypeOk = function(skill) {
     return true;
 };
 
+<span id='Game_BattlerBase-method-skillMpCost'>/**
+</span> * @method skillMpCost
+ * FIXME
+ */
 Game_BattlerBase.prototype.skillMpCost = function(skill) {
     return Math.floor(skill.mpCost * this.mcr);
 };
 
+<span id='Game_BattlerBase-method-skillTpCost'>/**
+</span> * @method skillTpCost
+ * FIXME
+ */
 Game_BattlerBase.prototype.skillTpCost = function(skill) {
     return skill.tpCost;
 };
 
+<span id='Game_BattlerBase-method-canPaySkillCost'>/**
+</span> * @method canPaySkillCost
+ * FIXME
+ */
 Game_BattlerBase.prototype.canPaySkillCost = function(skill) {
     return this._tp &gt;= this.skillTpCost(skill) &amp;&amp; this._mp &gt;= this.skillMpCost(skill);
 };
 
+<span id='Game_BattlerBase-method-paySkillCost'>/**
+</span> * @method paySkillCost
+ * FIXME
+ */
 Game_BattlerBase.prototype.paySkillCost = function(skill) {
     this._mp -= this.skillMpCost(skill);
     this._tp -= this.skillTpCost(skill);
 };
 
+<span id='Game_BattlerBase-method-isOccasionOk'>/**
+</span> * @method isOccasionOk
+ * FIXME
+ */
 Game_BattlerBase.prototype.isOccasionOk = function(item) {
     if ($gameParty.inBattle()) {
         return item.occasion === 0 || item.occasion === 1;
@@ -2796,20 +4700,36 @@ Game_BattlerBase.prototype.isOccasionOk = function(item) {
     }
 };
 
+<span id='Game_BattlerBase-method-meetsUsableItemConditions'>/**
+</span> * @method meetsUsableItemConditions
+ * FIXME
+ */
 Game_BattlerBase.prototype.meetsUsableItemConditions = function(item) {
     return this.canMove() &amp;&amp; this.isOccasionOk(item);
 };
 
+<span id='Game_BattlerBase-method-meetsSkillConditions'>/**
+</span> * @method meetsSkillConditions
+ * FIXME
+ */
 Game_BattlerBase.prototype.meetsSkillConditions = function(skill) {
     return (this.meetsUsableItemConditions(skill) &amp;&amp;
             this.isSkillWtypeOk(skill) &amp;&amp; this.canPaySkillCost(skill) &amp;&amp;
             !this.isSkillSealed(skill.id) &amp;&amp; !this.isSkillTypeSealed(skill.stypeId));
 };
 
+<span id='Game_BattlerBase-method-meetsItemConditions'>/**
+</span> * @method meetsItemConditions
+ * FIXME
+ */
 Game_BattlerBase.prototype.meetsItemConditions = function(item) {
     return this.meetsUsableItemConditions(item) &amp;&amp; $gameParty.hasItem(item);
 };
 
+<span id='Game_BattlerBase-method-canUse'>/**
+</span> * @method canUse
+ * FIXME
+ */
 Game_BattlerBase.prototype.canUse = function(item) {
     if (!item) {
         return false;
@@ -2822,6 +4742,10 @@ Game_BattlerBase.prototype.canUse = function(item) {
     }
 };
 
+<span id='Game_BattlerBase-method-canEquip'>/**
+</span> * @method canEquip
+ * FIXME
+ */
 Game_BattlerBase.prototype.canEquip = function(item) {
     if (!item) {
         return false;
@@ -2834,26 +4758,50 @@ Game_BattlerBase.prototype.canEquip = function(item) {
     }
 };
 
+<span id='Game_BattlerBase-method-canEquipWeapon'>/**
+</span> * @method canEquipWeapon
+ * FIXME
+ */
 Game_BattlerBase.prototype.canEquipWeapon = function(item) {
     return this.isEquipWtypeOk(item.wtypeId) &amp;&amp; !this.isEquipTypeSealed(item.etypeId);
 };
 
+<span id='Game_BattlerBase-method-canEquipArmor'>/**
+</span> * @method canEquipArmor
+ * FIXME
+ */
 Game_BattlerBase.prototype.canEquipArmor = function(item) {
     return this.isEquipAtypeOk(item.atypeId) &amp;&amp; !this.isEquipTypeSealed(item.etypeId);
 };
 
+<span id='Game_BattlerBase-method-attackSkillId'>/**
+</span> * @method attackSkillId
+ * FIXME
+ */
 Game_BattlerBase.prototype.attackSkillId = function() {
     return 1;
 };
 
+<span id='Game_BattlerBase-method-guardSkillId'>/**
+</span> * @method guardSkillId
+ * FIXME
+ */
 Game_BattlerBase.prototype.guardSkillId = function() {
     return 2;
 };
 
+<span id='Game_BattlerBase-method-canAttack'>/**
+</span> * @method canAttack
+ * FIXME
+ */
 Game_BattlerBase.prototype.canAttack = function() {
     return this.canUse($dataSkills[this.attackSkillId()]);
 };
 
+<span id='Game_BattlerBase-method-canGuard'>/**
+</span> * @method canGuard
+ * FIXME
+ */
 Game_BattlerBase.prototype.canGuard = function() {
     return this.canUse($dataSkills[this.guardSkillId()]);
 };
@@ -2864,6 +4812,14 @@ Game_BattlerBase.prototype.canGuard = function() {
 // The superclass of Game_Actor and Game_Enemy. It contains methods for sprites
 // and actions.
 
+<span id='Game_Battler-method-constructor'><span id='Game_Battler'>/**
+</span></span> * @class Game_Battler
+ * @extends Game_BattlerBase
+ * The superclass of Game_Actor and Game_Enemy. It contains methods for sprites
+ * and actions.
+ *
+ * @constructor
+ */
 function Game_Battler() {
     this.initialize.apply(this, arguments);
 }
@@ -2871,10 +4827,18 @@ function Game_Battler() {
 Game_Battler.prototype = Object.create(Game_BattlerBase.prototype);
 Game_Battler.prototype.constructor = Game_Battler;
 
+<span id='Game_Battler-method-initialize'>/**
+</span> * @method initialize
+ * FIXME
+ */
 Game_Battler.prototype.initialize = function() {
     Game_BattlerBase.prototype.initialize.call(this);
 };
 
+<span id='Game_Battler-method-initMembers'>/**
+</span> * @method initMembers
+ * FIXME
+ */
 Game_Battler.prototype.initMembers = function() {
     Game_BattlerBase.prototype.initMembers.call(this);
     this._actions = [];
@@ -2891,128 +4855,252 @@ Game_Battler.prototype.initMembers = function() {
     this._selected = false;
 };
 
+<span id='Game_Battler-method-clearAnimations'>/**
+</span> * @method clearAnimations
+ * FIXME
+ */
 Game_Battler.prototype.clearAnimations = function() {
     this._animations = [];
 };
 
+<span id='Game_Battler-method-clearDamagePopup'>/**
+</span> * @method clearDamagePopup
+ * FIXME
+ */
 Game_Battler.prototype.clearDamagePopup = function() {
     this._damagePopup = false;
 };
 
+<span id='Game_Battler-method-clearWeaponAnimation'>/**
+</span> * @method clearWeaponAnimation
+ * FIXME
+ */
 Game_Battler.prototype.clearWeaponAnimation = function() {
     this._weaponImageId = 0;
 };
 
+<span id='Game_Battler-method-clearEffect'>/**
+</span> * @method clearEffect
+ * FIXME
+ */
 Game_Battler.prototype.clearEffect = function() {
     this._effectType = null;
 };
 
+<span id='Game_Battler-method-clearMotion'>/**
+</span> * @method clearMotion
+ * FIXME
+ */
 Game_Battler.prototype.clearMotion = function() {
     this._motionType = null;
     this._motionRefresh = false;
 };
 
+<span id='Game_Battler-method-requestEffect'>/**
+</span> * @method requestEffect
+ * FIXME
+ */
 Game_Battler.prototype.requestEffect = function(effectType) {
     this._effectType = effectType;
 };
 
+<span id='Game_Battler-method-requestMotion'>/**
+</span> * @method requestMotion
+ * FIXME
+ */
 Game_Battler.prototype.requestMotion = function(motionType) {
     this._motionType = motionType;
 };
 
+<span id='Game_Battler-method-requestMotionRefresh'>/**
+</span> * @method requestMotionRefresh
+ * FIXME
+ */
 Game_Battler.prototype.requestMotionRefresh = function() {
     this._motionRefresh = true;
 };
 
+<span id='Game_Battler-method-select'>/**
+</span> * @method select
+ * FIXME
+ */
 Game_Battler.prototype.select = function() {
     this._selected = true;
 };
 
+<span id='Game_Battler-method-deselect'>/**
+</span> * @method deselect
+ * FIXME
+ */
 Game_Battler.prototype.deselect = function() {
     this._selected = false;
 };
 
+<span id='Game_Battler-method-isAnimationRequested'>/**
+</span> * @method isAnimationRequested
+ * FIXME
+ */
 Game_Battler.prototype.isAnimationRequested = function() {
     return this._animations.length &gt; 0;
 };
 
+<span id='Game_Battler-method-isDamagePopupRequested'>/**
+</span> * @method isDamagePopupRequested
+ * FIXME
+ */
 Game_Battler.prototype.isDamagePopupRequested = function() {
     return this._damagePopup;
 };
 
+<span id='Game_Battler-method-isEffectRequested'>/**
+</span> * @method isEffectRequested
+ * FIXME
+ */
 Game_Battler.prototype.isEffectRequested = function() {
     return !!this._effectType;
 };
 
+<span id='Game_Battler-method-isMotionRequested'>/**
+</span> * @method isMotionRequested
+ * FIXME
+ */
 Game_Battler.prototype.isMotionRequested = function() {
     return !!this._motionType;
 };
 
+<span id='Game_Battler-method-isWeaponAnimationRequested'>/**
+</span> * @method isWeaponAnimationRequested
+ * FIXME
+ */
 Game_Battler.prototype.isWeaponAnimationRequested = function() {
     return this._weaponImageId &gt; 0;
 };
 
+<span id='Game_Battler-method-isMotionRefreshRequested'>/**
+</span> * @method isMotionRefreshRequested
+ * FIXME
+ */
 Game_Battler.prototype.isMotionRefreshRequested = function() {
     return this._motionRefresh;
 };
 
+<span id='Game_Battler-method-isSelected'>/**
+</span> * @method isSelected
+ * FIXME
+ */
 Game_Battler.prototype.isSelected = function() {
     return this._selected;
 };
 
+<span id='Game_Battler-method-effectType'>/**
+</span> * @method effectType
+ * FIXME
+ */
 Game_Battler.prototype.effectType = function() {
     return this._effectType;
 };
 
+<span id='Game_Battler-method-motionType'>/**
+</span> * @method motionType
+ * FIXME
+ */
 Game_Battler.prototype.motionType = function() {
     return this._motionType;
 };
 
+<span id='Game_Battler-method-weaponImageId'>/**
+</span> * @method weaponImageId
+ * FIXME
+ */
 Game_Battler.prototype.weaponImageId = function() {
     return this._weaponImageId;
 };
 
+<span id='Game_Battler-method-shiftAnimation'>/**
+</span> * @method shiftAnimation
+ * FIXME
+ */
 Game_Battler.prototype.shiftAnimation = function() {
     return this._animations.shift();
 };
 
+<span id='Game_Battler-method-startAnimation'>/**
+</span> * @method startAnimation
+ * FIXME
+ */
 Game_Battler.prototype.startAnimation = function(animationId, mirror, delay) {
     var data = { animationId: animationId, mirror: mirror, delay: delay };
     this._animations.push(data);
 };
 
+<span id='Game_Battler-method-startDamagePopup'>/**
+</span> * @method startDamagePopup
+ * FIXME
+ */
 Game_Battler.prototype.startDamagePopup = function() {
     this._damagePopup = true;
 };
 
+<span id='Game_Battler-method-startWeaponAnimation'>/**
+</span> * @method startWeaponAnimation
+ * FIXME
+ */
 Game_Battler.prototype.startWeaponAnimation = function(weaponImageId) {
     this._weaponImageId = weaponImageId;
 };
 
+<span id='Game_Battler-method-action'>/**
+</span> * @method action
+ * FIXME
+ */
 Game_Battler.prototype.action = function(index) {
     return this._actions[index];
 };
 
+<span id='Game_Battler-method-setAction'>/**
+</span> * @method setAction
+ * FIXME
+ */
 Game_Battler.prototype.setAction = function(index, action) {
     this._actions[index] = action;
 };
 
+<span id='Game_Battler-method-numActions'>/**
+</span> * @method numActions
+ * FIXME
+ */
 Game_Battler.prototype.numActions = function() {
     return this._actions.length;
 };
 
+<span id='Game_Battler-method-clearActions'>/**
+</span> * @method clearActions
+ * FIXME
+ */
 Game_Battler.prototype.clearActions = function() {
     this._actions = [];
 };
 
+<span id='Game_Battler-method-result'>/**
+</span> * @method result
+ * FIXME
+ */
 Game_Battler.prototype.result = function() {
     return this._result;
 };
 
+<span id='Game_Battler-method-clearResult'>/**
+</span> * @method clearResult
+ * FIXME
+ */
 Game_Battler.prototype.clearResult = function() {
     this._result.clear();
 };
 
+<span id='Game_Battler-method-refresh'>/**
+</span> * @method refresh
+ * FIXME
+ */
 Game_Battler.prototype.refresh = function() {
     Game_BattlerBase.prototype.refresh.call(this);
     if (this.hp === 0) {
@@ -3022,6 +5110,10 @@ Game_Battler.prototype.refresh = function() {
     }
 };
 
+<span id='Game_Battler-method-addState'>/**
+</span> * @method addState
+ * FIXME
+ */
 Game_Battler.prototype.addState = function(stateId) {
     if (this.isStateAddable(stateId)) {
         if (!this.isStateAffected(stateId)) {
@@ -3033,6 +5125,10 @@ Game_Battler.prototype.addState = function(stateId) {
     }
 };
 
+<span id='Game_Battler-method-isStateAddable'>/**
+</span> * @method isStateAddable
+ * FIXME
+ */
 Game_Battler.prototype.isStateAddable = function(stateId) {
     return (this.isAlive() &amp;&amp; $dataStates[stateId] &amp;&amp;
             !this.isStateResist(stateId) &amp;&amp;
@@ -3040,10 +5136,18 @@ Game_Battler.prototype.isStateAddable = function(stateId) {
             !this.isStateRestrict(stateId));
 };
 
+<span id='Game_Battler-method-isStateRestrict'>/**
+</span> * @method isStateRestrict
+ * FIXME
+ */
 Game_Battler.prototype.isStateRestrict = function(stateId) {
     return $dataStates[stateId].removeByRestriction &amp;&amp; this.isRestricted();
 };
 
+<span id='Game_Battler-method-onRestrict'>/**
+</span> * @method onRestrict
+ * FIXME
+ */
 Game_Battler.prototype.onRestrict = function() {
     Game_BattlerBase.prototype.onRestrict.call(this);
     this.clearActions();
@@ -3054,6 +5158,10 @@ Game_Battler.prototype.onRestrict = function() {
     }, this);
 };
 
+<span id='Game_Battler-method-removeState'>/**
+</span> * @method removeState
+ * FIXME
+ */
 Game_Battler.prototype.removeState = function(stateId) {
     if (this.isStateAffected(stateId)) {
         if (stateId === this.deathStateId()) {
@@ -3065,6 +5173,10 @@ Game_Battler.prototype.removeState = function(stateId) {
     }
 };
 
+<span id='Game_Battler-method-escape'>/**
+</span> * @method escape
+ * FIXME
+ */
 Game_Battler.prototype.escape = function() {
     if ($gameParty.inBattle()) {
         this.hide();
@@ -3074,6 +5186,10 @@ Game_Battler.prototype.escape = function() {
     SoundManager.playEscape();
 };
 
+<span id='Game_Battler-method-addBuff'>/**
+</span> * @method addBuff
+ * FIXME
+ */
 Game_Battler.prototype.addBuff = function(paramId, turns) {
     if (this.isAlive()) {
         this.increaseBuff(paramId);
@@ -3085,6 +5201,10 @@ Game_Battler.prototype.addBuff = function(paramId, turns) {
     }
 };
 
+<span id='Game_Battler-method-addDebuff'>/**
+</span> * @method addDebuff
+ * FIXME
+ */
 Game_Battler.prototype.addDebuff = function(paramId, turns) {
     if (this.isAlive()) {
         this.decreaseBuff(paramId);
@@ -3096,6 +5216,10 @@ Game_Battler.prototype.addDebuff = function(paramId, turns) {
     }
 };
 
+<span id='Game_Battler-method-removeBuff'>/**
+</span> * @method removeBuff
+ * FIXME
+ */
 Game_Battler.prototype.removeBuff = function(paramId) {
     if (this.isAlive() &amp;&amp; this.isBuffOrDebuffAffected(paramId)) {
         this.eraseBuff(paramId);
@@ -3104,6 +5228,10 @@ Game_Battler.prototype.removeBuff = function(paramId) {
     }
 };
 
+<span id='Game_Battler-method-removeBattleStates'>/**
+</span> * @method removeBattleStates
+ * FIXME
+ */
 Game_Battler.prototype.removeBattleStates = function() {
     this.states().forEach(function(state) {
         if (state.removeAtBattleEnd) {
@@ -3112,12 +5240,20 @@ Game_Battler.prototype.removeBattleStates = function() {
     }, this);
 };
 
+<span id='Game_Battler-method-removeAllBuffs'>/**
+</span> * @method removeAllBuffs
+ * FIXME
+ */
 Game_Battler.prototype.removeAllBuffs = function() {
     for (var i = 0; i &lt; this.buffLength(); i++) {
         this.removeBuff(i);
     }
 };
 
+<span id='Game_Battler-method-removeStatesAuto'>/**
+</span> * @method removeStatesAuto
+ * FIXME
+ */
 Game_Battler.prototype.removeStatesAuto = function(timing) {
     this.states().forEach(function(state) {
         if (this.isStateExpired(state.id) &amp;&amp; state.autoRemovalTiming === timing) {
@@ -3126,6 +5262,10 @@ Game_Battler.prototype.removeStatesAuto = function(timing) {
     }, this);
 };
 
+<span id='Game_Battler-method-removeBuffsAuto'>/**
+</span> * @method removeBuffsAuto
+ * FIXME
+ */
 Game_Battler.prototype.removeBuffsAuto = function() {
     for (var i = 0; i &lt; this.buffLength(); i++) {
         if (this.isBuffExpired(i)) {
@@ -3134,6 +5274,10 @@ Game_Battler.prototype.removeBuffsAuto = function() {
     }
 };
 
+<span id='Game_Battler-method-removeStatesByDamage'>/**
+</span> * @method removeStatesByDamage
+ * FIXME
+ */
 Game_Battler.prototype.removeStatesByDamage = function() {
     this.states().forEach(function(state) {
         if (state.removeByDamage &amp;&amp; Math.randomInt(100) &lt; state.chanceByDamage) {
@@ -3142,12 +5286,20 @@ Game_Battler.prototype.removeStatesByDamage = function() {
     }, this);
 };
 
+<span id='Game_Battler-method-makeActionTimes'>/**
+</span> * @method makeActionTimes
+ * FIXME
+ */
 Game_Battler.prototype.makeActionTimes = function() {
     return this.actionPlusSet().reduce(function(r, p) {
         return Math.random() &lt; p ? r + 1 : r;
     }, 1);
 };
 
+<span id='Game_Battler-method-makeActions'>/**
+</span> * @method makeActions
+ * FIXME
+ */
 Game_Battler.prototype.makeActions = function() {
     this.clearActions();
     if (this.canMove()) {
@@ -3159,24 +5311,44 @@ Game_Battler.prototype.makeActions = function() {
     }
 };
 
+<span id='Game_Battler-method-speed'>/**
+</span> * @method speed
+ * FIXME
+ */
 Game_Battler.prototype.speed = function() {
     return this._speed;
 };
 
+<span id='Game_Battler-method-makeSpeed'>/**
+</span> * @method makeSpeed
+ * FIXME
+ */
 Game_Battler.prototype.makeSpeed = function() {
     this._speed = Math.min.apply(null, this._actions.map(function(action) {
         return action.speed();
     })) || 0;
 };
 
+<span id='Game_Battler-method-currentAction'>/**
+</span> * @method currentAction
+ * FIXME
+ */
 Game_Battler.prototype.currentAction = function() {
     return this._actions[0];
 };
 
+<span id='Game_Battler-method-removeCurrentAction'>/**
+</span> * @method removeCurrentAction
+ * FIXME
+ */
 Game_Battler.prototype.removeCurrentAction = function() {
     this._actions.shift();
 };
 
+<span id='Game_Battler-method-setLastTarget'>/**
+</span> * @method setLastTarget
+ * FIXME
+ */
 Game_Battler.prototype.setLastTarget = function(target) {
     if (target) {
         this._lastTargetIndex = target.index();
@@ -3185,6 +5357,10 @@ Game_Battler.prototype.setLastTarget = function(target) {
     }
 };
 
+<span id='Game_Battler-method-forceAction'>/**
+</span> * @method forceAction
+ * FIXME
+ */
 Game_Battler.prototype.forceAction = function(skillId, targetIndex) {
     this.clearActions();
     var action = new Game_Action(this, true);
@@ -3199,6 +5375,10 @@ Game_Battler.prototype.forceAction = function(skillId, targetIndex) {
     this._actions.push(action);
 };
 
+<span id='Game_Battler-method-useItem'>/**
+</span> * @method useItem
+ * FIXME
+ */
 Game_Battler.prototype.useItem = function(item) {
     if (DataManager.isSkill(item)) {
         this.paySkillCost(item);
@@ -3207,43 +5387,79 @@ Game_Battler.prototype.useItem = function(item) {
     }
 };
 
+<span id='Game_Battler-method-consumeItem'>/**
+</span> * @method consumeItem
+ * FIXME
+ */
 Game_Battler.prototype.consumeItem = function(item) {
     $gameParty.consumeItem(item);
 };
 
+<span id='Game_Battler-method-gainHp'>/**
+</span> * @method gainHp
+ * FIXME
+ */
 Game_Battler.prototype.gainHp = function(value) {
     this._result.hpDamage = -value;
     this._result.hpAffected = true;
     this.setHp(this.hp + value);
 };
 
+<span id='Game_Battler-method-gainMp'>/**
+</span> * @method gainMp
+ * FIXME
+ */
 Game_Battler.prototype.gainMp = function(value) {
     this._result.mpDamage = -value;
     this.setMp(this.mp + value);
 };
 
+<span id='Game_Battler-method-gainTp'>/**
+</span> * @method gainTp
+ * FIXME
+ */
 Game_Battler.prototype.gainTp = function(value) {
     this._result.tpDamage = -value;
     this.setTp(this.tp + value);
 };
 
+<span id='Game_Battler-method-gainSilentTp'>/**
+</span> * @method gainSilentTp
+ * FIXME
+ */
 Game_Battler.prototype.gainSilentTp = function(value) {
     this.setTp(this.tp + value);
 };
 
+<span id='Game_Battler-method-initTp'>/**
+</span> * @method initTp
+ * FIXME
+ */
 Game_Battler.prototype.initTp = function() {
     this.setTp(Math.randomInt(25));
 };
 
+<span id='Game_Battler-method-clearTp'>/**
+</span> * @method clearTp
+ * FIXME
+ */
 Game_Battler.prototype.clearTp = function() {
     this.setTp(0);
 };
 
+<span id='Game_Battler-method-chargeTpByDamage'>/**
+</span> * @method chargeTpByDamage
+ * FIXME
+ */
 Game_Battler.prototype.chargeTpByDamage = function(damageRate) {
     var value = Math.floor(50 * damageRate * this.tcr);
     this.gainSilentTp(value);
 };
 
+<span id='Game_Battler-method-regenerateHp'>/**
+</span> * @method regenerateHp
+ * FIXME
+ */
 Game_Battler.prototype.regenerateHp = function() {
     var value = Math.floor(this.mhp * this.hrg);
     value = Math.max(value, -this.maxSlipDamage());
@@ -3252,10 +5468,18 @@ Game_Battler.prototype.regenerateHp = function() {
     }
 };
 
+<span id='Game_Battler-method-maxSlipDamage'>/**
+</span> * @method maxSlipDamage
+ * FIXME
+ */
 Game_Battler.prototype.maxSlipDamage = function() {
     return $dataSystem.optSlipDeath ? this.hp : Math.max(this.hp - 1, 0);
 };
 
+<span id='Game_Battler-method-regenerateMp'>/**
+</span> * @method regenerateMp
+ * FIXME
+ */
 Game_Battler.prototype.regenerateMp = function() {
     var value = Math.floor(this.mmp * this.mrg);
     if (value !== 0) {
@@ -3263,11 +5487,19 @@ Game_Battler.prototype.regenerateMp = function() {
     }
 };
 
+<span id='Game_Battler-method-regenerateTp'>/**
+</span> * @method regenerateTp
+ * FIXME
+ */
 Game_Battler.prototype.regenerateTp = function() {
     var value = Math.floor(100 * this.trg);
     this.gainSilentTp(value);
 };
 
+<span id='Game_Battler-method-regenerateAll'>/**
+</span> * @method regenerateAll
+ * FIXME
+ */
 Game_Battler.prototype.regenerateAll = function() {
     if (this.isAlive()) {
         this.regenerateHp();
@@ -3276,6 +5508,10 @@ Game_Battler.prototype.regenerateAll = function() {
     }
 };
 
+<span id='Game_Battler-method-onBattleStart'>/**
+</span> * @method onBattleStart
+ * FIXME
+ */
 Game_Battler.prototype.onBattleStart = function() {
     this.setActionState('undecided');
     this.clearMotion();
@@ -3284,12 +5520,20 @@ Game_Battler.prototype.onBattleStart = function() {
     }
 };
 
+<span id='Game_Battler-method-onAllActionsEnd'>/**
+</span> * @method onAllActionsEnd
+ * FIXME
+ */
 Game_Battler.prototype.onAllActionsEnd = function() {
     this.clearResult();
     this.removeStatesAuto(1);
     this.removeBuffsAuto();
 };
 
+<span id='Game_Battler-method-onTurnEnd'>/**
+</span> * @method onTurnEnd
+ * FIXME
+ */
 Game_Battler.prototype.onTurnEnd = function() {
     this.clearResult();
     this.regenerateAll();
@@ -3300,6 +5544,10 @@ Game_Battler.prototype.onTurnEnd = function() {
     this.removeStatesAuto(2);
 };
 
+<span id='Game_Battler-method-onBattleEnd'>/**
+</span> * @method onBattleEnd
+ * FIXME
+ */
 Game_Battler.prototype.onBattleEnd = function() {
     this.clearResult();
     this.removeBattleStates();
@@ -3311,32 +5559,60 @@ Game_Battler.prototype.onBattleEnd = function() {
     this.appear();
 };
 
+<span id='Game_Battler-method-onDamage'>/**
+</span> * @method onDamage
+ * FIXME
+ */
 Game_Battler.prototype.onDamage = function(value) {
     this.removeStatesByDamage();
     this.chargeTpByDamage(value / this.mhp);
 };
 
+<span id='Game_Battler-method-setActionState'>/**
+</span> * @method setActionState
+ * FIXME
+ */
 Game_Battler.prototype.setActionState = function(actionState) {
     this._actionState = actionState;
     this.requestMotionRefresh();
 };
 
+<span id='Game_Battler-method-isUndecided'>/**
+</span> * @method isUndecided
+ * FIXME
+ */
 Game_Battler.prototype.isUndecided = function() {
     return this._actionState === 'undecided';
 };
 
+<span id='Game_Battler-method-isInputting'>/**
+</span> * @method isInputting
+ * FIXME
+ */
 Game_Battler.prototype.isInputting = function() {
     return this._actionState === 'inputting';
 };
 
+<span id='Game_Battler-method-isWaiting'>/**
+</span> * @method isWaiting
+ * FIXME
+ */
 Game_Battler.prototype.isWaiting = function() {
     return this._actionState === 'waiting';
 };
 
+<span id='Game_Battler-method-isActing'>/**
+</span> * @method isActing
+ * FIXME
+ */
 Game_Battler.prototype.isActing = function() {
     return this._actionState === 'acting';
 };
 
+<span id='Game_Battler-method-isChanting'>/**
+</span> * @method isChanting
+ * FIXME
+ */
 Game_Battler.prototype.isChanting = function() {
     if (this.isWaiting()) {
         return this._actions.some(function(action) {
@@ -3346,6 +5622,10 @@ Game_Battler.prototype.isChanting = function() {
     return false;
 };
 
+<span id='Game_Battler-method-isGuardWaiting'>/**
+</span> * @method isGuardWaiting
+ * FIXME
+ */
 Game_Battler.prototype.isGuardWaiting = function() {
     if (this.isWaiting()) {
         return this._actions.some(function(action) {
@@ -3355,49 +5635,97 @@ Game_Battler.prototype.isGuardWaiting = function() {
     return false;
 };
 
+<span id='Game_Battler-method-performActionStart'>/**
+</span> * @method performActionStart
+ * FIXME
+ */
 Game_Battler.prototype.performActionStart = function(action) {
     if (!action.isGuard()) {
         this.setActionState('acting');
     }
 };
 
+<span id='Game_Battler-method-performAction'>/**
+</span> * @method performAction
+ * FIXME
+ */
 Game_Battler.prototype.performAction = function(action) {
 };
 
+<span id='Game_Battler-method-performActionEnd'>/**
+</span> * @method performActionEnd
+ * FIXME
+ */
 Game_Battler.prototype.performActionEnd = function() {
     this.setActionState('done');
 };
 
+<span id='Game_Battler-method-performDamage'>/**
+</span> * @method performDamage
+ * FIXME
+ */
 Game_Battler.prototype.performDamage = function() {
 };
 
+<span id='Game_Battler-method-performMiss'>/**
+</span> * @method performMiss
+ * FIXME
+ */
 Game_Battler.prototype.performMiss = function() {
     SoundManager.playMiss();
 };
 
+<span id='Game_Battler-method-performRecovery'>/**
+</span> * @method performRecovery
+ * FIXME
+ */
 Game_Battler.prototype.performRecovery = function() {
     SoundManager.playRecovery();
 };
 
+<span id='Game_Battler-method-performEvasion'>/**
+</span> * @method performEvasion
+ * FIXME
+ */
 Game_Battler.prototype.performEvasion = function() {
     SoundManager.playEvasion();
 };
 
+<span id='Game_Battler-method-performMagicEvasion'>/**
+</span> * @method performMagicEvasion
+ * FIXME
+ */
 Game_Battler.prototype.performMagicEvasion = function() {
     SoundManager.playMagicEvasion();
 };
 
+<span id='Game_Battler-method-performCounter'>/**
+</span> * @method performCounter
+ * FIXME
+ */
 Game_Battler.prototype.performCounter = function() {
     SoundManager.playEvasion();
 };
 
+<span id='Game_Battler-method-performReflection'>/**
+</span> * @method performReflection
+ * FIXME
+ */
 Game_Battler.prototype.performReflection = function() {
     SoundManager.playReflection();
 };
 
+<span id='Game_Battler-method-performSubstitute'>/**
+</span> * @method performSubstitute
+ * FIXME
+ */
 Game_Battler.prototype.performSubstitute = function(target) {
 };
 
+<span id='Game_Battler-method-performCollapse'>/**
+</span> * @method performCollapse
+ * FIXME
+ */
 Game_Battler.prototype.performCollapse = function() {
 };
 
@@ -3406,6 +5734,13 @@ Game_Battler.prototype.performCollapse = function() {
 //
 // The game object class for an actor.
 
+<span id='Game_Actor-method-constructor'><span id='Game_Actor'>/**
+</span></span> * @class Game_Actor
+ * @extends Game_Battler
+ * The game object class for an actor.
+ *
+ * @constructor
+ */
 function Game_Actor() {
     this.initialize.apply(this, arguments);
 }
@@ -3413,6 +5748,9 @@ function Game_Actor() {
 Game_Actor.prototype = Object.create(Game_Battler.prototype);
 Game_Actor.prototype.constructor = Game_Actor;
 
+<span id='Game_Actor-property-FIXME'>/**
+</span> * @property {} FIXME
+ */
 Object.defineProperty(Game_Actor.prototype, 'level', {
     get: function() {
         return this._level;
@@ -3420,11 +5758,19 @@ Object.defineProperty(Game_Actor.prototype, 'level', {
     configurable: true
 });
 
+<span id='Game_Actor-method-initialize'>/**
+</span> * @method initialize
+ * FIXME
+ */
 Game_Actor.prototype.initialize = function(actorId) {
     Game_Battler.prototype.initialize.call(this);
     this.setup(actorId);
 };
 
+<span id='Game_Actor-method-initMembers'>/**
+</span> * @method initMembers
+ * FIXME
+ */
 Game_Actor.prototype.initMembers = function() {
     Game_Battler.prototype.initMembers.call(this);
     this._actorId = 0;
@@ -3446,6 +5792,10 @@ Game_Actor.prototype.initMembers = function() {
     this._lastCommandSymbol = '';
 };
 
+<span id='Game_Actor-method-setup'>/**
+</span> * @method setup
+ * FIXME
+ */
 Game_Actor.prototype.setup = function(actorId) {
     var actor = $dataActors[actorId];
     this._actorId = actorId;
@@ -3462,73 +5812,141 @@ Game_Actor.prototype.setup = function(actorId) {
     this.recoverAll();
 };
 
+<span id='Game_Actor-method-actorId'>/**
+</span> * @method actorId
+ * FIXME
+ */
 Game_Actor.prototype.actorId = function() {
     return this._actorId;
 };
 
+<span id='Game_Actor-method-actor'>/**
+</span> * @method actor
+ * FIXME
+ */
 Game_Actor.prototype.actor = function() {
     return $dataActors[this._actorId];
 };
 
+<span id='Game_Actor-method-name'>/**
+</span> * @method name
+ * FIXME
+ */
 Game_Actor.prototype.name = function() {
     return this._name;
 };
 
+<span id='Game_Actor-method-setName'>/**
+</span> * @method setName
+ * FIXME
+ */
 Game_Actor.prototype.setName = function(name) {
     this._name = name;
 };
 
+<span id='Game_Actor-method-nickname'>/**
+</span> * @method nickname
+ * FIXME
+ */
 Game_Actor.prototype.nickname = function() {
     return this._nickname;
 };
 
+<span id='Game_Actor-method-setNickname'>/**
+</span> * @method setNickname
+ * FIXME
+ */
 Game_Actor.prototype.setNickname = function(nickname) {
     this._nickname = nickname;
 };
 
+<span id='Game_Actor-method-profile'>/**
+</span> * @method profile
+ * FIXME
+ */
 Game_Actor.prototype.profile = function() {
     return this._profile;
 };
 
+<span id='Game_Actor-method-setProfile'>/**
+</span> * @method setProfile
+ * FIXME
+ */
 Game_Actor.prototype.setProfile = function(profile) {
     this._profile = profile;
 };
 
+<span id='Game_Actor-method-characterName'>/**
+</span> * @method characterName
+ * FIXME
+ */
 Game_Actor.prototype.characterName = function() {
     return this._characterName;
 };
 
+<span id='Game_Actor-method-characterIndex'>/**
+</span> * @method characterIndex
+ * FIXME
+ */
 Game_Actor.prototype.characterIndex = function() {
     return this._characterIndex;
 };
 
+<span id='Game_Actor-method-faceName'>/**
+</span> * @method faceName
+ * FIXME
+ */
 Game_Actor.prototype.faceName = function() {
     return this._faceName;
 };
 
+<span id='Game_Actor-method-faceIndex'>/**
+</span> * @method faceIndex
+ * FIXME
+ */
 Game_Actor.prototype.faceIndex = function() {
     return this._faceIndex;
 };
 
+<span id='Game_Actor-method-battlerName'>/**
+</span> * @method battlerName
+ * FIXME
+ */
 Game_Actor.prototype.battlerName = function() {
     return this._battlerName;
 };
 
+<span id='Game_Actor-method-clearStates'>/**
+</span> * @method clearStates
+ * FIXME
+ */
 Game_Actor.prototype.clearStates = function() {
     Game_Battler.prototype.clearStates.call(this);
     this._stateSteps = {};
 };
 
+<span id='Game_Actor-method-eraseState'>/**
+</span> * @method eraseState
+ * FIXME
+ */
 Game_Actor.prototype.eraseState = function(stateId) {
     Game_Battler.prototype.eraseState.call(this, stateId);
     delete this._stateSteps[stateId];
 };
 
+<span id='Game_Actor-method-resetStateCounts'>/**
+</span> * @method resetStateCounts
+ * FIXME
+ */
 Game_Actor.prototype.resetStateCounts = function(stateId) {
     Game_Battler.prototype.resetStateCounts.call(this, stateId);
     this._stateSteps[stateId] = $dataStates[stateId].stepsToRemove;
 };
 
+<span id='Game_Actor-method-initImages'>/**
+</span> * @method initImages
+ * FIXME
+ */
 Game_Actor.prototype.initImages = function() {
     var actor = this.actor();
     this._characterName = actor.characterName;
@@ -3538,6 +5956,10 @@ Game_Actor.prototype.initImages = function() {
     this._battlerName = actor.battlerName;
 };
 
+<span id='Game_Actor-method-expForLevel'>/**
+</span> * @method expForLevel
+ * FIXME
+ */
 Game_Actor.prototype.expForLevel = function(level) {
     var c = this.currentClass();
     var basis = c.expParams[0];
@@ -3548,34 +5970,66 @@ Game_Actor.prototype.expForLevel = function(level) {
             (level+1)/(6+Math.pow(level,2)/50/acc_b)+(level-1)*extra);
 };
 
+<span id='Game_Actor-method-initExp'>/**
+</span> * @method initExp
+ * FIXME
+ */
 Game_Actor.prototype.initExp = function() {
     this._exp[this._classId] = this.currentLevelExp();
 };
 
+<span id='Game_Actor-method-currentExp'>/**
+</span> * @method currentExp
+ * FIXME
+ */
 Game_Actor.prototype.currentExp = function() {
     return this._exp[this._classId];
 };
 
+<span id='Game_Actor-method-currentLevelExp'>/**
+</span> * @method currentLevelExp
+ * FIXME
+ */
 Game_Actor.prototype.currentLevelExp = function() {
     return this.expForLevel(this._level);
 };
 
+<span id='Game_Actor-method-nextLevelExp'>/**
+</span> * @method nextLevelExp
+ * FIXME
+ */
 Game_Actor.prototype.nextLevelExp = function() {
     return this.expForLevel(this._level + 1);
 };
 
+<span id='Game_Actor-method-nextRequiredExp'>/**
+</span> * @method nextRequiredExp
+ * FIXME
+ */
 Game_Actor.prototype.nextRequiredExp = function() {
     return this.nextLevelExp() - this.currentExp();
 };
 
+<span id='Game_Actor-method-maxLevel'>/**
+</span> * @method maxLevel
+ * FIXME
+ */
 Game_Actor.prototype.maxLevel = function() {
     return this.actor().maxLevel;
 };
 
+<span id='Game_Actor-method-isMaxLevel'>/**
+</span> * @method isMaxLevel
+ * FIXME
+ */
 Game_Actor.prototype.isMaxLevel = function() {
     return this._level &gt;= this.maxLevel();
 };
 
+<span id='Game_Actor-method-initSkills'>/**
+</span> * @method initSkills
+ * FIXME
+ */
 Game_Actor.prototype.initSkills = function() {
     this._skills = [];
     this.currentClass().learnings.forEach(function(learning) {
@@ -3585,6 +6039,10 @@ Game_Actor.prototype.initSkills = function() {
     }, this);
 };
 
+<span id='Game_Actor-method-initEquips'>/**
+</span> * @method initEquips
+ * FIXME
+ */
 Game_Actor.prototype.initEquips = function(equips) {
     var slots = this.equipSlots();
     var maxSlots = slots.length;
@@ -3601,6 +6059,10 @@ Game_Actor.prototype.initEquips = function(equips) {
     this.refresh();
 };
 
+<span id='Game_Actor-method-equipSlots'>/**
+</span> * @method equipSlots
+ * FIXME
+ */
 Game_Actor.prototype.equipSlots = function() {
     var slots = [];
     for (var i = 1; i &lt; $dataSystem.equipTypes.length; i++) {
@@ -3612,37 +6074,65 @@ Game_Actor.prototype.equipSlots = function() {
     return slots;
 };
 
+<span id='Game_Actor-method-equips'>/**
+</span> * @method equips
+ * FIXME
+ */
 Game_Actor.prototype.equips = function() {
     return this._equips.map(function(item) {
         return item.object();
     });
 };
 
+<span id='Game_Actor-method-weapons'>/**
+</span> * @method weapons
+ * FIXME
+ */
 Game_Actor.prototype.weapons = function() {
     return this.equips().filter(function(item) {
         return item &amp;&amp; DataManager.isWeapon(item);
     });
 };
 
+<span id='Game_Actor-method-armors'>/**
+</span> * @method armors
+ * FIXME
+ */
 Game_Actor.prototype.armors = function() {
     return this.equips().filter(function(item) {
         return item &amp;&amp; DataManager.isArmor(item);
     });
 };
 
+<span id='Game_Actor-method-hasWeapon'>/**
+</span> * @method hasWeapon
+ * FIXME
+ */
 Game_Actor.prototype.hasWeapon = function(weapon) {
     return this.weapons().contains(weapon);
 };
 
+<span id='Game_Actor-method-hasArmor'>/**
+</span> * @method hasArmor
+ * FIXME
+ */
 Game_Actor.prototype.hasArmor = function(armor) {
     return this.armors().contains(armor);
 };
 
+<span id='Game_Actor-method-isEquipChangeOk'>/**
+</span> * @method isEquipChangeOk
+ * FIXME
+ */
 Game_Actor.prototype.isEquipChangeOk = function(slotId) {
     return (!this.isEquipTypeLocked(this.equipSlots()[slotId]) &amp;&amp;
             !this.isEquipTypeSealed(this.equipSlots()[slotId]));
 };
 
+<span id='Game_Actor-method-changeEquip'>/**
+</span> * @method changeEquip
+ * FIXME
+ */
 Game_Actor.prototype.changeEquip = function(slotId, item) {
     if (this.tradeItemWithParty(item, this.equips()[slotId]) &amp;&amp;
             (!item || this.equipSlots()[slotId] === item.etypeId)) {
@@ -3651,12 +6141,20 @@ Game_Actor.prototype.changeEquip = function(slotId, item) {
     }
 };
 
+<span id='Game_Actor-method-forceChangeEquip'>/**
+</span> * @method forceChangeEquip
+ * FIXME
+ */
 Game_Actor.prototype.forceChangeEquip = function(slotId, item) {
     this._equips[slotId].setObject(item);
     this.releaseUnequippableItems(true);
     this.refresh();
 };
 
+<span id='Game_Actor-method-tradeItemWithParty'>/**
+</span> * @method tradeItemWithParty
+ * FIXME
+ */
 Game_Actor.prototype.tradeItemWithParty = function(newItem, oldItem) {
     if (newItem &amp;&amp; !$gameParty.hasItem(newItem)) {
         return false;
@@ -3667,6 +6165,10 @@ Game_Actor.prototype.tradeItemWithParty = function(newItem, oldItem) {
     }
 };
 
+<span id='Game_Actor-method-changeEquipById'>/**
+</span> * @method changeEquipById
+ * FIXME
+ */
 Game_Actor.prototype.changeEquipById = function(etypeId, itemId) {
     var slotId = etypeId - 1;
     if (this.equipSlots()[slotId] === 1) {
@@ -3676,10 +6178,18 @@ Game_Actor.prototype.changeEquipById = function(etypeId, itemId) {
     }
 };
 
+<span id='Game_Actor-method-isEquipped'>/**
+</span> * @method isEquipped
+ * FIXME
+ */
 Game_Actor.prototype.isEquipped = function(item) {
     return this.equips().contains(item);
 };
 
+<span id='Game_Actor-method-discardEquip'>/**
+</span> * @method discardEquip
+ * FIXME
+ */
 Game_Actor.prototype.discardEquip = function(item) {
     var slotId = this.equips().indexOf(item);
     if (slotId &gt;= 0) {
@@ -3687,6 +6197,10 @@ Game_Actor.prototype.discardEquip = function(item) {
     }
 };
 
+<span id='Game_Actor-method-releaseUnequippableItems'>/**
+</span> * @method releaseUnequippableItems
+ * FIXME
+ */
 Game_Actor.prototype.releaseUnequippableItems = function(forcing) {
     for (;;) {
         var slots = this.equipSlots();
@@ -3708,6 +6222,10 @@ Game_Actor.prototype.releaseUnequippableItems = function(forcing) {
     }
 };
 
+<span id='Game_Actor-method-clearEquipments'>/**
+</span> * @method clearEquipments
+ * FIXME
+ */
 Game_Actor.prototype.clearEquipments = function() {
     var maxSlots = this.equipSlots().length;
     for (var i = 0; i &lt; maxSlots; i++) {
@@ -3717,6 +6235,10 @@ Game_Actor.prototype.clearEquipments = function() {
     }
 };
 
+<span id='Game_Actor-method-optimizeEquipments'>/**
+</span> * @method optimizeEquipments
+ * FIXME
+ */
 Game_Actor.prototype.optimizeEquipments = function() {
     var maxSlots = this.equipSlots().length;
     this.clearEquipments();
@@ -3727,6 +6249,10 @@ Game_Actor.prototype.optimizeEquipments = function() {
     }
 };
 
+<span id='Game_Actor-method-bestEquipItem'>/**
+</span> * @method bestEquipItem
+ * FIXME
+ */
 Game_Actor.prototype.bestEquipItem = function(slotId) {
     var etypeId = this.equipSlots()[slotId];
     var items = $gameParty.equipItems().filter(function(item) {
@@ -3744,12 +6270,20 @@ Game_Actor.prototype.bestEquipItem = function(slotId) {
     return bestItem;
 };
 
+<span id='Game_Actor-method-calcEquipItemPerformance'>/**
+</span> * @method calcEquipItemPerformance
+ * FIXME
+ */
 Game_Actor.prototype.calcEquipItemPerformance = function(item) {
     return item.params.reduce(function(a, b) {
         return a + b;
     });
 };
 
+<span id='Game_Actor-method-isSkillWtypeOk'>/**
+</span> * @method isSkillWtypeOk
+ * FIXME
+ */
 Game_Actor.prototype.isSkillWtypeOk = function(skill) {
     var wtypeId1 = skill.requiredWtypeId1;
     var wtypeId2 = skill.requiredWtypeId2;
@@ -3762,49 +6296,93 @@ Game_Actor.prototype.isSkillWtypeOk = function(skill) {
     }
 };
 
+<span id='Game_Actor-method-isWtypeEquipped'>/**
+</span> * @method isWtypeEquipped
+ * FIXME
+ */
 Game_Actor.prototype.isWtypeEquipped = function(wtypeId) {
     return this.weapons().some(function(weapon) {
         return weapon.wtypeId === wtypeId;
     });
 };
 
+<span id='Game_Actor-method-refresh'>/**
+</span> * @method refresh
+ * FIXME
+ */
 Game_Actor.prototype.refresh = function() {
     this.releaseUnequippableItems(false);
     Game_Battler.prototype.refresh.call(this);
 };
 
+<span id='Game_Actor-method-isActor'>/**
+</span> * @method isActor
+ * FIXME
+ */
 Game_Actor.prototype.isActor = function() {
     return true;
 };
 
+<span id='Game_Actor-method-friendsUnit'>/**
+</span> * @method friendsUnit
+ * FIXME
+ */
 Game_Actor.prototype.friendsUnit = function() {
     return $gameParty;
 };
 
+<span id='Game_Actor-method-opponentsUnit'>/**
+</span> * @method opponentsUnit
+ * FIXME
+ */
 Game_Actor.prototype.opponentsUnit = function() {
     return $gameTroop;
 };
 
+<span id='Game_Actor-method-index'>/**
+</span> * @method index
+ * FIXME
+ */
 Game_Actor.prototype.index = function() {
     return $gameParty.members().indexOf(this);
 };
 
+<span id='Game_Actor-method-isBattleMember'>/**
+</span> * @method isBattleMember
+ * FIXME
+ */
 Game_Actor.prototype.isBattleMember = function() {
     return $gameParty.battleMembers().contains(this);
 };
 
+<span id='Game_Actor-method-isFormationChangeOk'>/**
+</span> * @method isFormationChangeOk
+ * FIXME
+ */
 Game_Actor.prototype.isFormationChangeOk = function() {
     return true;
 };
 
+<span id='Game_Actor-method-currentClass'>/**
+</span> * @method currentClass
+ * FIXME
+ */
 Game_Actor.prototype.currentClass = function() {
     return $dataClasses[this._classId];
 };
 
+<span id='Game_Actor-method-isClass'>/**
+</span> * @method isClass
+ * FIXME
+ */
 Game_Actor.prototype.isClass = function(gameClass) {
     return gameClass &amp;&amp; this._classId === gameClass.id;
 };
 
+<span id='Game_Actor-method-skills'>/**
+</span> * @method skills
+ * FIXME
+ */
 Game_Actor.prototype.skills = function() {
     var list = [];
     this._skills.concat(this.addedSkills()).forEach(function(id) {
@@ -3815,12 +6393,20 @@ Game_Actor.prototype.skills = function() {
     return list;
 };
 
+<span id='Game_Actor-method-usableSkills'>/**
+</span> * @method usableSkills
+ * FIXME
+ */
 Game_Actor.prototype.usableSkills = function() {
     return this.skills().filter(function(skill) {
         return this.canUse(skill);
     }, this);
 };
 
+<span id='Game_Actor-method-traitObjects'>/**
+</span> * @method traitObjects
+ * FIXME
+ */
 Game_Actor.prototype.traitObjects = function() {
     var objects = Game_Battler.prototype.traitObjects.call(this);
     objects = objects.concat([this.actor(), this.currentClass()]);
@@ -3834,6 +6420,10 @@ Game_Actor.prototype.traitObjects = function() {
     return objects;
 };
 
+<span id='Game_Actor-method-attackElements'>/**
+</span> * @method attackElements
+ * FIXME
+ */
 Game_Actor.prototype.attackElements = function() {
     var set = Game_Battler.prototype.attackElements.call(this);
     if (this.hasNoWeapons() &amp;&amp; !set.contains(this.bareHandsElementId())) {
@@ -3842,14 +6432,26 @@ Game_Actor.prototype.attackElements = function() {
     return set;
 };
 
+<span id='Game_Actor-method-hasNoWeapons'>/**
+</span> * @method hasNoWeapons
+ * FIXME
+ */
 Game_Actor.prototype.hasNoWeapons = function() {
     return this.weapons().length === 0;
 };
 
+<span id='Game_Actor-method-bareHandsElementId'>/**
+</span> * @method bareHandsElementId
+ * FIXME
+ */
 Game_Actor.prototype.bareHandsElementId = function() {
     return 1;
 };
 
+<span id='Game_Actor-method-paramMax'>/**
+</span> * @method paramMax
+ * FIXME
+ */
 Game_Actor.prototype.paramMax = function(paramId) {
     if (paramId === 0) {
         return 9999;    // MHP
@@ -3857,10 +6459,18 @@ Game_Actor.prototype.paramMax = function(paramId) {
     return Game_Battler.prototype.paramMax.call(this, paramId);
 };
 
+<span id='Game_Actor-method-paramBase'>/**
+</span> * @method paramBase
+ * FIXME
+ */
 Game_Actor.prototype.paramBase = function(paramId) {
     return this.currentClass().params[paramId][this._level];
 };
 
+<span id='Game_Actor-method-paramPlus'>/**
+</span> * @method paramPlus
+ * FIXME
+ */
 Game_Actor.prototype.paramPlus = function(paramId) {
     var value = Game_Battler.prototype.paramPlus.call(this, paramId);
     var equips = this.equips();
@@ -3873,6 +6483,10 @@ Game_Actor.prototype.paramPlus = function(paramId) {
     return value;
 };
 
+<span id='Game_Actor-method-attackAnimationId1'>/**
+</span> * @method attackAnimationId1
+ * FIXME
+ */
 Game_Actor.prototype.attackAnimationId1 = function() {
     if (this.hasNoWeapons()) {
         return this.bareHandsAnimationId();
@@ -3882,15 +6496,27 @@ Game_Actor.prototype.attackAnimationId1 = function() {
     }
 };
 
+<span id='Game_Actor-method-attackAnimationId2'>/**
+</span> * @method attackAnimationId2
+ * FIXME
+ */
 Game_Actor.prototype.attackAnimationId2 = function() {
     var weapons = this.weapons();
     return weapons[1] ? weapons[1].animationId : 0;
 };
 
+<span id='Game_Actor-method-bareHandsAnimationId'>/**
+</span> * @method bareHandsAnimationId
+ * FIXME
+ */
 Game_Actor.prototype.bareHandsAnimationId = function() {
     return 1;
 };
 
+<span id='Game_Actor-method-changeExp'>/**
+</span> * @method changeExp
+ * FIXME
+ */
 Game_Actor.prototype.changeExp = function(exp, show) {
     this._exp[this._classId] = Math.max(exp, 0);
     var lastLevel = this._level;
@@ -3907,6 +6533,10 @@ Game_Actor.prototype.changeExp = function(exp, show) {
     this.refresh();
 };
 
+<span id='Game_Actor-method-levelUp'>/**
+</span> * @method levelUp
+ * FIXME
+ */
 Game_Actor.prototype.levelUp = function() {
     this._level++;
     this.currentClass().learnings.forEach(function(learning) {
@@ -3916,10 +6546,18 @@ Game_Actor.prototype.levelUp = function() {
     }, this);
 };
 
+<span id='Game_Actor-method-levelDown'>/**
+</span> * @method levelDown
+ * FIXME
+ */
 Game_Actor.prototype.levelDown = function() {
     this._level--;
 };
 
+<span id='Game_Actor-method-findNewSkills'>/**
+</span> * @method findNewSkills
+ * FIXME
+ */
 Game_Actor.prototype.findNewSkills = function(lastSkills) {
     var newSkills = this.skills();
     for (var i = 0; i &lt; lastSkills.length; i++) {
@@ -3931,6 +6569,10 @@ Game_Actor.prototype.findNewSkills = function(lastSkills) {
     return newSkills;
 };
 
+<span id='Game_Actor-method-displayLevelUp'>/**
+</span> * @method displayLevelUp
+ * FIXME
+ */
 Game_Actor.prototype.displayLevelUp = function(newSkills) {
     var text = TextManager.levelUp.format(this._name, TextManager.level, this._level);
     $gameMessage.newPage();
@@ -3940,28 +6582,52 @@ Game_Actor.prototype.displayLevelUp = function(newSkills) {
     });
 };
 
+<span id='Game_Actor-method-gainExp'>/**
+</span> * @method gainExp
+ * FIXME
+ */
 Game_Actor.prototype.gainExp = function(exp) {
     var newExp = this.currentExp() + Math.round(exp * this.finalExpRate());
     this.changeExp(newExp, this.shouldDisplayLevelUp());
 };
 
+<span id='Game_Actor-method-finalExpRate'>/**
+</span> * @method finalExpRate
+ * FIXME
+ */
 Game_Actor.prototype.finalExpRate = function() {
     return this.exr * (this.isBattleMember() ? 1 : this.benchMembersExpRate());
 };
 
+<span id='Game_Actor-method-benchMembersExpRate'>/**
+</span> * @method benchMembersExpRate
+ * FIXME
+ */
 Game_Actor.prototype.benchMembersExpRate = function() {
     return $dataSystem.optExtraExp ? 1 : 0;
 };
 
+<span id='Game_Actor-method-shouldDisplayLevelUp'>/**
+</span> * @method shouldDisplayLevelUp
+ * FIXME
+ */
 Game_Actor.prototype.shouldDisplayLevelUp = function() {
     return true;
 };
 
+<span id='Game_Actor-method-changeLevel'>/**
+</span> * @method changeLevel
+ * FIXME
+ */
 Game_Actor.prototype.changeLevel = function(level, show) {
     level = level.clamp(1, this.maxLevel());
     this.changeExp(this.expForLevel(level), show);
 };
 
+<span id='Game_Actor-method-learnSkill'>/**
+</span> * @method learnSkill
+ * FIXME
+ */
 Game_Actor.prototype.learnSkill = function(skillId) {
     if (!this.isLearnedSkill(skillId)) {
         this._skills.push(skillId);
@@ -3971,6 +6637,10 @@ Game_Actor.prototype.learnSkill = function(skillId) {
     }
 };
 
+<span id='Game_Actor-method-forgetSkill'>/**
+</span> * @method forgetSkill
+ * FIXME
+ */
 Game_Actor.prototype.forgetSkill = function(skillId) {
     var index = this._skills.indexOf(skillId);
     if (index &gt;= 0) {
@@ -3978,14 +6648,26 @@ Game_Actor.prototype.forgetSkill = function(skillId) {
     }
 };
 
+<span id='Game_Actor-method-isLearnedSkill'>/**
+</span> * @method isLearnedSkill
+ * FIXME
+ */
 Game_Actor.prototype.isLearnedSkill = function(skillId) {
     return this._skills.contains(skillId);
 };
 
+<span id='Game_Actor-method-hasSkill'>/**
+</span> * @method hasSkill
+ * FIXME
+ */
 Game_Actor.prototype.hasSkill = function(skillId) {
     return this.skills().contains($dataSkills[skillId]);
 };
 
+<span id='Game_Actor-method-changeClass'>/**
+</span> * @method changeClass
+ * FIXME
+ */
 Game_Actor.prototype.changeClass = function(classId, keepExp) {
     if (keepExp) {
         this._exp[classId] = this.currentExp();
@@ -3995,33 +6677,61 @@ Game_Actor.prototype.changeClass = function(classId, keepExp) {
     this.refresh();
 };
 
+<span id='Game_Actor-method-setCharacterImage'>/**
+</span> * @method setCharacterImage
+ * FIXME
+ */
 Game_Actor.prototype.setCharacterImage = function(characterName, characterIndex) {
     this._characterName = characterName;
     this._characterIndex = characterIndex;
 };
 
+<span id='Game_Actor-method-setFaceImage'>/**
+</span> * @method setFaceImage
+ * FIXME
+ */
 Game_Actor.prototype.setFaceImage = function(faceName, faceIndex) {
     this._faceName = faceName;
     this._faceIndex = faceIndex;
 };
 
+<span id='Game_Actor-method-setBattlerImage'>/**
+</span> * @method setBattlerImage
+ * FIXME
+ */
 Game_Actor.prototype.setBattlerImage = function(battlerName) {
     this._battlerName = battlerName;
 };
 
+<span id='Game_Actor-method-isSpriteVisible'>/**
+</span> * @method isSpriteVisible
+ * FIXME
+ */
 Game_Actor.prototype.isSpriteVisible = function() {
     return $gameSystem.isSideView();
 };
 
+<span id='Game_Actor-method-startAnimation'>/**
+</span> * @method startAnimation
+ * FIXME
+ */
 Game_Actor.prototype.startAnimation = function(animationId, mirror, delay) {
     mirror = !mirror;
     Game_Battler.prototype.startAnimation.call(this, animationId, mirror, delay);
 };
 
+<span id='Game_Actor-method-performActionStart'>/**
+</span> * @method performActionStart
+ * FIXME
+ */
 Game_Actor.prototype.performActionStart = function(action) {
     Game_Battler.prototype.performActionStart.call(this, action);
 };
 
+<span id='Game_Actor-method-performAction'>/**
+</span> * @method performAction
+ * FIXME
+ */
 Game_Actor.prototype.performAction = function(action) {
     Game_Battler.prototype.performAction.call(this, action);
     if (action.isAttack()) {
@@ -4037,10 +6747,18 @@ Game_Actor.prototype.performAction = function(action) {
     }
 };
 
+<span id='Game_Actor-method-performActionEnd'>/**
+</span> * @method performActionEnd
+ * FIXME
+ */
 Game_Actor.prototype.performActionEnd = function() {
     Game_Battler.prototype.performActionEnd.call(this);
 };
 
+<span id='Game_Actor-method-performAttack'>/**
+</span> * @method performAttack
+ * FIXME
+ */
 Game_Actor.prototype.performAttack = function() {
     var weapons = this.weapons();
     var wtypeId = weapons[0] ? weapons[0].wtypeId : 0;
@@ -4057,6 +6775,10 @@ Game_Actor.prototype.performAttack = function() {
     }
 };
 
+<span id='Game_Actor-method-performDamage'>/**
+</span> * @method performDamage
+ * FIXME
+ */
 Game_Actor.prototype.performDamage = function() {
     Game_Battler.prototype.performDamage.call(this);
     if (this.isSpriteVisible()) {
@@ -4067,21 +6789,37 @@ Game_Actor.prototype.performDamage = function() {
     SoundManager.playActorDamage();
 };
 
+<span id='Game_Actor-method-performEvasion'>/**
+</span> * @method performEvasion
+ * FIXME
+ */
 Game_Actor.prototype.performEvasion = function() {
     Game_Battler.prototype.performEvasion.call(this);
     this.requestMotion('evade');
 };
 
+<span id='Game_Actor-method-performMagicEvasion'>/**
+</span> * @method performMagicEvasion
+ * FIXME
+ */
 Game_Actor.prototype.performMagicEvasion = function() {
     Game_Battler.prototype.performMagicEvasion.call(this);
     this.requestMotion('evade');
 };
 
+<span id='Game_Actor-method-performCounter'>/**
+</span> * @method performCounter
+ * FIXME
+ */
 Game_Actor.prototype.performCounter = function() {
     Game_Battler.prototype.performCounter.call(this);
     this.performAttack();
 };
 
+<span id='Game_Actor-method-performCollapse'>/**
+</span> * @method performCollapse
+ * FIXME
+ */
 Game_Actor.prototype.performCollapse = function() {
     Game_Battler.prototype.performCollapse.call(this);
     if ($gameParty.inBattle()) {
@@ -4089,18 +6827,30 @@ Game_Actor.prototype.performCollapse = function() {
     }
 };
 
+<span id='Game_Actor-method-performVictory'>/**
+</span> * @method performVictory
+ * FIXME
+ */
 Game_Actor.prototype.performVictory = function() {
     if (this.canMove()) {
         this.requestMotion('victory');
     }
 };
 
+<span id='Game_Actor-method-performEscape'>/**
+</span> * @method performEscape
+ * FIXME
+ */
 Game_Actor.prototype.performEscape = function() {
     if (this.canMove()) {
         this.requestMotion('escape');
     }
 };
 
+<span id='Game_Actor-method-makeActionList'>/**
+</span> * @method makeActionList
+ * FIXME
+ */
 Game_Actor.prototype.makeActionList = function() {
     var list = [];
     var action = new Game_Action(this);
@@ -4114,6 +6864,10 @@ Game_Actor.prototype.makeActionList = function() {
     return list;
 };
 
+<span id='Game_Actor-method-makeAutoBattleActions'>/**
+</span> * @method makeAutoBattleActions
+ * FIXME
+ */
 Game_Actor.prototype.makeAutoBattleActions = function() {
     for (var i = 0; i &lt; this.numActions(); i++) {
         var list = this.makeActionList();
@@ -4129,6 +6883,10 @@ Game_Actor.prototype.makeAutoBattleActions = function() {
     this.setActionState('waiting');
 };
 
+<span id='Game_Actor-method-makeConfusionActions'>/**
+</span> * @method makeConfusionActions
+ * FIXME
+ */
 Game_Actor.prototype.makeConfusionActions = function() {
     for (var i = 0; i &lt; this.numActions(); i++) {
         this.action(i).setConfusion();
@@ -4136,6 +6894,10 @@ Game_Actor.prototype.makeConfusionActions = function() {
     this.setActionState('waiting');
 };
 
+<span id='Game_Actor-method-makeActions'>/**
+</span> * @method makeActions
+ * FIXME
+ */
 Game_Actor.prototype.makeActions = function() {
     Game_Battler.prototype.makeActions.call(this);
     if (this.numActions() &gt; 0) {
@@ -4150,6 +6912,10 @@ Game_Actor.prototype.makeActions = function() {
     }
 };
 
+<span id='Game_Actor-method-onPlayerWalk'>/**
+</span> * @method onPlayerWalk
+ * FIXME
+ */
 Game_Actor.prototype.onPlayerWalk = function() {
     this.clearResult();
     this.checkFloorEffect();
@@ -4163,6 +6929,10 @@ Game_Actor.prototype.onPlayerWalk = function() {
     }
 };
 
+<span id='Game_Actor-method-updateStateSteps'>/**
+</span> * @method updateStateSteps
+ * FIXME
+ */
 Game_Actor.prototype.updateStateSteps = function(state) {
     if (state.removeByWalking) {
         if (this._stateSteps[state.id] &gt; 0) {
@@ -4173,6 +6943,10 @@ Game_Actor.prototype.updateStateSteps = function(state) {
     }
 };
 
+<span id='Game_Actor-method-showAddedStates'>/**
+</span> * @method showAddedStates
+ * FIXME
+ */
 Game_Actor.prototype.showAddedStates = function() {
     this.result().addedStateObjects().forEach(function(state) {
         if (state.message1) {
@@ -4181,6 +6955,10 @@ Game_Actor.prototype.showAddedStates = function() {
     }, this);
 };
 
+<span id='Game_Actor-method-showRemovedStates'>/**
+</span> * @method showRemovedStates
+ * FIXME
+ */
 Game_Actor.prototype.showRemovedStates = function() {
     this.result().removedStateObjects().forEach(function(state) {
         if (state.message4) {
@@ -4189,10 +6967,18 @@ Game_Actor.prototype.showRemovedStates = function() {
     }, this);
 };
 
+<span id='Game_Actor-method-stepsForTurn'>/**
+</span> * @method stepsForTurn
+ * FIXME
+ */
 Game_Actor.prototype.stepsForTurn = function() {
     return 20;
 };
 
+<span id='Game_Actor-method-turnEndOnMap'>/**
+</span> * @method turnEndOnMap
+ * FIXME
+ */
 Game_Actor.prototype.turnEndOnMap = function() {
     if ($gameParty.steps() % this.stepsForTurn() === 0) {
         this.onTurnEnd();
@@ -4202,12 +6988,20 @@ Game_Actor.prototype.turnEndOnMap = function() {
     }
 };
 
+<span id='Game_Actor-method-checkFloorEffect'>/**
+</span> * @method checkFloorEffect
+ * FIXME
+ */
 Game_Actor.prototype.checkFloorEffect = function() {
     if ($gamePlayer.isOnDamageFloor()) {
         this.executeFloorDamage();
     }
 };
 
+<span id='Game_Actor-method-executeFloorDamage'>/**
+</span> * @method executeFloorDamage
+ * FIXME
+ */
 Game_Actor.prototype.executeFloorDamage = function() {
     var damage = Math.floor(this.basicFloorDamage() * this.fdr);
     damage = Math.min(damage, this.maxFloorDamage());
@@ -4217,29 +7011,53 @@ Game_Actor.prototype.executeFloorDamage = function() {
     }
 };
 
+<span id='Game_Actor-method-basicFloorDamage'>/**
+</span> * @method basicFloorDamage
+ * FIXME
+ */
 Game_Actor.prototype.basicFloorDamage = function() {
     return 10;
 };
 
+<span id='Game_Actor-method-maxFloorDamage'>/**
+</span> * @method maxFloorDamage
+ * FIXME
+ */
 Game_Actor.prototype.maxFloorDamage = function() {
     return $dataSystem.optFloorDeath ? this.hp : Math.max(this.hp - 1, 0);
 };
 
+<span id='Game_Actor-method-performMapDamage'>/**
+</span> * @method performMapDamage
+ * FIXME
+ */
 Game_Actor.prototype.performMapDamage = function() {
     if (!$gameParty.inBattle()) {
         $gameScreen.startFlashForDamage();
     }
 };
 
+<span id='Game_Actor-method-clearActions'>/**
+</span> * @method clearActions
+ * FIXME
+ */
 Game_Actor.prototype.clearActions = function() {
     Game_Battler.prototype.clearActions.call(this);
     this._actionInputIndex = 0;
 };
 
+<span id='Game_Actor-method-inputtingAction'>/**
+</span> * @method inputtingAction
+ * FIXME
+ */
 Game_Actor.prototype.inputtingAction = function() {
     return this.action(this._actionInputIndex);
 };
 
+<span id='Game_Actor-method-selectNextCommand'>/**
+</span> * @method selectNextCommand
+ * FIXME
+ */
 Game_Actor.prototype.selectNextCommand = function() {
     if (this._actionInputIndex &lt; this.numActions() - 1) {
         this._actionInputIndex++;
@@ -4249,6 +7067,10 @@ Game_Actor.prototype.selectNextCommand = function() {
     }
 };
 
+<span id='Game_Actor-method-selectPreviousCommand'>/**
+</span> * @method selectPreviousCommand
+ * FIXME
+ */
 Game_Actor.prototype.selectPreviousCommand = function() {
     if (this._actionInputIndex &gt; 0) {
         this._actionInputIndex--;
@@ -4258,36 +7080,68 @@ Game_Actor.prototype.selectPreviousCommand = function() {
     }
 };
 
+<span id='Game_Actor-method-lastMenuSkill'>/**
+</span> * @method lastMenuSkill
+ * FIXME
+ */
 Game_Actor.prototype.lastMenuSkill = function() {
     return this._lastMenuSkill.object();
 };
 
+<span id='Game_Actor-method-setLastMenuSkill'>/**
+</span> * @method setLastMenuSkill
+ * FIXME
+ */
 Game_Actor.prototype.setLastMenuSkill = function(skill) {
     this._lastMenuSkill.setObject(skill);
 };
 
+<span id='Game_Actor-method-lastBattleSkill'>/**
+</span> * @method lastBattleSkill
+ * FIXME
+ */
 Game_Actor.prototype.lastBattleSkill = function() {
     return this._lastBattleSkill.object();
 };
 
+<span id='Game_Actor-method-setLastBattleSkill'>/**
+</span> * @method setLastBattleSkill
+ * FIXME
+ */
 Game_Actor.prototype.setLastBattleSkill = function(skill) {
     this._lastBattleSkill.setObject(skill);
 };
 
+<span id='Game_Actor-method-lastCommandSymbol'>/**
+</span> * @method lastCommandSymbol
+ * FIXME
+ */
 Game_Actor.prototype.lastCommandSymbol = function() {
     return this._lastCommandSymbol;
 };
 
+<span id='Game_Actor-method-setLastCommandSymbol'>/**
+</span> * @method setLastCommandSymbol
+ * FIXME
+ */
 Game_Actor.prototype.setLastCommandSymbol = function(symbol) {
     this._lastCommandSymbol = symbol;
 };
 
+<span id='Game_Actor-method-testEscape'>/**
+</span> * @method testEscape
+ * FIXME
+ */
 Game_Actor.prototype.testEscape = function(item) {
     return item.effects.some(function(effect, index, ar) {
         return effect &amp;&amp; effect.code === Game_Action.EFFECT_SPECIAL;
     });
 };
 
+<span id='Game_Actor-method-meetsUsableItemConditions'>/**
+</span> * @method meetsUsableItemConditions
+ * FIXME
+ */
 Game_Actor.prototype.meetsUsableItemConditions = function(item) {
     if ($gameParty.inBattle() &amp;&amp; !BattleManager.canEscape() &amp;&amp; this.testEscape(item)) {
         return false;
@@ -4300,6 +7154,13 @@ Game_Actor.prototype.meetsUsableItemConditions = function(item) {
 //
 // The game object class for an enemy.
 
+<span id='Game_Enemy-method-constructor'><span id='Game_Enemy'>/**
+</span></span> * @class Game_Enemy
+ * @extends Game_Battler
+ * The game object class for an enemy.
+ *
+ * @constructor
+ */
 function Game_Enemy() {
     this.initialize.apply(this, arguments);
 }
@@ -4307,6 +7168,10 @@ function Game_Enemy() {
 Game_Enemy.prototype = Object.create(Game_Battler.prototype);
 Game_Enemy.prototype.constructor = Game_Enemy;
 
+<span id='Game_Enemy-method-initialize'>/**
+</span> * @method initialize
+ * FIXME
+ */
 Game_Enemy.prototype.initialize = function(enemyId, x, y) {
     Game_Battler.prototype.initialize.call(this);
     this.setup(enemyId, x, y);
@@ -10647,6 +13512,7 @@ Game_Interpreter.requestImages = function(list, commonList){
                 break;
         }
     });
-};</pre>
+};
+</pre>
 </body>
 </html>
