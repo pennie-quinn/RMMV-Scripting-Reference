@@ -1127,8 +1127,8 @@ Game_SelfSwitches.prototype.onChange = function() {
 // The game object class for screen effect data, such as changes in color tone
 // and flashes.
 
-<span id='Game_Screem-method-constructor'><span id='Game_Screem'>/**
-</span></span> * @class Game_Screem
+<span id='Game_Screen-method-constructor'><span id='Game_Screen'>/**
+</span></span> * @class Game_Screen
  * The game object class for screen effect data, such as changes in color tone and flashes.
  *
  * @constructor
@@ -1137,7 +1137,7 @@ function Game_Screen() {
     this.initialize.apply(this, arguments);
 }
 
-<span id='Game_Screem-method-initialize'>/**
+<span id='Game_Screen-method-initialize'>/**
 </span> * @method initialize
  * FIXME
  */
@@ -1145,7 +1145,7 @@ Game_Screen.prototype.initialize = function() {
     this.clear();
 };
 
-<span id='Game_Screem-method-clear'>/**
+<span id='Game_Screen-method-clear'>/**
 </span> * @method clear
  * FIXME
  */
@@ -1159,7 +1159,7 @@ Game_Screen.prototype.clear = function() {
     this.clearPictures();
 };
 
-<span id='Game_Screem-method-onBattleStart'>/**
+<span id='Game_Screen-method-onBattleStart'>/**
 </span> * @method onBattleStart
  * FIXME
  */
@@ -1171,7 +1171,7 @@ Game_Screen.prototype.onBattleStart = function() {
     this.eraseBattlePictures();
 };
 
-<span id='Game_Screem-method-brightness'>/**
+<span id='Game_Screen-method-brightness'>/**
 </span> * @method brightness
  * FIXME
  */
@@ -1179,7 +1179,7 @@ Game_Screen.prototype.brightness = function() {
     return this._brightness;
 };
 
-<span id='Game_Screem-method-tone'>/**
+<span id='Game_Screen-method-tone'>/**
 </span> * @method tone
  * FIXME
  */
@@ -1187,7 +1187,7 @@ Game_Screen.prototype.tone = function() {
     return this._tone;
 };
 
-<span id='Game_Screem-method-flashColor'>/**
+<span id='Game_Screen-method-flashColor'>/**
 </span> * @method flashColor
  * FIXME
  */
@@ -1195,7 +1195,7 @@ Game_Screen.prototype.flashColor = function() {
     return this._flashColor;
 };
 
-<span id='Game_Screem-method-shake'>/**
+<span id='Game_Screen-method-shake'>/**
 </span> * @method shake
  * FIXME
  */
@@ -1203,7 +1203,7 @@ Game_Screen.prototype.shake = function() {
     return this._shake;
 };
 
-<span id='Game_Screem-method-zoomX'>/**
+<span id='Game_Screen-method-zoomX'>/**
 </span> * @method zoomX
  * FIXME
  */
@@ -1211,7 +1211,7 @@ Game_Screen.prototype.zoomX = function() {
     return this._zoomX;
 };
 
-<span id='Game_Screem-method-zoomY'>/**
+<span id='Game_Screen-method-zoomY'>/**
 </span> * @method zoomY
  * FIXME
  */
@@ -1219,7 +1219,7 @@ Game_Screen.prototype.zoomY = function() {
     return this._zoomY;
 };
 
-<span id='Game_Screem-method-zoomScale'>/**
+<span id='Game_Screen-method-zoomScale'>/**
 </span> * @method zoomScale
  * FIXME
  */
@@ -1227,7 +1227,7 @@ Game_Screen.prototype.zoomScale = function() {
     return this._zoomScale;
 };
 
-<span id='Game_Screem-method-weatherType'>/**
+<span id='Game_Screen-method-weatherType'>/**
 </span> * @method weatherType
  * FIXME
  */
@@ -1235,7 +1235,7 @@ Game_Screen.prototype.weatherType = function() {
     return this._weatherType;
 };
 
-<span id='Game_Screem-method-weatherPower'>/**
+<span id='Game_Screen-method-weatherPower'>/**
 </span> * @method weatherPower
  * FIXME
  */
@@ -1243,7 +1243,7 @@ Game_Screen.prototype.weatherPower = function() {
     return this._weatherPower;
 };
 
-<span id='Game_Screem-method-picture'>/**
+<span id='Game_Screen-method-picture'>/**
 </span> * @method picture
  * FIXME
  */
@@ -1252,7 +1252,7 @@ Game_Screen.prototype.picture = function(pictureId) {
     return this._pictures[realPictureId];
 };
 
-<span id='Game_Screem-method-realPictureId'>/**
+<span id='Game_Screen-method-realPictureId'>/**
 </span> * @method realPictureId
  * FIXME
  */
@@ -1264,7 +1264,7 @@ Game_Screen.prototype.realPictureId = function(pictureId) {
     }
 };
 
-<span id='Game_Screem-method-clearFade'>/**
+<span id='Game_Screen-method-clearFade'>/**
 </span> * @method clearFade
  * FIXME
  */
@@ -1274,7 +1274,7 @@ Game_Screen.prototype.clearFade = function() {
     this._fadeInDuration = 0;
 };
 
-<span id='Game_Screem-method-clearTone'>/**
+<span id='Game_Screen-method-clearTone'>/**
 </span> * @method clearTone
  * FIXME
  */
@@ -1284,7 +1284,7 @@ Game_Screen.prototype.clearTone = function() {
     this._toneDuration = 0;
 };
 
-<span id='Game_Screem-method-clearFlash'>/**
+<span id='Game_Screen-method-clearFlash'>/**
 </span> * @method clearFlash
  * FIXME
  */
@@ -1293,7 +1293,7 @@ Game_Screen.prototype.clearFlash = function() {
     this._flashDuration = 0;
 };
 
-<span id='Game_Screem-method-clearShake'>/**
+<span id='Game_Screen-method-clearShake'>/**
 </span> * @method clearShake
  * FIXME
  */
@@ -1305,7 +1305,7 @@ Game_Screen.prototype.clearShake = function() {
     this._shake = 0;
 };
 
-<span id='Game_Screem-method-clearZoom'>/**
+<span id='Game_Screen-method-clearZoom'>/**
 </span> * @method clearZoom
  * FIXME
  */
@@ -1317,7 +1317,7 @@ Game_Screen.prototype.clearZoom = function() {
     this._zoomDuration = 0;
 };
 
-<span id='Game_Screem-method-clearWeather'>/**
+<span id='Game_Screen-method-clearWeather'>/**
 </span> * @method clearWeather
  * FIXME
  */
@@ -1328,7 +1328,7 @@ Game_Screen.prototype.clearWeather = function() {
     this._weatherDuration = 0;
 };
 
-<span id='Game_Screem-method-clearPictures'>/**
+<span id='Game_Screen-method-clearPictures'>/**
 </span> * @method clearPictures
  * FIXME
  */
@@ -1336,7 +1336,7 @@ Game_Screen.prototype.clearPictures = function() {
     this._pictures = [];
 };
 
-<span id='Game_Screem-method-eraseBattlePictures'>/**
+<span id='Game_Screen-method-eraseBattlePictures'>/**
 </span> * @method eraseBattlePictures
  * FIXME
  */
@@ -1344,7 +1344,7 @@ Game_Screen.prototype.eraseBattlePictures = function() {
     this._pictures = this._pictures.slice(0, this.maxPictures() + 1);
 };
 
-<span id='Game_Screem-method-maxPictures'>/**
+<span id='Game_Screen-method-maxPictures'>/**
 </span> * @method maxPictures
  * FIXME
  */
@@ -1352,7 +1352,7 @@ Game_Screen.prototype.maxPictures = function() {
     return 100;
 };
 
-<span id='Game_Screem-method-startFadeOut'>/**
+<span id='Game_Screen-method-startFadeOut'>/**
 </span> * @method startFadeOut
  * FIXME
  */
@@ -1361,7 +1361,7 @@ Game_Screen.prototype.startFadeOut = function(duration) {
     this._fadeInDuration = 0;
 };
 
-<span id='Game_Screem-method-startFadeIn'>/**
+<span id='Game_Screen-method-startFadeIn'>/**
 </span> * @method startFadeIn
  * FIXME
  */
@@ -1370,7 +1370,7 @@ Game_Screen.prototype.startFadeIn = function(duration) {
     this._fadeOutDuration = 0;
 };
 
-<span id='Game_Screem-method-startTint'>/**
+<span id='Game_Screen-method-startTint'>/**
 </span> * @method startTint
  * FIXME
  */
@@ -1382,7 +1382,7 @@ Game_Screen.prototype.startTint = function(tone, duration) {
     }
 };
 
-<span id='Game_Screem-method-startFlash'>/**
+<span id='Game_Screen-method-startFlash'>/**
 </span> * @method startFlash
  * FIXME
  */
@@ -1391,7 +1391,7 @@ Game_Screen.prototype.startFlash = function(color, duration) {
     this._flashDuration = duration;
 };
 
-<span id='Game_Screem-method-startShake'>/**
+<span id='Game_Screen-method-startShake'>/**
 </span> * @method startShake
  * FIXME
  */
@@ -1401,7 +1401,7 @@ Game_Screen.prototype.startShake = function(power, speed, duration) {
     this._shakeDuration = duration;
 };
 
-<span id='Game_Screem-method-startZoom'>/**
+<span id='Game_Screen-method-startZoom'>/**
 </span> * @method startZoom
  * FIXME
  */
@@ -1412,7 +1412,7 @@ Game_Screen.prototype.startZoom = function(x, y, scale, duration) {
     this._zoomDuration = duration;
 };
 
-<span id='Game_Screem-method-setZoom'>/**
+<span id='Game_Screen-method-setZoom'>/**
 </span> * @method setZoom
  * FIXME
  */
@@ -1422,7 +1422,7 @@ Game_Screen.prototype.setZoom = function(x, y, scale) {
     this._zoomScale = scale;
 };
 
-<span id='Game_Screem-method-changeWeather'>/**
+<span id='Game_Screen-method-changeWeather'>/**
 </span> * @method changeWeather
  * FIXME
  */
@@ -1437,7 +1437,7 @@ Game_Screen.prototype.changeWeather = function(type, power, duration) {
     }
 };
 
-<span id='Game_Screem-method-update'>/**
+<span id='Game_Screen-method-update'>/**
 </span> * @method update
  * FIXME
  */
@@ -1452,7 +1452,7 @@ Game_Screen.prototype.update = function() {
     this.updatePictures();
 };
 
-<span id='Game_Screem-method-updateFadeOut'>/**
+<span id='Game_Screen-method-updateFadeOut'>/**
 </span> * @method updateFadeOut
  * FIXME
  */
@@ -1464,7 +1464,7 @@ Game_Screen.prototype.updateFadeOut = function() {
     }
 };
 
-<span id='Game_Screem-method-updateFadeIn'>/**
+<span id='Game_Screen-method-updateFadeIn'>/**
 </span> * @method updateFadeIn
  * FIXME
  */
@@ -1476,7 +1476,7 @@ Game_Screen.prototype.updateFadeIn = function() {
     }
 };
 
-<span id='Game_Screem-method-updateTone'>/**
+<span id='Game_Screen-method-updateTone'>/**
 </span> * @method updateTone
  * FIXME
  */
@@ -1490,7 +1490,7 @@ Game_Screen.prototype.updateTone = function() {
     }
 };
 
-<span id='Game_Screem-method-updateFlash'>/**
+<span id='Game_Screen-method-updateFlash'>/**
 </span> * @method updateFlash
  * FIXME
  */
@@ -1502,7 +1502,7 @@ Game_Screen.prototype.updateFlash = function() {
     }
 };
 
-<span id='Game_Screem-method-updateShake'>/**
+<span id='Game_Screen-method-updateShake'>/**
 </span> * @method updateShake
  * FIXME
  */
@@ -1524,7 +1524,7 @@ Game_Screen.prototype.updateShake = function() {
     }
 };
 
-<span id='Game_Screem-method-updateZoom'>/**
+<span id='Game_Screen-method-updateZoom'>/**
 </span> * @method updateZoom
  * FIXME
  */
@@ -1537,7 +1537,7 @@ Game_Screen.prototype.updateZoom = function() {
     }
 };
 
-<span id='Game_Screem-method-updateWeather'>/**
+<span id='Game_Screen-method-updateWeather'>/**
 </span> * @method updateWeather
  * FIXME
  */
@@ -1553,7 +1553,7 @@ Game_Screen.prototype.updateWeather = function() {
     }
 };
 
-<span id='Game_Screem-method-updatePictures'>/**
+<span id='Game_Screen-method-updatePictures'>/**
 </span> * @method updatePictures
  * FIXME
  */
@@ -1565,7 +1565,7 @@ Game_Screen.prototype.updatePictures = function() {
     });
 };
 
-<span id='Game_Screem-method-startFlashForDamage'>/**
+<span id='Game_Screen-method-startFlashForDamage'>/**
 </span> * @method startFlashForDamage
  * FIXME
  */
@@ -1573,7 +1573,7 @@ Game_Screen.prototype.startFlashForDamage = function() {
     this.startFlash([255, 0, 0, 128], 8);
 };
 
-<span id='Game_Screem-method-showPicture'>/**
+<span id='Game_Screen-method-showPicture'>/**
 </span> * @method showPicture
  * FIXME
  */
@@ -1585,7 +1585,7 @@ Game_Screen.prototype.showPicture = function(pictureId, name, origin, x, y,
     this._pictures[realPictureId] = picture;
 };
 
-<span id='Game_Screem-method-movePicture'>/**
+<span id='Game_Screen-method-movePicture'>/**
 </span> * @method movePicture
  * FIXME
  */
@@ -1597,7 +1597,7 @@ Game_Screen.prototype.movePicture = function(pictureId, origin, x, y, scaleX,
     }
 };
 
-<span id='Game_Screem-method-rotatePicture'>/**
+<span id='Game_Screen-method-rotatePicture'>/**
 </span> * @method rotatePicture
  * FIXME
  */
@@ -1608,7 +1608,7 @@ Game_Screen.prototype.rotatePicture = function(pictureId, speed) {
     }
 };
 
-<span id='Game_Screem-method-tintPicture'>/**
+<span id='Game_Screen-method-tintPicture'>/**
 </span> * @method tintPicture
  * FIXME
  */
@@ -1619,7 +1619,7 @@ Game_Screen.prototype.tintPicture = function(pictureId, tone, duration) {
     }
 };
 
-<span id='Game_Screem-method-erasePicture'>/**
+<span id='Game_Screen-method-erasePicture'>/**
 </span> * @method erasePicture
  * FIXME
  */
@@ -7177,6 +7177,7 @@ Game_Enemy.prototype.initialize = function(enemyId, x, y) {
     this.setup(enemyId, x, y);
 };
 
+// XXX
 Game_Enemy.prototype.initMembers = function() {
     Game_Battler.prototype.initMembers.call(this);
     this._enemyId = 0;
@@ -7455,6 +7456,12 @@ Game_Enemy.prototype.makeActions = function() {
 //
 // The wrapper class for an actor array.
 
+<span id='Game_Actors-method-constructor'><span id='Game_Actors'>/**
+</span></span> * @class Game_Actors
+ * The wrapper class for an actor array.
+ *
+ * @constructor
+ */
 function Game_Actors() {
     this.initialize.apply(this, arguments);
 }
@@ -7478,6 +7485,12 @@ Game_Actors.prototype.actor = function(actorId) {
 //
 // The superclass of Game_Party and Game_Troop.
 
+<span id='Game_Unit-method-constructor'><span id='Game_Unit'>/**
+</span></span> * @class Game_Unit
+ * The superclass of Game_Party and Game_Troop.
+ *
+ * @constructor
+ */
 function Game_Unit() {
     this.initialize.apply(this, arguments);
 }
@@ -7626,6 +7639,14 @@ Game_Unit.prototype.substituteBattler = function() {
 // The game object class for the party. Information such as gold and items is
 // included.
 
+<span id='Game_Party-method-constructor'><span id='Game_Party'>/**
+</span></span> * @class Game_Party
+ * @extends Game_Unit
+ * The game object class for the party. Information such as gold and items is
+ * included.
+ *
+ * @constructor
+ */
 function Game_Party() {
     this.initialize.apply(this, arguments);
 }
@@ -8078,6 +8099,13 @@ Game_Party.prototype.requestMotionRefresh = function() {
 //
 // The game object class for a troop and the battle-related data.
 
+<span id='Game_Troop-method-constructor'><span id='Game_Troop'>/**
+</span></span> * @class Game_Troop
+ * @extends Game_Unit
+ * The game object class for a troop and the battle-related data.
+ *
+ * @constructor
+ */
 function Game_Troop() {
     this.initialize.apply(this, arguments);
 }
@@ -8282,6 +8310,13 @@ Game_Troop.prototype.makeDropItems = function() {
 // The game object class for a map. It contains scrolling and passage
 // determination functions.
 
+<span id='Game_Map-method-constructor'><span id='Game_Map'>/**
+</span></span> * @class Game_Map
+ * The game object class for a map. It contains scrolling and passage
+ * determination functions.
+ *
+ * @constructor
+ */
 function Game_Map() {
     this.initialize.apply(this, arguments);
 }
@@ -9076,6 +9111,13 @@ Game_Map.prototype.isAnyEventStarting = function() {
 // The game object class for a common event. It contains functionality for
 // running parallel process events.
 
+<span id='Game_CommonEvent-method-constructor'><span id='Game_CommonEvent'>/**
+</span></span> * @class Game_CommonEvent
+ * The game object class for a common event. It contains functionality for
+ * running parallel process events.
+ *
+ * @constructor
+ */
 function Game_CommonEvent() {
     this.initialize.apply(this, arguments);
 }
@@ -9123,6 +9165,13 @@ Game_CommonEvent.prototype.update = function() {
 // The superclass of Game_Character. It handles basic information, such as
 // coordinates and images, shared by all characters.
 
+<span id='Game_CharacterBase-method-constructor'><span id='Game_CharacterBase'>/**
+</span></span> * @class Game_CharacterBase
+ * The superclass of Game_Character. It handles basic information, such as
+ * coordinates and images, shared by all characters.
+ *
+ * @constructor
+ */
 function Game_CharacterBase() {
     this.initialize.apply(this, arguments);
 }
@@ -9713,6 +9762,14 @@ Game_CharacterBase.prototype.endBalloon = function() {
 //
 // The superclass of Game_Player, Game_Follower, GameVehicle, and Game_Event.
 
+<span id='Game_Character-method-constructor'><span id='Game_Character'>/**
+</span></span> * @class Game_Character
+ * @extends Game_CharacterBase
+ * The superclass of Game_Player, Game_Follower, GameVehicle, and
+ * Game_Event.
+ *
+ * @constructor
+ */
 function Game_Character() {
     this.initialize.apply(this, arguments);
 }
@@ -10274,6 +10331,14 @@ Game_Character.prototype.searchLimit = function() {
 // The game object class for the player. It contains event starting
 // determinants and map scrolling functions.
 
+<span id='Game_Player-method-constructor'><span id='Game_Player'>/**
+</span></span> * @class Game_Player
+ * @extends Game_Character
+ * The game object class for the player. It contains event starting
+ * determinants and map scrolling functions.
+ *
+ * @constructor
+ */
 function Game_Player() {
     this.initialize.apply(this, arguments);
 }
@@ -10895,6 +10960,14 @@ Game_Player.prototype.areFollowersGathered = function() {
 // The game object class for a follower. A follower is an allied character,
 // other than the front character, displayed in the party.
 
+<span id='Game_Follower-method-constructor'><span id='Game_Follower'>/**
+</span></span> * @class Game_Follower
+ * @extends Game_Character
+ * The game object class for a follower. A follower is an allied character,
+ * other than the front character, displayed in the party.
+ * TODO
+ * @constructor
+ */
 function Game_Follower() {
     this.initialize.apply(this, arguments);
 }
@@ -10952,6 +11025,12 @@ Game_Follower.prototype.chaseCharacter = function(character) {
 //
 // The wrapper class for a follower array.
 
+<span id='Game_Followers-method-constructor'><span id='Game_Followers'>/**
+</span></span> * @class Game_Followers
+ * The wrapper class for a follower array.
+ * TODO
+ * @constructor
+ */
 function Game_Followers() {
     this.initialize.apply(this, arguments);
 }
@@ -11073,6 +11152,13 @@ Game_Followers.prototype.isSomeoneCollided = function(x, y) {
 //
 // The game object class for a vehicle.
 
+<span id='Game_Vehicle-method-constructor'><span id='Game_Vehicle'>/**
+</span></span> * @class Game_Vehicle
+ * @extends Game_Character
+ * The game object class for a vehicle.
+ * TODO
+ * @constructor
+ */
 function Game_Vehicle() {
     this.initialize.apply(this, arguments);
 }
@@ -11308,6 +11394,14 @@ Game_Vehicle.prototype.isLandOk = function(x, y, d) {
 // The game object class for an event. It contains functionality for event page
 // switching and running parallel process events.
 
+<span id='Game_Event-method-constructor'><span id='Game_Event'>/**
+</span></span> * @class Game_Event
+ * @extends Game_Character
+ * The game object class for an event. It contains functionality for event page
+ * switching and running parallel process events. *
+ * TODO
+ * @constructor
+ */
 function Game_Event() {
     this.initialize.apply(this, arguments);
 }
@@ -11646,6 +11740,12 @@ Game_Event.prototype.forceMoveRoute = function(moveRoute) {
 //
 // The interpreter for running event commands.
 
+<span id='Game_Interpreter-method-constructor'><span id='Game_Interpreter'>/**
+</span></span> * @class Game_Interpreter
+ * The interpreter for running event commands.
+ * TODO
+ * @constructor
+ */
 function Game_Interpreter() {
     this.initialize.apply(this, arguments);
 }
