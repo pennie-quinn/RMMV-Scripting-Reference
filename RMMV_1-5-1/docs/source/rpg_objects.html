@@ -7177,7 +7177,10 @@ Game_Enemy.prototype.initialize = function(enemyId, x, y) {
     this.setup(enemyId, x, y);
 };
 
-// XXX
+<span id='Game_Enemy-method-initMembers'>/**
+</span> * @method initMembers
+ * FIXME
+ */
 Game_Enemy.prototype.initMembers = function() {
     Game_Battler.prototype.initMembers.call(this);
     this._enemyId = 0;
@@ -7187,6 +7190,10 @@ Game_Enemy.prototype.initMembers = function() {
     this._screenY = 0;
 };
 
+<span id='Game_Enemy-method-setup'>/**
+</span> * @method setup
+ * FIXME
+ */
 Game_Enemy.prototype.setup = function(enemyId, x, y) {
     this._enemyId = enemyId;
     this._screenX = x;
@@ -7194,50 +7201,98 @@ Game_Enemy.prototype.setup = function(enemyId, x, y) {
     this.recoverAll();
 };
 
+<span id='Game_Enemy-method-isEnemy'>/**
+</span> * @method isEnemy
+ * FIXME
+ */
 Game_Enemy.prototype.isEnemy = function() {
     return true;
 };
 
+<span id='Game_Enemy-method-friendsUnit'>/**
+</span> * @method friendsUnit
+ * FIXME
+ */
 Game_Enemy.prototype.friendsUnit = function() {
     return $gameTroop;
 };
 
+<span id='Game_Enemy-method-opponentsUnit'>/**
+</span> * @method opponentsUnit
+ * FIXME
+ */
 Game_Enemy.prototype.opponentsUnit = function() {
     return $gameParty;
 };
 
+<span id='Game_Enemy-method-index'>/**
+</span> * @method index
+ * FIXME
+ */
 Game_Enemy.prototype.index = function() {
     return $gameTroop.members().indexOf(this);
 };
 
+<span id='Game_Enemy-method-isBattleMember'>/**
+</span> * @method isBattleMember
+ * FIXME
+ */
 Game_Enemy.prototype.isBattleMember = function() {
     return this.index() &gt;= 0;
 };
 
+<span id='Game_Enemy-method-enemyId'>/**
+</span> * @method enemyId
+ * FIXME
+ */
 Game_Enemy.prototype.enemyId = function() {
     return this._enemyId;
 };
 
+<span id='Game_Enemy-method-enemy'>/**
+</span> * @method enemy
+ * FIXME
+ */
 Game_Enemy.prototype.enemy = function() {
     return $dataEnemies[this._enemyId];
 };
 
+<span id='Game_Enemy-method-traitObjects'>/**
+</span> * @method traitObjects
+ * FIXME
+ */
 Game_Enemy.prototype.traitObjects = function() {
     return Game_Battler.prototype.traitObjects.call(this).concat(this.enemy());
 };
 
+<span id='Game_Enemy-method-paramBase'>/**
+</span> * @method paramBase
+ * FIXME
+ */
 Game_Enemy.prototype.paramBase = function(paramId) {
     return this.enemy().params[paramId];
 };
 
+<span id='Game_Enemy-method-exp'>/**
+</span> * @method exp
+ * FIXME
+ */
 Game_Enemy.prototype.exp = function() {
     return this.enemy().exp;
 };
 
+<span id='Game_Enemy-method-gold'>/**
+</span> * @method gold
+ * FIXME
+ */
 Game_Enemy.prototype.gold = function() {
     return this.enemy().gold;
 };
 
+<span id='Game_Enemy-method-makeDropItems'>/**
+</span> * @method makeDropItems
+ * FIXME
+ */
 Game_Enemy.prototype.makeDropItems = function() {
     return this.enemy().dropItems.reduce(function(r, di) {
         if (di.kind &gt; 0 &amp;&amp; Math.random() * di.denominator &lt; this.dropItemRate()) {
@@ -7248,10 +7303,18 @@ Game_Enemy.prototype.makeDropItems = function() {
     }.bind(this), []);
 };
 
+<span id='Game_Enemy-method-dropItemRate'>/**
+</span> * @method dropItemRate
+ * FIXME
+ */
 Game_Enemy.prototype.dropItemRate = function() {
     return $gameParty.hasDropItemDouble() ? 2 : 1;
 };
 
+<span id='Game_Enemy-method-itemObject'>/**
+</span> * @method itemObject
+ * FIXME
+ */
 Game_Enemy.prototype.itemObject = function(kind, dataId) {
     if (kind === 1) {
         return $dataItems[dataId];
@@ -7264,65 +7327,125 @@ Game_Enemy.prototype.itemObject = function(kind, dataId) {
     }
 };
 
+<span id='Game_Enemy-method-isSpriteVisible'>/**
+</span> * @method isSpriteVisible
+ * FIXME
+ */
 Game_Enemy.prototype.isSpriteVisible = function() {
     return true;
 };
 
+<span id='Game_Enemy-method-screenX'>/**
+</span> * @method screenX
+ * FIXME
+ */
 Game_Enemy.prototype.screenX = function() {
     return this._screenX;
 };
 
+<span id='Game_Enemy-method-screenY'>/**
+</span> * @method screenY
+ * FIXME
+ */
 Game_Enemy.prototype.screenY = function() {
     return this._screenY;
 };
 
+<span id='Game_Enemy-method-battlerName'>/**
+</span> * @method battlerName
+ * FIXME
+ */
 Game_Enemy.prototype.battlerName = function() {
     return this.enemy().battlerName;
 };
 
+<span id='Game_Enemy-method-battlerHue'>/**
+</span> * @method battlerHue
+ * FIXME
+ */
 Game_Enemy.prototype.battlerHue = function() {
     return this.enemy().battlerHue;
 };
 
+<span id='Game_Enemy-method-originalName'>/**
+</span> * @method originalName
+ * FIXME
+ */
 Game_Enemy.prototype.originalName = function() {
     return this.enemy().name;
 };
 
+<span id='Game_Enemy-method-name'>/**
+</span> * @method name
+ * FIXME
+ */
 Game_Enemy.prototype.name = function() {
     return this.originalName() + (this._plural ? this._letter : '');
 };
 
+<span id='Game_Enemy-method-isLetterEmpty'>/**
+</span> * @method isLetterEmpty
+ * FIXME
+ */
 Game_Enemy.prototype.isLetterEmpty = function() {
     return this._letter === '';
 };
 
+<span id='Game_Enemy-method-setLetter'>/**
+</span> * @method setLetter
+ * FIXME
+ */
 Game_Enemy.prototype.setLetter = function(letter) {
     this._letter = letter;
 };
 
+<span id='Game_Enemy-method-setPlural'>/**
+</span> * @method setPlural
+ * FIXME
+ */
 Game_Enemy.prototype.setPlural = function(plural) {
     this._plural = plural;
 };
 
+<span id='Game_Enemy-method-performActionStart'>/**
+</span> * @method performActionStart
+ * FIXME
+ */
 Game_Enemy.prototype.performActionStart = function(action) {
     Game_Battler.prototype.performActionStart.call(this, action);
     this.requestEffect('whiten');
 };
 
+<span id='Game_Enemy-method-performAction'>/**
+</span> * @method performAction
+ * FIXME
+ */
 Game_Enemy.prototype.performAction = function(action) {
     Game_Battler.prototype.performAction.call(this, action);
 };
 
+<span id='Game_Enemy-method-performActionEnd'>/**
+</span> * @method performActionEnd
+ * FIXME
+ */
 Game_Enemy.prototype.performActionEnd = function() {
     Game_Battler.prototype.performActionEnd.call(this);
 };
 
+<span id='Game_Enemy-method-performDamage'>/**
+</span> * @method performDamage
+ * FIXME
+ */
 Game_Enemy.prototype.performDamage = function() {
     Game_Battler.prototype.performDamage.call(this);
     SoundManager.playEnemyDamage();
     this.requestEffect('blink');
 };
 
+<span id='Game_Enemy-method-performCollapse'>/**
+</span> * @method performCollapse
+ * FIXME
+ */
 Game_Enemy.prototype.performCollapse = function() {
     Game_Battler.prototype.performCollapse.call(this);
     switch (this.collapseType()) {
@@ -7340,6 +7463,10 @@ Game_Enemy.prototype.performCollapse = function() {
     }
 };
 
+<span id='Game_Enemy-method-transform'>/**
+</span> * @method transform
+ * FIXME
+ */
 Game_Enemy.prototype.transform = function(enemyId) {
     var name = this.originalName();
     this._enemyId = enemyId;
@@ -7353,6 +7480,10 @@ Game_Enemy.prototype.transform = function(enemyId) {
     }
 };
 
+<span id='Game_Enemy-method-meetsCondition'>/**
+</span> * @method meetsCondition
+ * FIXME
+ */
 Game_Enemy.prototype.meetsCondition = function(action) {
     var param1 = action.conditionParam1;
     var param2 = action.conditionParam2;
@@ -7374,6 +7505,10 @@ Game_Enemy.prototype.meetsCondition = function(action) {
     }
 };
 
+<span id='Game_Enemy-method-meetsTurnCondition'>/**
+</span> * @method meetsTurnCondition
+ * FIXME
+ */
 Game_Enemy.prototype.meetsTurnCondition = function(param1, param2) {
     var n = $gameTroop.turnCount();
     if (param2 === 0) {
@@ -7383,30 +7518,58 @@ Game_Enemy.prototype.meetsTurnCondition = function(param1, param2) {
     }
 };
 
+<span id='Game_Enemy-method-meetsHpCondition'>/**
+</span> * @method meetsHpCondition
+ * FIXME
+ */
 Game_Enemy.prototype.meetsHpCondition = function(param1, param2) {
     return this.hpRate() &gt;= param1 &amp;&amp; this.hpRate() &lt;= param2;
 };
 
+<span id='Game_Enemy-method-meetsMpCondition'>/**
+</span> * @method meetsMpCondition
+ * FIXME
+ */
 Game_Enemy.prototype.meetsMpCondition = function(param1, param2) {
     return this.mpRate() &gt;= param1 &amp;&amp; this.mpRate() &lt;= param2;
 };
 
+<span id='Game_Enemy-method-meetsStateCondition'>/**
+</span> * @method meetsStateCondition
+ * FIXME
+ */
 Game_Enemy.prototype.meetsStateCondition = function(param) {
     return this.isStateAffected(param);
 };
 
+<span id='Game_Enemy-method-meetsPartyLevelCondition'>/**
+</span> * @method meetsPartyLevelCondition
+ * FIXME
+ */
 Game_Enemy.prototype.meetsPartyLevelCondition = function(param) {
     return $gameParty.highestLevel() &gt;= param;
 };
 
+<span id='Game_Enemy-method-meetsSwitchCondition'>/**
+</span> * @method meetsSwitchCondition
+ * FIXME
+ */
 Game_Enemy.prototype.meetsSwitchCondition = function(param) {
     return $gameSwitches.value(param);
 };
 
+<span id='Game_Enemy-method-isActionValid'>/**
+</span> * @method isActionValid
+ * FIXME
+ */
 Game_Enemy.prototype.isActionValid = function(action) {
     return this.meetsCondition(action) &amp;&amp; this.canUse($dataSkills[action.skillId]);
 };
 
+<span id='Game_Enemy-method-selectAction'>/**
+</span> * @method selectAction
+ * FIXME
+ */
 Game_Enemy.prototype.selectAction = function(actionList, ratingZero) {
     var sum = actionList.reduce(function(r, a) {
         return r + a.rating - ratingZero;
@@ -7425,6 +7588,10 @@ Game_Enemy.prototype.selectAction = function(actionList, ratingZero) {
     }
 };
 
+<span id='Game_Enemy-method-selectAllActions'>/**
+</span> * @method selectAllActions
+ * FIXME
+ */
 Game_Enemy.prototype.selectAllActions = function(actionList) {
     var ratingMax = Math.max.apply(null, actionList.map(function(a) {
         return a.rating;
@@ -7438,6 +7605,10 @@ Game_Enemy.prototype.selectAllActions = function(actionList) {
     }
 };
 
+<span id='Game_Enemy-method-makeActions'>/**
+</span> * @method makeActions
+ * FIXME
+ */
 Game_Enemy.prototype.makeActions = function() {
     Game_Battler.prototype.makeActions.call(this);
     if (this.numActions() &gt; 0) {
@@ -7466,10 +7637,18 @@ function Game_Actors() {
     this.initialize.apply(this, arguments);
 }
 
+<span id='Game_Actors-method-initialize'>/**
+</span> * @method initialize
+ * FIXME
+ */
 Game_Actors.prototype.initialize = function() {
     this._data = [];
 };
 
+<span id='Game_Actors-method-actor'>/**
+</span> * @method actor
+ * FIXME
+ */
 Game_Actors.prototype.actor = function(actorId) {
     if ($dataActors[actorId]) {
         if (!this._data[actorId]) {
@@ -7495,42 +7674,74 @@ function Game_Unit() {
     this.initialize.apply(this, arguments);
 }
 
+<span id='Game_Unit-method-initialize'>/**
+</span> * @method initialize
+ * FIXME
+ */
 Game_Unit.prototype.initialize = function() {
     this._inBattle = false;
 };
 
+<span id='Game_Unit-method-inBattle'>/**
+</span> * @method inBattle
+ * FIXME
+ */
 Game_Unit.prototype.inBattle = function() {
     return this._inBattle;
 };
 
+<span id='Game_Unit-method-members'>/**
+</span> * @method members
+ * FIXME
+ */
 Game_Unit.prototype.members = function() {
     return [];
 };
 
+<span id='Game_Unit-method-aliveMembers'>/**
+</span> * @method aliveMembers
+ * FIXME
+ */
 Game_Unit.prototype.aliveMembers = function() {
     return this.members().filter(function(member) {
         return member.isAlive();
     });
 };
 
+<span id='Game_Unit-method-deadMembers'>/**
+</span> * @method deadMembers
+ * FIXME
+ */
 Game_Unit.prototype.deadMembers = function() {
     return this.members().filter(function(member) {
         return member.isDead();
     });
 };
 
+<span id='Game_Unit-method-movableMembers'>/**
+</span> * @method movableMembers
+ * FIXME
+ */
 Game_Unit.prototype.movableMembers = function() {
     return this.members().filter(function(member) {
         return member.canMove();
     });
 };
 
+<span id='Game_Unit-method-clearActions'>/**
+</span> * @method clearActions
+ * FIXME
+ */
 Game_Unit.prototype.clearActions = function() {
     return this.members().forEach(function(member) {
         return member.clearActions();
     });
 };
 
+<span id='Game_Unit-method-agility'>/**
+</span> * @method agility
+ * FIXME
+ */
 Game_Unit.prototype.agility = function() {
     var members = this.members();
     if (members.length === 0) {
@@ -7542,12 +7753,20 @@ Game_Unit.prototype.agility = function() {
     return sum / members.length;
 };
 
+<span id='Game_Unit-method-tgrSum'>/**
+</span> * @method tgrSum
+ * FIXME
+ */
 Game_Unit.prototype.tgrSum = function() {
     return this.aliveMembers().reduce(function(r, member) {
         return r + member.tgr;
     }, 0);
 };
 
+<span id='Game_Unit-method-randomTarget'>/**
+</span> * @method randomTarget
+ * FIXME
+ */
 Game_Unit.prototype.randomTarget = function() {
     var tgrRand = Math.random() * this.tgrSum();
     var target = null;
@@ -7560,6 +7779,10 @@ Game_Unit.prototype.randomTarget = function() {
     return target;
 };
 
+<span id='Game_Unit-method-randomDeadTarget'>/**
+</span> * @method randomDeadTarget
+ * FIXME
+ */
 Game_Unit.prototype.randomDeadTarget = function() {
     var members = this.deadMembers();
     if (members.length === 0) {
@@ -7568,6 +7791,10 @@ Game_Unit.prototype.randomDeadTarget = function() {
     return members[Math.floor(Math.random() * members.length)];
 };
 
+<span id='Game_Unit-method-smoothTarget'>/**
+</span> * @method smoothTarget
+ * FIXME
+ */
 Game_Unit.prototype.smoothTarget = function(index) {
     if (index &lt; 0) {
         index = 0;
@@ -7576,6 +7803,10 @@ Game_Unit.prototype.smoothTarget = function(index) {
     return (member &amp;&amp; member.isAlive()) ? member : this.aliveMembers()[0];
 };
 
+<span id='Game_Unit-method-smoothDeadTarget'>/**
+</span> * @method smoothDeadTarget
+ * FIXME
+ */
 Game_Unit.prototype.smoothDeadTarget = function(index) {
     if (index &lt; 0) {
         index = 0;
@@ -7584,12 +7815,20 @@ Game_Unit.prototype.smoothDeadTarget = function(index) {
     return (member &amp;&amp; member.isDead()) ? member : this.deadMembers()[0];
 };
 
+<span id='Game_Unit-method-clearResults'>/**
+</span> * @method clearResults
+ * FIXME
+ */
 Game_Unit.prototype.clearResults = function() {
     this.members().forEach(function(member) {
         member.clearResult();
     });
 };
 
+<span id='Game_Unit-method-onBattleStart'>/**
+</span> * @method onBattleStart
+ * FIXME
+ */
 Game_Unit.prototype.onBattleStart = function() {
     this.members().forEach(function(member) {
         member.onBattleStart();
@@ -7597,6 +7836,10 @@ Game_Unit.prototype.onBattleStart = function() {
     this._inBattle = true;
 };
 
+<span id='Game_Unit-method-onBattleEnd'>/**
+</span> * @method onBattleEnd
+ * FIXME
+ */
 Game_Unit.prototype.onBattleEnd = function() {
     this._inBattle = false;
     this.members().forEach(function(member) {
@@ -7604,12 +7847,20 @@ Game_Unit.prototype.onBattleEnd = function() {
     });
 };
 
+<span id='Game_Unit-method-makeActions'>/**
+</span> * @method makeActions
+ * FIXME
+ */
 Game_Unit.prototype.makeActions = function() {
     this.members().forEach(function(member) {
         member.makeActions();
     });
 };
 
+<span id='Game_Unit-method-select'>/**
+</span> * @method select
+ * FIXME
+ */
 Game_Unit.prototype.select = function(activeMember) {
     this.members().forEach(function(member) {
         if (member === activeMember) {
@@ -7620,10 +7871,18 @@ Game_Unit.prototype.select = function(activeMember) {
     });
 };
 
+<span id='Game_Unit-method-isAllDead'>/**
+</span> * @method isAllDead
+ * FIXME
+ */
 Game_Unit.prototype.isAllDead = function() {
     return this.aliveMembers().length === 0;
 };
 
+<span id='Game_Unit-method-substituteBattler'>/**
+</span> * @method substituteBattler
+ * FIXME
+ */
 Game_Unit.prototype.substituteBattler = function() {
     var members = this.members();
     for (var i = 0; i &lt; members.length; i++) {
@@ -7661,6 +7920,10 @@ Game_Party.ABILITY_RAISE_PREEMPTIVE  = 3;
 Game_Party.ABILITY_GOLD_DOUBLE       = 4;
 Game_Party.ABILITY_DROP_ITEM_DOUBLE  = 5;
 
+<span id='Game_Party-method-initialize'>/**
+</span> * @method initialize
+ * FIXME
+ */
 Game_Party.prototype.initialize = function() {
     Game_Unit.prototype.initialize.call(this);
     this._gold = 0;
@@ -7672,48 +7935,88 @@ Game_Party.prototype.initialize = function() {
     this.initAllItems();
 };
 
+<span id='Game_Party-method-initAllItems'>/**
+</span> * @method initAllItems
+ * FIXME
+ */
 Game_Party.prototype.initAllItems = function() {
     this._items = {};
     this._weapons = {};
     this._armors = {};
 };
 
+<span id='Game_Party-method-exists'>/**
+</span> * @method exists
+ * FIXME
+ */
 Game_Party.prototype.exists = function() {
     return this._actors.length &gt; 0;
 };
 
+<span id='Game_Party-method-size'>/**
+</span> * @method size
+ * FIXME
+ */
 Game_Party.prototype.size = function() {
     return this.members().length;
 };
 
+<span id='Game_Party-method-isEmpty'>/**
+</span> * @method isEmpty
+ * FIXME
+ */
 Game_Party.prototype.isEmpty = function() {
     return this.size() === 0;
 };
 
+<span id='Game_Party-method-members'>/**
+</span> * @method members
+ * FIXME
+ */
 Game_Party.prototype.members = function() {
     return this.inBattle() ? this.battleMembers() : this.allMembers();
 };
 
+<span id='Game_Party-method-allMembers'>/**
+</span> * @method allMembers
+ * FIXME
+ */
 Game_Party.prototype.allMembers = function() {
     return this._actors.map(function(id) {
         return $gameActors.actor(id);
     });
 };
 
+<span id='Game_Party-method-battleMembers'>/**
+</span> * @method battleMembers
+ * FIXME
+ */
 Game_Party.prototype.battleMembers = function() {
     return this.allMembers().slice(0, this.maxBattleMembers()).filter(function(actor) {
         return actor.isAppeared();
     });
 };
 
+<span id='Game_Party-method-maxBattleMembers'>/**
+</span> * @method maxBattleMembers
+ * FIXME
+ */
 Game_Party.prototype.maxBattleMembers = function() {
     return 4;
 };
 
+<span id='Game_Party-method-leader'>/**
+</span> * @method leader
+ * FIXME
+ */
 Game_Party.prototype.leader = function() {
     return this.battleMembers()[0];
 };
 
+<span id='Game_Party-method-reviveBattleMembers'>/**
+</span> * @method reviveBattleMembers
+ * FIXME
+ */
 Game_Party.prototype.reviveBattleMembers = function() {
     this.battleMembers().forEach(function(actor) {
         if (actor.isDead()) {
@@ -7722,6 +8025,10 @@ Game_Party.prototype.reviveBattleMembers = function() {
     });
 };
 
+<span id='Game_Party-method-items'>/**
+</span> * @method items
+ * FIXME
+ */
 Game_Party.prototype.items = function() {
     var list = [];
     for (var id in this._items) {
@@ -7730,6 +8037,10 @@ Game_Party.prototype.items = function() {
     return list;
 };
 
+<span id='Game_Party-method-weapons'>/**
+</span> * @method weapons
+ * FIXME
+ */
 Game_Party.prototype.weapons = function() {
     var list = [];
     for (var id in this._weapons) {
@@ -7738,6 +8049,10 @@ Game_Party.prototype.weapons = function() {
     return list;
 };
 
+<span id='Game_Party-method-armors'>/**
+</span> * @method armors
+ * FIXME
+ */
 Game_Party.prototype.armors = function() {
     var list = [];
     for (var id in this._armors) {
@@ -7746,14 +8061,26 @@ Game_Party.prototype.armors = function() {
     return list;
 };
 
+<span id='Game_Party-method-equipItems'>/**
+</span> * @method equipItems
+ * FIXME
+ */
 Game_Party.prototype.equipItems = function() {
     return this.weapons().concat(this.armors());
 };
 
+<span id='Game_Party-method-allItems'>/**
+</span> * @method allItems
+ * FIXME
+ */
 Game_Party.prototype.allItems = function() {
     return this.items().concat(this.equipItems());
 };
 
+<span id='Game_Party-method-itemContainer'>/**
+</span> * @method itemContainer
+ * FIXME
+ */
 Game_Party.prototype.itemContainer = function(item) {
     if (!item) {
         return null;
@@ -7768,6 +8095,10 @@ Game_Party.prototype.itemContainer = function(item) {
     }
 };
 
+<span id='Game_Party-method-setupStartingMembers'>/**
+</span> * @method setupStartingMembers
+ * FIXME
+ */
 Game_Party.prototype.setupStartingMembers = function() {
     this._actors = [];
     $dataSystem.partyMembers.forEach(function(actorId) {
@@ -7777,6 +8108,10 @@ Game_Party.prototype.setupStartingMembers = function() {
     }, this);
 };
 
+<span id='Game_Party-method-name'>/**
+</span> * @method name
+ * FIXME
+ */
 Game_Party.prototype.name = function() {
     var numBattleMembers = this.battleMembers().length;
     if (numBattleMembers === 0) {
@@ -7788,11 +8123,19 @@ Game_Party.prototype.name = function() {
     }
 };
 
+<span id='Game_Party-method-setupBattleTest'>/**
+</span> * @method setupBattleTest
+ * FIXME
+ */
 Game_Party.prototype.setupBattleTest = function() {
     this.setupBattleTestMembers();
     this.setupBattleTestItems();
 };
 
+<span id='Game_Party-method-setupBattleTestMembers'>/**
+</span> * @method setupBattleTestMembers
+ * FIXME
+ */
 Game_Party.prototype.setupBattleTestMembers = function() {
     $dataSystem.testBattlers.forEach(function(battler) {
         var actor = $gameActors.actor(battler.actorId);
@@ -7805,6 +8148,10 @@ Game_Party.prototype.setupBattleTestMembers = function() {
     }, this);
 };
 
+<span id='Game_Party-method-setupBattleTestItems'>/**
+</span> * @method setupBattleTestItems
+ * FIXME
+ */
 Game_Party.prototype.setupBattleTestItems = function() {
     $dataItems.forEach(function(item) {
         if (item &amp;&amp; item.name.length &gt; 0) {
@@ -7813,12 +8160,20 @@ Game_Party.prototype.setupBattleTestItems = function() {
     }, this);
 };
 
+<span id='Game_Party-method-highestLevel'>/**
+</span> * @method highestLevel
+ * FIXME
+ */
 Game_Party.prototype.highestLevel = function() {
     return Math.max.apply(null, this.members().map(function(actor) {
         return actor.level;
     }));
 };
 
+<span id='Game_Party-method-addActor'>/**
+</span> * @method addActor
+ * FIXME
+ */
 Game_Party.prototype.addActor = function(actorId) {
     if (!this._actors.contains(actorId)) {
         this._actors.push(actorId);
@@ -7827,6 +8182,10 @@ Game_Party.prototype.addActor = function(actorId) {
     }
 };
 
+<span id='Game_Party-method-removeActor'>/**
+</span> * @method removeActor
+ * FIXME
+ */
 Game_Party.prototype.removeActor = function(actorId) {
     if (this._actors.contains(actorId)) {
         this._actors.splice(this._actors.indexOf(actorId), 1);
@@ -7835,43 +8194,83 @@ Game_Party.prototype.removeActor = function(actorId) {
     }
 };
 
+<span id='Game_Party-method-gold'>/**
+</span> * @method gold
+ * FIXME
+ */
 Game_Party.prototype.gold = function() {
     return this._gold;
 };
 
+<span id='Game_Party-method-gainGold'>/**
+</span> * @method gainGold
+ * FIXME
+ */
 Game_Party.prototype.gainGold = function(amount) {
     this._gold = (this._gold + amount).clamp(0, this.maxGold());
 };
 
+<span id='Game_Party-method-loseGold'>/**
+</span> * @method loseGold
+ * FIXME
+ */
 Game_Party.prototype.loseGold = function(amount) {
     this.gainGold(-amount);
 };
 
+<span id='Game_Party-method-maxGold'>/**
+</span> * @method maxGold
+ * FIXME
+ */
 Game_Party.prototype.maxGold = function() {
     return 99999999;
 };
 
+<span id='Game_Party-method-steps'>/**
+</span> * @method steps
+ * FIXME
+ */
 Game_Party.prototype.steps = function() {
     return this._steps;
 };
 
+<span id='Game_Party-method-increaseSteps'>/**
+</span> * @method increaseSteps
+ * FIXME
+ */
 Game_Party.prototype.increaseSteps = function() {
     this._steps++;
 };
 
+<span id='Game_Party-method-numItems'>/**
+</span> * @method numItems
+ * FIXME
+ */
 Game_Party.prototype.numItems = function(item) {
     var container = this.itemContainer(item);
     return container ? container[item.id] || 0 : 0;
 };
 
+<span id='Game_Party-method-maxItems'>/**
+</span> * @method maxItems
+ * FIXME
+ */
 Game_Party.prototype.maxItems = function(item) {
     return 99;
 };
 
+<span id='Game_Party-method-hasMaxItems'>/**
+</span> * @method hasMaxItems
+ * FIXME
+ */
 Game_Party.prototype.hasMaxItems = function(item) {
     return this.numItems(item) &gt;= this.maxItems(item);
 };
 
+<span id='Game_Party-method-hasItem'>/**
+</span> * @method hasItem
+ * FIXME
+ */
 Game_Party.prototype.hasItem = function(item, includeEquip) {
     if (includeEquip === undefined) {
         includeEquip = false;
@@ -7885,12 +8284,20 @@ Game_Party.prototype.hasItem = function(item, includeEquip) {
     }
 };
 
+<span id='Game_Party-method-isAnyMemberEquipped'>/**
+</span> * @method isAnyMemberEquipped
+ * FIXME
+ */
 Game_Party.prototype.isAnyMemberEquipped = function(item) {
     return this.members().some(function(actor) {
         return actor.equips().contains(item);
     });
 };
 
+<span id='Game_Party-method-gainItem'>/**
+</span> * @method gainItem
+ * FIXME
+ */
 Game_Party.prototype.gainItem = function(item, amount, includeEquip) {
     var container = this.itemContainer(item);
     if (container) {
@@ -7907,6 +8314,10 @@ Game_Party.prototype.gainItem = function(item, amount, includeEquip) {
     }
 };
 
+<span id='Game_Party-method-discardMembersEquip'>/**
+</span> * @method discardMembersEquip
+ * FIXME
+ */
 Game_Party.prototype.discardMembersEquip = function(item, amount) {
     var n = amount;
     this.members().forEach(function(actor) {
@@ -7917,6 +8328,10 @@ Game_Party.prototype.discardMembersEquip = function(item, amount) {
     });
 };
 
+<span id='Game_Party-method-loseItem'>/**
+</span> * @method loseItem
+ * FIXME
+ */
 Game_Party.prototype.loseItem = function(item, amount, includeEquip) {
     this.gainItem(item, -amount, includeEquip);
 };
@@ -7927,18 +8342,30 @@ Game_Party.prototype.consumeItem = function(item) {
     }
 };
 
+<span id='Game_Party-method-canUse'>/**
+</span> * @method canUse
+ * FIXME
+ */
 Game_Party.prototype.canUse = function(item) {
     return this.members().some(function(actor) {
         return actor.canUse(item);
     });
 };
 
+<span id='Game_Party-method-canInput'>/**
+</span> * @method canInput
+ * FIXME
+ */
 Game_Party.prototype.canInput = function() {
     return this.members().some(function(actor) {
         return actor.canInput();
     });
 };
 
+<span id='Game_Party-method-isAllDead'>/**
+</span> * @method isAllDead
+ * FIXME
+ */
 Game_Party.prototype.isAllDead = function() {
     if (Game_Unit.prototype.isAllDead.call(this)) {
         return this.inBattle() || !this.isEmpty();
@@ -7947,12 +8374,20 @@ Game_Party.prototype.isAllDead = function() {
     }
 };
 
+<span id='Game_Party-method-onPlayerWalk'>/**
+</span> * @method onPlayerWalk
+ * FIXME
+ */
 Game_Party.prototype.onPlayerWalk = function() {
     this.members().forEach(function(actor) {
         return actor.onPlayerWalk();
     });
 };
 
+<span id='Game_Party-method-menuActor'>/**
+</span> * @method menuActor
+ * FIXME
+ */
 Game_Party.prototype.menuActor = function() {
     var actor = $gameActors.actor(this._menuActorId);
     if (!this.members().contains(actor)) {
@@ -7961,10 +8396,18 @@ Game_Party.prototype.menuActor = function() {
     return actor;
 };
 
+<span id='Game_Party-method-setMenuActor'>/**
+</span> * @method setMenuActor
+ * FIXME
+ */
 Game_Party.prototype.setMenuActor = function(actor) {
     this._menuActorId = actor.actorId();
 };
 
+<span id='Game_Party-method-makeMenuActorNext'>/**
+</span> * @method makeMenuActorNext
+ * FIXME
+ */
 Game_Party.prototype.makeMenuActorNext = function() {
     var index = this.members().indexOf(this.menuActor());
     if (index &gt;= 0) {
@@ -7975,6 +8418,10 @@ Game_Party.prototype.makeMenuActorNext = function() {
     }
 };
 
+<span id='Game_Party-method-makeMenuActorPrevious'>/**
+</span> * @method makeMenuActorPrevious
+ * FIXME
+ */
 Game_Party.prototype.makeMenuActorPrevious = function() {
     var index = this.members().indexOf(this.menuActor());
     if (index &gt;= 0) {
@@ -7985,6 +8432,10 @@ Game_Party.prototype.makeMenuActorPrevious = function() {
     }
 };
 
+<span id='Game_Party-method-targetActor'>/**
+</span> * @method targetActor
+ * FIXME
+ */
 Game_Party.prototype.targetActor = function() {
     var actor = $gameActors.actor(this._targetActorId);
     if (!this.members().contains(actor)) {
@@ -7993,18 +8444,34 @@ Game_Party.prototype.targetActor = function() {
     return actor;
 };
 
+<span id='Game_Party-method-setTargetActor'>/**
+</span> * @method setTargetActor
+ * FIXME
+ */
 Game_Party.prototype.setTargetActor = function(actor) {
     this._targetActorId = actor.actorId();
 };
 
+<span id='Game_Party-method-lastItem'>/**
+</span> * @method lastItem
+ * FIXME
+ */
 Game_Party.prototype.lastItem = function() {
     return this._lastItem.object();
 };
 
+<span id='Game_Party-method-setLastItem'>/**
+</span> * @method setLastItem
+ * FIXME
+ */
 Game_Party.prototype.setLastItem = function(item) {
     this._lastItem.setObject(item);
 };
 
+<span id='Game_Party-method-swapOrder'>/**
+</span> * @method swapOrder
+ * FIXME
+ */
 Game_Party.prototype.swapOrder = function(index1, index2) {
     var temp = this._actors[index1];
     this._actors[index1] = this._actors[index2];
@@ -8012,48 +8479,88 @@ Game_Party.prototype.swapOrder = function(index1, index2) {
     $gamePlayer.refresh();
 };
 
+<span id='Game_Party-method-charactersForSavefile'>/**
+</span> * @method charactersForSavefile
+ * FIXME
+ */
 Game_Party.prototype.charactersForSavefile = function() {
     return this.battleMembers().map(function(actor) {
         return [actor.characterName(), actor.characterIndex()];
     });
 };
 
+<span id='Game_Party-method-facesForSavefile'>/**
+</span> * @method facesForSavefile
+ * FIXME
+ */
 Game_Party.prototype.facesForSavefile = function() {
     return this.battleMembers().map(function(actor) {
         return [actor.faceName(), actor.faceIndex()];
     });
 };
 
+<span id='Game_Party-method-partyAbility'>/**
+</span> * @method partyAbility
+ * FIXME
+ */
 Game_Party.prototype.partyAbility = function(abilityId) {
     return this.battleMembers().some(function(actor) {
         return actor.partyAbility(abilityId);
     });
 };
 
+<span id='Game_Party-method-hasEncounterHalf'>/**
+</span> * @method hasEncounterHalf
+ * FIXME
+ */
 Game_Party.prototype.hasEncounterHalf = function() {
     return this.partyAbility(Game_Party.ABILITY_ENCOUNTER_HALF);
 };
 
+<span id='Game_Party-method-hasEncounterNone'>/**
+</span> * @method hasEncounterNone
+ * FIXME
+ */
 Game_Party.prototype.hasEncounterNone = function() {
     return this.partyAbility(Game_Party.ABILITY_ENCOUNTER_NONE);
 };
 
+<span id='Game_Party-method-hasCancelSurprise'>/**
+</span> * @method hasCancelSurprise
+ * FIXME
+ */
 Game_Party.prototype.hasCancelSurprise = function() {
     return this.partyAbility(Game_Party.ABILITY_CANCEL_SURPRISE);
 };
 
+<span id='Game_Party-method-hasRaisePreemptive'>/**
+</span> * @method hasRaisePreemptive
+ * FIXME
+ */
 Game_Party.prototype.hasRaisePreemptive = function() {
     return this.partyAbility(Game_Party.ABILITY_RAISE_PREEMPTIVE);
 };
 
+<span id='Game_Party-method-hasGoldDouble'>/**
+</span> * @method hasGoldDouble
+ * FIXME
+ */
 Game_Party.prototype.hasGoldDouble = function() {
     return this.partyAbility(Game_Party.ABILITY_GOLD_DOUBLE);
 };
 
+<span id='Game_Party-method-hasDropItemDouble'>/**
+</span> * @method hasDropItemDouble
+ * FIXME
+ */
 Game_Party.prototype.hasDropItemDouble = function() {
     return this.partyAbility(Game_Party.ABILITY_DROP_ITEM_DOUBLE);
 };
 
+<span id='Game_Party-method-ratePreemptive'>/**
+</span> * @method ratePreemptive
+ * FIXME
+ */
 Game_Party.prototype.ratePreemptive = function(troopAgi) {
     var rate = this.agility() &gt;= troopAgi ? 0.05 : 0.03;
     if (this.hasRaisePreemptive()) {
@@ -8062,6 +8569,10 @@ Game_Party.prototype.ratePreemptive = function(troopAgi) {
     return rate;
 };
 
+<span id='Game_Party-method-rateSurprise'>/**
+</span> * @method rateSurprise
+ * FIXME
+ */
 Game_Party.prototype.rateSurprise = function(troopAgi) {
     var rate = this.agility() &gt;= troopAgi ? 0.03 : 0.05;
     if (this.hasCancelSurprise()) {
@@ -8070,24 +8581,40 @@ Game_Party.prototype.rateSurprise = function(troopAgi) {
     return rate;
 };
 
+<span id='Game_Party-method-performVictory'>/**
+</span> * @method performVictory
+ * FIXME
+ */
 Game_Party.prototype.performVictory = function() {
     this.members().forEach(function(actor) {
         actor.performVictory();
     });
 };
 
+<span id='Game_Party-method-performEscape'>/**
+</span> * @method performEscape
+ * FIXME
+ */
 Game_Party.prototype.performEscape = function() {
     this.members().forEach(function(actor) {
         actor.performEscape();
     });
 };
 
+<span id='Game_Party-method-removeBattleStates'>/**
+</span> * @method removeBattleStates
+ * FIXME
+ */
 Game_Party.prototype.removeBattleStates = function() {
     this.members().forEach(function(actor) {
         actor.removeBattleStates();
     });
 };
 
+<span id='Game_Party-method-requestMotionRefresh'>/**
+</span> * @method requestMotionRefresh
+ * FIXME
+ */
 Game_Party.prototype.requestMotionRefresh = function() {
     this.members().forEach(function(actor) {
         actor.requestMotionRefresh();
@@ -8122,28 +8649,52 @@ Game_Troop.LETTER_TABLE_FULL = [
     'Ｎ','Ｏ','Ｐ','Ｑ','Ｒ','Ｓ','Ｔ','Ｕ','Ｖ','Ｗ','Ｘ','Ｙ','Ｚ'
 ];
 
+<span id='Game_Troop-method-initialize'>/**
+</span> * @method initialize
+ * FIXME
+ */
 Game_Troop.prototype.initialize = function() {
     Game_Unit.prototype.initialize.call(this);
     this._interpreter = new Game_Interpreter();
     this.clear();
 };
 
+<span id='Game_Troop-method-isEventRunning'>/**
+</span> * @method isEventRunning
+ * FIXME
+ */
 Game_Troop.prototype.isEventRunning = function() {
     return this._interpreter.isRunning();
 };
 
+<span id='Game_Troop-method-updateInterpreter'>/**
+</span> * @method updateInterpreter
+ * FIXME
+ */
 Game_Troop.prototype.updateInterpreter = function() {
     this._interpreter.update();
 };
 
+<span id='Game_Troop-method-turnCount'>/**
+</span> * @method turnCount
+ * FIXME
+ */
 Game_Troop.prototype.turnCount = function() {
     return this._turnCount;
 };
 
+<span id='Game_Troop-method-members'>/**
+</span> * @method members
+ * FIXME
+ */
 Game_Troop.prototype.members = function() {
     return this._enemies;
 };
 
+<span id='Game_Troop-method-clear'>/**
+</span> * @method clear
+ * FIXME
+ */
 Game_Troop.prototype.clear = function() {
     this._interpreter.clear();
     this._troopId = 0;
@@ -8153,10 +8704,18 @@ Game_Troop.prototype.clear = function() {
     this._namesCount = {};
 };
 
+<span id='Game_Troop-method-troop'>/**
+</span> * @method troop
+ * FIXME
+ */
 Game_Troop.prototype.troop = function() {
     return $dataTroops[this._troopId];
 };
 
+<span id='Game_Troop-method-setup'>/**
+</span> * @method setup
+ * FIXME
+ */
 Game_Troop.prototype.setup = function(troopId) {
     this.clear();
     this._troopId = troopId;
@@ -8176,6 +8735,10 @@ Game_Troop.prototype.setup = function(troopId) {
     this.makeUniqueNames();
 };
 
+<span id='Game_Troop-method-makeUniqueNames'>/**
+</span> * @method makeUniqueNames
+ * FIXME
+ */
 Game_Troop.prototype.makeUniqueNames = function() {
     var table = this.letterTable();
     this.members().forEach(function(enemy) {
@@ -8194,11 +8757,19 @@ Game_Troop.prototype.makeUniqueNames = function() {
     }, this);
 };
 
+<span id='Game_Troop-method-letterTable'>/**
+</span> * @method letterTable
+ * FIXME
+ */
 Game_Troop.prototype.letterTable = function() {
     return $gameSystem.isCJK() ? Game_Troop.LETTER_TABLE_FULL :
             Game_Troop.LETTER_TABLE_HALF;
 };
 
+<span id='Game_Troop-method-enemyNames'>/**
+</span> * @method enemyNames
+ * FIXME
+ */
 Game_Troop.prototype.enemyNames = function() {
     var names = [];
     this.members().forEach(function(enemy) {
@@ -8210,6 +8781,10 @@ Game_Troop.prototype.enemyNames = function() {
     return names;
 };
 
+<span id='Game_Troop-method-meetsConditions'>/**
+</span> * @method meetsConditions
+ * FIXME
+ */
 Game_Troop.prototype.meetsConditions = function(page) {
     var c = page.conditions;
     if (!c.turnEnding &amp;&amp; !c.turnValid &amp;&amp; !c.enemyValid &amp;&amp;
@@ -8252,6 +8827,10 @@ Game_Troop.prototype.meetsConditions = function(page) {
     return true;
 };
 
+<span id='Game_Troop-method-setupBattleEvent'>/**
+</span> * @method setupBattleEvent
+ * FIXME
+ */
 Game_Troop.prototype.setupBattleEvent = function() {
     if (!this._interpreter.isRunning()) {
         if (this._interpreter.setupReservedCommonEvent()) {
@@ -8271,6 +8850,10 @@ Game_Troop.prototype.setupBattleEvent = function() {
     }
 };
 
+<span id='Game_Troop-method-increaseTurn'>/**
+</span> * @method increaseTurn
+ * FIXME
+ */
 Game_Troop.prototype.increaseTurn = function() {
     var pages = this.troop().pages;
     for (var i = 0; i &lt; pages.length; i++) {
@@ -8282,22 +8865,38 @@ Game_Troop.prototype.increaseTurn = function() {
     this._turnCount++;
 };
 
+<span id='Game_Troop-method-expTotal'>/**
+</span> * @method expTotal
+ * FIXME
+ */
 Game_Troop.prototype.expTotal = function() {
     return this.deadMembers().reduce(function(r, enemy) {
         return r + enemy.exp();
     }, 0);
 };
 
+<span id='Game_Troop-method-goldTotal'>/**
+</span> * @method goldTotal
+ * FIXME
+ */
 Game_Troop.prototype.goldTotal = function() {
     return this.deadMembers().reduce(function(r, enemy) {
         return r + enemy.gold();
     }, 0) * this.goldRate();
 };
 
+<span id='Game_Troop-method-goldRate'>/**
+</span> * @method goldRate
+ * FIXME
+ */
 Game_Troop.prototype.goldRate = function() {
     return $gameParty.hasGoldDouble() ? 2 : 1;
 };
 
+<span id='Game_Troop-method-makeDropItems'>/**
+</span> * @method makeDropItems
+ * FIXME
+ */
 Game_Troop.prototype.makeDropItems = function() {
     return this.deadMembers().reduce(function(r, enemy) {
         return r.concat(enemy.makeDropItems());
@@ -8321,6 +8920,10 @@ function Game_Map() {
     this.initialize.apply(this, arguments);
 }
 
+<span id='Game_Map-method-initialize'>/**
+</span> * @method initialize
+ * FIXME
+ */
 Game_Map.prototype.initialize = function() {
     this._interpreter = new Game_Interpreter();
     this._mapId = 0;
@@ -8347,6 +8950,10 @@ Game_Map.prototype.initialize = function() {
     this.createVehicles();
 };
 
+<span id='Game_Map-method-setup'>/**
+</span> * @method setup
+ * FIXME
+ */
 Game_Map.prototype.setup = function(mapId) {
     if (!$dataMap) {
         throw new Error('The map data is not available');
@@ -8363,62 +8970,122 @@ Game_Map.prototype.setup = function(mapId) {
     this._needsRefresh = false;
 };
 
+<span id='Game_Map-method-isEventRunning'>/**
+</span> * @method isEventRunning
+ * FIXME
+ */
 Game_Map.prototype.isEventRunning = function() {
     return this._interpreter.isRunning() || this.isAnyEventStarting();
 };
 
+<span id='Game_Map-method-tileWidth'>/**
+</span> * @method tileWidth
+ * FIXME
+ */
 Game_Map.prototype.tileWidth = function() {
     return 48;
 };
 
+<span id='Game_Map-method-tileHeight'>/**
+</span> * @method tileHeight
+ * FIXME
+ */
 Game_Map.prototype.tileHeight = function() {
     return 48;
 };
 
+<span id='Game_Map-method-mapId'>/**
+</span> * @method mapId
+ * FIXME
+ */
 Game_Map.prototype.mapId = function() {
     return this._mapId;
 };
 
+<span id='Game_Map-method-tilesetId'>/**
+</span> * @method tilesetId
+ * FIXME
+ */
 Game_Map.prototype.tilesetId = function() {
     return this._tilesetId;
 };
 
+<span id='Game_Map-method-displayX'>/**
+</span> * @method displayX
+ * FIXME
+ */
 Game_Map.prototype.displayX = function() {
     return this._displayX;
 };
 
+<span id='Game_Map-method-displayY'>/**
+</span> * @method displayY
+ * FIXME
+ */
 Game_Map.prototype.displayY = function() {
     return this._displayY;
 };
 
+<span id='Game_Map-method-parallaxName'>/**
+</span> * @method parallaxName
+ * FIXME
+ */
 Game_Map.prototype.parallaxName = function() {
     return this._parallaxName;
 };
 
+<span id='Game_Map-method-battleback1Name'>/**
+</span> * @method battleback1Name
+ * FIXME
+ */
 Game_Map.prototype.battleback1Name = function() {
     return this._battleback1Name;
 };
 
+<span id='Game_Map-method-battleback2Name'>/**
+</span> * @method battleback2Name
+ * FIXME
+ */
 Game_Map.prototype.battleback2Name = function() {
     return this._battleback2Name;
 };
 
+<span id='Game_Map-method-requestRefresh'>/**
+</span> * @method requestRefresh
+ * FIXME
+ */
 Game_Map.prototype.requestRefresh = function(mapId) {
     this._needsRefresh = true;
 };
 
+<span id='Game_Map-method-isNameDisplayEnabled'>/**
+</span> * @method isNameDisplayEnabled
+ * FIXME
+ */
 Game_Map.prototype.isNameDisplayEnabled = function() {
     return this._nameDisplay;
 };
 
+<span id='Game_Map-method-disableNameDisplay'>/**
+</span> * @method disableNameDisplay
+ * FIXME
+ */
 Game_Map.prototype.disableNameDisplay = function() {
     this._nameDisplay = false;
 };
 
+<span id='Game_Map-method-enableNameDisplay'>/**
+</span> * @method enableNameDisplay
+ * FIXME
+ */
 Game_Map.prototype.enableNameDisplay = function() {
     this._nameDisplay = true;
 };
 
+<span id='Game_Map-method-createVehicles'>/**
+</span> * @method createVehicles
+ * FIXME
+ */
 Game_Map.prototype.createVehicles = function() {
     this._vehicles = [];
     this._vehicles[0] = new Game_Vehicle('boat');
@@ -8426,16 +9093,28 @@ Game_Map.prototype.createVehicles = function() {
     this._vehicles[2] = new Game_Vehicle('airship');
 };
 
+<span id='Game_Map-method-refereshVehicles'>/**
+</span> * @method refereshVehicles
+ * FIXME
+ */
 Game_Map.prototype.refereshVehicles = function() {
     this._vehicles.forEach(function(vehicle) {
         vehicle.refresh();
     });
 };
 
+<span id='Game_Map-method-vehicles'>/**
+</span> * @method vehicles
+ * FIXME
+ */
 Game_Map.prototype.vehicles = function() {
     return this._vehicles;
 };
 
+<span id='Game_Map-method-vehicle'>/**
+</span> * @method vehicle
+ * FIXME
+ */
 Game_Map.prototype.vehicle = function(type) {
     if (type ===  0 || type === 'boat') {
         return this.boat();
@@ -8448,18 +9127,34 @@ Game_Map.prototype.vehicle = function(type) {
     }
 };
 
+<span id='Game_Map-method-boat'>/**
+</span> * @method boat
+ * FIXME
+ */
 Game_Map.prototype.boat = function() {
     return this._vehicles[0];
 };
 
+<span id='Game_Map-method-ship'>/**
+</span> * @method ship
+ * FIXME
+ */
 Game_Map.prototype.ship = function() {
     return this._vehicles[1];
 };
 
+<span id='Game_Map-method-airship'>/**
+</span> * @method airship
+ * FIXME
+ */
 Game_Map.prototype.airship = function() {
     return this._vehicles[2];
 };
 
+<span id='Game_Map-method-setupEvents'>/**
+</span> * @method setupEvents
+ * FIXME
+ */
 Game_Map.prototype.setupEvents = function() {
     this._events = [];
     for (var i = 0; i &lt; $dataMap.events.length; i++) {
@@ -8473,32 +9168,56 @@ Game_Map.prototype.setupEvents = function() {
     this.refreshTileEvents();
 };
 
+<span id='Game_Map-method-events'>/**
+</span> * @method events
+ * FIXME
+ */
 Game_Map.prototype.events = function() {
     return this._events.filter(function(event) {
         return !!event;
     });
 };
 
+<span id='Game_Map-method-event'>/**
+</span> * @method event
+ * FIXME
+ */
 Game_Map.prototype.event = function(eventId) {
     return this._events[eventId];
 };
 
+<span id='Game_Map-method-eraseEvent'>/**
+</span> * @method eraseEvent
+ * FIXME
+ */
 Game_Map.prototype.eraseEvent = function(eventId) {
     this._events[eventId].erase();
 };
 
+<span id='Game_Map-method-parallelCommonEvents'>/**
+</span> * @method parallelCommonEvents
+ * FIXME
+ */
 Game_Map.prototype.parallelCommonEvents = function() {
     return $dataCommonEvents.filter(function(commonEvent) {
         return commonEvent &amp;&amp; commonEvent.trigger === 2;
     });
 };
 
+<span id='Game_Map-method-setupScroll'>/**
+</span> * @method setupScroll
+ * FIXME
+ */
 Game_Map.prototype.setupScroll = function() {
     this._scrollDirection = 2;
     this._scrollRest = 0;
     this._scrollSpeed = 4;
 };
 
+<span id='Game_Map-method-setupParallax'>/**
+</span> * @method setupParallax
+ * FIXME
+ */
 Game_Map.prototype.setupParallax = function() {
     this._parallaxName = $dataMap.parallaxName || '';
     this._parallaxZero = ImageManager.isZeroParallax(this._parallaxName);
@@ -8510,6 +9229,10 @@ Game_Map.prototype.setupParallax = function() {
     this._parallaxY = 0;
 };
 
+<span id='Game_Map-method-setupBattleback'>/**
+</span> * @method setupBattleback
+ * FIXME
+ */
 Game_Map.prototype.setupBattleback = function() {
     if ($dataMap.specifyBattleback) {
         this._battleback1Name = $dataMap.battleback1Name;
@@ -8520,6 +9243,10 @@ Game_Map.prototype.setupBattleback = function() {
     }
 };
 
+<span id='Game_Map-method-setDisplayPos'>/**
+</span> * @method setDisplayPos
+ * FIXME
+ */
 Game_Map.prototype.setDisplayPos = function(x, y) {
     if (this.isLoopHorizontal()) {
         this._displayX = x.mod(this.width());
@@ -8539,6 +9266,10 @@ Game_Map.prototype.setDisplayPos = function(x, y) {
     }
 };
 
+<span id='Game_Map-method-parallaxOx'>/**
+</span> * @method parallaxOx
+ * FIXME
+ */
 Game_Map.prototype.parallaxOx = function() {
     if (this._parallaxZero) {
         return this._parallaxX * this.tileWidth();
@@ -8549,6 +9280,10 @@ Game_Map.prototype.parallaxOx = function() {
     }
 };
 
+<span id='Game_Map-method-parallaxOy'>/**
+</span> * @method parallaxOy
+ * FIXME
+ */
 Game_Map.prototype.parallaxOy = function() {
     if (this._parallaxZero) {
         return this._parallaxY * this.tileHeight();
@@ -8559,10 +9294,18 @@ Game_Map.prototype.parallaxOy = function() {
     }
 };
 
+<span id='Game_Map-method-tileset'>/**
+</span> * @method tileset
+ * FIXME
+ */
 Game_Map.prototype.tileset = function() {
     return $dataTilesets[this._tilesetId];
 };
 
+<span id='Game_Map-method-tilesetFlags'>/**
+</span> * @method tilesetFlags
+ * FIXME
+ */
 Game_Map.prototype.tilesetFlags = function() {
     var tileset = this.tileset();
     if (tileset) {
@@ -8572,54 +9315,106 @@ Game_Map.prototype.tilesetFlags = function() {
     }
 };
 
+<span id='Game_Map-method-displayName'>/**
+</span> * @method displayName
+ * FIXME
+ */
 Game_Map.prototype.displayName = function() {
     return $dataMap.displayName;
 };
 
+<span id='Game_Map-method-width'>/**
+</span> * @method width
+ * FIXME
+ */
 Game_Map.prototype.width = function() {
     return $dataMap.width;
 };
 
+<span id='Game_Map-method-height'>/**
+</span> * @method height
+ * FIXME
+ */
 Game_Map.prototype.height = function() {
     return $dataMap.height;
 };
 
+<span id='Game_Map-method-data'>/**
+</span> * @method data
+ * FIXME
+ */
 Game_Map.prototype.data = function() {
     return $dataMap.data;
 };
 
+<span id='Game_Map-method-isLoopHorizontal'>/**
+</span> * @method isLoopHorizontal
+ * FIXME
+ */
 Game_Map.prototype.isLoopHorizontal = function() {
     return $dataMap.scrollType === 2 || $dataMap.scrollType === 3;
 };
 
+<span id='Game_Map-method-isLoopVertical'>/**
+</span> * @method isLoopVertical
+ * FIXME
+ */
 Game_Map.prototype.isLoopVertical = function() {
     return $dataMap.scrollType === 1 || $dataMap.scrollType === 3;
 };
 
+<span id='Game_Map-method-isDashDisabled'>/**
+</span> * @method isDashDisabled
+ * FIXME
+ */
 Game_Map.prototype.isDashDisabled = function() {
     return $dataMap.disableDashing;
 };
 
+<span id='Game_Map-method-encounterList'>/**
+</span> * @method encounterList
+ * FIXME
+ */
 Game_Map.prototype.encounterList = function() {
     return $dataMap.encounterList;
 };
 
+<span id='Game_Map-method-encounterStep'>/**
+</span> * @method encounterStep
+ * FIXME
+ */
 Game_Map.prototype.encounterStep = function() {
     return $dataMap.encounterStep;
 };
 
+<span id='Game_Map-method-isOverworld'>/**
+</span> * @method isOverworld
+ * FIXME
+ */
 Game_Map.prototype.isOverworld = function() {
     return this.tileset() &amp;&amp; this.tileset().mode === 0;
 };
 
+<span id='Game_Map-method-screenTileX'>/**
+</span> * @method screenTileX
+ * FIXME
+ */
 Game_Map.prototype.screenTileX = function() {
     return Graphics.width / this.tileWidth();
 };
 
+<span id='Game_Map-method-screenTileY'>/**
+</span> * @method screenTileY
+ * FIXME
+ */
 Game_Map.prototype.screenTileY = function() {
     return Graphics.height / this.tileHeight();
 };
 
+<span id='Game_Map-method-adjustX'>/**
+</span> * @method adjustX
+ * FIXME
+ */
 Game_Map.prototype.adjustX = function(x) {
     if (this.isLoopHorizontal() &amp;&amp; x &lt; this._displayX -
             (this.width() - this.screenTileX()) / 2) {
@@ -8629,6 +9424,10 @@ Game_Map.prototype.adjustX = function(x) {
     }
 };
 
+<span id='Game_Map-method-adjustY'>/**
+</span> * @method adjustY
+ * FIXME
+ */
 Game_Map.prototype.adjustY = function(y) {
     if (this.isLoopVertical() &amp;&amp; y &lt; this._displayY -
             (this.height() - this.screenTileY()) / 2) {
@@ -8638,30 +9437,58 @@ Game_Map.prototype.adjustY = function(y) {
     }
 };
 
+<span id='Game_Map-method-roundX'>/**
+</span> * @method roundX
+ * FIXME
+ */
 Game_Map.prototype.roundX = function(x) {
     return this.isLoopHorizontal() ? x.mod(this.width()) : x;
 };
 
+<span id='Game_Map-method-roundY'>/**
+</span> * @method roundY
+ * FIXME
+ */
 Game_Map.prototype.roundY = function(y) {
     return this.isLoopVertical() ? y.mod(this.height()) : y;
 };
 
+<span id='Game_Map-method-xWithDirection'>/**
+</span> * @method xWithDirection
+ * FIXME
+ */
 Game_Map.prototype.xWithDirection = function(x, d) {
     return x + (d === 6 ? 1 : d === 4 ? -1 : 0);
 };
 
+<span id='Game_Map-method-yWithDirection'>/**
+</span> * @method yWithDirection
+ * FIXME
+ */
 Game_Map.prototype.yWithDirection = function(y, d) {
     return y + (d === 2 ? 1 : d === 8 ? -1 : 0);
 };
 
+<span id='Game_Map-method-roundXWithDirection'>/**
+</span> * @method roundXWithDirection
+ * FIXME
+ */
 Game_Map.prototype.roundXWithDirection = function(x, d) {
     return this.roundX(x + (d === 6 ? 1 : d === 4 ? -1 : 0));
 };
 
+<span id='Game_Map-method-roundYWithDirection'>/**
+</span> * @method roundYWithDirection
+ * FIXME
+ */
 Game_Map.prototype.roundYWithDirection = function(y, d) {
     return this.roundY(y + (d === 2 ? 1 : d === 8 ? -1 : 0));
 };
 
+<span id='Game_Map-method-deltaX'>/**
+</span> * @method deltaX
+ * FIXME
+ */
 Game_Map.prototype.deltaX = function(x1, x2) {
     var result = x1 - x2;
     if (this.isLoopHorizontal() &amp;&amp; Math.abs(result) &gt; this.width() / 2) {
@@ -8674,6 +9501,10 @@ Game_Map.prototype.deltaX = function(x1, x2) {
     return result;
 };
 
+<span id='Game_Map-method-deltaY'>/**
+</span> * @method deltaY
+ * FIXME
+ */
 Game_Map.prototype.deltaY = function(y1, y2) {
     var result = y1 - y2;
     if (this.isLoopVertical() &amp;&amp; Math.abs(result) &gt; this.height() / 2) {
@@ -8686,10 +9517,18 @@ Game_Map.prototype.deltaY = function(y1, y2) {
     return result;
 };
 
+<span id='Game_Map-method-distance'>/**
+</span> * @method distance
+ * FIXME
+ */
 Game_Map.prototype.distance = function(x1, y1, x2, y2) {
     return Math.abs(this.deltaX(x1, x2)) + Math.abs(this.deltaY(y1, y2));
 };
 
+<span id='Game_Map-method-canvasToMapX'>/**
+</span> * @method canvasToMapX
+ * FIXME
+ */
 Game_Map.prototype.canvasToMapX = function(x) {
     var tileWidth = this.tileWidth();
     var originX = this._displayX * tileWidth;
@@ -8697,6 +9536,10 @@ Game_Map.prototype.canvasToMapX = function(x) {
     return this.roundX(mapX);
 };
 
+<span id='Game_Map-method-canvasToMapY'>/**
+</span> * @method canvasToMapY
+ * FIXME
+ */
 Game_Map.prototype.canvasToMapY = function(y) {
     var tileHeight = this.tileHeight();
     var originY = this._displayY * tileHeight;
@@ -8704,6 +9547,10 @@ Game_Map.prototype.canvasToMapY = function(y) {
     return this.roundY(mapY);
 };
 
+<span id='Game_Map-method-autoplay'>/**
+</span> * @method autoplay
+ * FIXME
+ */
 Game_Map.prototype.autoplay = function() {
     if ($dataMap.autoplayBgm) {
         if ($gamePlayer.isInVehicle()) {
@@ -8717,12 +9564,20 @@ Game_Map.prototype.autoplay = function() {
     }
 };
 
+<span id='Game_Map-method-refreshIfNeeded'>/**
+</span> * @method refreshIfNeeded
+ * FIXME
+ */
 Game_Map.prototype.refreshIfNeeded = function() {
     if (this._needsRefresh) {
         this.refresh();
     }
 };
 
+<span id='Game_Map-method-refresh'>/**
+</span> * @method refresh
+ * FIXME
+ */
 Game_Map.prototype.refresh = function() {
     this.events().forEach(function(event) {
         event.refresh();
@@ -8734,35 +9589,59 @@ Game_Map.prototype.refresh = function() {
     this._needsRefresh = false;
 };
 
+<span id='Game_Map-method-refreshTileEvents'>/**
+</span> * @method refreshTileEvents
+ * FIXME
+ */
 Game_Map.prototype.refreshTileEvents = function() {
     this.tileEvents = this.events().filter(function(event) {
         return event.isTile();
     });
 };
 
+<span id='Game_Map-method-eventsXy'>/**
+</span> * @method eventsXy
+ * FIXME
+ */
 Game_Map.prototype.eventsXy = function(x, y) {
     return this.events().filter(function(event) {
         return event.pos(x, y);
     });
 };
 
+<span id='Game_Map-method-eventsXyNt'>/**
+</span> * @method eventsXyNt
+ * FIXME
+ */
 Game_Map.prototype.eventsXyNt = function(x, y) {
     return this.events().filter(function(event) {
         return event.posNt(x, y);
     });
 };
 
+<span id='Game_Map-method-tileEventsXy'>/**
+</span> * @method tileEventsXy
+ * FIXME
+ */
 Game_Map.prototype.tileEventsXy = function(x, y) {
     return this.tileEvents.filter(function(event) {
         return event.posNt(x, y);
     });
 };
 
+<span id='Game_Map-method-eventIdXy'>/**
+</span> * @method eventIdXy
+ * FIXME
+ */
 Game_Map.prototype.eventIdXy = function(x, y) {
     var list = this.eventsXy(x, y);
     return list.length === 0 ? 0 : list[0].eventId();
 };
 
+<span id='Game_Map-method-scrollDown'>/**
+</span> * @method scrollDown
+ * FIXME
+ */
 Game_Map.prototype.scrollDown = function(distance) {
     if (this.isLoopVertical()) {
         this._displayY += distance;
@@ -8778,6 +9657,10 @@ Game_Map.prototype.scrollDown = function(distance) {
     }
 };
 
+<span id='Game_Map-method-scrollLeft'>/**
+</span> * @method scrollLeft
+ * FIXME
+ */
 Game_Map.prototype.scrollLeft = function(distance) {
     if (this.isLoopHorizontal()) {
         this._displayX += $dataMap.width - distance;
@@ -8792,6 +9675,10 @@ Game_Map.prototype.scrollLeft = function(distance) {
     }
 };
 
+<span id='Game_Map-method-scrollRight'>/**
+</span> * @method scrollRight
+ * FIXME
+ */
 Game_Map.prototype.scrollRight = function(distance) {
     if (this.isLoopHorizontal()) {
         this._displayX += distance;
@@ -8807,6 +9694,10 @@ Game_Map.prototype.scrollRight = function(distance) {
     }
 };
 
+<span id='Game_Map-method-scrollUp'>/**
+</span> * @method scrollUp
+ * FIXME
+ */
 Game_Map.prototype.scrollUp = function(distance) {
     if (this.isLoopVertical()) {
         this._displayY += $dataMap.height - distance;
@@ -8821,10 +9712,18 @@ Game_Map.prototype.scrollUp = function(distance) {
     }
 };
 
+<span id='Game_Map-method-isValid'>/**
+</span> * @method isValid
+ * FIXME
+ */
 Game_Map.prototype.isValid = function(x, y) {
     return x &gt;= 0 &amp;&amp; x &lt; this.width() &amp;&amp; y &gt;= 0 &amp;&amp; y &lt; this.height();
 };
 
+<span id='Game_Map-method-checkPassage'>/**
+</span> * @method checkPassage
+ * FIXME
+ */
 Game_Map.prototype.checkPassage = function(x, y, bit) {
     var flags = this.tilesetFlags();
     var tiles = this.allTiles(x, y);
@@ -8840,12 +9739,20 @@ Game_Map.prototype.checkPassage = function(x, y, bit) {
     return false;
 };
 
+<span id='Game_Map-method-tileId'>/**
+</span> * @method tileId
+ * FIXME
+ */
 Game_Map.prototype.tileId = function(x, y, z) {
     var width = $dataMap.width;
     var height = $dataMap.height;
     return $dataMap.data[(z * height + y) * width + x] || 0;
 };
 
+<span id='Game_Map-method-layeredTiles'>/**
+</span> * @method layeredTiles
+ * FIXME
+ */
 Game_Map.prototype.layeredTiles = function(x, y) {
     var tiles = [];
     for (var i = 0; i &lt; 4; i++) {
@@ -8854,6 +9761,10 @@ Game_Map.prototype.layeredTiles = function(x, y) {
     return tiles;
 };
 
+<span id='Game_Map-method-allTiles'>/**
+</span> * @method allTiles
+ * FIXME
+ */
 Game_Map.prototype.allTiles = function(x, y) {
     var tiles = this.tileEventsXy(x, y).map(function(event) {
         return event.tileId();
@@ -8861,27 +9772,51 @@ Game_Map.prototype.allTiles = function(x, y) {
     return tiles.concat(this.layeredTiles(x, y));
 };
 
+<span id='Game_Map-method-autotileType'>/**
+</span> * @method autotileType
+ * FIXME
+ */
 Game_Map.prototype.autotileType = function(x, y, z) {
     var tileId = this.tileId(x, y, z);
     return tileId &gt;= 2048 ? Math.floor((tileId - 2048) / 48) : -1;
 };
 
+<span id='Game_Map-method-isPassable'>/**
+</span> * @method isPassable
+ * FIXME
+ */
 Game_Map.prototype.isPassable = function(x, y, d) {
     return this.checkPassage(x, y, (1 &lt;&lt; (d / 2 - 1)) &amp; 0x0f);
 };
 
+<span id='Game_Map-method-isBoatPassable'>/**
+</span> * @method isBoatPassable
+ * FIXME
+ */
 Game_Map.prototype.isBoatPassable = function(x, y) {
     return this.checkPassage(x, y, 0x0200);
 };
 
+<span id='Game_Map-method-isShipPassable'>/**
+</span> * @method isShipPassable
+ * FIXME
+ */
 Game_Map.prototype.isShipPassable = function(x, y) {
     return this.checkPassage(x, y, 0x0400);
 };
 
+<span id='Game_Map-method-isAirshipLandOk'>/**
+</span> * @method isAirshipLandOk
+ * FIXME
+ */
 Game_Map.prototype.isAirshipLandOk = function(x, y) {
     return this.checkPassage(x, y, 0x0800) &amp;&amp; this.checkPassage(x, y, 0x0f);
 };
 
+<span id='Game_Map-method-checkLayeredTilesFlags'>/**
+</span> * @method checkLayeredTilesFlags
+ * FIXME
+ */
 Game_Map.prototype.checkLayeredTilesFlags = function(x, y, bit) {
     var flags = this.tilesetFlags();
     return this.layeredTiles(x, y).some(function(tileId) {
@@ -8889,22 +9824,42 @@ Game_Map.prototype.checkLayeredTilesFlags = function(x, y, bit) {
     });
 };
 
+<span id='Game_Map-method-isLadder'>/**
+</span> * @method isLadder
+ * FIXME
+ */
 Game_Map.prototype.isLadder = function(x, y) {
     return this.isValid(x, y) &amp;&amp; this.checkLayeredTilesFlags(x, y, 0x20);
 };
 
+<span id='Game_Map-method-isBush'>/**
+</span> * @method isBush
+ * FIXME
+ */
 Game_Map.prototype.isBush = function(x, y) {
     return this.isValid(x, y) &amp;&amp; this.checkLayeredTilesFlags(x, y, 0x40);
 };
 
+<span id='Game_Map-method-isCounter'>/**
+</span> * @method isCounter
+ * FIXME
+ */
 Game_Map.prototype.isCounter = function(x, y) {
     return this.isValid(x, y) &amp;&amp; this.checkLayeredTilesFlags(x, y, 0x80);
 };
 
+<span id='Game_Map-method-isDamageFloor'>/**
+</span> * @method isDamageFloor
+ * FIXME
+ */
 Game_Map.prototype.isDamageFloor = function(x, y) {
     return this.isValid(x, y) &amp;&amp; this.checkLayeredTilesFlags(x, y, 0x100);
 };
 
+<span id='Game_Map-method-terrainTag'>/**
+</span> * @method terrainTag
+ * FIXME
+ */
 Game_Map.prototype.terrainTag = function(x, y) {
     if (this.isValid(x, y)) {
         var flags = this.tilesetFlags();
@@ -8919,20 +9874,36 @@ Game_Map.prototype.terrainTag = function(x, y) {
     return 0;
 };
 
+<span id='Game_Map-method-regionId'>/**
+</span> * @method regionId
+ * FIXME
+ */
 Game_Map.prototype.regionId = function(x, y) {
     return this.isValid(x, y) ? this.tileId(x, y, 5) : 0;
 };
 
+<span id='Game_Map-method-startScroll'>/**
+</span> * @method startScroll
+ * FIXME
+ */
 Game_Map.prototype.startScroll = function(direction, distance, speed) {
     this._scrollDirection = direction;
     this._scrollRest = distance;
     this._scrollSpeed = speed;
 };
 
+<span id='Game_Map-method-isScrolling'>/**
+</span> * @method isScrolling
+ * FIXME
+ */
 Game_Map.prototype.isScrolling = function() {
     return this._scrollRest &gt; 0;
 };
 
+<span id='Game_Map-method-update'>/**
+</span> * @method update
+ * FIXME
+ */
 Game_Map.prototype.update = function(sceneActive) {
     this.refreshIfNeeded();
     if (sceneActive) {
@@ -8944,6 +9915,10 @@ Game_Map.prototype.update = function(sceneActive) {
     this.updateParallax();
 };
 
+<span id='Game_Map-method-updateScroll'>/**
+</span> * @method updateScroll
+ * FIXME
+ */
 Game_Map.prototype.updateScroll = function() {
     if (this.isScrolling()) {
         var lastX = this._displayX;
@@ -8957,10 +9932,18 @@ Game_Map.prototype.updateScroll = function() {
     }
 };
 
+<span id='Game_Map-method-scrollDistance'>/**
+</span> * @method scrollDistance
+ * FIXME
+ */
 Game_Map.prototype.scrollDistance = function() {
     return Math.pow(2, this._scrollSpeed) / 256;
 };
 
+<span id='Game_Map-method-doScroll'>/**
+</span> * @method doScroll
+ * FIXME
+ */
 Game_Map.prototype.doScroll = function(direction, distance) {
     switch (direction) {
     case 2:
@@ -8978,6 +9961,10 @@ Game_Map.prototype.doScroll = function(direction, distance) {
     }
 };
 
+<span id='Game_Map-method-updateEvents'>/**
+</span> * @method updateEvents
+ * FIXME
+ */
 Game_Map.prototype.updateEvents = function() {
     this.events().forEach(function(event) {
         event.update();
@@ -8987,12 +9974,20 @@ Game_Map.prototype.updateEvents = function() {
     });
 };
 
+<span id='Game_Map-method-updateVehicles'>/**
+</span> * @method updateVehicles
+ * FIXME
+ */
 Game_Map.prototype.updateVehicles = function() {
     this._vehicles.forEach(function(vehicle) {
         vehicle.update();
     });
 };
 
+<span id='Game_Map-method-updateParallax'>/**
+</span> * @method updateParallax
+ * FIXME
+ */
 Game_Map.prototype.updateParallax = function() {
     if (this._parallaxLoopX) {
         this._parallaxX += this._parallaxSx / this.tileWidth() / 2;
@@ -9002,16 +9997,28 @@ Game_Map.prototype.updateParallax = function() {
     }
 };
 
+<span id='Game_Map-method-changeTileset'>/**
+</span> * @method changeTileset
+ * FIXME
+ */
 Game_Map.prototype.changeTileset = function(tilesetId) {
     this._tilesetId = tilesetId;
     this.refresh();
 };
 
+<span id='Game_Map-method-changeBattleback'>/**
+</span> * @method changeBattleback
+ * FIXME
+ */
 Game_Map.prototype.changeBattleback = function(battleback1Name, battleback2Name) {
     this._battleback1Name = battleback1Name;
     this._battleback2Name = battleback2Name;
 };
 
+<span id='Game_Map-method-changeParallax'>/**
+</span> * @method changeParallax
+ * FIXME
+ */
 Game_Map.prototype.changeParallax = function(name, loopX, loopY, sx, sy) {
     this._parallaxName = name;
     this._parallaxZero = ImageManager.isZeroParallax(this._parallaxName);
@@ -9027,6 +10034,10 @@ Game_Map.prototype.changeParallax = function(name, loopX, loopY, sx, sy) {
     this._parallaxSy = sy;
 };
 
+<span id='Game_Map-method-updateInterpreter'>/**
+</span> * @method updateInterpreter
+ * FIXME
+ */
 Game_Map.prototype.updateInterpreter = function() {
     for (;;) {
         this._interpreter.update();
@@ -9043,12 +10054,20 @@ Game_Map.prototype.updateInterpreter = function() {
     }
 };
 
+<span id='Game_Map-method-unlockEvent'>/**
+</span> * @method unlockEvent
+ * FIXME
+ */
 Game_Map.prototype.unlockEvent = function(eventId) {
     if (this._events[eventId]) {
         this._events[eventId].unlock();
     }
 };
 
+<span id='Game_Map-method-setupStartingEvent'>/**
+</span> * @method setupStartingEvent
+ * FIXME
+ */
 Game_Map.prototype.setupStartingEvent = function() {
     this.refreshIfNeeded();
     if (this._interpreter.setupReservedCommonEvent()) {
@@ -9066,6 +10085,10 @@ Game_Map.prototype.setupStartingEvent = function() {
     return false;
 };
 
+<span id='Game_Map-method-setupTestEvent'>/**
+</span> * @method setupTestEvent
+ * FIXME
+ */
 Game_Map.prototype.setupTestEvent = function() {
     if ($testEvent) {
         this._interpreter.setup($testEvent, 0);
@@ -9075,6 +10098,10 @@ Game_Map.prototype.setupTestEvent = function() {
     return false;
 };
 
+<span id='Game_Map-method-setupStartingMapEvent'>/**
+</span> * @method setupStartingMapEvent
+ * FIXME
+ */
 Game_Map.prototype.setupStartingMapEvent = function() {
     var events = this.events();
     for (var i = 0; i &lt; events.length; i++) {
@@ -9088,6 +10115,10 @@ Game_Map.prototype.setupStartingMapEvent = function() {
     return false;
 };
 
+<span id='Game_Map-method-setupAutorunCommonEvent'>/**
+</span> * @method setupAutorunCommonEvent
+ * FIXME
+ */
 Game_Map.prototype.setupAutorunCommonEvent = function() {
     for (var i = 0; i &lt; $dataCommonEvents.length; i++) {
         var event = $dataCommonEvents[i];
@@ -9099,6 +10130,10 @@ Game_Map.prototype.setupAutorunCommonEvent = function() {
     return false;
 };
 
+<span id='Game_Map-method-isAnyEventStarting'>/**
+</span> * @method isAnyEventStarting
+ * FIXME
+ */
 Game_Map.prototype.isAnyEventStarting = function() {
     return this.events().some(function(event) {
         return event.isStarting();
